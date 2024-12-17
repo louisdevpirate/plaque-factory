@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
       },
       animation: {
-        'gradient-xy': 'gradient-xy 15s ease infinite',
+        'gradient-xy': 'gradient-xy 5s ease infinite',
       },
       keyframes: {
         'gradient-xy': {
