@@ -10,6 +10,15 @@ import Footer from '../components/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Logo */}
+      <a href="/" className="absolute top-8 left-10 flex items-center">
+        <img 
+          src="/images/logo/1.png"
+          alt="Plaque Factory Logo"
+          className="h-auto w-60"
+        />
+      </a>
+
       <Navbar />
       <HeaderSection />
       <PersonalizationSection />

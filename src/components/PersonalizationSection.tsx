@@ -22,7 +22,7 @@ export default function PersonalizationSection() {
           <div 
             id="iframe-container" 
             data-iframe-url="https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1"
-            className="w-full h-[850px]"
+            className="w-full h-[650px]"
           />
         </div>
       </div>

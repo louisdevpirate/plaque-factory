@@ -34,7 +34,7 @@ const linkClasses = `
 const personaliserClasses = `
   px-6 py-2 text-sm rounded-full transition-all duration-300 hover:-translate-y-[2px] cursor-pointer min-w-[120px] text-center
   ${isPastHeader 
-    ? 'bg-gradient-to-r from-blue-400 to-blue-300 text-white shadow-sm hover:shadow-md hover:from-blue-500 hover:to-blue-400'
+    ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-sm hover:shadow-md hover:from-blue-500 hover:to-blue-400'
     : 'border border-white text-white hover:bg-white/10 hover:border-white/80'
   }
 `
@@ -42,30 +42,36 @@ const personaliserClasses = `
 return (
   <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[800px]">
     <nav className={navClasses}>
-    <div className={`w-full h-full rounded-full backdrop-blur-md px-4 pr-8 ${
-  isPastHeader ? 'bg-white/95' : 'bg-white/30 border border-white/20'
-}`}>
-  <div className="flex items-center justify-center gap-8 py-2">
-    <a 
-      href="#personnalisation" 
-      className={personaliserClasses}
-    >
-      Personnaliser
-    </a>
-    <a 
-      href="#galerie" 
-      className={linkClasses}
-    >
-      Galerie
-    </a>
-    <a 
-      href="#faq" 
-      className={linkClasses}
-    >
-      FAQ
-    </a>
-  </div>
-</div>
+      <div className={`w-full h-full rounded-full backdrop-blur-md px-4 pr-8 ${
+        isPastHeader ? 'bg-white/95' : 'bg-white/30 border border-white/20'
+      }`}>
+        <div className="flex items-center justify-center gap-8 py-2">
+          <a 
+            href="#personnalisation" 
+            className={personaliserClasses}
+          >
+            Personnaliser
+          </a>
+          <a 
+            href="#galerie" 
+            className={linkClasses}
+          >
+            Galerie
+          </a>
+          <a 
+            href="#categories" 
+            className={linkClasses}
+          >
+            Catégories
+          </a>
+          <a 
+            href="#faq" 
+            className={linkClasses}
+          >
+            FAQ
+          </a>
+        </div>
+      </div>
     </nav>
   </div>
 )

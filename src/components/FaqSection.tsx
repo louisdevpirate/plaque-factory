@@ -42,7 +42,7 @@ export default function FaqSection() {
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             className="w-full px-8 py-6 text-left flex justify-between items-center text-white"
           >
-             <span className="font-medium text-lg">{item.question}</span>
+             <span className="font-light text-lg">{item.question}</span>
              <span className="transform transition-transform duration-300">
                {openIndex === index ? '−' : '+'}
              </span>

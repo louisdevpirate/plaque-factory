@@ -22,3 +22,17 @@ body {
   background: fixed linear-gradient(135deg, #0036ca 0%, #c1d9ff 100%);
 
 }
+
+.slick-slider .slick-dots {
+  position: relative;  /* Au lieu de absolute */
+  bottom: 50px;       /* Annule la position bottom par défaut */
+}
+
+.slick-dots li button:before {
+  font-size: 8px;
+  color: #e2e8f0;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #3b82f6;
+}
