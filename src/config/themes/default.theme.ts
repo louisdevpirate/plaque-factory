@@ -99,6 +99,52 @@ export const defaultTheme: ThemeConfig = {
           timing: '300ms',
           hover: 'translateY(-5px)'
         }
+      },
+
+      gallery: {
+        images: {
+          sources: [
+            {
+              path: '/images/carousel/plaque1.png',
+              alt: 'Plaque d\'immatriculation personnalisée modèle 1'
+            },
+            {
+              path: '/images/carousel/Plaque_Marine_2.png',
+              alt: 'Plaque d\'immatriculation marine modèle 2'
+            },
+            {
+              path: '/images/carousel/Plaque_Marine_3.png',
+              alt: 'Plaque d\'immatriculation marine modèle 3'
+            },
+            {
+              path: '/images/carousel/Plaque_Marine_4.png',
+              alt: 'Plaque d\'immatriculation marine modèle 4'
+            }
+          ],
+          settings: {
+            height: '300px',
+            width: 'auto',
+            objectFit: 'contain'
+          }
+        },
+        carousel: {
+          speed: 8000,
+          slidesToShow: 2,
+          spacing: '10px',
+          autoplay: true,
+          autoplaySpeed: 0,
+          pauseOnHover: false,
+          cssEase: 'linear'
+        },
+        layout: {
+          background: 'transparent',
+          padding: '5rem 0',
+          title: {
+            text: 'Galerie d\'inspirations',
+            color: '#000000',
+            fontSize: '1.875rem'  // équivalent à text-3xl
+          }
+        }
       }
     };
   

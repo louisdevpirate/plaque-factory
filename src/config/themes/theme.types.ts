@@ -1,4 +1,3 @@
-// src/config/themes/theme.types.ts
 export interface ThemeConfig {
     colors: {
       // Couleurs principales
@@ -63,7 +62,7 @@ export interface ThemeConfig {
         hover: string;       // Translation au survol
       };
     };
-    
+
     navigation: {
     // États de la barre de navigation
     states: {
@@ -105,5 +104,69 @@ export interface ThemeConfig {
       timing: string;         // Durée de transition
       hover: string;          // Translation au survol
     };
+  },
+
+  gallery: {
+    images: {
+      sources: Array<{
+        path: string;
+        alt: string;
+      }>;
+      settings: {
+        height: string;
+        width: string;
+        objectFit: 'contain' | 'cover';
+      };
+    };
+    carousel: {
+      speed: number;
+      slidesToShow: number;
+      spacing: string;
+      autoplay: boolean;        // Ajouté
+      autoplaySpeed: number;    // Ajouté
+      pauseOnHover: boolean;    // Ajouté
+      cssEase: string;         // Ajouté
+    };
+    layout: {
+      background: string;
+      padding: string;
+      title: {              // Section titre ajoutée
+        text: string;
+        color: string;
+        fontSize: string;
+      };
+    };
   };
 }
+
+// Structure pour la galerie :
+interface GalleryConfig {
+    images: {
+      sources: Array<{
+        path: string;
+        alt: string;
+        title?: string;
+      }>;
+      settings: {
+        height: string;
+        width: string;
+        objectFit: 'contain' | 'cover';
+      };
+    };
+    carousel: {
+      speed: number;
+      autoplay: boolean;
+      pauseOnHover: boolean;
+      slidesToShow: number;
+      spacing: string;
+    };
+    layout: {
+      padding: string;
+      background: string;
+      title: {
+        text: string;
+        color: string;
+        fontSize: string;
+      };
+    };
+  }
