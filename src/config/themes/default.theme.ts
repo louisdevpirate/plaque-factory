@@ -145,6 +145,135 @@ export const defaultTheme: ThemeConfig = {
             fontSize: '1.875rem'  // équivalent à text-3xl
           }
         }
+      },
+
+      categories: {
+        items: [
+          {
+            id: 1,
+            title: "AUTO",
+            description: "Format standard 520x110mm, homologué pour voitures particulières et véhicules légers",
+            sizes: "52x11",
+            link: "#"
+          },
+          {
+            id: 2,
+            title: "4X4",
+            description: "Format tout-terrain 275x200mm, adapté aux SUV, pick-up et véhicules de loisirs",
+            sizes: "27,5x20",
+            link: "#"
+          },
+          {
+            id: 3,
+            title: "U.S.",
+            description: "Format américain 300x150mm, idéal pour les véhicules importés et style US authentique",
+            sizes: "30x15",
+            link: "#"
+          },
+          {
+            id: 4,
+            title: "MOTO",
+            description: "Format standard moto 210x130mm, homologué pour les deux-roues motorisés",
+            sizes: "21x13",
+            link: "#"
+          },
+          {
+            id: 5,
+            title: "PETITE MOTO",
+            description: "Format compact 170x130mm, parfait pour les motos légères et scooters",
+            sizes: "17x13",
+            link: "#"
+          },
+          {
+            id: 6,
+            title: "CYCLO",
+            description: "Format cyclomoteur 140x120mm, spécifique pour les mobylettes et cyclomoteurs",
+            sizes: "14x12",
+            link: "#"
+          },
+          {
+            id: 7,
+            title: "ENDURO",
+            description: "Format spécial 100x100mm, conçu pour les motos d'enduro et tout-terrain",
+            sizes: "10x10",
+            link: "#"
+          },
+          {
+            id: 8,
+            title: "COLLECTION COURTE",
+            description: "Format collection 450x100mm, dédié aux véhicules de collection et anciennes",
+            sizes: "45x10",
+            link: "#"
+          },
+          {
+            id: 9,
+            title: "COLLECTION MOTO",
+            description: "Format collection moto 275x75mm, spécial pour motos anciennes et classiques",
+            sizes: "27,5x7,5",
+            link: "#"
+          },
+        ],
+        layout: {
+          title: {
+            text: "Nos Formats",
+            color: "rgb(0, 0, 0)",
+            fontSize: "1.875rem",
+            marginBottom: "3rem"
+          },
+          card: {
+            background: "white",
+            borderColor: "rgb(243, 244, 246)",
+            padding: "1.5rem",
+            height: "280px",
+            borderRadius: "0.75rem",
+            shadow: {
+              default: "0 1px 3px rgba(0,0,0,0.1)",
+              hover: "0 10px 15px -3px rgba(0,0,0,0.1)"
+            }
+          },
+          text: {
+            title: {
+              color: "rgb(17, 24, 39)",
+              fontSize: "1.25rem"
+            },
+            description: {
+              color: "rgb(75, 85, 99)",
+              fontSize: "1rem"
+            },
+            dimensions: {
+              color: "rgb(37, 99, 235)",
+              fontSize: "0.875rem"
+            },
+            link: {
+              color: "rgb(37, 99, 235)",
+              hoverColor: "rgb(30, 64, 175)"
+            }
+          }
+        },
+        carousel: {
+          slidesToShow: 3,
+          speed: 500,
+          dots: true,
+          dotsStyle: {
+            color: "rgb(209, 213, 219)",
+            activeColor: "rgb(37, 99, 235)",
+            marginTop: "2.5rem"
+          },
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
+        }
       }
     };
   

@@ -137,6 +137,69 @@ export interface ThemeConfig {
       };
     };
   };
+
+  categories: {
+    items: Array<{
+      id: number;
+      title: string;
+      description: string;
+      sizes: string;
+      link: string;
+    }>;
+    layout: {
+      title: {
+        text: string;
+        color: string;
+        fontSize: string;
+        marginBottom: string;
+      };
+      card: {
+        background: string;
+        borderColor: string;
+        padding: string;
+        height: string;
+        borderRadius: string;
+        shadow: {
+          default: string;
+          hover: string;
+        };
+      };
+      text: {
+        title: {
+          color: string;
+          fontSize: string;
+        };
+        description: {
+          color: string;
+          fontSize: string;
+        };
+        dimensions: {
+          color: string;
+          fontSize: string;
+        };
+        link: {
+          color: string;
+          hoverColor: string;
+        };
+      };
+    };
+    carousel: {
+      slidesToShow: number;
+      speed: number;
+      dots: boolean;
+      dotsStyle: {
+        color: string;
+        activeColor: string;
+        marginTop: string;
+      };
+      responsive: Array<{
+        breakpoint: number;
+        settings: {
+          slidesToShow: number;
+        };
+      }>;
+    };
+  };
 }
 
 // Structure pour la galerie :

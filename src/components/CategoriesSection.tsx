@@ -1,123 +1,110 @@
 'use client'
 import Slider from 'react-slick'
+import { useTheme } from '@/hooks/useTheme'
+import { useState } from 'react'
 
 export default function CategoriesSection() {
-  const categories = [
-    {
-      id: 1,
-      title: "AUTO",
-      description: "Format standard 520x110mm, homologué pour voitures particulières et véhicules légers",
-      sizes: "52x11",
-      link: "#"
-    },
-    {
-      id: 2,
-      title: "4X4",
-      description: "Format tout-terrain 275x200mm, adapté aux SUV, pick-up et véhicules de loisirs",
-      sizes: "27,5x20",
-      link: "#"
-    },
-    {
-      id: 3,
-      title: "U.S.",
-      description: "Format américain 300x150mm, idéal pour les véhicules importés et style US authentique",
-      sizes: "30x15",
-      link: "#"
-    },
-    {
-      id: 4,
-      title: "MOTO",
-      description: "Format standard moto 210x130mm, homologué pour les deux-roues motorisés",
-      sizes: "21x13",
-      link: "#"
-    },
-    {
-      id: 5,
-      title: "PETITE MOTO",
-      description: "Format compact 170x130mm, parfait pour les motos légères et scooters",
-      sizes: "17x13",
-      link: "#"
-    },
-    {
-      id: 6,
-      title: "CYCLO",
-      description: "Format cyclomoteur 140x120mm, spécifique pour les mobylettes et cyclomoteurs",
-      sizes: "14x12",
-      link: "#"
-    },
-    {
-      id: 7,
-      title: "ENDURO",
-      description: "Format spécial 100x100mm, conçu pour les motos d'enduro et tout-terrain",
-      sizes: "10x10",
-      link: "#"
-    },
-    {
-      id: 8,
-      title: "COLLECTION COURTE",
-      description: "Format collection 450x100mm, dédié aux véhicules de collection et anciennes",
-      sizes: "45x10",
-      link: "#"
-    },
-    {
-      id: 9,
-      title: "COLLECTION MOTO",
-      description: "Format collection moto 275x75mm, spécial pour motos anciennes et classiques",
-      sizes: "27,5x7,5",
-      link: "#"
-    }
-  ]
+  const theme = useTheme();
+  // État pour suivre quelle carte est survolée
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const settings = {
-    dots: true,
+    dots: theme.categories.carousel.dots,
     infinite: false,
-    speed: 500,
-    slidesToShow: 3,
+    speed: theme.categories.carousel.speed,
+    slidesToShow: theme.categories.carousel.slidesToShow,
     slidesToScroll: 1,
     arrows: false,
     autoplay: false,
     appendDots: (dots: any) => (
-      <div style={{ marginTop: "100px" }}>
+      <div style={{ marginTop: theme.categories.carousel.dotsStyle.marginTop }}>
         <ul>{dots}</ul>
       </div>
     ),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  }
+    responsive: theme.categories.carousel.responsive
+  };
 
   return (
     <section id="categories" className="py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Nos Formats</h2>
+        <h2 
+          className="text-3xl font-bold text-center"
+          style={{
+            color: theme.categories.layout.title.color,
+            fontSize: theme.categories.layout.title.fontSize,
+            marginBottom: theme.categories.layout.title.marginBottom
+          }}
+        >
+          {theme.categories.layout.title.text}
+        </h2>
+
         <Slider {...settings}>
-          {categories.map((category) => (
+          {theme.categories.items.map((category) => (
             <div key={category.id} className="px-4">
-            <div className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 h-[280px] flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
-                <p className="text-gray-600 mb-3">{category.description}</p>
-                <p className="text-sm text-blue-600 font-medium mb-4">Format : {category.sizes}cm</p>
+              <div 
+                className="flex flex-col justify-between transition-all duration-300"
+                style={{
+                  background: theme.categories.layout.card.background,
+                  border: `1px solid ${theme.categories.layout.card.borderColor}`,
+                  padding: theme.categories.layout.card.padding,
+                  height: theme.categories.layout.card.height,
+                  borderRadius: theme.categories.layout.card.borderRadius,
+                  // Changement dynamique de l'ombre selon l'état de hover
+                  boxShadow: hoveredCard === category.id 
+                    ? theme.categories.layout.card.shadow.hover
+                    : theme.categories.layout.card.shadow.default
+                }}
+                onMouseEnter={() => setHoveredCard(category.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div>
+                  <h3 
+                    className="font-semibold mb-3"
+                    style={{
+                      color: theme.categories.layout.text.title.color,
+                      fontSize: theme.categories.layout.text.title.fontSize
+                    }}
+                  >
+                    {category.title}
+                  </h3>
+                  
+                  <p 
+                    className="mb-3"
+                    style={{
+                      color: theme.categories.layout.text.description.color,
+                      fontSize: theme.categories.layout.text.description.fontSize
+                    }}
+                  >
+                    {category.description}
+                  </p>
+                  
+                  <p 
+                    className="font-medium mb-4"
+                    style={{
+                      color: theme.categories.layout.text.dimensions.color,
+                      fontSize: theme.categories.layout.text.dimensions.fontSize
+                    }}
+                  >
+                    Format : {category.sizes}cm
+                  </p>
+                </div>
+
+                <a 
+                  href={category.link} 
+                  className="font-medium inline-flex items-center transition-colors"
+                  style={{
+                    color: hoveredCard === category.id
+                      ? theme.categories.layout.text.link.hoverColor
+                      : theme.categories.layout.text.link.color
+                  }}
+                >
+                  Explorer →
+                </a>
               </div>
-              <a href={category.link} className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
-                Explorer →
-              </a>
             </div>
-          </div>
           ))}
         </Slider>
       </div>
     </section>
-  )
+  );
 }
