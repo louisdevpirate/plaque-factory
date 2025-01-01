@@ -60,5 +60,45 @@ export const defaultTheme: ThemeConfig = {
       transform: {
         hover: 'translateY(-2px)'
       }
-    }
-  };
+    },
+
+    navigation: {
+        states: {
+          default: {
+            background: 'rgba(255, 255, 255, 0.3)',
+            text: '#ffffff',
+            border: 'rgba(255, 255, 255, 0.2)'
+          },
+          scrolled: {
+            background: 'rgba(255, 255, 255, 0.95)',
+            text: '#000000',
+            border: 'rgba(0, 0, 0, 0.1)'
+          },
+          pastHeader: {
+            background: 'rgba(59, 130, 246, 0.5)', // blue-500 avec transparence
+            text: '#ffffff'
+          }
+        },
+        effects: {
+          blur: '8px',
+          shadow: '0 2px 15px -3px rgba(0,0,0,0.07), 0 10px 20px -2px rgba(0,0,0,0.04)'
+        },
+        cta: {
+          default: {
+            background: 'transparent',
+            text: '#ffffff',
+            border: 'rgba(255, 255, 255, 0.8)'
+          },
+          hover: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            text: '#ffffff',
+            border: '#ffffff'
+          }
+        },
+        animation: {
+          timing: '300ms',
+          hover: 'translateY(-5px)'
+        }
+      }
+    };
+  

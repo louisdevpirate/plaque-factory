@@ -63,4 +63,47 @@ export interface ThemeConfig {
         hover: string;       // Translation au survol
       };
     };
-  }
+    
+    navigation: {
+    // États de la barre de navigation
+    states: {
+      default: {
+        background: string;    // Fond initial
+        text: string;         // Couleur du texte initial
+        border: string;       // Bordure initiale
+      };
+      scrolled: {
+        background: string;    // Fond après défilement
+        text: string;         // Couleur du texte après défilement
+        border: string;       // Bordure après défilement
+      };
+      pastHeader: {
+        background: string;    // Fond quand on dépasse le header
+        text: string;         // Couleur du texte quand on dépasse le header
+      };
+    };
+    // Effets visuels
+    effects: {
+      blur: string;           // Intensité du flou (backdrop-blur)
+      shadow: string;         // Ombre portée
+    };
+    // Bouton "Personnaliser"
+    cta: {
+      default: {
+        background: string;
+        text: string;
+        border: string;
+      };
+      hover: {
+        background: string;
+        text: string;
+        border: string;
+      };
+    };
+    // Animations
+    animation: {
+      timing: string;         // Durée de transition
+      hover: string;          // Translation au survol
+    };
+  };
+}
