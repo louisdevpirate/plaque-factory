@@ -16,7 +16,7 @@ export default function PersonalizationSection() {
   }, [])
 
   return (
-    <section id="personnalisation" className="min-h-screen py-20 px-4">
+    <section id="personnalisation" className="py-20 px-4">
       <div className="max-w-[90%] mx-auto">
         <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
           <div 

@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 export default function GallerySection() {
   const images = [
-    '/images/carousel/Plaque_Marine_1.2_Carré.png',
+    '/images/carousel/plaque1.png',
     '/images/carousel/Plaque_Marine_2.png',
     '/images/carousel/Plaque_Marine_3.png',
     '/images/carousel/Plaque_Marine_4.png'
@@ -14,7 +14,7 @@ export default function GallerySection() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 5000,
+    speed: 8000,
     slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
@@ -42,7 +42,7 @@ export default function GallerySection() {
 
   return (
     <section id="galerie" className="py-20">
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto">
         <h2 className="text-3xl font-medium text-center mb-12">Galerie d'inspirations</h2>
         <Slider {...settings}>
           {images.concat(images).map((image, index) => (
