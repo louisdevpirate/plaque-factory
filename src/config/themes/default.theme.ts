@@ -357,6 +357,30 @@ export const defaultTheme: ThemeConfig = {
           fontSize: "1.25rem",
           transition: "transform 300ms ease"
         }
+      },
+
+      footer: {
+        styling: {
+          text: {
+            primary: '#ffffff',
+            secondary: 'rgba(255, 255, 255, 0.9)',
+            hover: '#ffffff'
+          }
+        },
+        sections: {
+          navigation: ['Personnaliser', 'Galerie', 'Catégories', 'FAQ'],
+          legal: ['Mentions légales', 'CGV', 'Politique de remboursement', 'Contact'],
+          description: "Personnalisation de plaques d'immatriculation homologuées et accessoires décoratifs.",
+          copyright: `© 2017 - ${new Date().getFullYear()} - PlaqueImmat.fr - Tous droits réservés`
+        }
+      },
+      global: {
+        branding: {
+          logo: {
+            path: '/images/logo/1.png',
+            alt: 'Plaque Factory Logo'
+          }
+        }
       }
     };
   

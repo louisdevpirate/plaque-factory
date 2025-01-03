@@ -266,6 +266,30 @@ export interface ThemeConfig {
       transition: string;
     };
   };
+
+  footer: {
+    styling: {
+      text: {
+        primary: string;
+        secondary: string;
+        hover: string;
+      };
+    };
+    sections: {
+      legal: string[];
+      navigation: string[];
+      description: string;
+      copyright: string;
+    };
+  };
+  global: {
+    branding: {
+      logo: {
+        path: string;
+        alt: string;
+      };
+    };
+  };
 }
 
 // Structure pour la galerie :
