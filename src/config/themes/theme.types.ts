@@ -200,6 +200,72 @@ export interface ThemeConfig {
       }>;
     };
   };
+
+  faq: {
+    // Structure des questions/réponses
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+    
+    // Mise en page globale
+    layout: {
+      title: {
+        text: string;
+        color: string;
+        fontSize: string;
+        marginBottom: string;
+      };
+      background: string;
+      maxWidth: string;
+      spacing: {
+        section: string;
+        itemGap: string;
+      };
+    };
+    
+    // Style des items de FAQ
+    item: {
+      background: {
+        default: string;
+        hover: string;
+      };
+      border: {
+        color: string;
+        width: string;
+        radius: string;
+      };
+      text: {
+        question: {
+          color: string;
+          fontSize: string;
+          fontWeight: string;
+        };
+        answer: {
+          color: string;
+          fontSize: string;
+          lineHeight: string;
+        };
+      };
+      padding: {
+        question: string;
+        answer: string;
+      };
+    };
+    
+    // Animations et transitions
+    animation: {
+      timing: string;
+      expandDuration: number;
+    };
+    
+    // Style du bouton toggle
+    toggle: {
+      color: string;
+      fontSize: string;
+      transition: string;
+    };
+  };
 }
 
 // Structure pour la galerie :
@@ -233,3 +299,5 @@ interface GalleryConfig {
       };
     };
   }
+
+  
