@@ -99,6 +99,13 @@ export const motoTheme: ThemeConfig = {
       hover: 'translateY(-5px)'
     }
   },
+
+  personalization: {
+    background: {
+      gradient: 'linear-gradient(135deg, #FF0000 0%, #8B0000 100%)'
+    }
+  },
+
   gallery: {
     images: {
       sources: [
@@ -218,7 +225,7 @@ export const motoTheme: ThemeConfig = {
         fontSize: "2.25rem",
         marginBottom: "3rem"
       },
-      background: "transparent",
+      background: 'linear-gradient(135deg, #8B0000 0%, #FF0000 100%)',
       maxWidth: "42rem",
       spacing: {
         section: "5rem",

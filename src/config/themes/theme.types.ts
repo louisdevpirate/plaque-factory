@@ -1,92 +1,88 @@
 export interface ThemeConfig {
-    colors: {
-      // Couleurs principales
-      primary: {
-        main: string;          // Bleu principal #0036ca
-        light: string;         // Bleu clair #c1d9ff
-        gradient: string;      // Le dégradé complet
-      };
-      // Couleurs d'accent (pour les CTA)
-      accent: {
-        from: string;          // Orange de départ
-        to: string;           // Orange d'arrivée
-        gradient: string;      // Le dégradé complet
-        hover: {
-          from: string;       // Orange hover de départ
-          to: string;        // Orange hover d'arrivée
-        };
-      };
-      // Textes
-      text: {
-        primary: string;      // Blanc pur pour les titres
-        secondary: string;    // Blanc légèrement transparent pour les paragraphes
-      };
-      // États et feedback
-      state: {
-        success: string;
-        error: string;
-        warning: string;
-        info: string;
+  colors: {
+    primary: {
+      main: string;
+      light: string;
+      gradient: string;
+    };
+    accent: {
+      from: string;
+      to: string;
+      gradient: string;
+      hover: {
+        from: string;
+        to: string;
       };
     };
-    spacing: {
-      header: {
-        height: string;       // 70vh pour le header
-        padding: {
-          x: string;         // Padding horizontal
-          y: string;         // Padding vertical
-        };
-      };
-      section: {
-        padding: string;     // Espacement standard des sections
-        gap: string;         // Espacement entre les éléments
+    text: {
+      primary: string;
+      secondary: string;
+    };
+    state: {
+      success: string;
+      error: string;
+      warning: string;
+      info: string;
+    };
+  };
+  
+  spacing: {
+    header: {
+      height: string;
+      padding: {
+        x: string;
+        y: string;
       };
     };
-    typography: {
-      header: {
-        fontSize: string;    // 6xl pour le titre principal
-        fontWeight: string;  // bold
-        lineHeight: string;  // Pour un espacement optimal
-      };
-      body: {
-        fontSize: string;    // xl pour le texte courant
-        lineHeight: string;  // leading-relaxed
-      };
+    section: {
+      padding: string;
+      gap: string;
     };
-    animation: {
-      transition: {
-        default: string;     // Transition standard
-        hover: string;       // Transition au survol
-      };
-      transform: {
-        hover: string;       // Translation au survol
-      };
+  };
+  
+  typography: {
+    header: {
+      fontSize: string;
+      fontWeight: string;
+      lineHeight: string;
     };
+    body: {
+      fontSize: string;
+      lineHeight: string;
+    };
+  };
+  
+  animation: {
+    transition: {
+      default: string;
+      hover: string;
+    };
+    transform: {
+      hover: string;
+    };
+  };
 
-    navigation: {
-    // États de la barre de navigation
+  navigation: {
     states: {
       default: {
-        background: string;    // Fond initial
-        text: string;         // Couleur du texte initial
-        border: string;       // Bordure initiale
+        background: string;
+        text: string;
+        border: string;
       };
       scrolled: {
-        background: string;    // Fond après défilement
-        text: string;         // Couleur du texte après défilement
-        border: string;       // Bordure après défilement
+        background: string;
+        text: string;
+        border: string;
       };
       pastHeader: {
-        background: string;    // Fond quand on dépasse le header
-        text: string;         // Couleur du texte quand on dépasse le header
+        background: string;
+        text: string;
       };
     };
-    // Effets visuels
     effects: {
-      blur: string;           // Intensité du flou (backdrop-blur)
-      shadow: string;         // Ombre portée
+      blur: string;
+      shadow: string;
     };
-    // Bouton "Personnaliser"
     cta: {
       default: {
         background: string;
@@ -99,12 +95,17 @@ export interface ThemeConfig {
         border: string;
       };
     };
-    // Animations
     animation: {
-      timing: string;         // Durée de transition
-      hover: string;          // Translation au survol
+      timing: string;
+      hover: string;
     };
-  },
+  };
+
+  personalization: {
+    background: {
+      gradient: string;  // Au lieu de juste string
+    };
+  };
 
   gallery: {
     images: {
@@ -122,15 +123,15 @@ export interface ThemeConfig {
       speed: number;
       slidesToShow: number;
       spacing: string;
-      autoplay: boolean;        // Ajouté
-      autoplaySpeed: number;    // Ajouté
-      pauseOnHover: boolean;    // Ajouté
-      cssEase: string;         // Ajouté
+      autoplay: boolean;
+      autoplaySpeed: number;
+      pauseOnHover: boolean;
+      cssEase: string;
     };
     layout: {
       background: string;
       padding: string;
-      title: {              // Section titre ajoutée
+      title: {
         text: string;
         color: string;
         fontSize: string;
@@ -202,13 +203,10 @@ export interface ThemeConfig {
   };
 
   faq: {
-    // Structure des questions/réponses
     items: Array<{
       question: string;
       answer: string;
     }>;
-    
-    // Mise en page globale
     layout: {
       title: {
         text: string;
@@ -223,8 +221,6 @@ export interface ThemeConfig {
         itemGap: string;
       };
     };
-    
-    // Style des items de FAQ
     item: {
       background: {
         default: string;
@@ -252,14 +248,10 @@ export interface ThemeConfig {
         answer: string;
       };
     };
-    
-    // Animations et transitions
     animation: {
       timing: string;
       expandDuration: number;
     };
-    
-    // Style du bouton toggle
     toggle: {
       color: string;
       fontSize: string;
@@ -282,6 +274,7 @@ export interface ThemeConfig {
       copyright: string;
     };
   };
+  
   global: {
     branding: {
       logo: {
@@ -291,37 +284,3 @@ export interface ThemeConfig {
     };
   };
 }
-
-// Structure pour la galerie :
-interface GalleryConfig {
-    images: {
-      sources: Array<{
-        path: string;
-        alt: string;
-        title?: string;
-      }>;
-      settings: {
-        height: string;
-        width: string;
-        objectFit: 'contain' | 'cover';
-      };
-    };
-    carousel: {
-      speed: number;
-      autoplay: boolean;
-      pauseOnHover: boolean;
-      slidesToShow: number;
-      spacing: string;
-    };
-    layout: {
-      padding: string;
-      background: string;
-      title: {
-        text: string;
-        color: string;
-        fontSize: string;
-      };
-    };
-  }
-
-  
