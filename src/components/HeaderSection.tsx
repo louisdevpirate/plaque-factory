@@ -23,7 +23,6 @@ export default function HeaderSection() {
       style={{
         height: theme.spacing.header.height,
         padding: `${theme.spacing.header.padding.y} ${theme.spacing.header.padding.x}`,
-        background: theme.colors.primary.gradient,
       }}
     >
       <h1 

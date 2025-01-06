@@ -1,19 +1,21 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+// prisma/schema.prisma
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  parentId    String?    // Pour les sous-catégories
+  parent      Category?  @relation("SubCategories", fields: [parentId], references: [id])
+  children    Category[] @relation("SubCategories")
+  images      Image[]    // Relation avec les images
 }
 
 model Image {
-  id          String   @id @default(cuid())
+  id          String      @id @default(cuid())
   path        String   
   alt         String   
-  categories  String[] 
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  active      Boolean  @default(true)
-  priority    Int      @default(0)
+  categories  Category[]  // Relation many-to-many avec Category
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+  active      Boolean     @default(true)
+  priority    Int         @default(0)
 }

@@ -101,6 +101,12 @@ export const defaultTheme: ThemeConfig = {
         }
       },
 
+      personalization: {
+        background: {
+          gradient: 'linear-gradient(135deg, #0036ca 0%, #c1d9ff 100%)'
+        }
+      },
+
       gallery: {
         images: {
           sources: [
