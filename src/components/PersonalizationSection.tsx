@@ -1,7 +1,10 @@
 'use client'
 import { useEffect } from 'react'
+import { useTheme } from '@/hooks/useTheme'
 
 export default function PersonalizationSection() {
+  const theme = useTheme();
+
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://deploy-preview-384--module-plaqueimmat.netlify.app/embed.js'
@@ -16,7 +19,10 @@ export default function PersonalizationSection() {
   }, [])
 
   return (
-    <section id="personnalisation" className="py-20 px-4">
+    <section 
+      id="personnalisation" 
+      className="py-20 px-4"
+    >
       <div className="max-w-[90%] mx-auto">
         <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
           <div 
@@ -27,5 +33,5 @@ export default function PersonalizationSection() {
         </div>
       </div>
     </section>
-   )
+  )
 }

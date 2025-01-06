@@ -12,7 +12,6 @@ export default function FaqSection() {
       id="faq" 
       style={{
         padding: theme.faq.layout.spacing.section,
-        background: theme.faq.layout.background
       }}
     >
       {/* Titre de la section */}
