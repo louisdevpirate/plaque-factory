@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 
+
 export default function Navbar() {
   // États pour gérer les différentes interactions et positions de défilement
   const [isScrolled, setIsScrolled] = useState(false)

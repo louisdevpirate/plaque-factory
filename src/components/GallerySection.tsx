@@ -3,6 +3,8 @@ import Slider from 'react-slick'
 import { useTheme } from '@/hooks/useTheme'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image';
+
 
 export default function GallerySection() {
   const theme = useTheme();
@@ -50,15 +52,13 @@ export default function GallerySection() {
         
         <Slider {...settings}>
           {theme.gallery.images.sources.concat(theme.gallery.images.sources).map((image, index) => (
-            <div key={index} style={{width: 'auto'}}>
-              <img 
+            <div key={index} style={{ width: 'auto' }}>
+              <Image 
                 src={image.path}
                 alt={image.alt}
                 className="object-contain mx-10"
-                style={{
-                  height: theme.gallery.images.settings.height,
-                  width: theme.gallery.images.settings.width
-                }}
+                width={parseInt(theme.gallery.images.settings.width, 10)} // Convertit en nombre
+                height={parseInt(theme.gallery.images.settings.height, 10)} // Convertit en nombre
               />
             </div>
           ))}

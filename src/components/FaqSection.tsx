@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 
+
 export default function FaqSection() {
   // Utilisation du thème et gestion de l'état pour l'accordéon
   const theme = useTheme();
