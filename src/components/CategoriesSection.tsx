@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import { useTheme } from '@/hooks/useTheme'
 import { useState } from 'react'
 
+
 export default function CategoriesSection() {
   const theme = useTheme();
   // État pour suivre quelle carte est survolée
@@ -16,7 +17,7 @@ export default function CategoriesSection() {
     slidesToScroll: 1,
     arrows: false,
     autoplay: false,
-    appendDots: (dots: any) => (
+    appendDots: (dots: React.ReactNode) => (
       <div style={{ marginTop: theme.categories.carousel.dotsStyle.marginTop }}>
         <ul>{dots}</ul>
       </div>

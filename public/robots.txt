@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Sitemap: https://plaque-factory.fr/sitemap.xml
+
+// pages/sitemap.xml.tsx (pour un sitemap dynamique)
+import { GetServerSideProps } from 'next'
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const sitemap = generateSitemap() // Nous créerons cette fonction
+  res.setHeader('Content-Type', 'text/xml')
+  res.write(sitemap)
+  res.end()
+  return { props: {} }
+}
+
+// app/layout.tsx (meta tags et Open Graph)
+export const metadata: Metadata = {
+  title: {
+    default: 'Plaque Factory - Plaques personnalisées',
+    template: '%s | Plaque Factory'
+  },
+  description: 'Créez des plaques d'immatriculation personnalisées et homologuées qui reflètent votre personnalité.',
+  openGraph: {
+    // ... configuration Open Graph
+  },
+  // ... autres meta tags
+}

@@ -3,6 +3,7 @@
 import { useTheme } from '@/hooks/useTheme';
 import { useState } from 'react';
 
+
 export default function HeaderSection() {
   const theme = useTheme();
   const [isHovered, setIsHovered] = useState(false);
@@ -44,7 +45,7 @@ export default function HeaderSection() {
           lineHeight: theme.typography.body.lineHeight,
         }}
       >
-        Créez des plaques d'immatriculation personnalisées et homologuées qui reflètent votre personnalité.
+        Créez des plaques d&apos;immatriculation personnalisées et homologuées qui reflètent votre personnalité.
       </p>
       
       <a 

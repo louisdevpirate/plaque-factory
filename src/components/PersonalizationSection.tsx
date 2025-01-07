@@ -1,9 +1,8 @@
 'use client'
 import { useEffect } from 'react'
-import { useTheme } from '@/hooks/useTheme'
+
 
 export default function PersonalizationSection() {
-  const theme = useTheme();
 
   useEffect(() => {
     const script = document.createElement('script')

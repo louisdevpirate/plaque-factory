@@ -129,14 +129,14 @@ export const defaultTheme: ThemeConfig = {
           ],
           settings: {
             height: '300px',
-            width: 'auto',
+            width: '300px',
             objectFit: 'contain'
           }
         },
         carousel: {
           speed: 8000,
           slidesToShow: 2,
-          spacing: '10px',
+          spacing: '30px',
           autoplay: true,
           autoplaySpeed: 0,
           pauseOnHover: false,

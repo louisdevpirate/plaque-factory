@@ -1,21 +1,13 @@
 'use client'
 import React, { useState } from 'react' 
 import { useTheme } from '@/hooks/useTheme'
+import Image from 'next/image';
 
-interface StyleProps {
-  color: string;
-}
+
 
 export default function Footer() {
   const theme = useTheme();
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-
-  const handleHover = (item: string) => setHoveredLink(item);
-  const handleLeave = () => setHoveredLink(null);
-
-  const linkStyles = (item: string): StyleProps => ({
-    color: hoveredLink === item ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary
-  });
 
   return (
     <footer className="bg-gray-900">
@@ -23,9 +15,11 @@ export default function Footer() {
         <div className="flex justify-evenly items-start">
           {/* Logo Section */}
           <div className="max-w-xs">
-            <img 
+            <Image 
               src={theme.global.branding.logo.path}
               alt={theme.global.branding.logo.alt}
+              width={200}
+              height={200}
               className="h-8 w-auto mb-4"
             />
             <p style={{ color: theme.footer.styling.text.secondary }}>
