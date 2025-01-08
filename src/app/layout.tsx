@@ -13,6 +13,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Plaque Factory",
   description: "Plaques d'immatriculation personnalisées et homologuées qui reflètent votre personnalité",
+  other: {
+    'google-site-verification': 'V6KAzX4v_RTEpEchSzE0YyWi0pbjg5gfygwwZLhaqrU',
+  },
 };
 
 export default function RootLayout({
