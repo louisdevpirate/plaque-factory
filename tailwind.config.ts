@@ -26,7 +26,12 @@ export default {
             'background-position': 'right center'
           }
         }
-      }
+      },
+      // Inversion des polices ici 👇
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'], // Montserrat devient la police principale
+        heading: ['Montserrat', 'sans-serif'], // Inter devient la police pour les titres
+      },
     },
   },
   plugins: [],

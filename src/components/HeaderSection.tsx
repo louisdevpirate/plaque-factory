@@ -10,7 +10,7 @@ export default function HeaderSection() {
   return (
     <header className="flex flex-col justify-center items-center text-center header-section">
       <h1 className="header-title">
-        Votre Plaque, Votre Style
+        Votre Plaque, <br />Votre Style
       </h1>
       
       <p className="header-text">

@@ -9,11 +9,11 @@ export default function CategoriesSection() {
 
   const settings = {
     dots: theme.categories.carousel.dots,
-    infinite: false,
+    infinite: true,
     speed: theme.categories.carousel.speed,
     slidesToShow: theme.categories.carousel.slidesToShow,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true, // ✅ Activation des flèches directement
     autoplay: false,
     appendDots: (dots: React.ReactNode) => (
       <div className="category-dots-wrapper">
@@ -23,15 +23,18 @@ export default function CategoriesSection() {
     responsive: theme.categories.carousel.responsive
   };
 
+  console.log(settings);
+
+
   return (
-    <section id="categories" className="categories-section">
+    <section id="categories" className="categories-section relative">
       <div className="categories-container">
         <h2 className="categories-title">{theme.categories.layout.title.text}</h2>
 
         <Slider {...settings}>
           {theme.categories.items.map((category) => (
             <div key={category.id} className="category-slide">
-              <div 
+              <div
                 className={`category-card ${hoveredCard === category.id ? 'hovered' : ''}`}
                 onMouseEnter={() => setHoveredCard(category.id)}
                 onMouseLeave={() => setHoveredCard(null)}

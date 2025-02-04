@@ -206,14 +206,14 @@ export const defaultTheme: ThemeConfig = {
           },
           {
             id: 8,
-            title: "COLLECTION COURTE",
+            title: "COLLECTION",
             description: "Format collection 450x100mm, dédié aux véhicules de collection et anciennes",
             sizes: "45x10",
             link: "#"
           },
           {
             id: 9,
-            title: "COLLECTION MOTO",
+            title: "COLLECTION COMPACT",
             description: "Format collection moto 275x75mm, spécial pour motos anciennes et classiques",
             sizes: "27,5x7,5",
             link: "#"
@@ -257,7 +257,7 @@ export const defaultTheme: ThemeConfig = {
           }
         },
         carousel: {
-          slidesToShow: 3,
+          slidesToShow: 2, // PC par défaut
           speed: 500,
           dots: true,
           dotsStyle: {
@@ -267,13 +267,25 @@ export const defaultTheme: ThemeConfig = {
           },
           responsive: [
             {
-              breakpoint: 1024,
+              breakpoint: 1280, // Large PC
               settings: {
                 slidesToShow: 2
               }
             },
             {
-              breakpoint: 640,
+              breakpoint: 1024, // Tablette
+              settings: {
+                slidesToShow: 1
+              }
+            },
+            {
+              breakpoint: 768, // Petit écran/Tablette verticale
+              settings: {
+                slidesToShow: 1
+              }
+            },
+            {
+              breakpoint: 480, // Mobile
               settings: {
                 slidesToShow: 1
               }
