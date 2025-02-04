@@ -21,7 +21,7 @@ export default function Home() {
      {/* Logo */}
      <Link href="/" className="absolute top-8 left-10 flex items-center">
         <Image 
-          src="/images/logo/1.png"
+          src="/images/logo/1.svg"
           alt="Plaque Factory Logo"
           width={150}
           height={200}

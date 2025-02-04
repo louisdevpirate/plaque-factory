@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /_next/static/
 Sitemap: https://plaque-factory.fr/sitemap.xml
 
 // pages/sitemap.xml.tsx (pour un sitemap dynamique)

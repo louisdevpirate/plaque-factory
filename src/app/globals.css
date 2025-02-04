@@ -2,11 +2,461 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1️⃣ - Réinitialisation et Meilleure gestion des dimensions */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Empêche le scroll horizontal */
+  scroll-behavior: smooth;
+}
+
+/* 2️⃣ - Variables CSS pour un branding personnalisable */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+
+  /* 🎨 Couleurs principales */
+  --primary-color: #0036ca;
+  --secondary-color: #c1d9ff;
+  --text-color: #333;
+  --background-color: #fff;
+
+  /* 🖋️ Typographie */
+  --font-primary: 'Inter', sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
 }
 
+/* 3️⃣ - Ajustement du body */
+body {
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background-attachment: fixed;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 4️⃣ - Titres responsives */
+h1, h2, h3 {
+  font-family: var(--heading-font);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 500;
+}
+
+/* 5️⃣ - Liens */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: darkblue;
+}
+
+/* 6️⃣ - Boutons */
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Header  */
+
+:root {
+  --header-height: 70vh;
+  --header-padding-x: 1rem;
+  --header-padding-y: 2rem;
+  --header-title-font-size: clamp(2.5rem, 5vw, 4rem);
+  --header-text-font-size: clamp(1rem, 2.5vw, 1.25rem);
+  --header-line-height: 1.2;
+}
+
+.header-section {
+  height: var(--header-height);
+  padding: var(--header-padding-y) var(--header-padding-x);
+}
+
+.header-title {
+  font-size: var(--header-title-font-size);
+  font-weight: 700;
+  line-height: var(--header-line-height);
+  color: var(--background-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header-text {
+  font-size: var(--header-text-font-size);
+  color: var(--background-color);
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 1rem;
+}
+
+.header-cta {
+  padding: 20px 32px;
+  border-radius: 999px;
+  font-weight: bold;
+  background: darkorange;
+  color: white;
+  transition: transform 300ms ease-in-out;
+}
+
+.header-cta:hover {
+  transform: translateY(-5px);
+  color: white;
+}
+
+/* 📌 Section Personnalisation */
+.section-personnalisation {
+  padding: 5rem 1rem;
+}
+
+.personnalisation-container {
+  max-width: 90%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 15px -3px rgba(0,0,0,0.07), 0 10px 20px -2px rgba(0,0,0,0.04);
+}
+
+/* 📌 Loader */
+.iframe-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 📌 iFrame */
+.iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 650px;
+}
+
+.iframe-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.iframe-content.loaded {
+  opacity: 1;
+}
+
+/* ✅ Section Galerie */
+.gallery-section {
+  width: 100%;
+  padding: 2.5rem 0;
+  overflow: hidden; /* ✅ Évite les débordements horizontaux */
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: var(--gallery-title-color);
+}
+
+/* ✅ Styles des images du carousel */
+.gallery-image-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.gallery-image {
+  object-fit: contain;
+  width: auto;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .gallery-image {
+    max-width: 70%;
+  }
+}
+
+/* ✅ Section Catégories */
+.categories-section {
+  padding: 5rem 0;
+}
+
+.categories-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ✅ Titre de la section */
+.categories-title {
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--categories-title-color);
+}
+
+/* ✅ Wrapper des dots du slider */
+.category-dots-wrapper {
+  margin-top: 2.5rem;
+}
+
+/* ✅ Style des cartes */
+.category-slide {
+  padding: 0 1rem;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--category-card-padding);
+  height: var(--category-card-height);
+  border-radius: var(--category-card-radius);
+  border: 1px solid var(--category-card-border-color);
+  background: var(--category-card-background);
+  box-shadow: var(--category-card-shadow);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.category-card.hovered {
+  box-shadow: var(--category-card-shadow-hover);
+}
+
+/* ✅ Textes de la carte */
+.category-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--category-text-title-color);
+  margin-bottom: 0.75rem;
+}
+
+.category-card-description {
+  font-size: 1rem;
+  color: var(--category-text-description-color);
+  margin-bottom: 0.75rem;
+}
+
+.category-card-size {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--category-text-dimensions-color);
+  margin-bottom: 1rem;
+}
+
+/* ✅ Lien */
+.category-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--category-text-link-color);
+  transition: color 0.2s ease-in-out;
+}
+
+.category-card.hovered .category-link {
+  color: var(--category-text-link-hover-color);
+}
+
+/* ✅ Section FAQ */
+.faq-section {
+  padding: var(--faq-section-padding);
+}
+
+.faq-title {
+  text-align: center;
+  font-size: var(--faq-title-size);
+  font-weight: 700;
+  margin-bottom: var(--faq-title-margin);
+  color: var(--faq-title-color);
+}
+
+.faq-container {
+  max-width: var(--faq-max-width);
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--faq-gap);
+}
+
+.faq-item {
+  background: var(--faq-bg-default);
+  border-radius: var(--faq-border-radius);
+  border: var(--faq-border);
+  transition: var(--faq-transition);
+}
+
+.faq-item.open {
+  background: var(--faq-bg-hover);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--faq-question-padding);
+  font-size: var(--faq-question-size);
+  font-weight: var(--faq-question-weight);
+  color: var(--faq-question-color);
+}
+
+.faq-toggle {
+  font-size: var(--faq-toggle-size);
+  color: var(--faq-toggle-color);
+  transition: var(--faq-toggle-transition);
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: var(--faq-transition);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.faq-answer p {
+  padding: var(--faq-answer-padding);
+  font-size: var(--faq-answer-size);
+  line-height: var(--faq-answer-line-height);
+  color: var(--faq-answer-color);
+  white-space: pre-line;
+}
+
+/* ✅ Footer */
+.footer {
+  background: #111827;
+}
+
+.footer-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  max-width: 20rem;
+}
+
+.footer-logo {
+  margin-bottom: 1rem;
+}
+
+.footer-description {
+  color: var(--footer-text-secondary);
+  font-size: 1rem;
+}
+
+.footer-section {
+  text-align: left;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--footer-text-primary);
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-list li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-link {
+  color: var(--footer-text-secondary);
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-link.hovered {
+  color: var(--footer-text-hover);
+}
+
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--footer-text-secondary);
+  font-size: 0.875rem;
+}
+
+
+/* 7️⃣ - Ajustement du carousel (slick-slider) */
 .slick-slide > div {
   margin: 0;
   padding: 0;
@@ -17,15 +467,9 @@
   padding: 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: fixed linear-gradient(135deg, #0036ca 0%, #c1d9ff 100%);
-
-}
-
 .slick-slider .slick-dots {
-  position: relative;  /* Au lieu de absolute */
-  bottom: 50px;       /* Annule la position bottom par défaut */
+  position: relative; /* Au lieu de absolute */
+  bottom: 20px; /* Réduction du gap */
 }
 
 .slick-dots li button:before {
@@ -34,5 +478,42 @@ body {
 }
 
 .slick-dots li.slick-active button:before {
-  color: #3b82f6;
+  color: var(--primary-color);
+}
+
+/* 8️⃣ - 📱 Responsive : amélioration de la lisibilité sur mobile */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1rem, 3vw, 1.75rem);
+  }
 }

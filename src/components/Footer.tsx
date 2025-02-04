@@ -11,16 +11,16 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="flex justify-evenly items-start">
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="flex justify-evenly items-center">
           {/* Logo Section */}
           <div className="max-w-xs">
             <Image 
               src={theme.global.branding.logo.path}
               alt={theme.global.branding.logo.alt}
               width={200}
-              height={200}
-              className="h-8 w-auto mb-4"
+              height={300}
+              className='mb-10'
             />
             <p style={{ color: theme.footer.styling.text.secondary }}>
               {theme.footer.sections.description}
@@ -32,7 +32,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4" style={{ color: theme.footer.styling.text.primary }}>
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               {theme.footer.sections.navigation.map(item => (
                 <li key={item}>
                 <a href={`#${item.toLowerCase()}`}
@@ -53,7 +53,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4" style={{ color: theme.footer.styling.text.primary }}>
               Informations
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               {theme.footer.sections.legal.map(item => (
                 <li key={item}>
                   

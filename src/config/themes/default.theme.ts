@@ -43,13 +43,13 @@ export const defaultTheme: ThemeConfig = {
     },
     typography: {
       header: {
-        fontSize: '3.75rem',
-        fontWeight: '700',
-        lineHeight: '1.2'
+        fontSize: "clamp(3rem, 5vw, 4rem)", // ✅ Dynamique et responsive
+        fontWeight: "700",
+        lineHeight: "1.2",
       },
       body: {
-        fontSize: '1.25rem',
-        lineHeight: '1.75'
+        fontSize: "clamp(1rem, 2vw, 1.5rem)", // ✅ Texte général adaptable
+        lineHeight: "1.5"
       }
     },
     animation: {
@@ -383,7 +383,7 @@ export const defaultTheme: ThemeConfig = {
       global: {
         branding: {
           logo: {
-            path: '/images/logo/1.png',
+            path: '/images/logo/1.svg',
             alt: 'Plaque Factory Logo'
           }
         }

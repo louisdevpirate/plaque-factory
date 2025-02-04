@@ -1,33 +1,25 @@
 'use client'
-import { useEffect } from 'react'
-
+import { useState } from 'react'
 
 export default function PersonalizationSection() {
-
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://deploy-preview-384--module-plaqueimmat.netlify.app/embed.js'
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
-    }
-  }, [])
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
-    <section 
-      id="personnalisation" 
-      className="py-20 px-4"
-    >
-      <div className="max-w-[90%] mx-auto">
-        <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-          <div 
-            id="iframe-container" 
-            data-iframe-url="https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1"
-            className="w-full h-[650px]"
+    <section id="personnalisation" className="section-personnalisation">
+      <div className="personnalisation-container">
+        {/* Loader pendant le chargement de l'iframe */}
+        {!iframeLoaded && (
+          <div className="iframe-loader">
+            <span className="loader"></span>
+            <p>Chargement du module...</p>
+          </div>
+        )}
+
+        <div className="iframe-wrapper">
+          <iframe 
+            src="https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1"
+            onLoad={() => setIframeLoaded(true)}
+            className={`iframe-content ${iframeLoaded ? 'loaded' : ''}`}
           />
         </div>
       </div>

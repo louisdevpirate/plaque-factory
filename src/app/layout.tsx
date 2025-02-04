@@ -8,14 +8,12 @@ import 'slick-carousel/slick/slick-theme.css';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+  display: 'swap', // Améliore le chargement de la police
 });
 
 export const metadata: Metadata = {
   title: "Plaque Factory",
   description: "Plaques d'immatriculation personnalisées et homologuées qui reflètent votre personnalité",
-  other: {
-    'google-site-verification': 'V6KAzX4v_RTEpEchSzE0YyWi0pbjg5gfygwwZLhaqrU',
-  },
 };
 
 export default function RootLayout({
@@ -25,9 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        {/* ✅ Ajout du meta viewport pour le responsive */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="google-site-verification" content="V6KAzX4v_RTEpEchSzE0YyWi0pbjg5gfygwwZLhaqrU" />
+      </head>
       <body className={`${montserrat.className} antialiased`}>
         <ThemeProvider>
-          {children}
+          <div className="wrapper">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
