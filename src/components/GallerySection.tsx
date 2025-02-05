@@ -13,12 +13,13 @@ export default function GallerySection() {
     infinite: true,
     speed: theme.gallery.carousel.speed,
     slidesToShow: theme.gallery.carousel.slidesToShow,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     autoplay: theme.gallery.carousel.autoplay,
     autoplaySpeed: theme.gallery.carousel.autoplaySpeed,
     cssEase: theme.gallery.carousel.cssEase,
     pauseOnHover: theme.gallery.carousel.pauseOnHover,
     arrows: false,
+    lazyLoad: "ondemand" as "ondemand",
     adaptiveHeight: true, // ✅ Évite les bugs de hauteur
     responsive: [
       {
@@ -30,7 +31,7 @@ export default function GallerySection() {
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         }
       }
     ]
@@ -41,8 +42,8 @@ export default function GallerySection() {
       <div className="mx-auto">
         <h2 className="gallery-title">{theme.gallery.layout.title.text}</h2>
 
-        <div className="relative w-full max-w-5xl mx-auto">
-          <Slider {...settings}>
+        <div className="relative w-full max-w-8xl mx-auto py-10">
+          <Slider key={theme.gallery.images.sources.length} {...settings}>
             {theme.gallery.images.sources.map((image, index) => (
               <div key={index} className="gallery-image-wrapper">
                 <Image 

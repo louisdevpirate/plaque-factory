@@ -134,13 +134,13 @@ export const defaultTheme: ThemeConfig = {
           }
         },
         carousel: {
-          speed: 8000,
-          slidesToShow: 2,
+          speed: 20000,
+          slidesToShow: 3,
           spacing: '30px',
           autoplay: true,
           autoplaySpeed: 0,
           pauseOnHover: false,
-          cssEase: 'linear'
+          cssEase: 'linear',
         },
         layout: {
           background: 'transparent',
@@ -302,7 +302,7 @@ export const defaultTheme: ThemeConfig = {
           },
           {
             question: "Est-ce que les plaques sont homologuées ?",
-            answer: "Oui, nos plaques sont homologuées par défaut. Lors de la personnalisation, une pastille colorée vous indique en temps réel le statut d'homologation de votre plaque : \n\nPastille verte : votre plaque est homologuée \nPastille rouge : vos modifications rendent la plaque non homologuée. \n\nCela vous permet de savoir immédiatement si vos personnalisations respectent les normes d'homologation."
+            answer: "Oui, nos plaques sont homologuées par défaut. Lors de la personnalisation, une pastille colorée vous indique en temps réel le statut d'homologation de votre plaque : \n\n• Pastille verte : votre plaque est homologuée \n• Pastille rouge : vos modifications rendent la plaque non homologuée. \n\nCela vous permet de savoir immédiatement si vos personnalisations respectent les normes d'homologation."
           },
           {
             question: "Les plaques sont-elles vendues à l'unité ?",
@@ -314,7 +314,7 @@ export const defaultTheme: ThemeConfig = {
           },
           {
             question: "De quel couleurs sont les rivets ?",
-            answer: "Les rivets sont disponibles en option avec deux possibilités :\n• Vous pouvez choisir leur couleur lors de la validation de votre plaque\n• Par défaut, ils s'adaptent à la couleur du fond (généralement blancs pour les plaques homologuées)\nD'autres systèmes de fixation sont disponibles dans notre rubrique \"Accessoires\"."
+            answer: "Les rivets sont disponibles en option avec deux possibilités :\n• Vous pouvez choisir leur couleur lors de la validation de votre plaque\n• Par défaut, ils s'adaptent à la couleur du fond (généralement blancs pour les plaques homologuées)\n\nD'autres systèmes de fixation sont disponibles dans notre rubrique \"Accessoires\"."
           },
           {
             question: "Les paiements sont-ils sécurisés ? ",

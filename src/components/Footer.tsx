@@ -12,8 +12,9 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="flex justify-evenly items-center">
-          {/* Logo Section */}
+      <div className="flex flex-col md:flex-row justify-evenly items-start text-left gap-8 w-full px-4 md:px-0">
+
+      {/* Logo Section */}
           <div className="max-w-xs">
             <Image 
               src={theme.global.branding.logo.path}
@@ -50,7 +51,7 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4" style={{ color: theme.footer.styling.text.primary }}>
+            <h3 className="text-lg font-bold mb-4 text-left" style={{ color: theme.footer.styling.text.primary }}>
               Informations
             </h3>
             <ul className="space-y-4">
@@ -72,7 +73,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+        <div className="border-t border-gray-800 mt-12 pt-8 pb-20 text-center">
           <p style={{ color: theme.footer.styling.text.secondary }}>
             {theme.footer.sections.copyright}
           </p>
