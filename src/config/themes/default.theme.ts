@@ -158,63 +158,63 @@ export const defaultTheme: ThemeConfig = {
           {
             id: 1,
             title: "AUTO",
-            description: "Format standard 520x110mm, homologué pour voitures particulières et véhicules légers",
+            description: "Homologué pour voitures particulières et véhicules légers",
             sizes: "52x11",
             link: "#"
           },
           {
             id: 2,
             title: "4X4",
-            description: "Format tout-terrain 275x200mm, adapté aux SUV, pick-up et véhicules de loisirs",
+            description: "Adapté aux SUV, pick-up et véhicules de loisirs",
             sizes: "27,5x20",
             link: "#"
           },
           {
             id: 3,
             title: "U.S.",
-            description: "Format américain 300x150mm, idéal pour les véhicules importés et style US authentique",
+            description: "Idéal pour les véhicules importés et style US authentique",
             sizes: "30x15",
             link: "#"
           },
           {
             id: 4,
             title: "MOTO",
-            description: "Format standard moto 210x130mm, homologué pour les deux-roues motorisés",
+            description: "Homologué pour les deux-roues motorisés",
             sizes: "21x13",
             link: "#"
           },
           {
             id: 5,
             title: "PETITE MOTO",
-            description: "Format compact 170x130mm, parfait pour les motos légères et scooters",
+            description: "Parfait pour les motos légères et scooters",
             sizes: "17x13",
             link: "#"
           },
           {
             id: 6,
             title: "CYCLO",
-            description: "Format cyclomoteur 140x120mm, spécifique pour les mobylettes et cyclomoteurs",
+            description: "Spécifique pour les mobylettes et cyclomoteurs",
             sizes: "14x12",
             link: "#"
           },
           {
             id: 7,
             title: "ENDURO",
-            description: "Format spécial 100x100mm, conçu pour les motos d'enduro et tout-terrain",
+            description: "Conçu pour les motos d'enduro et tout-terrain",
             sizes: "10x10",
             link: "#"
           },
           {
             id: 8,
             title: "COLLECTION",
-            description: "Format collection 450x100mm, dédié aux véhicules de collection et anciennes",
+            description: "Dédié aux véhicules de collection et anciennes",
             sizes: "45x10",
             link: "#"
           },
           {
             id: 9,
             title: "COLLECTION COMPACT",
-            description: "Format collection moto 275x75mm, spécial pour motos anciennes et classiques",
+            description: "Spécial pour motos anciennes et classiques",
             sizes: "27,5x7,5",
             link: "#"
           },

@@ -1,57 +1,54 @@
 'use client'
-import Slider from 'react-slick'
-import { useTheme } from '@/hooks/useTheme'
-import { useState } from 'react'
+import { useState } from 'react';
+import { useTheme } from '@/hooks/useTheme';
+import { motion, AnimatePresence } from 'framer-motion'; // ✅ Pour l'animation
 
-export default function CategoriesSection() {
+export default function Categories() {
+  const [showAll, setShowAll] = useState(false);
   const theme = useTheme();
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const categories = theme.categories.items;
 
-  const settings = {
-    dots: theme.categories.carousel.dots,
-    infinite: true,
-    speed: theme.categories.carousel.speed,
-    slidesToShow: theme.categories.carousel.slidesToShow,
-    slidesToScroll: 1,
-    arrows: true, // ✅ Activation des flèches directement
-    autoplay: false,
-    appendDots: (dots: React.ReactNode) => (
-      <div className="category-dots-wrapper">
-        <ul>{dots}</ul>
-      </div>
-    ),
-    responsive: theme.categories.carousel.responsive
-  };
-
-  console.log(settings);
-
+  // ✅ Afficher seulement 4 catégories au départ
+  const displayedCategories = showAll ? categories : categories.slice(0, 4);
 
   return (
-    <section id="categories" className="categories-section relative">
-      <div className="categories-container">
-        <h2 className="categories-title">{theme.categories.layout.title.text}</h2>
-
-        <Slider {...settings}>
-          {theme.categories.items.map((category) => (
-            <div key={category.id} className="category-slide">
-              <div
-                className={`category-card ${hoveredCard === category.id ? 'hovered' : ''}`}
-                onMouseEnter={() => setHoveredCard(category.id)}
-                onMouseLeave={() => setHoveredCard(null)}
-              >
-                <div>
-                  <h3 className="category-card-title">{category.title}</h3>
-                  <p className="category-card-description">{category.description}</p>
-                  <p className="category-card-size">Format : {category.sizes}cm</p>
-                </div>
-
-                <a href={category.link} className="category-link">
-                  Explorer →
-                </a>
+    <section id="categories" className="categories-section">
+      <h2 className="categories-title">Nos Formats</h2>
+      <div className="categories-grid">
+        <AnimatePresence>
+          {displayedCategories.map((category) => (
+            <motion.div
+              key={category.id}
+              className="category-card"
+              initial={{ opacity: 0, y: -20 }} // ✅ Animation d'apparition avec fondu
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }} // ✅ Animation de disparition avec fondu
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              {/* Icône SVG */}
+              <div className="category-icon">
+                <img src={`/icons/${category.id}.svg`} alt={category.title} />
               </div>
-            </div>
+              <h3>{category.title}</h3>
+              <p>{category.description}</p>
+              <p><strong>Format :</strong> {category.sizes}cm</p>
+            </motion.div>
           ))}
-        </Slider>
+        </AnimatePresence>
+      </div>
+
+      {/* ✅ Bouton dynamique Voir Plus / Voir Moins */}
+      <div className="button-container">
+        <motion.button
+          className={`toggle-button ${showAll ? 'expanded' : ''}`}
+          onClick={() => setShowAll(!showAll)}
+          initial={{ opacity: 0 }} // ✅ Fondu à l'apparition du bouton
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {showAll ? "Voir Moins ⬆️" : "Voir Plus ⬇️"}
+        </motion.button>
       </div>
     </section>
   );

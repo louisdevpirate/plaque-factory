@@ -258,44 +258,92 @@ button:hover {
   padding: theme('spacing.20') 0;
 }
 
-.categories-title {
-  font-size: theme('fontSize.4xl');
-  font-weight: theme('fontWeight.bold');
-  margin-bottom: theme('spacing.12');
+.categories-section h2 {
+  margin-bottom: 2rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes Desktop */
+  gap: 10px; /* Espacement entre les cartes */
+  justify-content: center; /* Centre la grid */
+  align-items: center; /* Aligne verticalement */
+  max-width: 1000px; /* Largeur max pour éviter que ça s’étale trop */
+  margin: 0 auto; /* Centre la grid sur la page */
 }
 
 .category-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: theme('spacing.10');
+  justify-content: space-evenly;
+  align-items: start;
+  padding: theme('spacing.8');
   border-radius: theme('borderRadius.lg');
   background: var(--background-color);
   box-shadow: theme('boxShadow.md');
   transition: box-shadow 0.3s ease-in-out;
-  width: auto;
-  height: fit-content;
-  min-width: 200px;
+  height: 300px;
+  margin: 10px;
   text-align: left;
-  margin: 50px;
-  gap: 20px;
   min-height: fit-content;
-}
-
-.category-card-title {
-  text-align: left;
-  font-size: 1rem;
-  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  box-shadow: theme('boxShadow.xl');
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-.slick-slider {
-  max-width: 70%; /* ✅ Réduit la largeur du slider */
-  margin: 0 auto; /* ✅ Centre le slider */
-  position: relative; /* ✅ Assure le positionnement des flèches */
+.category-card h3 {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Bouton Voir Plus / Voir Moins */
+.toggle-button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #1E40AF;
+  color: white;
+  border: 2px solid #1E40AF;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle-button:hover {
+  background-color: white;
+  color: #1E40AF;
+}
+
+.toggle-button.expanded {
+  background-color: #f97316;
+  color: white;
+  border-color: #f97316;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+/* .slick-slider {
+  max-width: 70%;
+  margin: 0 auto; 
+  position: relative; 
 }
 
 .slick-prev, .slick-next {
@@ -307,20 +355,20 @@ button:hover {
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease-in-out;
-  z-index: 10; /* ✅ S'assure que les flèches restent visibles */
-}
+  z-index: 10;
+} */
 
 /* Icône des flèches */
-.slick-prev:before, .slick-next:before {
+/* .slick-prev:before, .slick-next:before {
   font-size: 20px;
   color: black !important;
-}
+} */
 
 /* Effet au survol */
-.slick-prev:hover, .slick-next:hover {
+/* .slick-prev:hover, .slick-next:hover {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-}
+} */
 
 
 /* 📌 FAQ Section */
@@ -443,6 +491,14 @@ button:hover {
     height: 1000px;
     width: 100%;
   }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 colonnes */
+    justify-content: center; /* ✅ Centre horizontalement */
+    align-items: center; /* ✅ Centre verticalement */
+    margin: 0 auto; /* ✅ Assure le centrage */
+    max-width: 90%; /* ✅ Ajuste la largeur pour éviter l'étirement */
+  }
 }
 
 @media (max-width: 768px) {
@@ -501,6 +557,15 @@ button:hover {
   .navbar-mobile svg {
     font-size: 1.5rem;
     margin-bottom: 0.2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(1, 1fr); /* ✅ Toujours 2 colonnes */
+  }
+
+  .category-card {
+    width: 95%;  /* ✅ Prend toute la largeur disponible */
+    height: 300px; /* ✅ S'ajuste automatiquement */
   }
     .slick-prev,
     .slick-next {
