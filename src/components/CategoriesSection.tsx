@@ -47,7 +47,7 @@ export default function Categories() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {showAll ? "Voir Moins ⬆️" : "Voir Plus ⬇️"}
+          {showAll ? "Voir Moins -" : "Voir Plus +"}
         </motion.button>
       </div>
     </section>

@@ -9,6 +9,7 @@ import FaqSection from '../components/FaqSection'
 import Footer from '../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image';
+import BlogSection from '@/components/BlogSection'
 
 export default function Home() {
  const theme = useTheme();
@@ -39,6 +40,7 @@ export default function Home() {
      </div>
 
      <FaqSection />
+     <BlogSection />
      <Footer />
    </main>
  );
