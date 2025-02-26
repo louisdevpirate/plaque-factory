@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import { motion, AnimatePresence } from 'framer-motion'; // ✅ Pour l'animation
-import Image from 'next/image';
 
 export default function Categories() {
   const [showAll, setShowAll] = useState(false);
@@ -28,8 +27,16 @@ export default function Categories() {
             >
               {/* Icône SVG */}
               <div className="category-icon">
-                <Image src={`/icons/${category.id}.svg`} alt={category.title} />
-              </div>
+  {category.id === 1 ? (
+    <svg width="50" height="50" viewBox="0 0 24 24"> 
+      <circle cx="12" cy="12" r="10" fill="blue" />
+    </svg>
+  ) : (
+    <svg width="50" height="50" viewBox="0 0 24 24">
+      <rect width="24" height="24" fill="red" />
+    </svg>
+  )}
+</div>
               <h3>{category.title}</h3>
               <p>{category.description}</p>
               <p><strong>Format :</strong> {category.sizes}cm</p>
