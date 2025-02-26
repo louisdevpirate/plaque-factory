@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import { motion, AnimatePresence } from 'framer-motion'; // ✅ Pour l'animation
+import Image from 'next/image';
 
 export default function Categories() {
   const [showAll, setShowAll] = useState(false);
@@ -27,7 +28,7 @@ export default function Categories() {
             >
               {/* Icône SVG */}
               <div className="category-icon">
-                <img src={`/icons/${category.id}.svg`} alt={category.title} />
+                <Image src={`/icons/${category.id}.svg`} alt={category.title} />
               </div>
               <h3>{category.title}</h3>
               <p>{category.description}</p>

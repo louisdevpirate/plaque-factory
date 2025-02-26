@@ -2,15 +2,29 @@
 
 import { useTheme } from '@/hooks/useTheme';
 import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
 
 export default function HeaderSection() {
   const theme = useTheme();
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   return (
     <header className="flex flex-col justify-center items-center text-center header-section">
+      {/* Logo */}
+     <Link href="/" className="flex items-center mb-8">
+        <Image 
+          src={theme.global.branding.logo.path}
+          alt={theme.global.branding.logo.alt}
+          width={350}
+          height={300}
+          className='mb-6'
+        />
+     </Link>
+      
       <h1 className="header-title">
-        Votre Plaque, <br />Votre Style
+        Votre Plaque, Votre Style
       </h1>
       
       <p className="header-text">

@@ -20,7 +20,7 @@ html, body {
 :root {
   --primary-color: theme('colors.blue.700');
   --secondary-color: theme('colors.blue.300');
-  --text-color: theme('colors.gray.900');
+  --text-color: theme('colors.gray.600');
   --background-color: theme('colors.white');
   --accent-color: theme('colors.orange.500');
 }
@@ -110,7 +110,7 @@ button:hover {
 /* Quand on scrolle */
 .navbar-desktop.scrolled .navbar-desktop-inner {
   background-color: white; /* ✅ Fond blanc */
-  border-color: var(--primary-color); /* ✅ Bordure bleue */
+  border: 1px solid white;
 }
 
 /* Liens de navigation */
@@ -122,7 +122,7 @@ button:hover {
 }
 
 .navbar-desktop.scrolled .nav-link {
-  color: var(--primary-color); /* ✅ Change en bleu */
+  color: var(--text-color); /* ✅ Change en bleu */
 }
 
 /* Effet hover */
@@ -515,6 +515,26 @@ button:hover {
   margin-top: 5px;
 }
 
+/* Page Blog */
+.featured-article {
+  grid-column: span 2;
+  height: 800px; /* Ajuste la hauteur ici pour correspondre au design souhaité */
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-article img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.other-article-card, .other-article-card h3 {
+  cursor: pointer;
+  text-align: left;
+}
 
 
 /* 📌 Footer */

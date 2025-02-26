@@ -1,23 +1,31 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { useTheme } from '@/hooks/useTheme'
-import { Home, Image as GalleryIcon, HelpCircle, Wrench } from 'lucide-react' // Icônes pour desktop et mobile
+import { Home, Image as GalleryIcon, HelpCircle, Wrench, PictureInPicture } from 'lucide-react' // Icônes pour desktop et mobile
+import Link from 'next/link'
 
-export default function Navbar() {
-  const [isPastHeader, setIsPastHeader] = useState(false)
-  const theme = useTheme()
+interface NavbarProps {
+  forceScrolled?: boolean;  // ✅ Prop pour forcer l'état scrolled
+}
+
+export default function Navbar({ forceScrolled = false }: NavbarProps) {
+  const [isPastHeader, setIsPastHeader] = useState(forceScrolled)
 
   useEffect(() => {
-    const handleScroll = () => {
-      const section = document.getElementById('personnalisation')
-      if (section) {
-        const rect = section.getBoundingClientRect()
-        setIsPastHeader(rect.top <= 0) // ✅ Change d'état SEULEMENT quand on atteint cette section
-      }
+    if (!forceScrolled) {
+      const handleScroll = () => {
+        const section = document.getElementById('personnalisation');
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          setIsPastHeader(rect.top <= 0);
+        }
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+      setIsPastHeader(true);
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [forceScrolled]);
+  
 
   return (
     <>
@@ -25,44 +33,51 @@ export default function Navbar() {
       <div className={`hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[800px] navbar-desktop ${isPastHeader ? 'scrolled' : ''}`}>
         <nav className="navbar-desktop-inner">
           {/* 📌 Bouton "Personnaliser" */}
-          <a 
+          <Link 
             href="#personnalisation" 
             className={`navbar-cta ${isPastHeader ? 'scrolled' : ''}`}
           >
             Personnaliser
-          </a>
+          </Link>
 
           {/* 📌 Liens de navigation avec icônes */}
-          <a href="#galerie" className="nav-link flex items-center gap-2">
+          <Link href="#galerie" className="nav-link flex items-center gap-2">
             <GalleryIcon size={18} /> Galerie
-          </a>
-          <a href="#categories" className="nav-link flex items-center gap-2">
+          </Link>
+          <Link href="#categories" className="nav-link flex items-center gap-2">
             <Wrench size={18} /> Catégories
-          </a>
-          <a href="#faq" className="nav-link flex items-center gap-2">
+          </Link>
+          <Link href="#faq" className="nav-link flex items-center gap-2">
             <HelpCircle size={18} /> FAQ
-          </a>
+          </Link>
+          <Link href="#blog" className="nav-link flex items-center gap-2">
+            <PictureInPicture size={18} /> Blog
+          </Link>
         </nav>
       </div>
 
       {/* 📌 Navbar Mobile */}
       <div className="navbar-mobile">
-        <a href="/" className="flex flex-col items-center text-gray-700">
+        <Link href="/" className="flex flex-col items-center text-gray-700">
           <Home size={24} />
           <span className="text-xs">Accueil</span>
-        </a>
-        <a href="#galerie" className="flex flex-col items-center text-gray-700">
+        </Link>
+        <Link href="#galerie" className="flex flex-col items-center text-gray-700">
           <GalleryIcon size={24} />
           <span className="text-xs">Galerie</span>
-        </a>
-        <a href="#categories" className="flex flex-col items-center text-gray-700">
+        </Link>
+        <Link href="#categories" className="flex flex-col items-center text-gray-700">
           <Wrench size={24} />
           <span className="text-xs">Personnaliser</span>
-        </a>
-        <a href="#faq" className="flex flex-col items-center text-gray-700">
+        </Link>
+        <Link href="#faq" className="flex flex-col items-center text-gray-700">
           <HelpCircle size={24} />
           <span className="text-xs">FAQ</span>
-        </a>
+        </Link>
+        <Link href="#blog" className="flex flex-col items-center text-gray-700">
+          <PictureInPicture size={24} />
+          <span className="text-xs">Blog</span>
+        </Link>
       </div>
     </>
   )

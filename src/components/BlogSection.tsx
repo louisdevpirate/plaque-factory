@@ -1,11 +1,11 @@
 'use client'
-import { useTheme } from '@/hooks/useTheme'
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
+import Link from 'next/link'
+
 
 // 🔥 Mock temporaire avant la BDD
 const articles = [
@@ -33,7 +33,6 @@ const articles = [
 ]
 
 export default function BlogSection() {
-  const theme = useTheme()
   const router = useRouter()
 
   const settings = {
@@ -61,7 +60,7 @@ export default function BlogSection() {
       <div className="mx-auto">
         <div className="flex-column justify-center items-center mb-10 text-center">
           <h2 className="blog-title mb-2">Blog Section</h2>
-          <a href="/blog" className="blog-see-more">Voir plus →</a>
+          <Link href="/blog" className="blog-see-more">Voir plus →</Link>
         </div>
 
         <div className="slider-container relative max-w-6xl mx-auto">

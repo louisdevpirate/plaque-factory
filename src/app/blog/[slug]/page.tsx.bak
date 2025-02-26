@@ -1,0 +1,10 @@
+import PageProps from 'next';
+
+export default function BlogPostPage({ params }: PageProps<{ slug: string }>) {
+  return (
+    <div>
+      <h1>Article : {params.slug}</h1>
+      <p>Le contenu de l&apos;article s&apos;affichera ici...</p>
+    </div>
+  );
+}

@@ -19,7 +19,7 @@ export default function GallerySection() {
     cssEase: theme.gallery.carousel.cssEase,
     pauseOnHover: theme.gallery.carousel.pauseOnHover,
     arrows: false,
-    lazyLoad: "ondemand" as "ondemand",
+    lazyLoad: "ondemand" as const,
     adaptiveHeight: true, // ✅ Évite les bugs de hauteur
     responsive: [
       {
