@@ -13,3 +13,20 @@ export const prisma = global.prisma || new PrismaClient();
 if (process.env.NODE_ENV !== 'production') {
   global.prisma = prisma;
 }
+
+export async function getAllArticles() {
+  return await prisma.article.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+}
+
+// 🧭 Récupère un seul article par son slug
+export async function getArticleBySlug(slug: string) {
+  return await prisma.article.findUnique({
+    where: {
+      slug,
+    },
+  });
+}

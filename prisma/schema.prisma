@@ -8,22 +8,33 @@ generator client {
 }
 
 model Category {
-  id          String     @id @default(cuid())
-  name        String
-  slug        String     @unique
-  parentId    String?    // Pour les sous-catégories
-  parent      Category?  @relation("SubCategories", fields: [parentId], references: [id])
-  children    Category[] @relation("SubCategories")
-  images      Image[]    // Relation avec les images
+  id       String     @id @default(cuid())
+  name     String
+  slug     String     @unique
+  parentId String? // Pour les sous-catégories
+  parent   Category?  @relation("SubCategories", fields: [parentId], references: [id])
+  children Category[] @relation("SubCategories")
+  images   Image[] // Relation avec les images
 }
 
 model Image {
-  id          String      @id @default(cuid())
-  path        String   
-  alt         String   
-  categories  Category[]  // Relation many-to-many avec Category
-  created_at  DateTime    @default(now())
-  updated_at  DateTime    @updatedAt
-  active      Boolean     @default(true)
-  priority    Int         @default(0)
+  id         String     @id @default(cuid())
+  path       String
+  alt        String
+  categories Category[] // Relation many-to-many avec Category
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  active     Boolean    @default(true)
+  priority   Int        @default(0)
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  content     String
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
