@@ -3,13 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FC } from "react"
-
-type Article = {
-  slug: string
-  title: string
-  description: string
-  image: string
-}
+import { Article } from "@prisma/client" // ✅ Important : types auto-générés
 
 type Props = {
   article: Article

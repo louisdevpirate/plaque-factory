@@ -1,86 +1,68 @@
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import articles from "@/data/articles";
-import Image from "next/image";
-import Link from "next/link";
-import BlogCard from "@/components/BlogCard";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// app/blog/page.tsx
+import { getAllArticles } from "@/lib/prisma"
+import Image from "next/image"
+import Link from "next/link"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import BlogCard from "@/components/BlogCard"
 
-type Props = {
-  params: { slug: string }
-}
+export const dynamic = "force-dynamic"
 
-export function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
-}
+export default async function BlogPage() {
+  const articles = await getAllArticles()
+  if (!articles || articles.length === 0) return <p>Aucun article pour le moment.</p>
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = articles.find((a) => a.slug === params.slug)
-  if (!article) return {}
+  const sortedArticles = [...articles].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  )
 
-  return {
-    title: article.title,
-    description: article.description,
-    openGraph: {
-      title: article.title,
-      description: article.description,
-      images: [article.image],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.description,
-      images: [article.image],
-    },
-  }
-}
-
-// ✅ Correction ici : ArticlePage devient async
-export default async function ArticlePage({ params }: Props) {
-  const article = articles.find((a) => a.slug === params.slug)
-  if (!article) return notFound()
-
-  const recentArticles = articles
-    .filter((a) => a.slug !== params.slug)
-    .slice(0, 3)
+  const latestArticle = sortedArticles[0]
+  const otherArticles = sortedArticles.slice(1)
 
   return (
-    <>
-      <Navbar forceScrolled />
-      <main className="pt-24 px-4 max-w-4xl mx-auto">
-        {/* Fil d’Ariane */}
-        <nav className="text-sm text-gray-500 mb-4">
-          <Link href="/blog" className="hover:underline">Blog</Link>
-          <span className="mx-2">›</span>
-          <span className="text-gray-700">{article.title}</span>
-        </nav>
+    <div>
+      <Navbar forceScrolled={true} />
 
-        <article>
-          <h1 className="text-3xl font-bold mb-6">{article.title}</h1>
-          <Image
-            src={article.image}
-            alt={article.title}
-            width={800}
-            height={400}
-            className="rounded-xl mb-8"
-          />
-          <div className="prose prose-lg max-w-none mb-12">
-            {article.content}
+      <main className="bg-white pb-20">
+        <div className="blog-grid mx-auto px-2 py-2">
+          {/* HERO */}
+          <section className="featured-article-section mb-12">
+            <div className="featured-article relative w-full rounded-lg shadow-lg overflow-hidden">
+              <Image
+                src={latestArticle.image}
+                alt={latestArticle.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+              <div className="absolute bottom-0 left-0 w-full text-white p-6">
+                <p className="mt-3 text-lg">{latestArticle.description}</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-left">
+                  {latestArticle.title}
+                </h2>
+              </div>
+            </div>
+          </section>
+
+          <div>
+            <h1 className="text-4xl font-bold mb-10 px-10 text-left">Blog</h1>
+            <p className="mb-10 px-10 text-left">
+              Ici, nous partageons des conseils sur les plaques, des
+              informations, des nouveautés et des histoires pour inspirer vos
+              futures aventures.
+            </p>
           </div>
-        </article>
 
-        {/* Articles récents */}
-        <h2 className="text-2xl font-semibold mb-4">Articles récents</h2>
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {recentArticles.map((a) => (
-            <BlogCard key={a.slug} article={a} />
-          ))}
+          {/* ARTICLES */}
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-10">
+            {otherArticles.map((article) => (
+              <BlogCard key={article.id} article={article} />
+            ))}
+          </section>
         </div>
       </main>
+
       <Footer />
-    </>
+    </div>
   )
 }
