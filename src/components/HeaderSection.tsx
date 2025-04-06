@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
+
 export default function HeaderSection() {
   const theme = useTheme();
   const [, setIsHovered] = useState(false);
@@ -24,7 +25,7 @@ export default function HeaderSection() {
      </Link>
       
       <h1 className="header-title">
-        Votre Plaque, Votre Style
+        La Bonne Plaque, au Bon Prix.
       </h1>
       
       <p className="header-text">
@@ -37,7 +38,7 @@ export default function HeaderSection() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        Commencer à personnaliser
+        Je crée ma plaque
       </a>
     </header>
   );

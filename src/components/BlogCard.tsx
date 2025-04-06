@@ -24,7 +24,7 @@ const BlogCard: FC<Props> = ({ article }) => {
         />
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-1">{article.title}</h3>
+        <h3 className="text-lg font-semibold mb-1 text-left">{article.title}</h3>
         <p className="text-sm text-gray-600">{article.description}</p>
       </div>
     </Link>

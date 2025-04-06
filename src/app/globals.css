@@ -22,7 +22,7 @@ html, body {
   --secondary-color: theme('colors.blue.300');
   --text-color: theme('colors.gray.600');
   --background-color: theme('colors.white');
-  --accent-color: theme('colors.orange.500');
+  --accent-color: #FFD812;
 }
 
 /* 📌 Body */
@@ -87,7 +87,6 @@ button:hover {
   backdrop-filter: blur(8px);
   transition: all 300ms ease;
   z-index: 50;
-  border-radius: 50px;
 }
 
 .navbar-mobile {
@@ -101,7 +100,7 @@ button:hover {
   justify-content: space-evenly;
   gap: 3rem;
   padding: 0.5rem 1.8rem 0.5rem 0.7rem;
-  border-radius: 50px;
+  border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.508);
   transition: all 300ms ease;
@@ -110,7 +109,7 @@ button:hover {
 /* Quand on scrolle */
 .navbar-desktop.scrolled .navbar-desktop-inner {
   background-color: white; /* ✅ Fond blanc */
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 /* Liens de navigation */
@@ -136,7 +135,7 @@ button:hover {
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 50px;
+  border-radius: 10px;
   border: 1px solid white; /* ✅ Border blanche par défaut */
   text-decoration: none;
   color: white;
@@ -146,9 +145,9 @@ button:hover {
 
 /* Quand on scrolle */
 .navbar-desktop.scrolled .navbar-cta {
-  background: linear-gradient(to right, rgb(249, 115, 22), rgb(251, 146, 60)); /* ✅ Orange */
-  color: white;
-  border: none; /* ✅ Supprime la border */
+  background: var(--accent-color);
+  color: black;
+  border: 1px solid black; /* ✅ Supprime la border */
 }
 
 /* 📌 Header */
@@ -158,7 +157,7 @@ button:hover {
 }
 
 .header-title {
-  font-size: theme('fontSize.7xl');
+  font-size: theme('fontSize.5xl');
   font-weight: theme('fontWeight.bold');
   color: var(--background-color);
   text-align: center;
@@ -174,11 +173,13 @@ button:hover {
 }
 
 .header-cta {
-  padding: theme('spacing.7') theme('spacing.12');
-  border-radius: theme('borderRadius.full');
+  padding: theme('spacing.4') theme('spacing.8');
+  border: 1px solid black;
+  border-radius: 10px;
   font-weight: theme('fontWeight.medium');
   background: var(--accent-color);
-  color: var(--background-color);
+  color: black;
+  font-weight: 600;
   transition: transform 300ms ease-in-out;
 }
 

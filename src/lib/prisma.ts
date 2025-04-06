@@ -1,4 +1,4 @@
-/* eslint-disable no-var */
+/ * eslint-disable no-var */
 import { PrismaClient } from '@prisma/client';
 
 // Étendre l'objet global de Node.js pour inclure Prisma
@@ -19,6 +19,9 @@ export async function getAllArticles() {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      author: true,
+    },
   });
 }
 
@@ -27,6 +30,9 @@ export async function getArticleBySlug(slug: string) {
   return await prisma.article.findUnique({
     where: {
       slug,
+    },
+    include: {
+      author: true,
     },
   });
 }
