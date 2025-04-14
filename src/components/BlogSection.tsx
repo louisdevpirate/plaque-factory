@@ -1,58 +1,42 @@
 'use client'
+
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-
-// 🔥 Mock temporaire avant la BDD
-const articles = [
-  {
-    id: 1,
-    title: "Comment choisir une plaque d'immatriculation ?",
-    excerpt: "Découvrez les critères à prendre en compte pour bien choisir votre plaque.",
-    image: "/images/blog/article1.jpg",
-    slug: "choisir-plaque-immatriculation"
-  },
-  {
-    id: 2,
-    title: "Les matériaux des plaques : Plexiglass vs Aluminium",
-    excerpt: "Quel matériau est le plus résistant et adapté à votre véhicule ?",
-    image: "/images/blog/article2.jpg",
-    slug: "materiaux-plaques-immatriculation"
-  },
-  {
-    id: 3,
-    title: "L'histoire des plaques d'immatriculation en France",
-    excerpt: "Un voyage dans le temps pour comprendre l'évolution des plaques.",
-    image: "/images/blog/article3.jpg",
-    slug: "histoire-plaques-immatriculation"
-  }
-]
+type Article = {
+  id: string
+  slug: string
+  title: string
+  description: string
+  image: string
+}
 
 export default function BlogSection() {
   const router = useRouter()
+  const [articles, setArticles] = useState<Article[]>([])
+
+  useEffect(() => {
+    fetch('/api/articles')
+      .then((res) => res.json())
+      .then(setArticles)
+  }, [])
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 1000,
     arrows: true,
-    slidesToShow: 3, // 2 articles visibles sur desktop
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    cssEase: "ease-in-out",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1, // 1 seul article visible sur mobile
-        }
-      }
-    ]
+    cssEase: 'ease-in-out',
+    responsive: [{ breakpoint: 1024, settings: { slidesToShow: 1 } }]
   }
 
   return (
@@ -64,20 +48,23 @@ export default function BlogSection() {
         </div>
 
         <div className="slider-container relative max-w-6xl mx-auto">
-          <Slider {...settings} className='blog-slider'>
+          <Slider {...settings} className="blog-slider">
             {articles.map((article) => (
-              <div key={article.id} className="blog-card" onClick={() => router.push(`/blog/${article.slug}`)}>
-                <Image 
-                    src={article.image}
-                    alt={article.title}
-                    className="blog-image"
-                    width={300} // ✅ Ajusté pour correspondre à la carte
-                    height={200} // ✅ Taille plus cohérente
-                    layout="intrinsic" // ✅ Permet d’adapter la taille de l’image à la carte
-                    />
+              <div
+                key={article.id}
+                className="blog-card"
+                onClick={() => router.push(`/blog/${article.slug}`)}
+              >
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  width={300}
+                  height={200}
+                  className="blog-image"
+                />
                 <div className="blog-info">
-                  <h3 className="blog-title">{article.title}</h3>
-                  <p className="blog-excerpt">{article.excerpt}</p>
+                  <h3 className="blog-title ">{article.title}</h3>
+                  <p className="blog-excerpt">{article.description}</p>
                 </div>
               </div>
             ))}

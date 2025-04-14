@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
 import "./globals.css";
-import { ThemeProvider } from '../context/ThemeContext';
+import ClientWrapper from '@/components/ClientWrapper';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -28,12 +28,12 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="google-site-verification" content="V6KAzX4v_RTEpEchSzE0YyWi0pbjg5gfygwwZLhaqrU" />
       </head>
-      <body className={`${montserrat.className} antialiased`}>
-        <ThemeProvider>
+      <body>
+        <ClientWrapper>
           <div className="wrapper">
             {children}
           </div>
-        </ThemeProvider>
+        </ClientWrapper>
       </body>
     </html>
   );

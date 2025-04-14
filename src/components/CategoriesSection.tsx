@@ -1,19 +1,21 @@
 'use client'
+import type { ThemeConfig } from '@/types/theme';
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import { motion, AnimatePresence } from 'framer-motion'; // ✅ Pour l'animation
+import Image from 'next/image';
+import { CategoryItem } from '@/types/theme';
 
 export default function Categories() {
   const [showAll, setShowAll] = useState(false);
-  const theme = useTheme();
-  const categories = theme.categories.items;
-
-  // ✅ Afficher seulement 4 catégories au départ
-  const displayedCategories = showAll ? categories : categories.slice(0, 4);
+  const theme = useTheme() as ThemeConfig;
+  const categories: CategoryItem[] = theme.categories.items;
+  // ✅ Afficher seulement 3 catégories au départ
+  const displayedCategories = showAll ? categories : categories.slice(0, 3);
 
   return (
     <section id="categories" className="categories-section">
-      <h2 className="categories-title">Nos Formats</h2>
+      <h2 className="categories-title">Nos Catégories</h2>
       <div className="categories-grid">
         <AnimatePresence>
           {displayedCategories.map((category) => (
@@ -26,17 +28,14 @@ export default function Categories() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               {/* Icône SVG */}
-              <div className="category-icon">
-  {category.id === 1 ? (
-    <svg width="50" height="50" viewBox="0 0 24 24"> 
-      <circle cx="12" cy="12" r="10" fill="blue" />
-    </svg>
-  ) : (
-    <svg width="50" height="50" viewBox="0 0 24 24">
-      <rect width="24" height="24" fill="red" />
-    </svg>
-  )}
-</div>
+              <div className="category-icon transition-transform duration-300 ease-in-out hover:scale-105">
+                <Image
+                  src={category.icon}
+                  alt={category.title}
+                  width={100}
+                  height={30}
+                />
+              </div>
               <h3>{category.title}</h3>
               <p>{category.description}</p>
               <p><strong>Format :</strong> {category.sizes}cm</p>

@@ -14,12 +14,12 @@ export default function HeaderSection() {
   return (
     <header className="flex flex-col justify-center items-center text-center header-section">
       {/* Logo */}
-     <Link href="/" className="flex items-center mb-8">
+     <Link href="/" className="mb-2">
         <Image 
           src={theme.global.branding.logo.path}
           alt={theme.global.branding.logo.alt}
           width={350}
-          height={300}
+          height={300}                          
           className='mb-6'
         />
      </Link>

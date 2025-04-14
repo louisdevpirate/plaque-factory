@@ -10,7 +10,7 @@ export default function PersonalizationSection() {
         {/* Loader pendant le chargement de l'iframe */}
         {!iframeLoaded && (
           <div className="iframe-loader">
-            <span className="loader"></span>
+            <span className="loader text-white"></span>
             <p>Chargement du module...</p>
           </div>
         )}

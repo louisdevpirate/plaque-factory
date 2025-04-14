@@ -488,6 +488,10 @@ button:hover {
   height: 400px;
 }
 
+.blog-card h3 {
+  font-size: 1rem;
+}
+
 .blog-slider .slick-slide {
   display: flex !important;
   justify-content: center;
@@ -686,5 +690,7 @@ button:hover {
     .footer-container {
       margin-bottom: 300px;
     }
+
+
   
 }

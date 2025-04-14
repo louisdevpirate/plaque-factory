@@ -1,5 +1,4 @@
-// src/config/themes/default.theme.ts
-import { ThemeConfig } from './theme.types';
+import type { ThemeConfig } from '@/types/theme';
 
 export const defaultTheme: ThemeConfig = {
     colors: {
@@ -146,7 +145,6 @@ export const defaultTheme: ThemeConfig = {
           background: 'transparent',
           padding: '5rem 0',
           title: {
-            text: 'Galerie d\'inspirations',
             color: '#000000',
             fontSize: '1.875rem'  // équivalent à text-3xl
           }
@@ -160,63 +158,73 @@ export const defaultTheme: ThemeConfig = {
             title: "AUTO",
             description: "Homologué pour voitures particulières et véhicules légers",
             sizes: "52x11",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/car.svg"
           },
           {
             id: 2,
-            title: "4X4",
-            description: "Adapté aux SUV, pick-up et véhicules de loisirs",
-            sizes: "27,5x20",
-            link: "#"
+            title: "MOTO",
+            description: "Homologué pour les deux-roues motorisés",
+            sizes: "21x13",
+            link: "#",
+            icon: "images/icons/categories/moto.svg"
           },
           {
             id: 3,
             title: "U.S.",
             description: "Idéal pour les véhicules importés et style US authentique",
             sizes: "30x15",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/us.svg"
           },
+          
           {
             id: 4,
-            title: "MOTO",
-            description: "Homologué pour les deux-roues motorisés",
-            sizes: "21x13",
-            link: "#"
+            title: "4X4",
+            description: "Adapté aux SUV, pick-up et véhicules de loisirs",
+            sizes: "27,5x20",
+            link: "#",
+            icon: "images/icons/categories/suv.svg"
           },
           {
             id: 5,
             title: "PETITE MOTO",
             description: "Parfait pour les motos légères et scooters",
             sizes: "17x13",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/little-moto.svg"
           },
           {
             id: 6,
             title: "CYCLO",
             description: "Spécifique pour les mobylettes et cyclomoteurs",
             sizes: "14x12",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/cyclo.svg"
           },
           {
             id: 7,
             title: "ENDURO",
             description: "Conçu pour les motos d'enduro et tout-terrain",
             sizes: "10x10",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/enduro.svg"
           },
           {
             id: 8,
             title: "COLLECTION",
             description: "Dédié aux véhicules de collection et anciennes",
             sizes: "45x10",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/collection.svg"
           },
           {
             id: 9,
             title: "COLLECTION COMPACT",
             description: "Spécial pour motos anciennes et classiques",
             sizes: "27,5x7,5",
-            link: "#"
+            link: "#",
+            icon: "images/icons/categories/collection-compact.svg"
           },
         ],
         layout: {
@@ -401,4 +409,3 @@ export const defaultTheme: ThemeConfig = {
         }
       }
     };
-  
