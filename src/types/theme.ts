@@ -7,22 +7,88 @@ export interface CategoryItem {
     sizes: string;
     link: string;
     icon: string;
-  }
+}
   
-  export interface ThemeConfig {
-    colors: any;
-    spacing: any;
-    typography: any;
-    animation: any;
-    navigation: any;
-    personalization: any;
-    gallery: any;
+export interface ColorPalette {
+    primary: string;
+    secondary: string;
+    background: string;
+    [key: string]: string;
+}
+
+export interface Spacing {
+    padding: string;
+    margin: string;
+    [key: string]: string;
+}
+
+export interface Typography {
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+    [key: string]: string;
+}
+
+export interface AnimationConfig {
+    duration: string;
+    easing: string;
+    [key: string]: string;
+}
+
+export interface NavigationConfig {
+    showLogo: boolean;
+    links: Array<{ label: string; href: string }>;
+}
+
+export interface PersonalizationConfig {
+    showCTA: boolean;
+    ctaLabel: string;
+}
+
+export interface GalleryConfig {
+    columns: number;
+    imageAspectRatio: string;
+}
+
+export interface CategoryLayout {
+    type: string;
+    columns: number;
+}
+
+export interface CategoryCarousel {
+    enabled: boolean;
+    autoplay: boolean;
+}
+
+export interface FAQConfig {
+    enabled: boolean;
+    questions: Array<{ question: string; answer: string }>;
+}
+
+export interface FooterConfig {
+    copyright: string;
+    links: Array<{ label: string; href: string }>;
+}
+
+export interface GlobalConfig {
+    siteName: string;
+    locale: string;
+}
+
+export interface ThemeConfig {
+    colors: ColorPalette;
+    spacing: Spacing;
+    typography: Typography;
+    animation: AnimationConfig;
+    navigation: NavigationConfig;
+    personalization: PersonalizationConfig;
+    gallery: GalleryConfig;
     categories: {
       items: CategoryItem[];
-      layout: any;
-      carousel: any;
+      layout: CategoryLayout;
+      carousel: CategoryCarousel;
     };
-    faq: any;
-    footer: any;
-    global: any;
-  }
+    faq: FAQConfig;
+    footer: FooterConfig;
+    global: GlobalConfig;
+}

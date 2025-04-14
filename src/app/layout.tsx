@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat } from 'next/font/google';
 import "./globals.css";
 import ClientWrapper from '@/components/ClientWrapper';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap', // Améliore le chargement de la police
-});
 
 export const metadata: Metadata = {
   title: "Plaque Factory",

@@ -1,18 +1,19 @@
-/ * eslint-disable no-var */
 import { PrismaClient } from '@prisma/client';
 
 // Étendre l'objet global de Node.js pour inclure Prisma
 declare global {
-  // Déclare prisma comme une propriété sur global
-  var prisma: PrismaClient | undefined;
+  // Déclare prismaGlobal comme une propriété sur global
+  let prismaGlobal: PrismaClient | undefined;
 }
 
 // Crée une instance unique de PrismaClient
-export const prisma = global.prisma || new PrismaClient();
+const prisma = prismaGlobal ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') {
-  global.prisma = prisma;
+  prismaGlobal = prisma;
 }
+
+export { prisma };
 
 export async function getAllArticles() {
   return await prisma.article.findMany({
