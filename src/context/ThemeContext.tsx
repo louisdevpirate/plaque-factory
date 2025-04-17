@@ -2,7 +2,7 @@
 'use client'
 import { createContext, ReactNode } from 'react'
 import { useThemeSelector } from '@/hooks/useThemeSelector'
-import { ThemeConfig } from '@/config/themes/theme.types'
+import { ThemeConfig } from '@/types/theme'
 
 export const ThemeContext = createContext<ThemeConfig | null>(null)
 

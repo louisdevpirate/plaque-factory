@@ -145,8 +145,9 @@ export const defaultTheme: ThemeConfig = {
           background: 'transparent',
           padding: '5rem 0',
           title: {
+            text: 'FAQ', // ou ce que tu veux
             color: '#000000',
-            fontSize: '1.875rem'  // équivalent à text-3xl
+            fontSize: '1.875rem'
           }
         }
       },

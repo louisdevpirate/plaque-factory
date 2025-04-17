@@ -1,4 +1,4 @@
-import { getAllArticles, getArticleBySlug } from "@/lib/prisma";
+import { getAllArticles, getArticleBySlug } from "@/lib/articles";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -8,13 +8,16 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 
-type Props = {
-  params: { slug: string };
-};
+interface PageParams {
+  params: {
+    slug: string;
+  };
+}
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   if (!article) return {};
   return {
@@ -22,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.description,
     openGraph: {
       title: article.title,
-      description: article.description,
+      description: article.description  ,
       images: [article.image],
     },
     twitter: {
@@ -34,19 +37,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogPage({ params }: Props) {
+export default async function BlogPage({ params }: PageParams) {
   const article = await getArticleBySlug(params.slug);
   if (!article) return notFound();
-
   const allArticles = await getAllArticles();
-  const otherArticles = allArticles
-    .filter((a) => a.slug !== params.slug)
-    .slice(0, 3);
+  const otherArticles = allArticles.filter((a) => a.slug !== params.slug).slice(0, 3);
 
   return (
     <div>
       <Navbar forceScrolled={true} />
-
       <main className="bg-gray-50 py-10 md:py-32">
         <div className="max-w-3xl mx-auto px-4 py-10 md:py-10">
           <section className="mb-20">
@@ -114,7 +113,6 @@ export default async function BlogPage({ params }: Props) {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

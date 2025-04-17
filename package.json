@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build",
+    "vercel-build": "prisma generate && next build",
     "seed": "npx tsc scripts/seed.ts --outDir dist && node dist/seed.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.5.0",
+    "@supabase/supabase-js": "^2.49.4",
     "@types/react-slick": "^0.23.13",
     "framer-motion": "^12.6.0",
     "lucide-react": "^0.468.0",
@@ -22,9 +23,10 @@
     "react-markdown": "^10.1.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-    "vercel": "^41.6.0"
+    "vercel": "^41.6.1"
   },
   "devDependencies": {
+    "@types/json-schema": "^7.0.15",
     "@types/node": "^20",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",

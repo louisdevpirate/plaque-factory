@@ -1,5 +1,5 @@
 // app/blog/page.tsx
-import { getAllArticles } from "@/lib/prisma";
+import { getAllArticles } from "@/lib/articles";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

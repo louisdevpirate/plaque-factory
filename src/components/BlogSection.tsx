@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import Image from 'next/image'
 import Link from 'next/link'
+import { createClient } from '@supabase/supabase-js'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
@@ -16,14 +17,32 @@ type Article = {
   image: string
 }
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
 export default function BlogSection() {
   const router = useRouter()
   const [articles, setArticles] = useState<Article[]>([])
 
   useEffect(() => {
-    fetch('/api/articles')
-      .then((res) => res.json())
-      .then(setArticles)
+    const fetchArticles = async () => {
+      const { data, error } = await supabase
+        .from('Article')
+        .select('id, slug, title, description, image')
+        .order('createdAt', { ascending: false })
+        .limit(5)
+
+      if (error) {
+        console.error('Erreur Supabase :', error)
+        return
+      }
+      console.log('Articles récupérés depuis Supabase ➜', data)
+      setArticles(data || [])
+    }
+
+    fetchArticles()
   }, [])
 
   const settings = {

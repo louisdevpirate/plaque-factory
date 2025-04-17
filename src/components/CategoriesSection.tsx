@@ -1,5 +1,4 @@
 'use client'
-import type { ThemeConfig } from '@/types/theme';
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import { motion, AnimatePresence } from 'framer-motion'; // ✅ Pour l'animation
@@ -8,7 +7,7 @@ import { CategoryItem } from '@/types/theme';
 
 export default function Categories() {
   const [showAll, setShowAll] = useState(false);
-  const theme = useTheme() as ThemeConfig;
+  const theme = useTheme();
   const categories: CategoryItem[] = theme.categories.items;
   // ✅ Afficher seulement 3 catégories au départ
   const displayedCategories = showAll ? categories : categories.slice(0, 3);
@@ -30,7 +29,7 @@ export default function Categories() {
               {/* Icône SVG */}
               <div className="category-icon transition-transform duration-300 ease-in-out hover:scale-105">
                 <Image
-                  src={category.icon}
+                  src={category.icon as string}
                   alt={category.title}
                   width={100}
                   height={30}

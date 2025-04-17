@@ -1,4 +1,4 @@
-// src/types/theme.ts
+// src/types/theme.ts (fusionné)
 
 export interface CategoryItem {
     id: number;
@@ -6,89 +6,287 @@ export interface CategoryItem {
     description: string;
     sizes: string;
     link: string;
-    icon: string;
-}
+    icon?: string;
+  }
   
-export interface ColorPalette {
-    primary: string;
-    secondary: string;
-    background: string;
-    [key: string]: string;
-}
-
-export interface Spacing {
-    padding: string;
-    margin: string;
-    [key: string]: string;
-}
-
-export interface Typography {
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    [key: string]: string;
-}
-
-export interface AnimationConfig {
-    duration: string;
-    easing: string;
-    [key: string]: string;
-}
-
-export interface NavigationConfig {
-    showLogo: boolean;
-    links: Array<{ label: string; href: string }>;
-}
-
-export interface PersonalizationConfig {
-    showCTA: boolean;
-    ctaLabel: string;
-}
-
-export interface GalleryConfig {
-    columns: number;
-    imageAspectRatio: string;
-}
-
-export interface CategoryLayout {
-    type: string;
-    columns: number;
-}
-
-export interface CategoryCarousel {
-    enabled: boolean;
-    autoplay: boolean;
-}
-
-export interface FAQConfig {
-    enabled: boolean;
-    questions: Array<{ question: string; answer: string }>;
-}
-
-export interface FooterConfig {
-    copyright: string;
-    links: Array<{ label: string; href: string }>;
-}
-
-export interface GlobalConfig {
-    siteName: string;
-    locale: string;
-}
-
-export interface ThemeConfig {
-    colors: ColorPalette;
-    spacing: Spacing;
-    typography: Typography;
-    animation: AnimationConfig;
-    navigation: NavigationConfig;
-    personalization: PersonalizationConfig;
-    gallery: GalleryConfig;
+  export interface ThemeConfig {
+    colors: {
+      primary: {
+        main: string;
+        light: string;
+        gradient: string;
+      };
+      accent: {
+        from: string;
+        to: string;
+        gradient: string;
+        hover: {
+          from: string;
+          to: string;
+        };
+      };
+      text: {
+        primary: string;
+        secondary: string;
+      };
+      state: {
+        success: string;
+        error: string;
+        warning: string;
+        info: string;
+      };
+    };
+  
+    spacing: {
+      header: {
+        height: string;
+        padding: {
+          x: string;
+          y: string;
+        };
+      };
+      section: {
+        padding: string;
+        gap: string;
+      };
+    };
+  
+    typography: {
+      header: {
+        fontSize: string;
+        fontWeight: string;
+        lineHeight: string;
+      };
+      body: {
+        fontSize: string;
+        lineHeight: string;
+      };
+    };
+  
+    animation: {
+      transition: {
+        default: string;
+        hover: string;
+      };
+      transform: {
+        hover: string;
+      };
+    };
+  
+    navigation: {
+      states: {
+        default: {
+          background: string;
+          text: string;
+          border: string;
+        };
+        scrolled: {
+          background: string;
+          text: string;
+          border: string;
+        };
+        pastHeader: {
+          background: string;
+          text: string;
+        };
+      };
+      effects: {
+        blur: string;
+        shadow: string;
+      };
+      cta: {
+        default: {
+          background: string;
+          text: string;
+          border: string;
+        };
+        hover: {
+          background: string;
+          text: string;
+          border: string;
+        };
+      };
+      animation: {
+        timing: string;
+        hover: string;
+      };
+    };
+  
+    personalization: {
+      background: {
+        gradient: string;
+      };
+    };
+  
+    gallery: {
+      images: {
+        sources: Array<{
+          path: string;
+          alt: string;
+        }>;
+        settings: {
+          height: string;
+          width: string;
+          objectFit: 'contain' | 'cover';
+        };
+      };
+      carousel: {
+        speed: number;
+        slidesToShow: number;
+        spacing: string;
+        autoplay: boolean;
+        autoplaySpeed: number;
+        pauseOnHover: boolean;
+        cssEase: string;
+      };
+      layout: {
+        background: string;
+        padding: string;
+        title: {
+          text: string;
+          color: string;
+          fontSize: string;
+        };
+      };
+    };
+  
     categories: {
       items: CategoryItem[];
-      layout: CategoryLayout;
-      carousel: CategoryCarousel;
+      layout: {
+        title: {
+          text: string;
+          color: string;
+          fontSize: string;
+          marginBottom: string;
+        };
+        card: {
+          background: string;
+          borderColor: string;
+          padding: string;
+          height: string;
+          borderRadius: string;
+          shadow: {
+            default: string;
+            hover: string;
+          };
+        };
+        text: {
+          title: {
+            color: string;
+            fontSize: string;
+          };
+          description: {
+            color: string;
+            fontSize: string;
+          };
+          dimensions: {
+            color: string;
+            fontSize: string;
+          };
+          link: {
+            color: string;
+            hoverColor: string;
+          };
+        };
+      };
+      carousel: {
+        slidesToShow: number;
+        speed: number;
+        dots: boolean;
+        dotsStyle: {
+          color: string;
+          activeColor: string;
+          marginTop: string;
+        };
+        responsive: Array<{
+          breakpoint: number;
+          settings: {
+            slidesToShow: number;
+          };
+        }>;
+      };
     };
-    faq: FAQConfig;
-    footer: FooterConfig;
-    global: GlobalConfig;
-}
+  
+    faq: {
+      items: Array<{
+        question: string;
+        answer: string;
+      }>;
+      layout: {
+        title: {
+          text: string;
+          color: string;
+          fontSize: string;
+          marginBottom: string;
+        };
+        background: string;
+        maxWidth: string;
+        spacing: {
+          section: string;
+          itemGap: string;
+        };
+      };
+      item: {
+        background: {
+          default: string;
+          hover: string;
+        };
+        border: {
+          color: string;
+          width: string;
+          radius: string;
+        };
+        text: {
+          question: {
+            color: string;
+            fontSize: string;
+            fontWeight: string;
+          };
+          answer: {
+            color: string;
+            fontSize: string;
+            lineHeight: string;
+          };
+        };
+        padding: {
+          question: string;
+          answer: string;
+        };
+      };
+      animation: {
+        timing: string;
+        expandDuration: number;
+      };
+      toggle: {
+        color: string;
+        fontSize: string;
+        transition: string;
+      };
+    };
+  
+    footer: {
+      styling: {
+        text: {
+          primary: string;
+          secondary: string;
+          hover: string;
+        };
+      };
+      sections: {
+        legal: string[];
+        navigation: string[];
+        description: string;
+        copyright: string;
+      };
+    };
+  
+    global: {
+      branding: {
+        logo: {
+          path: string;
+          alt: string;
+        };
+      };
+    };
+  }
+  

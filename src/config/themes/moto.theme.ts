@@ -1,5 +1,5 @@
 // src/config/themes/moto.theme.ts
-import { ThemeConfig } from './theme.types';
+import { ThemeConfig } from '@/types/theme';
 
 export const motoTheme: ThemeConfig = {
   colors: {
