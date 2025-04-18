@@ -6,26 +6,40 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import ReactMarkdown from "react-markdown";
 
-interface PageParams {
+type BlogPageParams = {
   params: {
     slug: string;
   };
-}
+};
+import ReactMarkdown from "react-markdown";
+
+type Article = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  content: string;
+  createdAt: string;
+  author?: {
+    name: string;
+    avatar: string;
+    bio: string;
+  };
+};
 
 export const dynamic = "force-dynamic";
 
-
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug);
+export async function generateMetadata({ params }: BlogPageParams): Promise<Metadata> {
+  const article: Article | null = await getArticleBySlug(params.slug);
   if (!article) return {};
   return {
     title: article.title,
     description: article.description,
     openGraph: {
       title: article.title,
-      description: article.description  ,
+      description: article.description,
       images: [article.image],
     },
     twitter: {
@@ -37,11 +51,13 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   };
 }
 
-export default async function BlogPage({ params }: PageParams) {
-  const article = await getArticleBySlug(params.slug);
+export default async function BlogPage({ params }: BlogPageParams) {
+  console.log("📦 Slug reçu :", params.slug);
+  const article: Article | null = await getArticleBySlug(params.slug);
   if (!article) return notFound();
-  const allArticles = await getAllArticles();
+  const allArticles: Article[] = await getAllArticles();
   const otherArticles = allArticles.filter((a) => a.slug !== params.slug).slice(0, 3);
+  
 
   return (
     <div>
@@ -64,22 +80,23 @@ export default async function BlogPage({ params }: PageParams) {
             </div>
             <h1 className="text-4xl font-bold mb-10 text-left">{article.title}</h1>
             <div className="flex items-center space-x-4 mb-6">
-              <Image
-                src={article.author.avatar}
-                alt={article.author.name}
-                width={70}
-                height={70}
-                className="rounded-full"
-              />
-              <div>
-                <p className="text-sm font-medium">
-                  Publié par {article.author.name}
-                </p>
-                <p className="text-sm font-light">{article.author.bio}</p>
-                <p className="text-xs text-gray-500">
-                  {new Date(article.createdAt).toLocaleDateString()}
-                </p>
-              </div>
+              {article.author && (
+                <>
+                  <Image
+                    src={article.author.avatar}
+                    alt={article.author.name}
+                    width={70}
+                    height={70}
+                    className="rounded-full"
+                  />
+                  <div>
+                    <p className="text-sm font-medium">
+                      Publié par {article.author.name}
+                    </p>
+                    <p className="text-sm font-light">{article.author.bio}</p>
+                  </div>
+                </>
+              )}
             </div>
             <Image
               src={article.image}

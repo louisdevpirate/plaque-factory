@@ -3,11 +3,18 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FC } from "react"
-import { Article } from "@prisma/client" // ✅ Important : types auto-générés
+
+type Article = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+};
 
 type Props = {
-  article: Article
-}
+  article: Article;
+};
 
 const BlogCard: FC<Props> = ({ article }) => {
   return (
@@ -28,7 +35,7 @@ const BlogCard: FC<Props> = ({ article }) => {
         <p className="text-sm text-gray-600">{article.description}</p>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default BlogCard
+export default BlogCard;
