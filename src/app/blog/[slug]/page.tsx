@@ -6,33 +6,14 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-
-type BlogPageParams = {
-  params: {
-    slug: string;
-  };
-};
 import ReactMarkdown from "react-markdown";
-
-type Article = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-  content: string;
-  createdAt: string;
-  author?: {
-    name: string;
-    avatar: string;
-    bio: string;
-  };
-};
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: BlogPageParams): Promise<Metadata> {
-  const article: Article | null = await getArticleBySlug(params.slug);
+// ✅ Nouveau typage compatible Next.js 15
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article: Article | null = await getArticleBySlug(slug);
   if (!article) return {};
   return {
     title: article.title,
@@ -51,13 +32,13 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
   };
 }
 
-export default async function BlogPage({ params }: BlogPageParams) {
-  console.log("📦 Slug reçu :", params.slug);
-  const article: Article | null = await getArticleBySlug(params.slug);
+// ✅ Utilisation de Promise<{ slug }> pour compatibilité avec PageProps
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article: Article | null = await getArticleBySlug(slug);
   if (!article) return notFound();
   const allArticles: Article[] = await getAllArticles();
-  const otherArticles = allArticles.filter((a) => a.slug !== params.slug).slice(0, 3);
-  
+  const otherArticles = allArticles.filter((a) => a.slug !== slug).slice(0, 3);
 
   return (
     <div>
@@ -133,4 +114,20 @@ export default async function BlogPage({ params }: BlogPageParams) {
       <Footer />
     </div>
   );
+}
+
+// ✅ Définir à la fin pour ne pas polluer le typage
+interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  image: string;
+  createdAt: string;
+  author?: {
+    name: string;
+    avatar: string;
+    bio: string;
+  };
 }
