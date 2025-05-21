@@ -1,36 +1,38 @@
-'use client'
-import { useTheme } from '@/hooks/useTheme'
-import HeaderSection from '../components/HeaderSection'
-import Navbar from '../components/Navbar'
-import PersonalizationSection from '../components/PersonalizationSection'
-import GallerySection from '../components/GallerySection'
-import CategoriesSection from '../components/CategoriesSection'
-import FaqSection from '../components/FaqSection'
-import Footer from '../components/Footer'
-import BlogSection from '@/components/BlogSection'
+import type { Metadata } from 'next'
+import HomePage from '@/components/HomePage'
 
-export default function Home() {
- const theme = useTheme();
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "La Bonne Plaque - Plaques d’immatriculation personnalisées",
+    description: "Commandez des plaques personnalisées, homologuées et livrées rapidement. Créez votre plaque en ligne dès maintenant.",
+    alternates: {
+      canonical: "https://www.labonneplaque.fr/",
+    },
+    openGraph: {
+      title: "La Bonne Plaque - Plaques personnalisées et homologuées",
+      description: "Créez votre plaque d'immatriculation personnalisée avec notre module en ligne.",
+      url: "https://www.labonneplaque.fr/",
+      siteName: "La Bonne Plaque",
+      locale: "fr_FR",
+      type: "website",
+      images: [
+        {
+          url: "https://www.labonneplaque.fr/favicon.png",
+          width: 1200,
+          height: 630,
+          alt: "Exemple de plaque personnalisée",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "La Bonne Plaque",
+      description: "Créez votre plaque personnalisée dès maintenant",
+      images: ["https://www.labonneplaque.fr/favicon.png"],
+    },
+  }
+}
 
- return (
-   <main 
-     className="min-h-screen"
-     style={{ background: theme.colors.primary.gradient }}
-   >
-
-     <Navbar />
-     <HeaderSection />
-     <PersonalizationSection />
-     
-     {/* Section blanche englobante */}
-     <div className="bg-white py-10">
-       <GallerySection />
-       <CategoriesSection />
-     </div>
-
-     <FaqSection />
-     <BlogSection />
-     <Footer />
-   </main>
- );
+export default function Page() {
+  return <HomePage />
 }

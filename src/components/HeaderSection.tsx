@@ -13,12 +13,13 @@ export default function HeaderSection() {
 
   return (
     <header className="flex flex-col justify-center items-center text-center header-section">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></link>
       {/* Logo */}
      <Link href="/" className="mb-2">
         <Image 
           src={theme.global.branding.logo.path}
           alt={theme.global.branding.logo.alt}
-          width={350}
+          width={200}
           height={300}                          
           className='mb-6'
         />
@@ -39,6 +40,7 @@ export default function HeaderSection() {
         onMouseLeave={() => setIsHovered(false)}
       >
         Je crée ma plaque
+        <i className="fas fa-arrow-right cta-arrow"></i>
       </a>
     </header>
   );

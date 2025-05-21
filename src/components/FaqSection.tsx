@@ -14,9 +14,27 @@ export default function FaqSection() {
     );
   };
 
+  const SectionTitle = ({ icon, title }: { icon: string; title: string }) => (
+  <div className="flex items-center gap-3 mb-4">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      width={36}
+      height={36}
+      className="rounded-full"
+    >
+      <source src={icon} type="video/mp4" />
+    </video>
+    <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+  </div>
+)
+
   return (
     <section id="faq" className="faq-section">
-      <h2 className="faq-title">{theme.faq.layout.title.text}</h2>
+      <SectionTitle icon="/public/icons/faq.mp4" title="Créez votre plaque personnalisée" />
       <div className="faq-container">
         <div className="faq-list">
           {theme.faq.items.map((item, index) => (

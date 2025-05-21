@@ -307,27 +307,27 @@ export const defaultTheme: ThemeConfig = {
         items: [
           {
             question: "Les plaques sont-elles en plexiglass ?",
-            answer: "Oui nos plaques sont produites en plexiglass. Nous utilisons des plaques en plexiglass PMMA aux bords moulés (arrondis), de 3mm d'épaisseur. C'est la meilleure qualité disponible en France."
+            answer: "\"Oui nos plaques sont produites en plexiglass. Nous utilisons des plaques en plexiglass PMMA aux bords moulés (arrondis), de 3mm d'épaisseur. C'est la meilleure qualité disponible en France.\""
           },
           {
             question: "Est-ce que les plaques sont homologuées ?",
-            answer: "Oui, nos plaques sont homologuées par défaut. Lors de la personnalisation, une pastille colorée vous indique en temps réel le statut d'homologation de votre plaque : \n\n• Pastille verte : votre plaque est homologuée \n• Pastille rouge : vos modifications rendent la plaque non homologuée. \n\nCela vous permet de savoir immédiatement si vos personnalisations respectent les normes d'homologation."
+            answer: "\"Oui, nos plaques sont homologuées par défaut. Lors de la personnalisation, une pastille colorée vous indique en temps réel le statut d'homologation de votre plaque : \n\n• Pastille verte : votre plaque est homologuée \n• Pastille rouge : vos modifications rendent la plaque non homologuée. \n\nCela vous permet de savoir immédiatement si vos personnalisations respectent les normes d'homologation.\""
           },
           {
             question: "Les plaques sont-elles vendues à l'unité ?",
-            answer: "Oui, les plaques sont vendues à l'unité. Vous pouvez commander le nombre exact de plaques dont vous avez besoin. Il suffit d'indiquer la quantité souhaitée dans votre panier : 1 plaque, 2 plaques pour un jeu complet (avant + arrière), 3 plaques, 4 plaques...ou plus selon vos besoins."
+            answer: "\"Oui, les plaques sont vendues à l'unité. Vous pouvez commander le nombre exact de plaques dont vous avez besoin. Il suffit d'indiquer la quantité souhaitée dans votre panier : 1 plaque, 2 plaques pour un jeu complet (avant + arrière), 3 plaques, 4 plaques...ou plus selon vos besoins.\""
           },
           {
             question: "Puis-je intégrer un logo personnalisé ?",
-            answer: "Oui, à l'aide du module de personnalisation de votre plaque, vous pouvez ajouter des logos à plusieurs endroits : \n\n• Remplacer les étoiles européennes (non homologué)\n• Remplacer le logo de région (non homologué)\n• Ajouter des logos en bas de plaque, de chaque côté du texte (homologué)\n• Intégrer un logo en fond de plaque (non homologué)"
+            answer: "Oui, à l'aide du module de personnalisation de votre plaque, vous pouvez ajouter des logos à plusieurs endroits : \n\n• Remplacer les étoiles européennes (non homologué)\n• Remplacer le logo de région (non homologué)\n• Ajouter des logos en bas de plaque, de chaque côté du texte (homologué)\n• Intégrer un logo en fond de plaque (non homologué)\""
           },
           {
             question: "De quel couleurs sont les rivets ?",
-            answer: "Les rivets sont disponibles en option avec deux possibilités :\n• Vous pouvez choisir leur couleur lors de la validation de votre plaque\n• Par défaut, ils s'adaptent à la couleur du fond (généralement blancs pour les plaques homologuées)\n\nD'autres systèmes de fixation sont disponibles dans notre rubrique \"Accessoires\"."
+            answer: "\"Les rivets sont disponibles en option avec deux possibilités :\n• Vous pouvez choisir leur couleur lors de la validation de votre plaque\n• Par défaut, ils s'adaptent à la couleur du fond (généralement blancs pour les plaques homologuées)\n\nD'autres systèmes de fixation sont disponibles dans notre rubrique \"Accessoires\".\""
           },
           {
             question: "Les paiements sont-ils sécurisés ? ",
-            answer: "Oui, tous vos paiements sont entièrement sécurisés grâce à notre partenariat avec PayPal, leader mondial du paiement en ligne. Nous avons choisi les options de sécurité les plus avancées pour protéger vos transactions. Vous pouvez payer en toute tranquillité via :\n\n• Carte bancaire\n• PayPal\n• Apple Pay\n• American Express\n\nTous les paiements sont cryptés et sécurisés, quel que soit le mode de paiement choisi."
+            answer: "\"Oui, tous vos paiements sont entièrement sécurisés grâce à notre partenariat avec PayPal, leader mondial du paiement en ligne. Nous avons choisi les options de sécurité les plus avancées pour protéger vos transactions. Vous pouvez payer en toute tranquillité via :\n\n• Carte bancaire\n• PayPal\n• Apple Pay\n• American Express\n\nTous les paiements sont cryptés et sécurisés, quel que soit le mode de paiement choisi.\""
           }
         ],
         
