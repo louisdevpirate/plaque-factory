@@ -13,8 +13,14 @@ export default function Categories() {
   const displayedCategories = showAll ? categories : categories.slice(0, 3);
 
   return (
-    <section id="categories" className="categories-section">
-      <h2 className="categories-title">Nos Catégories</h2>
+    <section id="catégories" className="categories-section">
+      <Image
+              className="mx-auto pb-8"
+              src="images/categories.svg"
+              alt=""
+              width={400}
+              height={200}
+            />
       <div className="categories-grid">
         <AnimatePresence>
           {displayedCategories.map((category) => (

@@ -1,84 +1,63 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { Home, Image as GalleryIcon, HelpCircle, Wrench, PictureInPicture } from 'lucide-react' // Icônes pour desktop et mobile
-import Link from 'next/link'
+"use client";
+import {
+  Home,
+  Image as GalleryIcon,
+  HelpCircle,
+  Wrench,
+  PictureInPicture,
+} from "lucide-react"; // Icônes pour desktop et mobile
+import Link from "next/link";
+import Image from "next/image";
+import { useTheme } from "@/hooks/useTheme";
 
-interface NavbarProps {
-  forceScrolled?: boolean;  // ✅ Prop pour forcer l'état scrolled
-}
-
-export default function Navbar({ forceScrolled = false }: NavbarProps) {
-  const [isPastHeader, setIsPastHeader] = useState(forceScrolled)
-
-  useEffect(() => {
-    if (!forceScrolled) {
-      const handleScroll = () => {
-        const section = document.getElementById('personnalisation');
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          setIsPastHeader(rect.top <= 0);
-        }
-      };
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    } else {
-      setIsPastHeader(true);
-    }
-  }, [forceScrolled]);
-  
+export default function Navbar() {
+  const theme = useTheme();
 
   return (
     <>
       {/* 🌍 Navbar Desktop */}
-      <div className={`hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[800px] navbar-desktop ${isPastHeader ? 'scrolled' : ''}`}>
-        <nav className="navbar-desktop-inner">
-          {/* 📌 Bouton "Personnaliser" */}
-          <Link 
-            href="#personnalisation" 
-            className={`navbar-cta ${isPastHeader ? 'scrolled' : ''}`}
-          >
-            Personnaliser
-          </Link>
-
-          {/* 📌 Liens de navigation avec icônes */}
-          <Link href="#galerie" className="nav-link flex items-center gap-2">
-            <GalleryIcon size={18} /> Galerie
-          </Link>
-          <Link href="#categories" className="nav-link flex items-center gap-2">
-            <Wrench size={18} /> Catégories
-          </Link>
-          <Link href="#faq" className="nav-link flex items-center gap-2">
-            <HelpCircle size={18} /> FAQ
-          </Link>
-          <Link href="#blog" className="nav-link flex items-center gap-2">
-            <PictureInPicture size={18} /> Blog
-          </Link>
-        </nav>
-      </div>
-
-      {/* 📌 Navbar Mobile */}
-      <div className="navbar-mobile">
-        <Link href="/" className="flex flex-col items-center text-gray-700">
-          <Home size={24} />
-          <span className="text-xs">Accueil</span>
-        </Link>
-        <Link href="#galerie" className="flex flex-col items-center text-gray-700">
-          <GalleryIcon size={24} />
-          <span className="text-xs">Galerie</span>
-        </Link>
-        <Link href="#categories" className="flex flex-col items-center text-gray-700">
-          <Wrench size={24} />
-          <span className="text-xs">Personnaliser</span>
-        </Link>
-        <Link href="#faq" className="flex flex-col items-center text-gray-700">
-          <HelpCircle size={24} />
-          <span className="text-xs">FAQ</span>
-        </Link>
-        <Link href="#blog" className="flex flex-col items-center text-gray-700">
-          <PictureInPicture size={24} />
-          <span className="text-xs">Blog</span>
-        </Link>
+      <div className="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full navbar-desktop scrolled">
+        <div
+          className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 transition-all duration-300"
+        >
+          <div className="shrink-0">
+            <Link href="/" className="z-50">
+              <Image
+                src={theme.global.branding.logo.path}
+                alt={theme.global.branding.logo.alt}
+                width={150}
+                height={100}
+                className="transition-transform duration-300 hover:scale-105"
+              />
+            </Link>
+          </div>
+          <nav className="flex-1 flex justify-center">
+            <Link href="#galerie" className="nav-link flex items-center gap-3">
+              Galerie
+            </Link>
+            <Link
+              href="#catégories"
+              className="nav-link flex items-center gap-3"
+            >
+              Catégories
+            </Link>
+            <Link href="#faq" className="nav-link flex items-center gap-3">
+              FAQ
+            </Link>
+            <Link href="#blog" className="nav-link flex items-center gap-3">
+              Blog
+            </Link>
+          </nav>
+          <div className="shrink-0">
+            <a
+              href="#personnalisation"
+              className="nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer"
+            >
+              Créer ma plaque <i className="fas fa-arrow-right cta-arrow"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </>
-  )
+  );
 }

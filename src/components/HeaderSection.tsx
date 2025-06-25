@@ -1,47 +1,134 @@
-'use client';
+"use client";
 
-import { useTheme } from '@/hooks/useTheme';
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-
-
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function HeaderSection() {
-  const theme = useTheme();
   const [, setIsHovered] = useState(false);
 
+  const parallaxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const layers = parallaxRef.current?.querySelectorAll("[data-depth]");
+      layers?.forEach((layer) => {
+        const depth = parseFloat(layer.getAttribute("data-depth") || "0");
+        const translateY = scrollY * depth * 0.2;
+        (
+          layer as HTMLElement
+        ).style.transform = `translateY(${translateY}px) scale(1.1)`;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="flex flex-col justify-center items-center text-center header-section">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></link>
-      {/* Logo */}
-     <Link href="/" className="mb-2">
-        <Image 
-          src={theme.global.branding.logo.path}
-          alt={theme.global.branding.logo.alt}
-          width={200}
-          height={300}                          
-          className='mb-6'
-        />
-     </Link>
-      
-      <h1 className="header-title">
-        La Bonne Plaque, au Bon Prix.
-      </h1>
-      
-      <p className="header-text">
-        Créez des plaques d&apos;immatriculation personnalisées et homologuées qui reflètent votre personnalité.
-      </p>
-      
-      <a 
-        href="#personnalisation"
-        className="header-cta"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        Je crée ma plaque
-        <i className="fas fa-arrow-right cta-arrow"></i>
-      </a>
-    </header>
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      ></link>
+
+      <header className="px-4 p-12 sm:py-40 flex-col items-center">
+        <div className="flex flex-col sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto gap-20">
+          <div className="text-left sm:w-1/2 space-y-8">
+            <h1 className="text-4xl sm:text-6xl font-light mb-2 text-left">
+              La Bonne Plaque, au Bon Prix.
+            </h1>
+
+            <div className="max-w-x mb-2">
+              <p className="sm:text-lg font-light">
+                Commandez votre plaque d’immatriculation 100% personnalisée.
+                Choisissez votre style, votre format et vos options — <br></br>
+                le tout en <strong>quelques clics.</strong>
+              </p>
+              <p className="mt-4 text-sm mb-6">
+                Fabrication française en partenariat avec{" "}
+                <a
+                  href="https://plaqueimmat.fr/?aff=9c7pyekcpurn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-medium hover:text-yellow-300 transition"
+                >
+                  PlaqueImmat.fr
+                </a>
+                <br />
+                Livraison rapide & qualité certifiée
+              </p>
+              <div className="flex items-center gap-1 mt-2 mb-14">
+                {[...Array(5)].map((_, i) => (
+                  <Image
+                    key={i}
+                    src="/images/trust.png"
+                    alt="Trustpilot star"
+                    width={24}
+                    height={24}
+                  />
+                ))}
+                <span className="text-lg font-semibold text-gray-800 ml-2">
+                  4.9
+                </span>
+                <span className="text-sm">(15 008)</span>
+                <span className="text-sm font-medium ml-1">Excellent</span>
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-[20px] items-center">
+              <a
+                href="#personnalisation"
+                className="header-cta bg-yellow-400 text-black font-normal px-8 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                Je crée ma plaque{" "}
+                <i className="fas fa-arrow-right cta-arrow"></i>
+              </a>
+              <a
+                href="https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-cta-2 font-normal px-8 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center "
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                Accéder au module complet{" "}
+                <i className="fas fa-arrow-right cta-arrow-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            ref={parallaxRef}
+            className="relative aspect-[3/4] w-full max-w-[500px] sm:max-w-[500px] max-h-[500px] overflow-hidden rounded-3xl mt-8 sm:mt-0 flex justify-center"
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center z-0"
+              data-depth="1.5"
+              style={{
+                backgroundImage: "url('/images/parallax/background.png')",
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-contain bg-center bg-no-repeat z-10"
+              data-depth="0.3"
+              style={{
+                backgroundImage: "url('/images/parallax/midground.png')",
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-contain bg-center bg-no-repeat z-20"
+              data-depth="0.1"
+              style={{
+                backgroundImage: "url('/images/parallax/foreground.png')",
+                backgroundPosition: "left -10px center",
+              }}
+            />
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

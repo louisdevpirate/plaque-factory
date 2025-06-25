@@ -288,7 +288,7 @@ export const motoTheme: ThemeConfig = {
     branding: {
       logo: {
         path: '/images/logo/1.png',
-        alt: 'Plaque Factory Logo'
+        alt: 'La Bonne Plaque Logo'
       }
     }
   }

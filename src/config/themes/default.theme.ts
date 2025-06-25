@@ -395,7 +395,7 @@ export const defaultTheme: ThemeConfig = {
           }
         },
         sections: {
-          navigation: ['Personnaliser', 'Galerie', 'Catégories', 'FAQ'],
+          navigation: ['Personnaliser', 'Galerie', 'Catégories', 'FAQ', 'Blog'],
           legal: ['Mentions légales', 'CGV', 'Politique de remboursement', 'Contact'],
           description: "Personnalisation de plaques d'immatriculation homologuées et accessoires décoratifs.",
           copyright: `© 2017 - ${new Date().getFullYear()} - PlaqueImmat.fr - Tous droits réservés`
@@ -405,7 +405,7 @@ export const defaultTheme: ThemeConfig = {
         branding: {
           logo: {
             path: '/images/logo/plaque-factory.svg',
-            alt: 'Plaque Factory Logo'
+            alt: 'La Bonne Plaque Logo'
           }
         }
       }

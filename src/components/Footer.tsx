@@ -55,19 +55,58 @@ export default function Footer() {
               Informations
             </h3>
             <ul className="space-y-4">
-              {theme.footer.sections.legal.map(item => (
-                <li key={item}>
-                  
-                    <a href="#"
-                    className="transition-colors"
-                    style={{ color: hoveredLink === item ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary }}
-                    onMouseEnter={() => setHoveredLink(item)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="https://plaqueimmat.fr/pages/mentions-legales"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: hoveredLink === 'Mentions légales' ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary }}
+                  onMouseEnter={() => setHoveredLink('Mentions légales')}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  Mentions légales
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://plaqueimmat.fr/pages/conditions-generales-de-vente"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: hoveredLink === 'CGV' ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary }}
+                  onMouseEnter={() => setHoveredLink('CGV')}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  CGV
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://plaqueimmat.fr/pages/politique-de-remboursement"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: hoveredLink === 'Politique de remboursement' ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary }}
+                  onMouseEnter={() => setHoveredLink('Politique de remboursement')}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  Politique de remboursement
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://plaqueimmat.fr/contact.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors"
+                  style={{ color: hoveredLink === 'Contact' ? theme.footer.styling.text.hover : theme.footer.styling.text.secondary }}
+                  onMouseEnter={() => setHoveredLink('Contact')}
+                  onMouseLeave={() => setHoveredLink(null)}
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
         </div>

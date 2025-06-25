@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /_next/static/
-Sitemap: https://plaque-factory.fr/sitemap.xml
+Sitemap: https://www.labonneplaque.fr/sitemap.xml
 
 // pages/sitemap.xml.tsx (pour un sitemap dynamique)
 import { GetServerSideProps } from 'next'
@@ -17,10 +17,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 // app/layout.tsx (meta tags et Open Graph)
 export const metadata: Metadata = {
   title: {
-    default: 'Plaque Factory - Plaques personnalisées',
-    template: '%s | Plaque Factory'
+    default: 'La Bonne Plaque - Plaques d'immatriculation personnalisables',
+    template: '%s | La Bonne Plaque'
   },
-  description: 'Créez des plaques d'immatriculation personnalisées et homologuées qui reflètent votre personnalité.',
+  description: 'Créez vos plaques d'immatriculation personnalisées et homologuées en quelques clics.',
   openGraph: {
     // ... configuration Open Graph
   },
