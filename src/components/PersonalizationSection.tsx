@@ -6,7 +6,7 @@ export default function PersonalizationSection() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
-    <section id="personnalisation" className="section-personnalisation">
+    <section id="personnalisation" className="section-personnalisation bg-white">
       <div className="personnalisation-container max-w-7xl m-auto">
         {/* Loader pendant le chargement de l'iframe */}
         {!iframeLoaded && (

@@ -14,13 +14,7 @@ export default function Categories() {
 
   return (
     <section id="catégories" className="categories-section">
-      <Image
-              className="mx-auto pb-8"
-              src="images/categories.svg"
-              alt=""
-              width={400}
-              height={200}
-            />
+      <h1 className="font-light mb-8">Catégories</h1>
       <div className="categories-grid">
         <AnimatePresence>
           {displayedCategories.map((category) => (

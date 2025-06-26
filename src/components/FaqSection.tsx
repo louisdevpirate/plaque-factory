@@ -18,42 +18,49 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="faq-section">
-      <Image
-        className="mx-auto pb-8"
-        src="images/faq.svg"
-        alt=""
-        width={150}
-        height={200}
-      />
-      <div className="faq-container">
-        {" "}
-        
-        <div className="faq-list">
-          {theme.faq.items.map((item, index) => (
-            <div
-              key={index}
-              className={`faq-item ${
-                openIndexes.includes(index) ? "open" : ""
-              }`}
-            >
-              {/* Question */}
-              <button
-                onClick={() => toggleQuestion(index)}
-                className="faq-question"
+    <section id="faq" className="faq-section bg-[url('/images/bg/bg.png')] bg-fixed bg-cover">
+      
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-20 items-start">
+        <div className="w-full md:w-1/2 h-full">
+          <div className="relative h-full">
+            <Image
+              src="/images/illustration.png"
+              alt="Illustration FAQ"
+              width={600}
+              height={600}
+              className="object-cover rounded-3xl"
+            />
+          </div>
+        </div>
+        <div className="w-full md:w-1/2 h-fit">
+        <div className="badge badge-md mb-6 rounded-2xl">FAQ</div>
+        <h1 className="font-extralight text-6xl mb-8 text-left">Questions fréquemment posées</h1>
+          <div className="faq-list h-fit">
+            {theme.faq.items.map((item, index) => (
+              <div
+                key={index}
+                className={`faq-item ${
+                  openIndexes.includes(index) ? "open" : ""
+                }`}
               >
-                <span>{item.question}</span>
-                <span className="faq-toggle">
-                  {openIndexes.includes(index) ? "−" : "+"}
-                </span>
-              </button>
+                {/* Question */}
+                <button
+                  onClick={() => toggleQuestion(index)}
+                  className="faq-question"
+                >
+                  <span>{item.question}</span>
+                  <span className="faq-toggle">
+                    {openIndexes.includes(index) ? "−" : "+"}
+                  </span>
+                </button>
 
-              {/* Réponse */}
-              <div className="faq-answer">
-                <p>{item.answer}</p>
+                {/* Réponse */}
+                <div className="faq-answer">
+                  <p>{item.answer}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

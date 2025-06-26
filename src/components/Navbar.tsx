@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       {/* 🌍 Navbar Desktop */}
-      <div className="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full navbar-desktop scrolled">
+      <div className="hidden md:block top-2 fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-2/3">
         <div
           className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 transition-all duration-300"
         >
@@ -31,20 +31,20 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <nav className="flex-1 flex justify-center">
-            <Link href="#galerie" className="nav-link flex items-center gap-3">
+          <nav className="flex-1 flex justify-center gap-8">
+            <Link href="#galerie" className="nav-link flex items-center">
               Galerie
             </Link>
             <Link
               href="#catégories"
-              className="nav-link flex items-center gap-3"
+              className="nav-link flex items-center"
             >
               Catégories
             </Link>
-            <Link href="#faq" className="nav-link flex items-center gap-3">
+            <Link href="#faq" className="nav-link flex items-center">
               FAQ
             </Link>
-            <Link href="#blog" className="nav-link flex items-center gap-3">
+            <Link href="#blog" className="nav-link flex items-center">
               Blog
             </Link>
           </nav>
@@ -53,7 +53,7 @@ export default function Navbar() {
               href="#personnalisation"
               className="nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer"
             >
-              Créer ma plaque <i className="fas fa-arrow-right cta-arrow"></i>
+              Créer ma plaque
             </a>
           </div>
         </div>
