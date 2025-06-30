@@ -32,7 +32,9 @@ export default function BlogSection() {
     const fetchArticles = async () => {
       const { data, error } = await supabase
         .from("Article")
-        .select("id, slug, title, description, image, category:categoryId(name)")
+        .select(
+          "id, slug, title, description, image, category:categoryId(name)"
+        )
         .order("createdAt", { ascending: false })
         .limit(5);
 
@@ -61,14 +63,11 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="blog" className="blog-section">
-      <Image
-        className="mx-auto pb-8"
-        src="images/blog.svg"
-        alt=""
-        width={200}
-        height={200}
-      />
+    <section id="blog" className="blog-section text-center">
+      <div className="badge badge-md mb-6 rounded-2xl">
+        <i className="fa fa-rss"></i>Blog
+      </div>
+      <h3>Des trucs et d'autres</h3>
       <div className="mx-auto">
         <div className="flex-column justify-center items-center mb-10 text-center">
           <Link href="/blog" className="blog-see-more">
@@ -79,7 +78,10 @@ export default function BlogSection() {
         <div className="slider-container relative max-w-6xl mx-auto">
           <Slider {...settings} className="blog-slider">
             {articles.map((article) => (
-              <BlogCard key={article.id} article={{ ...article, category: article.category?.[0] }} />
+              <BlogCard
+                key={article.id}
+                article={{ ...article, category: article.category?.[0] }}
+              />
             ))}
           </Slider>
         </div>

@@ -51,9 +51,10 @@ export default function Navbar() {
           <div className="shrink-0">
             <a
               href="#personnalisation"
-              className="nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer"
+              className="relative overflow-hidden nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer group"
             >
-              Créer ma plaque
+              <span className="absolute left-0 top-0 h-full w-0 bg-yellow-400 transition-all duration-500 ease-out group-hover:w-full"></span>
+              <span className="relative z-10">Créer ma plaque</span>
             </a>
           </div>
         </div>

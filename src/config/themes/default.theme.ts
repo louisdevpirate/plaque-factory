@@ -3,9 +3,9 @@ import type { ThemeConfig } from '@/types/theme';
 export const defaultTheme: ThemeConfig = {
     colors: {
       primary: {
-        main: '#0036ca',
-        light: '#c1d9ff',
-        gradient: 'fixed linear-gradient(135deg, #0036ca 0%, #c1d9ff 100%)'
+        main: '#ffffff',
+        light: '#ffffff',
+        gradient: 'linear-gradient(0deg, #ffffff 0%, #ffffff 100%)' // neutral, flat white gradient
       },
       accent: {
         from: 'rgb(249, 115, 22)',    // orange-500

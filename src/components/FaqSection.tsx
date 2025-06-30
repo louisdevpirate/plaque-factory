@@ -18,11 +18,10 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="faq-section bg-[url('/images/bg/bg.png')] bg-fixed bg-cover">
-      
+    <section id="faq" className="faq-section relative bg-[url('/images/bg/bg.png')] bg-fixed bg-cover">      
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-20 items-start">
         <div className="w-full md:w-1/2 h-full">
-          <div className="relative h-full">
+          <div className="relative h-full z-40">
             <Image
               src="/images/illustration.png"
               alt="Illustration FAQ"
@@ -32,9 +31,9 @@ export default function FaqSection() {
             />
           </div>
         </div>
-        <div className="w-full md:w-1/2 h-fit">
-        <div className="badge badge-md mb-6 rounded-2xl">FAQ</div>
-        <h1 className="font-extralight text-6xl mb-8 text-left">Questions fréquemment posées</h1>
+        <div className="w-full md:w-1/2 h-fit z-40">
+        <div className="badge badge-md mb-6 rounded-2xl"><i className="fa fa-question-circle"></i>FAQ</div>
+        <h2 className="font-extralight text-6xl mb-8 text-left">Questions fréquemment posées</h2>
           <div className="faq-list h-fit">
             {theme.faq.items.map((item, index) => (
               <div
@@ -63,6 +62,7 @@ export default function FaqSection() {
           </div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-white/70 to-white pointer-events-none z-0" />
     </section>
   );
 }

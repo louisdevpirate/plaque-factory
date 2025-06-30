@@ -23,7 +23,7 @@ html, body {
 :root {
   --primary-color: theme('colors.blue.700');
   --secondary-color: theme('colors.blue.300');
-  --text-color: rgb(21, 21, 21);
+  --text-color: #111827;
   --background-color: theme('colors.white');
   --accent-color: #FFD812;
 }
@@ -38,8 +38,7 @@ body {
 
 /* 📌 Typography */
 h1, h2, h3 {
-  font-family: theme('fontFamily.heading');
-  font-weight: theme('fontWeight.bold');
+  font-family: 'Raleway', sans-serif;
   text-align: center;
 }
 
@@ -50,11 +49,12 @@ h1 {
 }
 
 h2 {
-  font-size: theme('fontSize.4xl');
+  font-size: theme('fontSize.5xl');
+  font-weight: 400;
 }
 
 h3 {
-  font-size: theme('fontSize.3xl');
+  font-size: theme('fontSize.5xl');
 }
 
 /* 📌 Links */
@@ -224,32 +224,14 @@ button:hover {
     transform: rotate(90deg);
 }
 
-.module-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: theme('spacing.4') theme('spacing.20');
-  border: 2px solid var(--background-color);
-  border-radius: 10px;
-  font-weight: theme('fontWeight.medium');
-  color: var(--background-color);
-  font-weight: 500;
-  gap: 10px;
-  font-size: 1.2rem;
-  transition: transform 200ms ease-in-out;
-  width: fit-content;
-  margin: auto;
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-.module-btn:hover {
-  transform: translateY(-5px) translateX(-5px);
-  color: var(--background-color);
-  transform: scale(1.02);
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.2);
-}
-
-.module-btn:hover .cta-arrow {
-  transform: rotate(-30deg);
+.floating {
+  animation: floating 3s ease-in-out infinite;
 }
 
 @keyframes spin-slow {
@@ -776,3 +758,16 @@ button:hover {
     }
 }
 
+@keyframes parallaxUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+.foreground-parallax {
+  animation: parallaxUp linear;
+  animation-timeline: scroll(root);
+}

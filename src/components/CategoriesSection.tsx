@@ -13,7 +13,8 @@ export default function Categories() {
   const displayedCategories = showAll ? categories : categories.slice(0, 3);
 
   return (
-    <section id="catégories" className="categories-section">
+    <section id="catégories" className="categories-section text-center">
+                        <div className="badge badge-md mb-2 rounded-2xl"><i className="fa fa-"></i>Catégories</div>
       <h1 className="font-light mb-8">Catégories</h1>
       <div className="categories-grid">
         <AnimatePresence>

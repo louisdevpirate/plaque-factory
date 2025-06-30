@@ -32,17 +32,27 @@ export default function HeaderSection() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       ></link>
 
-      <header className="relative px-4 p-12 sm:py-40 flex-col items-center bg-[url('/images/bg/bg.png')] bg-cover bg-center">
-        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto gap-5 min-w-80">
-          <div className="text-left sm:w-1/2 space-y-8">
+      <header className="relative px-4 p-12 sm:py-40 flex-col items-center bg-white bg-cover bg-center">
+        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto min-w-80">
+          <div className="text-left sm:w-1/2 space-y-4">
+            <div className="inline-flex items-center border border-black rounded-full px-3 py-1 text-sm w-fit bg-white/80 backdrop-blur-sm">
+              <Image
+                src="/images/icons/france-flag.png"
+                alt="fabrication plaques françaises"
+                width={16}
+                height={16}
+                className="rounded-full mr-2"
+              />
+              <span>Fabrication française</span>
+            </div>
             <h1 className="text-4xl sm:text-6xl font-medium text-left">
-              La Bonne Plaque, <br></br>au Bon Prix.
+              Créez votre plaque personnalisée,<br /> en un clic.
             </h1>
 
             <div className="max-w-x mb-2">
               <p className="sm:text-lg font-light">
                 Commandez votre plaque d’immatriculation 100% personnalisée.
-                Choisissez votre style, votre format <br></br>et vos options — 
+                Choisissez votre style, votre format <br></br>et vos options —
                 le tout en <strong>quelques clics.</strong>
               </p>
               <p className="mt-4 text-sm mb-6">
@@ -69,9 +79,7 @@ export default function HeaderSection() {
                     height={24}
                   />
                 ))}
-                <span className="text-lg font-semibold ml-2">
-                  4.9
-                </span>
+                <span className="text-lg font-semibold ml-2">4.9</span>
                 <span className="text-sm">(15 008)</span>
                 <span className="text-sm font-medium ml-1">Excellent</span>
               </div>
@@ -80,7 +88,7 @@ export default function HeaderSection() {
             <div className="flex flex-row gap-[10px] items-center cta-container">
               <a
                 href="#personnalisation"
-                className="header-cta bg-yellow-400 text-black font-normal px-6 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer"
+                className="header-cta bg-yellow-400 text-black font-normal px-6 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
@@ -103,29 +111,15 @@ export default function HeaderSection() {
 
           <div
             ref={parallaxRef}
-            className="relative aspect-[1/4] w-full max-w-[300px] sm:max-w-[500px] max-h-[500px] overflow-hidden rounded-3xl mt-8 sm:mt-0 flex justify-center shadow-lg px-10"
+            className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl mt-8 sm:mt-0 flex justify-center"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center z-0"
-              data-depth="0.8"
-              style={{
-                backgroundImage: "url('/images/parallax/background.png')",
-              }}
-            />
-            <div
-              className="absolute inset-0 bg-contain bg-center bg-no-repeat z-10"
-              data-depth="-0.1"
-              style={{
-                backgroundImage: "url('/images/parallax/midground.png')",
-              }}
-            />
-            <div
-              className="absolute inset-0 bg-contain bg-center bg-no-repeat z-20"
-              data-depth="0.2"
-              style={{
-                backgroundImage: "url('/images/parallax/foreground.png')",
-                backgroundPosition: "center",
-              }}
+            <div className="absolute w-4/5 h-4/5 rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
+            <Image
+              src="/images/header.png"
+              alt="Illustration FAQ"
+              width={600}
+              height={600}
+              className="object-cover rounded-3xl floating"
             />
           </div>
         </div>
