@@ -30,7 +30,7 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4" style={{ color: theme.footer.styling.text.primary }}>
+            <h3 className="text-lg font-bold mb-4 text-left" style={{ color: theme.footer.styling.text.primary }}>
               Navigation
             </h3>
             <ul className="space-y-4">

@@ -64,7 +64,7 @@ export default function BlogSection() {
 
   return (
     <section id="blog" className="blog-section text-center">
-      <div className="badge badge-md mb-6 rounded-2xl">
+      <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
       <h3>Des trucs et d'autres</h3>

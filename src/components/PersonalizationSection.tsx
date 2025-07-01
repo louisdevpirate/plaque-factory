@@ -13,7 +13,7 @@ export default function PersonalizationSection() {
           rel="noopener noreferrer"
           className="module-btn"
         >
-                  <div className="badge badge-md mb-6 rounded-2xl"><i className="fa fa-magic"></i>Personnalisation</div>
+                  <div className="badge badge-sm mb-2 rounded-2xl"><i className="fa fa-magic"></i>Personnalisation</div>
 
         </a>
         <h2>Personnalise ta plaque à ton image !</h2>

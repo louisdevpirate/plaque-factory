@@ -14,7 +14,7 @@ export default function Categories() {
 
   return (
     <section id="catégories" className="categories-section text-center">
-                        <div className="badge badge-md mb-2 rounded-2xl"><i className="fa fa-"></i>Catégories</div>
+                        <div className="badge badge-sm mb-2 rounded-2xl"><i className="fa fa-layer-group"></i>Catégories</div>
       <h1 className="font-light mb-8">Catégories</h1>
       <div className="categories-grid">
         <AnimatePresence>

@@ -1,16 +1,20 @@
 // components/HomePage.tsx
-'use client'
+"use client";
 
-import { useTheme } from '@/hooks/useTheme'
-import HeaderSection from '../components/HeaderSection'
-import Navbar from '../components/Navbar'
-import PersonalizationSection from '../components/PersonalizationSection'
-import GallerySection from '../components/GallerySection'
-import CategoriesSection from '../components/CategoriesSection'
-import FaqSection from '../components/FaqSection'
-import Footer from '../components/Footer'
-import BlogSection from '@/components/BlogSection'
-import Head from 'next/head'
+import { useTheme } from "@/hooks/useTheme";
+import HeaderSection from "../components/HeaderSection";
+import Navbar from "../components/Navbar";
+import PersonalizationSection from "../components/PersonalizationSection";
+import GallerySection from "../components/GallerySection";
+import CategoriesSection from "../components/CategoriesSection";
+import FaqSection from "../components/FaqSection";
+import Footer from "../components/Footer";
+import BlogSection from "@/components/BlogSection";
+import Head from "next/head";
+import FeedbackSection from "../components/FeedbackSection";
+import AboutSection from "../components/AboutSection";
+import VideoSection from "../components/VideoSection";
+
 
 export default function HomePage() {
   const theme = useTheme();
@@ -21,7 +25,7 @@ export default function HomePage() {
     name: "La Bonne Plaque",
     url: "https://www.labonneplaque.fr",
     logo: "https://www.labonneplaque.fr/logo.png",
-  }
+  };
 
   return (
     <>
@@ -32,16 +36,17 @@ export default function HomePage() {
         />
       </Head>
 
-      <main className="min-h-screen" style={{ background: theme.colors.primary.gradient }}>
+      <main
+        className="min-h-screen"
+        style={{ background: theme.colors.primary.gradient }}
+      >
         <Navbar />
         <HeaderSection />
         <PersonalizationSection />
-
-        <div className="bg-white py-10">
-          <GallerySection />
-          <CategoriesSection />
-        </div>
-
+        <FeedbackSection />
+        <AboutSection />
+        <CategoriesSection />
+        <VideoSection />
         <FaqSection />
         <BlogSection />
         <Footer />

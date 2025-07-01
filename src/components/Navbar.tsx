@@ -16,9 +16,9 @@ export default function Navbar() {
   return (
     <>
       {/* 🌍 Navbar Desktop */}
-      <div className="hidden md:block top-2 fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-2/3">
+      <div className="hidden md:block fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-full bg-white">
         <div
-          className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 transition-all duration-300"
+          className="max-w-7xl mx-auto flex items-center justify-between px-4 pt-4 pb-4 transition-all duration-300"
         >
           <div className="shrink-0">
             <Link href="/" className="z-50">

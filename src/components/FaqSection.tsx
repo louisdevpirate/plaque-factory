@@ -32,7 +32,7 @@ export default function FaqSection() {
           </div>
         </div>
         <div className="w-full md:w-1/2 h-fit z-40">
-        <div className="badge badge-md mb-6 rounded-2xl"><i className="fa fa-question-circle"></i>FAQ</div>
+        <div className="badge badge-sm mb-4 rounded-2xl"><i className="fa fa-question-circle"></i>FAQ</div>
         <h2 className="font-extralight text-6xl mb-8 text-left">Questions fréquemment posées</h2>
           <div className="faq-list h-fit">
             {theme.faq.items.map((item, index) => (
