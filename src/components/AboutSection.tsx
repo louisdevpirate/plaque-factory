@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section className="py-8">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row  justify-between gap-10">
+    <section id="about" className="py-8 px-4">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-10">
         {/* Texte gauche */}
         <div className="max-w-lg">
           <div className="badge badge-sm mb-8 rounded-2xl">

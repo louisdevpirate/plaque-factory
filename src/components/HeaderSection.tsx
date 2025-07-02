@@ -32,10 +32,10 @@ export default function HeaderSection() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       ></link>
 
-      <header className="relative px-4 p-12 sm:py-40 flex-col items-center bg-white bg-cover bg-center">
-        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto min-w-80">
+      <header className="relative px-4 pt-24 pb-12 sm:py-40 flex-col items-center bg-white bg-cover bg-center">
+        <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto min-w-80">
           <div className="text-left sm:w-1/2 space-y-4">
-            <div className="inline-flex items-center border border-black rounded-full px-3 py-1 text-sm w-fit bg-white/80 backdrop-blur-sm">
+            <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-sm sm:bg-white w-fit bg-white/80 backdrop-blur-sm">
               <Image
                 src="/images/icons/france-flag.png"
                 alt="fabrication plaques françaises"
@@ -45,17 +45,17 @@ export default function HeaderSection() {
               />
               <span>Fabrication française</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-medium text-left">
+            <h1 className="text-3xl sm:text-6xl font-medium text-left">
               Créez votre plaque personnalisée,<br /> en un clic.
             </h1>
 
             <div className="max-w-x mb-2">
-              <p className="sm:text-lg font-light">
+              <p className="text-sm sm:text-lg font-light">
                 Commandez votre plaque d’immatriculation 100% personnalisée.
-                Choisissez votre style, votre format <br></br>et vos options —
-                le tout en <strong>quelques clics.</strong>
+                Choisissez votre style, votre format et vos options —
+                <span className="font-bold"> le tout en <strong>quelques clics.</strong></span>
               </p>
-              <p className="mt-4 text-sm mb-6">
+              <p className="mt-4 text-xs sm:text-sm mb-6">
                 Fabrication française en partenariat avec{" "}
                 <a
                   href="https://plaqueimmat.fr/?aff=9c7pyekcpurn"
@@ -68,20 +68,20 @@ export default function HeaderSection() {
                 <br />
                 Livraison rapide & qualité certifiée
               </p>
-              <div className="flex items-center gap-1 mt-2 mb-14 ">
+              <div className="flex items-center gap-1 mt-1 mb-8 ">
                 {[...Array(5)].map((_, i) => (
                   <Image
                     key={i}
                     src="/images/trust.png"
                     alt="Trustpilot star"
-                    className="hover:scale-105"
+                    className="hover:scale-105 w-3 h-3 sm:w-6 sm:h-6"
                     width={24}
                     height={24}
                   />
                 ))}
-                <span className="text-lg font-semibold ml-2">4.9</span>
-                <span className="text-sm">(15 008)</span>
-                <span className="text-sm font-medium ml-1">Excellent</span>
+                <span className="text-sm sm:text-lg font-semibold ml-2">4.9</span>
+                <span className="text-xs sm:text-sm">(15 008)</span>
+                <span className="text-xs sm:text-sm font-medium ml-1">Excellent</span>
               </div>
             </div>
 
@@ -111,7 +111,7 @@ export default function HeaderSection() {
 
           <div
             ref={parallaxRef}
-            className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl mt-8 sm:mt-0 flex justify-center"
+            className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl sm:mt-0 flex justify-center"
           >
             <div className="absolute w-4/5 h-4/5 rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
             <Image
@@ -119,7 +119,7 @@ export default function HeaderSection() {
               alt="Illustration FAQ"
               width={600}
               height={600}
-              className="object-cover rounded-3xl floating"
+              className="object-cover rounded-3xl floating w-[80%] max-h-[180px] sm:w-full sm:max-h-none"
             />
           </div>
         </div>

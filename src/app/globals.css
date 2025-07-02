@@ -61,7 +61,7 @@ h3 {
 
 /* 📌 Links */
 a {
-  color: var(--primary-color);
+  color: var(--text-color);
   transition: color 0.2s ease-in-out;
 }
 
@@ -101,7 +101,7 @@ button:hover {
 
 /* Liens de navigation */
 .nav-link {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -115,7 +115,7 @@ button:hover {
 
 /* Effet hover */
 .nav-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   opacity: 0.8;
 }
 
@@ -411,9 +411,6 @@ button:hover {
 }
 
 /* 📌 FAQ Section */
-.faq-section {
-  padding: 6rem 0rem;
-}
 
 .faq-container {
   margin: auto;
@@ -424,7 +421,7 @@ button:hover {
 .faq-item {
   background: rgba(255, 255, 255, 0.1);
   transition: 100ms ease-in-out;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: var(--text-color);
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.177);
@@ -481,11 +478,6 @@ button:hover {
 }
 
 /* 🌍 Blog Section */
-.blog-section {
-  background-color: var(--background-color);
-  padding: theme('spacing.20');
-}
-
 .blog-section h2 {
   font-size: 2rem;
   text-align: center;
@@ -519,10 +511,11 @@ button:hover {
   cursor: pointer;
   max-width: 95%; /* Permet de s'adapter si nécessaire */
   height: 400px;
-  border: 2px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.136);
   border-radius: 8px;
   justify-content: space-between;
   padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .blog-card h3 {
@@ -561,6 +554,7 @@ button:hover {
   font-size: 0.8rem;
   color: black;
   margin-top: 5px;
+  text-align: left;
 }
 
 .blog-card-button {
@@ -666,6 +660,13 @@ button:hover {
 
   /* 📱 Navbar Mobile */
 
+  h2 {
+  font-size: theme('fontSize.2xl');
+  font-weight: 400;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
   .navbar-desktop {
     display: none;
   }
@@ -725,6 +726,10 @@ button:hover {
   padding: 0rem 2rem;
 }
 
+.header-cta {
+  width: 100%;
+}
+
 .section-personnalisation {
   padding: 0;
 }
@@ -732,6 +737,10 @@ button:hover {
   .categories-grid {
     grid-template-columns: repeat(1, 1fr); /* ✅ Toujours 2 colonnes */
     gap: 0px;
+  }
+
+  .faq-answer {
+    text-align: left;
   }
 
   .category-card {
@@ -750,10 +759,6 @@ button:hover {
     .gallery-image-wrapper {
       padding-bottom: 20px;
       width: 100%;
-    }
-
-    .blog-section {
-      padding: 80px 20px;
     }
 
     .blog-slider .slick-slide {

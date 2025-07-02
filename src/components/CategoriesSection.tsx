@@ -14,8 +14,8 @@ export default function Categories() {
 
   return (
     <section id="catégories" className="categories-section text-center">
-                        <div className="badge badge-sm mb-2 rounded-2xl"><i className="fa fa-layer-group"></i>Catégories</div>
-      <h1 className="font-light mb-8">Catégories</h1>
+                        <div className="badge badge-sm mb-4 rounded-2xl"><i className="fa fa-layer-group"></i>Catégories</div>
+      <h2 className="font-light mb-8">Si vous avez un véhicule, nous avons la plaque.</h2>
       <div className="categories-grid">
         <AnimatePresence>
           {displayedCategories.map((category) => (

@@ -63,11 +63,11 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="blog" className="blog-section text-center">
+    <section id="blog" className="blog-section text-center mb-20">
       <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
-      <h3>Des trucs et d'autres</h3>
+      <h2>Des trucs et d'autres</h2>
       <div className="mx-auto">
         <div className="flex-column justify-center items-center mb-10 text-center">
           <Link href="/blog" className="blog-see-more">

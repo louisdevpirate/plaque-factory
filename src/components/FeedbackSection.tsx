@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 export default function FeedbackSection() {
   const reviews = [
@@ -23,12 +22,12 @@ export default function FeedbackSection() {
   ];
 
   return (
-    <section className="w-full bg-white pt-24 pb-40 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
                  <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-star"></i>Avis
       </div>
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+        <h2 className="">
           Ce que disent nos clients
         </h2>
         <p className="text-gray-600 mb-12">

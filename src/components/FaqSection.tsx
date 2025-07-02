@@ -18,8 +18,8 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="faq-section relative bg-[url('/images/bg/bg.png')] bg-fixed bg-cover">      
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-20 items-start">
+    <section id="faq" className="faq-section relative bg-[url('/images/bg/bg.png')] bg-fixed bg-cover py-20">      
+      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-start px-4">
         <div className="w-full md:w-1/2 h-full">
           <div className="relative h-full z-40">
             <Image
@@ -31,9 +31,9 @@ export default function FaqSection() {
             />
           </div>
         </div>
-        <div className="w-full md:w-1/2 h-fit z-40">
+        <div className="w-full md:w-1/2 h-fit z-40 text-center px-2">
         <div className="badge badge-sm mb-4 rounded-2xl"><i className="fa fa-question-circle"></i>FAQ</div>
-        <h2 className="font-extralight text-6xl mb-8 text-left">Questions fréquemment posées</h2>
+        <h2 className="font-extralight mb-8 text-center">Questions fréquemment posées</h2>
           <div className="faq-list h-fit">
             {theme.faq.items.map((item, index) => (
               <div
@@ -45,7 +45,7 @@ export default function FaqSection() {
                 {/* Question */}
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="faq-question"
+                  className="faq-question px-4 gap-5"
                 >
                   <span>{item.question}</span>
                   <span className="faq-toggle">

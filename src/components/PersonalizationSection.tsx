@@ -6,8 +6,8 @@ export default function PersonalizationSection() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
-    <section id="personnalisation" className="section-personnalisation bg-white text-center py-8">
-      <div className="personnalisation-container max-w-7xl m-auto"><a
+    <section id="personnalisation" className="section-personnalisation bg-white text-center">
+      <div className="personnalisation-container max-w-7xl m-auto px-4"><a
           href="https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6"
           target="_blank"
           rel="noopener noreferrer"
