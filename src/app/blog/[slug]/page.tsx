@@ -42,7 +42,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
   return (
     <div>
-      <Navbar forceScrolled={true} />
+      <Navbar />
       <main className="bg-gray-50 py-10 md:py-32">
         <div className="max-w-3xl mx-auto px-4 py-10 md:py-10">
           <section className="mb-20">

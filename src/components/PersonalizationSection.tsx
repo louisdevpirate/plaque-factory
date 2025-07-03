@@ -13,7 +13,7 @@ export default function PersonalizationSection() {
           rel="noopener noreferrer"
           className="module-btn"
         >
-                  <div className="badge badge-sm mb-2 rounded-2xl"><i className="fa fa-magic"></i>Personnalisation</div>
+                  <div className="badge badge-sm mb-6 rounded-2xl"><i className="fa fa-magic"></i>Personnalisation</div>
 
         </a>
         <h2>Personnalise ta plaque à ton image !</h2>
@@ -21,7 +21,7 @@ export default function PersonalizationSection() {
         {/* Loader pendant le chargement de l'iframe */}
         {!iframeLoaded && (
           <div className="iframe-loader flex justify-center items-center ">
-            <span className="loading loading-dots text-6xl text-white"></span>
+            <span className="loading loading-dots text-9xl text-black"></span>
           </div>
         )}
 

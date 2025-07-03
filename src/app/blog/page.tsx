@@ -22,7 +22,7 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <Navbar forceScrolled={true} />
+      <Navbar />
 
       <main className="bg-white pb-20">
         <div className="blog-grid mx-auto px-2 py-2">

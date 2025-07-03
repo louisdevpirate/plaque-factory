@@ -2,7 +2,7 @@ import React from "react";
 
 export default function VideoSection() {
   return (
-    <section className="max-w-5xl mx-auto px-4 py-16 text-center">
+    <section className="mx-auto px-4 py-16 text-center bg-white w-full">
       <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-play"></i>Vidéo
       </div>

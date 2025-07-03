@@ -6,7 +6,7 @@ export interface CategoryItem {
     description: string;
     sizes: string;
     link: string;
-    icon?: string;
+    image?: string;
   }
   
   export interface ThemeConfig {

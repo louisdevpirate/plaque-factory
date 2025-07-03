@@ -18,7 +18,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="faq-section relative bg-[url('/images/bg/bg.png')] bg-fixed bg-cover py-20">      
+    <section id="faq" className="faq-section relative bg-[url('/images/bg/bg.png')] bg-cover py-20 shadow-[inset_0_20px_15px_-30px_rgba(0,0,0,0.5)]">      
       <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-start px-4">
         <div className="w-full md:w-1/2 h-full">
           <div className="relative h-full z-40">

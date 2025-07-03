@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import "slick-carousel/slick/slick.css";
@@ -63,15 +62,19 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="blog" className="blog-section text-center mb-20">
-      <div className="badge badge-sm mb-2 rounded-2xl">
+    <section id="blog" className="blog-section text-center bg-white pb-40">
+      <div className="badge badge-sm mb-6 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
       <h2>Des trucs et d'autres</h2>
       <div className="mx-auto">
-        <div className="flex-column justify-center items-center mb-10 text-center">
-          <Link href="/blog" className="blog-see-more">
-            Voir plus →
+        <div className="flex flex-col items-center justify-center mb-10 text-center">
+          <Link
+            href="/blog"
+            role="button"
+            className="bg-white border border-black text-black hover:bg-white hover:text-black transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
+          >
+            Voir tous les articles <i className="fa fa-arrow-right -rotate-45"></i>
           </Link>
         </div>
 

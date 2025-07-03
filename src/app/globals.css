@@ -312,9 +312,6 @@ button:hover {
 }
 
 /* 📌 Categories */
-.categories-section {
-  padding: theme('spacing.20') 0;
-}
 
 .categories-section h2 {
   margin-bottom: 2rem;
@@ -731,6 +728,11 @@ button:hover {
 }
 
 .section-personnalisation {
+  padding: 2rem 0rem 20rem 0rem;
+  margin-bottom: 0;
+}
+
+.iframe-content.loaded {
   padding: 0;
 }
 

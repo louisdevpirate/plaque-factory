@@ -5,7 +5,6 @@ import { useTheme } from "@/hooks/useTheme";
 import HeaderSection from "../components/HeaderSection";
 import Navbar from "../components/Navbar";
 import PersonalizationSection from "../components/PersonalizationSection";
-import GallerySection from "../components/GallerySection";
 import CategoriesSection from "../components/CategoriesSection";
 import FaqSection from "../components/FaqSection";
 import Footer from "../components/Footer";
@@ -14,6 +13,7 @@ import Head from "next/head";
 import FeedbackSection from "../components/FeedbackSection";
 import AboutSection from "../components/AboutSection";
 import VideoSection from "../components/VideoSection";
+
 
 
 export default function HomePage() {

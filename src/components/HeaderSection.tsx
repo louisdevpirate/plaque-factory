@@ -33,7 +33,7 @@ export default function HeaderSection() {
       ></link>
 
       <header className="relative px-4 pt-24 pb-12 sm:py-40 flex-col items-center bg-white bg-cover bg-center">
-        <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between w-2/3 max-w-7xl mx-auto min-w-80">
+        <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
           <div className="text-left sm:w-1/2 space-y-4">
             <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-sm sm:bg-white w-fit bg-white/80 backdrop-blur-sm">
               <Image
@@ -119,7 +119,7 @@ export default function HeaderSection() {
               alt="Illustration FAQ"
               width={600}
               height={600}
-              className="object-cover rounded-3xl floating w-[80%] max-h-[180px] sm:w-full sm:max-h-none"
+              className="object-cover rounded-3xl floating max-w-[600px] max-h-[180px] sm:w-full sm:max-h-none"
             />
           </div>
         </div>

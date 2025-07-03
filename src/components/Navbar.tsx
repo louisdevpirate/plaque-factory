@@ -95,7 +95,7 @@ export default function Navbar() {
 
       {/* 🌍 Mobile Slide Menu */}
       <div
-        className={`fixed inset-0 z-50 bg-white/70 backdrop-blur-md flex flex-col items-center px-8 justify-center space-y-8 text-2xl font-semibold transform transition-transform duration-300 ${
+        className={`fixed inset-0 z-50 bg-white/80 backdrop-blur-md flex flex-col items-center px-8 justify-center space-y-8 text-2xl font-semibold transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -134,6 +134,13 @@ export default function Navbar() {
             className="text-3xl font-light"
           >
             FAQ
+          </Link>
+          <Link
+            href="/blog"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-3xl font-light"
+          >
+            Blog
           </Link>
         </div>
 

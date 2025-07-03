@@ -1,9 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 export default function AboutSection() {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
-    <section id="about" className="py-8 px-4">
+    <section id="about" className="pt-20 px-4 bg-white" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-10">
         {/* Texte gauche */}
         <div className="max-w-lg">
@@ -33,25 +37,25 @@ export default function AboutSection() {
           <div className="grid grid-cols-2 gap-6 py-10">
             <div className="flex flex-col">
               <span className="text-3xl md:text-4xl font-bold">
-                8+
+                <CountUp end={inView ? 8 : 0} duration={2} suffix="+" />
               </span>
               <span className="mt-1">Années d'expérience</span>
             </div>
             <div className="flex flex-col">
               <span className="text-3xl md:text-4xl font-bold">
-                12K+
+                <CountUp end={inView ? 100000 : 0} duration={2} suffix="+" separator="," />
               </span>
               <span className="mt-1">Plaques vendues</span>
             </div>
             <div className="flex flex-col">
               <span className="text-3xl md:text-4xl font-bold">
-                99%
+                <CountUp end={inView ? 99 : 0} duration={2} suffix="%" />
               </span>
               <span className="mt-1">Avis positifs</span>
             </div>
             <div className="flex flex-col">
               <span className="text-3xl md:text-4xl font-bold">
-                10K+
+                <CountUp end={inView ? 75000 : 0} duration={2} suffix="+" separator="," />
               </span>
               <span className="mt-1">Clients satisfaits</span>
             </div>
@@ -59,13 +63,13 @@ export default function AboutSection() {
         </div>
 
         {/* Photo droite */}
-        <div className="overflow-hidden w-full h-full max-w-md">
+        <div className="overflow-hidden w-full max-w-md flex items-end self-end">
           <Image
             src="/images/authors/fabien.png"
             alt="Fabien"
             width={400}
             height={400}
-            className="object-cover"
+            className="object-cover w-full"
           />
         </div>
       </div>
