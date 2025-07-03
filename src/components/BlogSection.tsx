@@ -63,7 +63,7 @@ export default function BlogSection() {
 
   return (
     <section id="blog" className="blog-section text-center bg-white pb-40">
-      <div className="badge badge-sm mb-6 rounded-2xl">
+      <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
       <h2>Des trucs et d'autres</h2>
@@ -72,9 +72,12 @@ export default function BlogSection() {
           <Link
             href="/blog"
             role="button"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white border border-black text-black hover:bg-white hover:text-black transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
           >
-            Voir tous les articles <i className="fa fa-arrow-right -rotate-45"></i>
+            Voir tous les articles{" "}
+            <i className="fa fa-arrow-right -rotate-45"></i>
           </Link>
         </div>
 

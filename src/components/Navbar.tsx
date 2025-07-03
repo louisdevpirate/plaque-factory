@@ -33,16 +33,16 @@ export default function Navbar() {
             </Link>
           </div>
           <nav className="flex-1 flex justify-center gap-14">
-            <Link href="#galerie" className="nav-link flex items-center">
-              Galerie
+            <Link href="/" className="nav-link flex items-center">
+              Accueil
             </Link>
-            <Link href="#catégories" className="nav-link flex items-center">
+            <Link href="/#catégories" className="nav-link flex items-center">
               Catégories
             </Link>
-            <Link href="#faq" className="nav-link flex items-center">
+            <Link href="/#faq" className="nav-link flex items-center">
               FAQ
             </Link>
-            <Link href="#blog" className="nav-link flex items-center">
+            <Link href="/blog" className="nav-link flex items-center">
               Blog
             </Link>
           </nav>

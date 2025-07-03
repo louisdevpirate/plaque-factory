@@ -3,6 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FC } from "react"
+import { FaArrowRight } from "react-icons/fa";
+
 
 type Article = {
   id: string;
@@ -47,16 +49,13 @@ const BlogCard: FC<Props> = ({ article }) => {
           </p>
         </div>
       </Link>
-      <div className="px-4 pb-4 mt-auto">
+      <div className="mt-auto">
         <Link
           href={`/blog/${article.slug}`}
-          className="group/button inline-block w-full text-center px-4 py-2 text-sm font-medium text-white bg-black rounded"
+          className="group/button inline-block w-full text-center px-4 py-2 text-sm font-medium text-white"
         >
-          <span className="inline-flex items-center justify-center gap-1 text-white transition-all duration-300 group-hover:scale-105">
-            Lire
-            <span className="transform translate-x-1 opacity-0 transition-all duration-300 group-hover/button:translate-x-2 group-hover/button:opacity-100">
-                <i className="fas fa-eye"></i>
-            </span>
+          <span className="flex items-center gap-1 text-black transition-all duration-300 hover:text-gray-500">
+            En Savoir Plus   <FaArrowRight />
           </span>
         </Link>
       </div>
