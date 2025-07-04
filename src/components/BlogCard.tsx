@@ -27,12 +27,12 @@ const BlogCard: FC<Props> = ({ article }) => {
   return (
     <div className="blog-card group flex flex-col justify-between h-[460px] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border">
       <Link href={`/blog/${article.slug}`} className="flex-grow block h-full">
-        <div className="relative w-full h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden mt-4 mr-4 ml-4 rounded-md">
           <Image
             src={article.image}
             alt={article.title}
             fill
-            className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 rounded-md"
           />
         </div>
         <div className="p-4 flex flex-col flex-grow">

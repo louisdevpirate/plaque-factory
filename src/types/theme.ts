@@ -117,39 +117,7 @@ export interface CategoryItem {
         gradient: string;
       };
     };
-  
-    gallery: {
-      images: {
-        sources: Array<{
-          path: string;
-          alt: string;
-        }>;
-        settings: {
-          height: string;
-          width: string;
-          objectFit: 'contain' | 'cover';
-        };
-      };
-      carousel: {
-        speed: number;
-        slidesToShow: number;
-        spacing: string;
-        autoplay: boolean;
-        autoplaySpeed: number;
-        pauseOnHover: boolean;
-        cssEase: string;
-      };
-      layout: {
-        background: string;
-        padding: string;
-        title: {
-          text: string;
-          color: string;
-          fontSize: string;
-        };
-      };
-    };
-  
+    
     categories: {
       items: CategoryItem[];
       layout: {

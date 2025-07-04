@@ -37,7 +37,7 @@ export default function HeaderSection() {
           <div className="text-left sm:w-1/2 space-y-4">
             <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-sm sm:bg-white w-fit bg-white/80 backdrop-blur-sm">
               <Image
-                src="/images/icons/france-flag.png"
+                src="/images/icons/france-flag.webp"
                 alt="fabrication plaques françaises"
                 width={16}
                 height={16}
@@ -72,9 +72,10 @@ export default function HeaderSection() {
                 {[...Array(5)].map((_, i) => (
                   <Image
                     key={i}
-                    src="/images/trust.png"
+                    src="/images/trust.webp"
                     alt="Trustpilot star"
                     className="hover:scale-105 w-3 h-3 sm:w-6 sm:h-6"
+                    loading="lazy"
                     width={24}
                     height={24}
                   />
@@ -115,9 +116,11 @@ export default function HeaderSection() {
           >
             <div className="absolute w-4/5 h-4/5 rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
             <Image
-              src="/images/header.png"
+              src="/images/header.webp"
               alt="Illustration FAQ"
-              width={600}
+              loading="lazy"
+              quality={100}
+              width={1000}
               height={600}
               className="object-cover rounded-3xl floating max-w-[600px] max-h-[180px] sm:w-full sm:max-h-none"
             />

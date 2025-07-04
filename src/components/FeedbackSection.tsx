@@ -4,6 +4,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import Image from "next/image";
 
 export default function FeedbackSection() {
   const reviews = [
@@ -26,15 +27,15 @@ export default function FeedbackSection() {
   ];
 
   return (
-    <section className="w-full bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-[url('/images/bg/bg2.png')] bg-cover">
+    <section className="w-full bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
         <div className="badge badge-sm mb-2 rounded-2xl border-white/10">
           <i className="fa fa-star"></i>Avis
         </div>
-        <h2 className="text-white">
+        <h2 className="">
           Ce que disent nos clients
         </h2>
-        <p className="text-white mb-6">
+        <p className="mb-6">
           Découvrez les avis de nos clients satisfaits, qui ont choisi La Bonne Plaque <br />pour la qualité, la rapidité et le style.
         </p>
       </div>
@@ -57,7 +58,7 @@ export default function FeedbackSection() {
               <div className="flex items-center mb-4">
                 <div className="avatar">
                   <div className="w-12 rounded-full ring ring-gray-200 ring-offset-2">
-                    <img src={review.imgSrc} alt={review.author} />
+                    <Image src={review.imgSrc} alt={review.author} width={100} height={100}/>
                   </div>
                 </div>
                 <div className="text-left ml-3">

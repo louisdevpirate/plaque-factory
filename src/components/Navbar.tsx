@@ -1,10 +1,5 @@
 "use client";
 import {
-  Home,
-  Image as GalleryIcon,
-  HelpCircle,
-  Wrench,
-  PictureInPicture,
   X,
 } from "lucide-react";
 import Link from "next/link";
@@ -28,6 +23,7 @@ export default function Navbar() {
                 alt={theme.global.branding.logo.alt}
                 width={150}
                 height={100}
+                loading="lazy"
                 className="transition-transform duration-300 hover:scale-105"
               />
             </Link>
