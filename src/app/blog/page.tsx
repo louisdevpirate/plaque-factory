@@ -81,13 +81,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </div>
 
             {/* ARTICLES */}
-            <section className="flex flex-col gap-6 max-w-6xl w-full">
+            <section className="flex flex-col max-w-6xl w-full">
               {Array.from({ length: Math.ceil(visibleCount / 7) }).map(
                 (_, index) => {
                   const startIndex = index * 7;
                   const slice = otherArticles.slice(startIndex, startIndex + 7);
                   return (
-                    <div key={index} className="flex flex-col gap-6">
+                    <div key={index} className="flex flex-col">
                       <div className="grid grid-cols-1 sm:grid-cols-2">
                         {slice.slice(0, 2).map((article) => (
                           <BlogCard key={article.id} article={article} />

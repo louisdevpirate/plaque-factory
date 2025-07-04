@@ -1,6 +1,6 @@
 "use client";
 import { useTheme } from "@/hooks/useTheme";
-import { motion, AnimatePresence } from "framer-motion"; // ✅ Pour l'animation
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { CategoryItem } from "@/types/theme";
 
@@ -11,7 +11,7 @@ export default function Categories() {
   return (
     <section
       id="catégories"
-      className="relative py-20 flex flex-col items-center bg-[url('/images/bg/bg4.png')] bg-cover border-t border-b"
+      className="relative py-20 flex flex-col items-center bg-[url('/images/bg/bg5.webp')] bg-cover border-t border-b"
     >
       <div className="badge badge-sm mb-4 rounded-2xl">
         <i className="fa fa-layer-group"></i> Catégories
@@ -20,7 +20,7 @@ export default function Categories() {
         Si vous avez un véhicule, nous avons la plaque.
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 z-10">
         <AnimatePresence>
           {categories.map((category, index) => (
             <motion.div
@@ -30,9 +30,7 @@ export default function Categories() {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className={`relative rounded-xl overflow-hidden group shadow-md ${
-                index === 0 || index === 5 || index === 6
-                  ? "md:col-span-2 lg:col-span-2"
-                  : "col-span-1"
+                index === 0 ? "md:col-span-2" : "col-span-1"
               }`}
             >
               <Image
@@ -54,9 +52,6 @@ export default function Categories() {
           ))}
         </AnimatePresence>
       </div>
-
-      {/* Ajout de l'ombre blanche de transition */}
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-white to-white pointer-events-none z-0" />
     </section>
   );
 }

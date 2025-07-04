@@ -14,15 +14,13 @@ import FeedbackSection from "../components/FeedbackSection";
 import AboutSection from "../components/AboutSection";
 import VideoSection from "../components/VideoSection";
 
-
-
 export default function HomePage() {
   const theme = useTheme();
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "La Bonne Plaque",
+    name: "LABONNEPLAQUE.fr",
     url: "https://www.labonneplaque.fr",
     logo: "https://www.labonneplaque.fr/logo.png",
   };
@@ -44,10 +42,10 @@ export default function HomePage() {
         <HeaderSection />
         <PersonalizationSection />
         <FeedbackSection />
-        <AboutSection />
         <CategoriesSection />
-        <VideoSection />
+        <AboutSection />
         <FaqSection />
+        <VideoSection />
         <BlogSection />
         <Footer />
       </main>

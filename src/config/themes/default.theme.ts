@@ -108,52 +108,6 @@ export const defaultTheme: ThemeConfig = {
     },
   },
 
-  gallery: {
-    images: {
-      sources: [
-        {
-          path: "/images/carousel/plaque1.png",
-          alt: "Plaque d'immatriculation personnalisée modèle 1",
-        },
-        {
-          path: "/images/carousel/Plaque_Marine_2.png",
-          alt: "Plaque d'immatriculation marine modèle 2",
-        },
-        {
-          path: "/images/carousel/Plaque_Marine_3.png",
-          alt: "Plaque d'immatriculation marine modèle 3",
-        },
-        {
-          path: "/images/carousel/Plaque_Marine_4.png",
-          alt: "Plaque d'immatriculation marine modèle 4",
-        },
-      ],
-      settings: {
-        height: "300px",
-        width: "300px",
-        objectFit: "contain",
-      },
-    },
-    carousel: {
-      speed: 20000,
-      slidesToShow: 3,
-      spacing: "30px",
-      autoplay: true,
-      autoplaySpeed: 0,
-      pauseOnHover: false,
-      cssEase: "linear",
-    },
-    layout: {
-      background: "transparent",
-      padding: "5rem 0",
-      title: {
-        text: "FAQ", // ou ce que tu veux
-        color: "#000000",
-        fontSize: "1.875rem",
-      },
-    },
-  },
-
   categories: {
     items: [
       {
@@ -163,7 +117,7 @@ export const defaultTheme: ThemeConfig = {
           "Homologué pour voitures particulières et véhicules légers",
         sizes: "52x11",
         link: "#",
-        image: "car.jpg",
+        image: "car.webp",
       },
 
       {
@@ -173,7 +127,7 @@ export const defaultTheme: ThemeConfig = {
           "Idéal pour les véhicules importés et style US authentique",
         sizes: "30x15",
         link: "#",
-        image: "us.jpg",
+        image: "us.webp",
       },
 
       {
@@ -182,7 +136,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Adapté aux SUV, pick-up et véhicules de loisirs",
         sizes: "27,5x20",
         link: "#",
-        image: "suv.jpg",
+        image: "suv.webp",
       },
       {
         id: 5,
@@ -190,7 +144,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Parfait pour les motos légères et scooters",
         sizes: "17x13",
         link: "#",
-        image: "little-bike.jpg",
+        image: "little-bike.webp",
       },
       {
         id: 2,
@@ -198,7 +152,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Homologué pour les deux-roues motorisés",
         sizes: "21x13",
         link: "#",
-        image: "moto.jpg",
+        image: "moto.webp",
       },
       {
         id: 6,
@@ -206,7 +160,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Spécifique pour les mobylettes et cyclomoteurs",
         sizes: "14x12",
         link: "#",
-        image: "vespa.jpg",
+        image: "vespa.webp",
       },
       {
         id: 7,
@@ -214,7 +168,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Conçu pour les motos d'enduro et tout-terrain",
         sizes: "10x10",
         link: "#",
-        image: "motocross.jpg",
+        image: "motocross.webp",
       },
       {
         id: 8,
@@ -222,7 +176,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Dédié aux véhicules de collection et anciennes",
         sizes: "45x10",
         link: "#",
-        image: "collection.jpg",
+        image: "collection.webp",
       },
       {
         id: 9,
@@ -230,7 +184,7 @@ export const defaultTheme: ThemeConfig = {
         description: "Spécial pour motos anciennes et classiques",
         sizes: "27,5x7,5",
         link: "#",
-        image: "old-moto.jpg",
+        image: "old-moto.webp",
       },
     ],
     layout: {

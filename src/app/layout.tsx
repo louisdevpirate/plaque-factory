@@ -28,8 +28,8 @@ export default function RootLayout({
           content="V6KAzX4v_RTEpEchSzE0YyWi0pbjg5gfygwwZLhaqrU"
         />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="La Bonne Plaque" />
-        <meta name="publisher" content="La Bonne Plaque" />
+        <meta name="author" content="LABONNEPLAQUE.fr" />
+        <meta name="publisher" content="LABONNEPLAQUE.fr" />
         <meta
           name="keywords"
           content="plaque d'immatriculation, plaque personnalisée, plaque auto, plaque moto, plaque plexiglass, plaque homologuée"

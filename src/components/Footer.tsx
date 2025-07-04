@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gray-900 bg-[url('/images/bg/bg3.png')] bg-cover">
-      <div className="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-black opacity-70 pointer-events-none"></div>
       <div className="relative max-w-7xl mx-auto px-4 py-10">
         <div className="flex flex-col md:flex-row justify-evenly items-start text-left gap-8 w-full px-4 md:px-0">
           {/* Logo Section */}

@@ -65,7 +65,7 @@ export default function AboutSection() {
         {/* Photo droite */}
         <div className="overflow-hidden w-full max-w-md flex items-end self-end">
           <Image
-            src="/images/authors/fabien.png"
+            src="/images/authors/fabien.webp"
             alt="Fabien"
             width={400}
             height={400}
