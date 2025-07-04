@@ -11,7 +11,7 @@ export default function VideoSection() {
         <span className="text-yellow-400 italic">savoir-faire</span> en action
       </h2>
       <p className="text-gray-600 max-w-xl mx-auto mb-10">
-        Plongez dans l'univers de La Bonne Plaque avec cette vidéo de présentation : fabrication, personnalisation et expédition rapide de vos plaques homologuées avec soin et précision.
+        Plongez dans l&apos;univers de La Bonne Plaque avec cette vidéo de présentation : fabrication, personnalisation et expédition rapide de vos plaques homologuées avec soin et précision.
       </p>
       <div className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 max-w-3xl mx-auto">
         <video

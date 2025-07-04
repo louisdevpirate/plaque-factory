@@ -57,7 +57,7 @@ export default function BlogSection() {
       <div className="badge badge-sm mb-2 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
-      <h2>Des trucs et d'autres</h2>
+      <h2>Des trucs et d&apos;autres</h2>
       <div className="mx-auto">
         <div className="flex flex-col items-center justify-center mb-10 text-center">
           <Link

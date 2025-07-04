@@ -47,7 +47,6 @@ export default function PersonalizationSection() {
           Inscris ton texte, et si tu veux pousser la personnalisation encore plus loin, <br />
           tu peux cliquer sur le bouton ci-dessous
         </span>
-        {/* Loader pendant le chargement de l'iframe */}
         {!iframeLoaded && (
           <div className="iframe-loader flex flex-col justify-center items-center gap-4 min-h-[60vh]">
             <div

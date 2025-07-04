@@ -21,9 +21,9 @@ export default function AboutSection() {
           </h2>
           <div className="flex flex-col">
             <p className="text-lg italic">
-              "Depuis plus de 8 ans, nous créons des plaques d’immatriculation de
+              "Depuis plus de 8 ans, nous créons des plaques d&apos;immatriculation de
               qualité, homologuées et personnalisées pour tous les passionnés
-              d'automobile. Votre véhicule mérite ce qu’il y a de mieux, livré
+              d&apos;automobile. Votre véhicule mérite ce qu&apos;il y a de mieux, livré
               rapidement, avec le souci du détail."
             </p>
             <Image
@@ -39,7 +39,7 @@ export default function AboutSection() {
               <span className="text-3xl md:text-4xl font-bold">
                 <CountUp end={inView ? 8 : 0} duration={2} suffix="+" />
               </span>
-              <span className="mt-1">Années d'expérience</span>
+              <span className="mt-1">Années d&apos;expérience</span>
             </div>
             <div className="flex flex-col">
               <span className="text-3xl md:text-4xl font-bold">

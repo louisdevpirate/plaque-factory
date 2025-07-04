@@ -4,6 +4,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import Image from "next/image";
 
 export default function FeedbackSection() {
   const reviews = [
@@ -57,7 +58,7 @@ export default function FeedbackSection() {
               <div className="flex items-center mb-4">
                 <div className="avatar">
                   <div className="w-12 rounded-full ring ring-gray-200 ring-offset-2">
-                    <img src={review.imgSrc} alt={review.author} />
+                    <Image src={review.imgSrc} alt={review.author} />
                   </div>
                 </div>
                 <div className="text-left ml-3">

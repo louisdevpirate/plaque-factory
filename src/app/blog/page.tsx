@@ -6,8 +6,6 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
 import { FaClock } from "react-icons/fa";
-import BlogSearch from "@/components/BlogSearch";
-
 
 export const dynamic = "force-dynamic";
 
