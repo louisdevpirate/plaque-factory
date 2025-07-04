@@ -10,7 +10,7 @@ export default function PersonalizationSection() {
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (!iframeLoaded) {
-      let start = Date.now();
+      const start = Date.now();
       interval = setInterval(() => {
         const elapsed = Date.now() - start;
         const percentage = Math.min((elapsed / 5000) * 100, 100);

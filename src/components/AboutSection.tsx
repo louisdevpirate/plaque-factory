@@ -21,10 +21,10 @@ export default function AboutSection() {
           </h2>
           <div className="flex flex-col">
             <p className="text-lg italic">
-              "Depuis plus de 8 ans, nous créons des plaques d&apos;immatriculation de
+              &quot;"Depuis plus de 8 ans, nous créons des plaques d&apos;immatriculation de
               qualité, homologuées et personnalisées pour tous les passionnés
               d&apos;automobile. Votre véhicule mérite ce qu&apos;il y a de mieux, livré
-              rapidement, avec le souci du détail."
+              rapidement, avec le souci du détail.&quot;"
             </p>
             <Image
               src="/images/authors/signature.png"

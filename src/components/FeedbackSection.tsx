@@ -58,7 +58,7 @@ export default function FeedbackSection() {
               <div className="flex items-center mb-4">
                 <div className="avatar">
                   <div className="w-12 rounded-full ring ring-gray-200 ring-offset-2">
-                    <Image src={review.imgSrc} alt={review.author} />
+                    <Image src={review.imgSrc} alt={review.author} width={100} height={100}/>
                   </div>
                 </div>
                 <div className="text-left ml-3">
