@@ -38,8 +38,7 @@ export default function Navbar() {
             <Link href="/#faq" className="nav-link flex items-center">
               FAQ
             </Link>
-            <Link href="/blog" role="button"
-            target="_blank" className="nav-link flex items-center">
+            <Link href="/blog" className="nav-link flex items-center">
               Blog
             </Link>
           </nav>

@@ -3,13 +3,13 @@ import HomePage from '@/components/HomePage'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "La Bonne Plaque - Plaques d’immatriculation personnalisées",
+    title: "LABONNEPLAQUE.fr - Plaques d’immatriculation personnalisées",
     description: "Commandez des plaques personnalisées, homologuées et livrées rapidement. Créez votre plaque en ligne dès maintenant.",
     alternates: {
       canonical: "https://www.labonneplaque.fr/",
     },
     openGraph: {
-      title: "La Bonne Plaque - Plaques personnalisées et homologuées",
+      title: "LABONNEPLAQUE.fr - Plaques personnalisées et homologuées",
       description: "Créez votre plaque d'immatriculation personnalisée avec notre module en ligne.",
       url: "https://www.labonneplaque.fr/",
       siteName: "La Bonne Plaque",
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "La Bonne Plaque",
+      title: "LABONNEPLAQUE.fr",
       description: "Créez votre plaque personnalisée dès maintenant",
       images: ["https://www.labonneplaque.fr/favicon.png"],
     },

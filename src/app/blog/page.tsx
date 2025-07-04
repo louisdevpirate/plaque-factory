@@ -5,6 +5,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
+import { FaClock } from "react-icons/fa";
+import BlogSearch from "@/components/BlogSearch";
+
 
 export const dynamic = "force-dynamic";
 
@@ -51,10 +54,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 blurDataURL="/images/placeholder.png"
               />
               <div className="absolute bottom-0 left-0 w-full text-white p-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-left max-w-5xl">
+                <div className="badge badge-sm mb-4 rounded-2xl border border-white/30">
+                  <FaClock /> À la une
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-left max-w-5xl bg-black/50">
                   {latestArticle.title}
                 </h2>
-                <p className="mt-3 text-lg max-w-4xl">
+                <p className="mt-3 text-lg max-w-4xl bg-black/50">
                   {latestArticle.description}
                 </p>
               </div>
@@ -88,17 +94,17 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   const slice = otherArticles.slice(startIndex, startIndex + 7);
                   return (
                     <div key={index} className="flex flex-col">
-                      <div className="grid grid-cols-1 sm:grid-cols-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {slice.slice(0, 2).map((article) => (
                           <BlogCard key={article.id} article={article} />
                         ))}
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {slice.slice(2, 5).map((article) => (
                           <BlogCard key={article.id} article={article} />
                         ))}
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {slice.slice(5, 7).map((article) => (
                           <BlogCard key={article.id} article={article} />
                         ))}

@@ -72,6 +72,22 @@ a:hover {
   color: theme("colors.blue.900");
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating-slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+.floating-medium {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-fast {
+  animation: float 2.5s ease-in-out infinite;
+}
 
 /* 📌 Buttons */
 button {
@@ -179,6 +195,7 @@ button:hover {
   color: black;
   font-size: 1rem;
   width: 230px;
+  max-width: 230px;
   height: 60px;
   font-weight: 500;
   gap: 10px;
@@ -268,7 +285,6 @@ button:hover {
 .iframe-wrapper {
   position: relative;
   width: 95%;
-  max-width: 1500px;
   margin: 0 auto;
   height: 700px;
   margin-bottom: 2rem;
@@ -715,15 +731,6 @@ button:hover {
 
   .header-cta {
     width: 100%;
-  }
-
-  .section-personnalisation {
-    padding: 2rem 0rem 20rem 0rem;
-    margin-bottom: 0;
-  }
-
-  .iframe-content.loaded {
-    padding: 0;
   }
 
   .categories-grid {
