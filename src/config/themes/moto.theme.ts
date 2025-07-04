@@ -106,39 +106,6 @@ export const motoTheme: ThemeConfig = {
     }
   },
 
-  gallery: {
-    images: {
-      sources: [
-        {
-          path: '/images/carousel/moto1.png',
-          alt: 'Plaque moto personnalisée 1'
-        }
-      ],
-      settings: {
-        height: '300px',
-        width: 'auto',
-        objectFit: 'contain'
-      }
-    },
-    carousel: {
-      speed: 8000,
-      slidesToShow: 2,
-      spacing: '10px',
-      autoplay: true,
-      autoplaySpeed: 0,
-      pauseOnHover: false,
-      cssEase: 'linear'
-    },
-    layout: {
-      background: 'transparent',
-      padding: '5rem 0',
-      title: {
-        text: 'Nos réalisations moto',
-        color: '#000000',
-        fontSize: '1.875rem'
-      }
-    }
-  },
   categories: {
     items: [
       {

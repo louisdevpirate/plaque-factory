@@ -9,11 +9,13 @@ import { FaClock } from "react-icons/fa";
 
 export const dynamic = "force-dynamic";
 
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
+interface BlogPageProps {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function BlogPage({ params, searchParams }: BlogPageProps) {
+  const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
   const articles = await getAllArticles();
   if (!articles || articles.length === 0)
@@ -26,7 +28,8 @@ export default async function BlogPage({
   const latestArticle = sortedArticles[0];
   const otherArticles = sortedArticles.slice(1);
 
-  const page = parseInt(resolvedSearchParams?.page || "1", 10);
+  const pageParam = resolvedSearchParams?.page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam ?? "1", 10);
   const visibleCount = page * 7;
 
   return (
