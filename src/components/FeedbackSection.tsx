@@ -71,7 +71,7 @@ export default function FeedbackSection() {
                 </div>
               </div>
               <p className="text-gray-600 text-sm line-clamp-5">
-                "{review.text}"
+                &ldquo;{review.text}&rdquo;
               </p>
             </div>
           </SwiperSlide>
