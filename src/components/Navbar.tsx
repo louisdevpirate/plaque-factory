@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/hooks/useTheme";
 import { useState } from "react";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function Navbar() {
   const theme = useTheme();
@@ -42,7 +43,13 @@ export default function Navbar() {
               Blog
             </Link>
           </nav>
-          <div className="shrink-0">
+          <div className="flex items-center gap-4 shrink-0">
+            <a href="https://www.instagram.com/plaqueimmat.fr/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
+            </a>
+            <a href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
+            </a>
             <a
               href="#personnalisation"
               className="relative overflow-hidden nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer group"
@@ -147,6 +154,14 @@ export default function Navbar() {
         >
           Je crée ma plaque{" "}
         </a>
+        <div className="flex gap-6 mt-4">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
+          </a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <FaFacebook className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
+          </a>
+        </div>
       </div>
     </>
   );

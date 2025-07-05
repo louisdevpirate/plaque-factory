@@ -63,7 +63,7 @@ export default function BlogSection() {
           <Link
             href="/blog"
             role="button"
-            className="bg-white border border-black text-black hover:bg-white hover:text-black transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
+            className="bg-white border border-black text-black hover:bg-black hover:text-white transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
           >
             Voir tous les articles{" "}
             <i className="fa fa-arrow-right -rotate-45"></i>

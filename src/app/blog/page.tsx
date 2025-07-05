@@ -17,6 +17,7 @@ interface BlogPageProps {
 export default async function BlogPage({ params, searchParams }: BlogPageProps) {
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
+
   const articles = await getAllArticles();
   if (!articles || articles.length === 0)
     return <p>Aucun article pour le moment.</p>;

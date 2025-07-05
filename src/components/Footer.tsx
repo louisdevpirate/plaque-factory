@@ -2,14 +2,16 @@
 import React, { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   const theme = useTheme();
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   return (
-    <footer className="relative bg-gray-900 bg-[url('/images/bg/bg3.png')] bg-cover">
-      <div className="absolute inset-0 bg-black opacity-70 pointer-events-none"></div>
+    <footer className="relative bg-gray-900 bg-[url('/images/bg/bg2.webp')] bg-cover bg-fixed bg-no-repeat">
+      <div className="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
       <div className="relative max-w-7xl mx-auto px-4 py-10">
         <div className="flex flex-col md:flex-row justify-evenly items-start text-left gap-8 w-full px-4 md:px-0">
           {/* Logo Section */}
@@ -24,6 +26,22 @@ export default function Footer() {
             <p style={{ color: theme.footer.styling.text.secondary }}>
               {theme.footer.sections.description}
             </p>
+            <div className="flex justify-start gap-4 pt-6">
+              <a
+                href="https://www.instagram.com/plaqueimmat.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="h-6 w-6 text-white hover:text-pink-500 transition" />
+              </a>
+              <a
+                href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook className="h-6 w-6 text-white hover:text-blue-600 transition" />
+              </a>
+            </div>
           </div>
 
           {/* Navigation Links */}

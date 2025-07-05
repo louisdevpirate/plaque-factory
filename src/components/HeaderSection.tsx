@@ -112,7 +112,7 @@ export default function HeaderSection() {
 
           <div
             ref={parallaxRef}
-            className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl sm:mt-0 flex justify-center"
+            className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl sm:mt-0 flex justify-center px-6"
           >
             <div className="absolute w-4/5 h-4/5 rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
             <Image
@@ -122,7 +122,7 @@ export default function HeaderSection() {
               quality={100}
               width={1000}
               height={600}
-              className="object-cover rounded-3xl floating max-w-[600px] max-h-[180px] sm:w-full sm:max-h-none"
+              className="rounded-3xl floating w-full h-auto max-w-[600px] sm:max-w-full sm:h-auto object-contain"
             />
           </div>
         </div>
