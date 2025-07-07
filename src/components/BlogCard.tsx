@@ -26,7 +26,11 @@ const BlogCard: FC<Props> = ({ article }) => {
   console.log("Nom de catégorie :", article.category?.name);
   return (
     <div className="blog-card group flex flex-col justify-between h-[460px] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border">
-      <Link href={`/blog/${article.slug}`} className="flex-grow block h-full">
+      <Link
+        href={`/blog/${article.slug}`}
+        title={`Lire l'article : ${article.title}`}
+        className="flex-grow block h-full"
+      >
         <div className="relative h-48 overflow-hidden mt-4 mr-4 ml-4 rounded-md">
           <Image
             src={article.image}
@@ -52,6 +56,7 @@ const BlogCard: FC<Props> = ({ article }) => {
       <div className="mt-auto">
         <Link
           href={`/blog/${article.slug}`}
+          title={`Lire l'article : ${article.title}`}
           className="group/button inline-block w-full text-center px-4 py-2 text-sm font-medium text-white"
         >
           <span className="flex items-center gap-1 text-black transition-all duration-300 hover:text-gray-500">

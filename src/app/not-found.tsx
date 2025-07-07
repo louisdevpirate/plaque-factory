@@ -22,6 +22,7 @@ export default function NotFound() {
 
       <Link
   href="/"
+  title="Retour à l'accueil"
   className="flex items-center justify-evenly px-4 md:px-20 py-4 border-2 border-black rounded-[10px] font-medium text-black text-[1.2rem] gap-[10px] transition-transform duration-200 ease-in-out hover:-translate-y-[5px] hover:-translate-x-[5px] hover:text-black hover:shadow-[5px_5px_0_rgb(0,0,0)]"
   style={{ background: "var(--accent-color)" }}
 >

@@ -49,7 +49,7 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/site.webmanifest" title="Manifest PWA de La Bonne Plaque" />
         {/* Google Analytics */}
         <script
           dangerouslySetInnerHTML={{

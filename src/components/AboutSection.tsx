@@ -7,20 +7,19 @@ export default function AboutSection() {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
-    <section id="about" className="pt-20 px-4 bg-white" ref={ref}>
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-10">
+    <section id="about" className="pt-10 md:pt-14 bg-white" ref={ref}>
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10">
         {/* Texte gauche */}
         <div className="max-w-lg">
-          <div className="badge badge-sm mb-8 rounded-2xl">
+          <div className="badge badge-sm mb-4 rounded-2xl">
             <i className="fa fa-house"></i>À propos
           </div>
           <h2 className="text-left">
             La Bonne Plaque,
-            <br />
-            votre <span className="italic text-yellow-300">expert</span> plaque.
+            <span className="block"> votre <span className="text-[#FFD713]">expert</span> en plaques qui roulent.</span>
           </h2>
           <div className="flex flex-col">
-            <p className="text-lg italic">
+            <p className="italic">
               Depuis plus de 8 ans, nous créons des plaques d&apos;immatriculation de
               qualité, homologuées et personnalisées pour tous les passionnés
               d&apos;automobile. Votre véhicule mérite ce qu&apos;il y a de mieux, livré
@@ -69,7 +68,7 @@ export default function AboutSection() {
             alt="Fabien"
             width={400}
             height={400}
-            className="object-cover w-full"
+            className=" w-full"
           />
         </div>
       </div>

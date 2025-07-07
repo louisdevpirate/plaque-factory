@@ -53,11 +53,12 @@ export default function BlogSection() {
   }, []);
 
   return (
-    <section id="blog" className="blog-section text-center bg-white pb-40">
-      <div className="badge badge-sm mb-2 rounded-2xl">
+    <section id="blog" className="blog-section md:text-center bg-white py-10 md:pb-20 md:pt-14">
+      <div className="badge badge-sm mb-4 rounded-2xl">
         <i className="fa fa-rss"></i>Blog
       </div>
-      <h2>Des trucs et d&apos;autres</h2>
+      <h2 className="text-left md:text-center">Le coin des <span className="text-[#FFD713]">passionnés</span></h2>
+      <p className="max-w-2xl mx-auto mb-12">Découvrez nos astuces, histoires insolites et conseils pratiques autour des plaques d’immatriculation et du monde automobile. <br />Bonne lecture et bonne route !</p> 
       <div className="mx-auto">
         <div className="flex flex-col items-center justify-center mb-10 text-center">
           <Link

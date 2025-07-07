@@ -1,12 +1,10 @@
 "use client";
-import {
-  X,
-} from "lucide-react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/hooks/useTheme";
 import { useState } from "react";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
 
 export default function Navbar() {
   const theme = useTheme();
@@ -15,10 +13,10 @@ export default function Navbar() {
   return (
     <>
       {/* 🌍 Navbar Desktop */}
-      <div className="hidden md:block fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-full bg-white/70 backdrop-blur">
+      <div className="hidden lg:block fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-full bg-white/70 backdrop-blur">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 pt-4 pb-4 transition-all duration-300">
-          <div className="shrink-0">
-            <Link href="/" className="z-50">
+          <div className="w-1/4">
+            <Link href="/" title="Retour à l'accueil" className="z-50">
               <Image
                 src={theme.global.branding.logo.path}
                 alt={theme.global.branding.logo.alt}
@@ -29,29 +27,50 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <nav className="flex-1 flex justify-center gap-14">
-            <Link href="/" className="nav-link flex items-center">
+          <nav className="flex-1 flex justify-center gap-14 w-2/4">
+            <Link href="/" title="Retour à l'accueil" className="nav-link flex items-center">
               Accueil
             </Link>
-            <Link href="/#catégories" className="nav-link flex items-center">
+            <Link href="/#catégories" title="Voir les catégories de plaques" className="nav-link flex items-center">
               Catégories
             </Link>
-            <Link href="/#faq" className="nav-link flex items-center">
+            <Link href="/#faq" title="Questions fréquentes" className="nav-link flex items-center">
               FAQ
             </Link>
-            <Link href="/blog" className="nav-link flex items-center">
+            <Link href="/blog" title="Lire le blog La Bonne Plaque" className="nav-link flex items-center">
               Blog
             </Link>
           </nav>
-          <div className="flex items-center gap-4 shrink-0">
-            <a href="https://www.instagram.com/plaqueimmat.fr/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
-            </a>
-            <a href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
-            </a>
+          <div className="flex items-center gap-4 w-1/4">
+            <div className="flex justify-start gap-4">
+              <a
+                href="https://www.instagram.com/plaqueimmat.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Suivez-nous sur Instagram"
+              >
+                <FaInstagram className="h-5 w-5 text-black hover:text-pink-500 transition" />
+              </a>
+              <a
+                href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Suivez-nous sur Facebook"
+              >
+                <FaFacebook className="h-5 w-5 text-black hover:text-blue-600 transition" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@plaqueimmat.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Suivez-nous sur TikTok"
+              >
+                <FaTiktok className="h-5 w-5 text-black hover:text-cyan-400 transition" />
+              </a>
+            </div>
             <a
               href="#personnalisation"
+              title="Créer ma plaque maintenant"
               className="relative overflow-hidden nav-cta text-black font-normal rounded-lg shadow-lg transition duration-300 inline-flex items-center cursor-pointer group"
             >
               <span className="absolute left-0 top-0 h-full w-0 bg-yellow-400 transition-all duration-500 ease-out group-hover:w-full"></span>
@@ -62,9 +81,9 @@ export default function Navbar() {
       </div>
 
       {/* 🌍 Navbar Mobile */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-50 bg-white/80 pt-2 backdrop-blur-sm">
+      <div className="lg:hidden fixed top-0 left-0 w-full z-50 bg-white/80 pt-2 backdrop-blur-sm">
         <div className="flex items-center justify-between px-4 h-14">
-          <Link href="/" className="flex items-center">
+          <Link href="/" title="Retour à l'accueil" className="flex items-center">
             <Image
               src={theme.global.branding.logo.path}
               alt={theme.global.branding.logo.alt}
@@ -112,6 +131,7 @@ export default function Navbar() {
         <div className="flex flex-col items-center gap-6 py-6">
           <Link
             href="/"
+            title="Retour à l'accueil"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
           >
@@ -119,6 +139,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="#catégories"
+            title="Voir les catégories de plaques"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
           >
@@ -126,6 +147,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="#about"
+            title="En savoir plus sur nous"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
           >
@@ -133,6 +155,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="#faq"
+            title="Questions fréquentes"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
           >
@@ -140,6 +163,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/blog"
+            title="Lire le blog La Bonne Plaque"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
           >
@@ -149,17 +173,36 @@ export default function Navbar() {
 
         <a
           href="#personnalisation"
+          title="Créer ma plaque maintenant"
           onClick={() => setIsMenuOpen(false)}
           className="header-cta bg-yellow-400 text-black font-normal px-6 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center"
         >
           Je crée ma plaque{" "}
         </a>
         <div className="flex gap-6 mt-4">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Suivez-nous sur Instagram"
+          >
             <FaInstagram className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Suivez-nous sur Facebook"
+          >
             <FaFacebook className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
+          </a>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Suivez-nous sur TikTok"
+          >
+            <FaTiktok className="h-6 w-6 text-gray-800 hover:text-cyan-400 transition" />
           </a>
         </div>
       </div>

@@ -2,27 +2,31 @@ import React from "react";
 
 export default function VideoSection() {
   return (
-    <section className="mx-auto px-4 py-16 text-center bg-white w-full">
-      <div className="badge badge-sm mb-2 rounded-2xl">
-        <i className="fa fa-play"></i>Vidéo
-      </div>
-      <h2 className="">
-        Découvrez notre<br />
-        <span className="text-yellow-400 italic">savoir-faire</span> en action
-      </h2>
-      <p className="text-gray-600 max-w-xl mx-auto mb-10">
-        Plongez dans l&apos;univers de La Bonne Plaque avec cette vidéo de présentation : fabrication, personnalisation et expédition rapide de vos plaques homologuées avec soin et précision.
-      </p>
-      <div className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 max-w-3xl mx-auto">
-        <video
-          src="/videos/ugc.mp4"
-          autoPlay
-          muted
-          loop
-          controls
-          playsInline
-          className="rounded-xl shadow-lg w-full max-w-4xl mx-auto"
-        ></video>
+    <section className="py-10 md:py-16 text-left bg-white w-full">
+      <div className="max-w-3xl mx-auto lg:flex flex-col justify-center">
+        <div className="badge badge-sm mb-4 rounded-2xl mx-auto">
+          <i className="fa fa-play"></i>Vidéo
+        </div>
+        <h2 className="text-left lg:text-center lg:max-w-lg mx-auto">
+          Découvrez notre
+          <span className="text-[#FFD713]"> savoir-faire</span> en action
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-left lg:text-center">
+          Chaque commande est préparée avec précision et
+          passion pour vous fabriquer une plaque d'immatriculation conforme, stylée et prête à
+          poser sans prise de tête.
+        </p>
+        <div className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 mx-auto">
+          <video
+            src="/videos/ugc.mp4"
+            autoPlay
+            muted
+            loop
+            controls
+            playsInline
+            className="rounded-xl shadow-lg w-full max-w-4xl mx-auto"
+          ></video>
+        </div>
       </div>
     </section>
   );

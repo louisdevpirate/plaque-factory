@@ -27,16 +27,16 @@ export default function FeedbackSection() {
   ];
 
   return (
-    <section className="w-full bg-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="badge badge-sm mb-2 rounded-2xl border-white/10">
+    <section className="w-full bg-white py-10 md:pt-14 md:pb-20 px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto lg:text-center">
+        <div className="badge badge-sm mb-4 rounded-2xl border-white/10">
           <i className="fa fa-star"></i>Avis
         </div>
-        <h2 className="">
-          Ce que disent nos clients
+        <h2 className="text-left lg:text-center">
+          Ce que <span className="text-[#FFD713] ">nos clients</span> en disent
         </h2>
-        <p className="mb-6">
-          Découvrez les avis de nos clients satisfaits, qui ont choisi La Bonne Plaque <br />pour la qualité, la rapidité et le style.
+        <p className="mb-8 md:mb-12">
+          Ils ont testé <span className="italic">La Bonne Plaque</span> et ils en parlent mieux que nous. <br />Qualité, rapidité...Découvrez leurs avis sans filtre !
         </p>
       </div>
 

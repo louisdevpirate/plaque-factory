@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   const theme = useTheme();
@@ -31,6 +30,7 @@ export default function Footer() {
                 href="https://www.instagram.com/plaqueimmat.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Suivez La Bonne Plaque sur Instagram"
               >
                 <FaInstagram className="h-6 w-6 text-white hover:text-pink-500 transition" />
               </a>
@@ -38,8 +38,17 @@ export default function Footer() {
                 href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Suivez La Bonne Plaque sur Facebook"
               >
                 <FaFacebook className="h-6 w-6 text-white hover:text-blue-600 transition" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@plaqueimmat.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Suivez La Bonne Plaque sur TikTok"
+              >
+                <FaTiktok className="h-6 w-6 text-white hover:text-cyan-400 transition" />
               </a>
             </div>
           </div>
@@ -66,6 +75,7 @@ export default function Footer() {
                     }}
                     onMouseEnter={() => setHoveredLink(item)}
                     onMouseLeave={() => setHoveredLink(null)}
+                    title={`Aller à la section ${item}`}
                   >
                     {item}
                   </a>
@@ -97,6 +107,7 @@ export default function Footer() {
                   }}
                   onMouseEnter={() => setHoveredLink("Mentions légales")}
                   onMouseLeave={() => setHoveredLink(null)}
+                  title="Lire les mentions légales"
                 >
                   Mentions légales
                 </a>
@@ -115,6 +126,7 @@ export default function Footer() {
                   }}
                   onMouseEnter={() => setHoveredLink("CGV")}
                   onMouseLeave={() => setHoveredLink(null)}
+                  title="Lire les conditions générales de vente"
                 >
                   CGV
                 </a>
@@ -135,6 +147,7 @@ export default function Footer() {
                     setHoveredLink("Politique de remboursement")
                   }
                   onMouseLeave={() => setHoveredLink(null)}
+                  title="Lire la politique de remboursement"
                 >
                   Politique de remboursement
                 </a>
@@ -153,6 +166,7 @@ export default function Footer() {
                   }}
                   onMouseEnter={() => setHoveredLink("Contact")}
                   onMouseLeave={() => setHoveredLink(null)}
+                  title="Nous contacter"
                 >
                   Contact
                 </a>

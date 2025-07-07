@@ -30,7 +30,7 @@
     "rerousel": "^0.1.9",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.10",
-    "vercel": "^41.6.1"
+    "vercel": "^44.2.12"
   },
   "devDependencies": {
     "@types/json-schema": "^7.0.15",

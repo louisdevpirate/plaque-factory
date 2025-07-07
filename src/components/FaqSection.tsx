@@ -20,9 +20,9 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="faq-section relative bg-[url('/images/bg/bg.png')] bg-cover py-20 border-t"
+      className="faq-section relative bg-[url('/images/bg/bg.png')] bg-cover py-10 md:py-14 border-t"
     >
-      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-start px-4">
+      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-center">
         <div className="w-full md:w-1/2 h-full">
           <div className="relative h-full z-40 flex justify-center">
             <Image
@@ -37,12 +37,12 @@ export default function FaqSection() {
             />
           </div>
         </div>
-        <div className="w-full md:w-1/2 h-fit z-40 text-center lg:text-left px-2">
+        <div className="w-full md:w-1/2 h-fit z-40 text-left">
           <div className="badge badge-sm mb-4 rounded-2xl">
             <i className="fa fa-question-circle"></i>FAQ
           </div>
-          <h2 className="font-extralight mb-8 text-center lg:text-left">
-            Questions fréquemment posées
+          <h2 className="text-left mb-8">
+            <span className="text-[#FFD713]">Questions</span> fréquemment posées
           </h2>
           <div className="faq-list h-fit">
             {theme.faq.items.map((item, index) => (

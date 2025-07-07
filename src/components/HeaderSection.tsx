@@ -32,10 +32,10 @@ export default function HeaderSection() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       ></link>
 
-      <header className="relative px-4 pt-24 pb-12 sm:py-40 flex-col items-center bg-white bg-cover bg-center">
+      <header className="relative pt-40 pb-10 md:py-40 flex-col items-center bg-white bg-cover bg-center">
         <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
-          <div className="text-left sm:w-1/2 space-y-4">
-            <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-sm sm:bg-white w-fit bg-white/80 backdrop-blur-sm">
+          <div className="text-left lg:w-1/2 space-y-4 pt-6">
+            <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 text-[10px] text-sm bg-white w-fit bg-white/80 backdrop-blur-sm ml-1">
               <Image
                 src="/images/icons/france-flag.webp"
                 alt="fabrication plaques françaises"
@@ -45,45 +45,68 @@ export default function HeaderSection() {
               />
               <span>Fabrication française</span>
             </div>
-            <h1 className="text-3xl sm:text-6xl font-medium text-left">
-              Créez votre plaque personnalisée,<br /> en un clic.
+            <h1 className="text-4xl lg:text-6xl font-medium text-left">
+              Créez votre plaque d’immatriculation personnalisée
             </h1>
 
-            <div className="max-w-x mb-2">
-              <p className="text-sm sm:text-lg font-light">
-                Commandez votre plaque d’immatriculation 100% personnalisée.
-                Choisissez votre style, votre format et vos options —
-                <span className="font-bold"> le tout en <strong>quelques clics.</strong></span>
+            <div className="w-5/6 mb-2">
+              <p className="text-sm lg:text-base font-light">
+                Choisissez facilement votre style, votre format et vos options
+                pour créer une plaque homologuée et personnalisée adaptée à votre véhicule. <br />Livraison
+                rapide, qualité professionnelle <br />
+                <span className="font-bold">
+                  {" "}
+                  — le tout en <strong>quelques clics.</strong>
+                </span>
               </p>
-              <p className="mt-4 text-xs sm:text-sm mb-6">
-                Fabrication française en partenariat avec{" "}
+              <p className="mt-4 text-xs mb-6">
+                <i className="fa fa-medal"></i> Partenaire officiel de{" "}
                 <a
                   href="https://plaqueimmat.fr/?aff=9c7pyekcpurn"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline font-medium hover:text-yellow-300 transition"
+                  title="Voir le site de notre partenaire PlaqueImmat.fr"
                 >
                   PlaqueImmat.fr
                 </a>
-                <br />
-                Livraison rapide & qualité certifiée
               </p>
-              <div className="flex items-center gap-1 mt-1 mb-8 ">
-                {[...Array(5)].map((_, i) => (
+              <a
+                href="https://www.avis-verifies.com/avis-clients/plaqueimmat.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 mt-1 mb-8 hover:text-current"
+                title="Lire les avis vérifiés sur PlaqueImmat.fr"
+              >
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Image
+                      key={i}
+                      src="/images/trust.webp"
+                      alt="Trustpilot star"
+                      className="hover:scale-105 w-6 h-6"
+                      loading="lazy"
+                      width={24}
+                      height={24}
+                    />
+                  ))}
+                  <span className="text-lg font-semibold ml-2">
+                    4.7
+                  </span>
+                  <span className="text-sm">(255)</span>
+                  <span className="text-sm font-medium ml-1">
+                    Excellent
+                  </span>
                   <Image
-                    key={i}
-                    src="/images/trust.webp"
-                    alt="Trustpilot star"
-                    className="hover:scale-105 w-3 h-3 sm:w-6 sm:h-6"
-                    loading="lazy"
-                    width={24}
-                    height={24}
-                  />
-                ))}
-                <span className="text-sm sm:text-lg font-semibold ml-2">4.9</span>
-                <span className="text-xs sm:text-sm">(15 008)</span>
-                <span className="text-xs sm:text-sm font-medium ml-1">Excellent</span>
-              </div>
+                      src="/images/avis.webp"
+                      alt="logo avis vérifiés plaque immatriculation"
+                      className="hover:scale-105"
+                      loading="lazy"
+                      width={20}
+                      height={20}
+                    />
+                </div>
+              </a>
             </div>
 
             <div className="flex flex-row gap-[10px] items-center cta-container">
@@ -92,6 +115,7 @@ export default function HeaderSection() {
                 className="header-cta bg-yellow-400 text-black font-normal px-6 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                title="Créer ma plaque personnalisée maintenant"
               >
                 Je crée ma plaque{" "}
                 <i className="fas fa-arrow-right cta-arrow"></i>
@@ -103,6 +127,7 @@ export default function HeaderSection() {
                 className="header-cta-2 font-normal px-8 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center "
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                title="Accéder au module complet de création de plaque"
               >
                 Accéder au module complet{" "}
                 <i className="fas fa-arrow-right cta-arrow-2"></i>
@@ -114,7 +139,7 @@ export default function HeaderSection() {
             ref={parallaxRef}
             className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl sm:mt-0 flex justify-center px-6"
           >
-            <div className="absolute w-4/5 h-4/5 rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
+            <div className="absolute w-full h-full rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
             <Image
               src="/images/header.webp"
               alt="Illustration FAQ"
@@ -122,7 +147,7 @@ export default function HeaderSection() {
               quality={100}
               width={1000}
               height={600}
-              className="rounded-3xl floating w-full h-auto max-w-[600px] sm:max-w-full sm:h-auto object-contain"
+              className="rounded-3xl floating w-full h-auto max-w-[600px] object-contain"
             />
           </div>
         </div>
