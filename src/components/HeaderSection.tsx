@@ -143,7 +143,7 @@ export default function HeaderSection() {
             <Image
               src="/images/header.webp"
               alt="Illustration FAQ"
-              loading="lazy"
+              priority
               quality={100}
               width={1000}
               height={600}

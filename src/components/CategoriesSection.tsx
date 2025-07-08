@@ -52,8 +52,10 @@ export default function Categories() {
                 <Image
                   src={`/images/categories/${category.image}`}
                   alt={category.title}
-                  width={600}
-                  height={400}
+                  width={427}
+                  height={240}
+                  quality={80}
+                  loading="lazy"
                   className="object-cover w-full h-60 transform group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-opacity-20 bg-black/20 group-hover:bg-yellow-50/10 group-hover:bg-opacity-40 transition cursor-pointer"></div>

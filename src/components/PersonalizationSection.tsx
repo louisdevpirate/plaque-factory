@@ -37,7 +37,7 @@ export default function PersonalizationSection() {
   return (
     <section
       id="personnalisation"
-      className="section-personnalisation bg-[url('/images/bg/bg.png')] bg-cover py-10 md:pt-14 text-center border-t border-b"
+      className="section-personnalisation bg-[url('/images/bg/bg.webp')] bg-cover py-10 md:pt-14 text-center border-t border-b"
     >
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl text-left lg:text-center mx-auto">

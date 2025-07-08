@@ -12,20 +12,25 @@ export default function VideoSection() {
           <span className="text-[#FFD713]"> savoir-faire</span> en action
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-left lg:text-center">
-          Chaque commande est préparée avec précision et
-          passion pour vous fabriquer une plaque d'immatriculation conforme, stylée et prête à
+          Chaque commande est préparée avec précision et passion pour vous
+          fabriquer une plaque d'immatriculation conforme, stylée et prête à
           poser sans prise de tête.
         </p>
         <div className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 mx-auto">
           <video
-            src="/videos/ugc.webm"
             autoPlay
             muted
             loop
-            controls
             playsInline
+            preload="none"
+            poster="/images/video-poster.webp"
+            controls
             className="rounded-xl shadow-lg w-full max-w-4xl mx-auto"
-          ></video>
+          >
+            <source src="/videos/ugc.webm" type="video/webm" />
+            <source src="/videos/ugc.mp4" type="video/mp4" />
+            Votre navigateur ne prend pas en charge cette vidéo...
+          </video>
         </div>
       </div>
     </section>
