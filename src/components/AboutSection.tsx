@@ -26,7 +26,7 @@ export default function AboutSection() {
               rapidement, avec le souci du détail.
             </p>
             <Image
-              src="/images/authors/signature.png"
+              src="/images/authors/signature.webp"
               alt="Signature de Fabien"
               width={200}
               height={20}

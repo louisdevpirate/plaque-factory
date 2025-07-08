@@ -32,7 +32,7 @@ export default function HeaderSection() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       ></link>
 
-      <header className="relative pt-40 pb-10 md:py-40 flex-col items-center bg-white bg-cover bg-center">
+      <header className="relative pt-20 pb-10 md:py-40 flex-col items-center bg-white bg-cover bg-center">
         <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
           <div className="text-left lg:w-1/2 space-y-4 pt-6">
             <div className="inline-flex items-center border border-black rounded-full px-1.5 py-0.5 text-[10px] text-sm bg-white w-fit bg-white/80 backdrop-blur-sm ml-1">
@@ -52,11 +52,12 @@ export default function HeaderSection() {
             <div className="w-5/6 mb-2">
               <p className="text-sm lg:text-base font-light">
                 Choisissez facilement votre style, votre format et vos options
-                pour créer une plaque homologuée et personnalisée adaptée à votre véhicule. <br />Livraison
-                rapide, qualité professionnelle <br />
+                pour créer une plaque homologuée et personnalisée adaptée à
+                votre véhicule. <br />
+                Livraison rapide, qualité professionnelle <br />
                 <span className="font-bold">
                   {" "}
-                  — le tout en <strong>quelques clics.</strong>
+                  — le tout en quelques clics.
                 </span>
               </p>
               <p className="mt-4 text-xs mb-6">
@@ -90,21 +91,17 @@ export default function HeaderSection() {
                       height={24}
                     />
                   ))}
-                  <span className="text-lg font-semibold ml-2">
-                    4.7
-                  </span>
+                  <span className="text-lg font-semibold ml-2">4.7</span>
                   <span className="text-sm">(255)</span>
-                  <span className="text-sm font-medium ml-1">
-                    Excellent
-                  </span>
+                  <span className="text-sm font-medium ml-1">Excellent</span>
                   <Image
-                      src="/images/avis.webp"
-                      alt="logo avis vérifiés plaque immatriculation"
-                      className="hover:scale-105"
-                      loading="lazy"
-                      width={20}
-                      height={20}
-                    />
+                    src="/images/avis.webp"
+                    alt="logo avis vérifiés plaque immatriculation"
+                    className="hover:scale-105"
+                    loading="lazy"
+                    width={20}
+                    height={20}
+                  />
                 </div>
               </a>
             </div>
@@ -140,15 +137,17 @@ export default function HeaderSection() {
             className="relative w-full sm:w-[550px] md:w-[600px] lg:w-[700px] xl:w-[800px] max-w-none overflow-visible rounded-3xl sm:mt-0 flex justify-center px-6"
           >
             <div className="absolute w-full h-full rounded-full bg-[#FFD812] opacity-10 blur-2xl -z-10"></div>
-            <Image
-              src="/images/header.webp"
-              alt="Illustration FAQ"
-              priority
-              quality={100}
-              width={1000}
-              height={600}
-              className="rounded-3xl floating w-full h-auto max-w-[600px] object-contain"
-            />
+            <div className="relative w-full max-w-[600px] aspect-[5/3] rounded-3xl floating">
+              <Image
+                src="/images/header.webp"
+                alt="Illustration FAQ"
+                priority
+                quality={60}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+                className="rounded-3xl object-contain"
+              />
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-white pointer-events-none z-0" />

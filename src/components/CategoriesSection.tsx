@@ -52,9 +52,9 @@ export default function Categories() {
                 <Image
                   src={`/images/categories/${category.image}`}
                   alt={category.title}
-                  width={427}
+                  width={400}
                   height={240}
-                  quality={80}
+                  quality={60}
                   loading="lazy"
                   className="object-cover w-full h-60 transform group-hover:scale-105 transition-transform duration-300"
                 />

@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "LABONNEPLAQUE.fr",
@@ -61,12 +66,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={montserrat.variable}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NK44PNK5"
             height="0"
             width="0"
+            title="Configurateur plaque d'immatriculation"
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>

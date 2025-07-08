@@ -1,5 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap");
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/Raleway-Medium.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -86,8 +97,13 @@ a:hover {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .floating-slow {
@@ -409,11 +425,6 @@ button:hover {
   overflow: hidden;
 }
 
-.slick-slider {
-  margin: 0 auto;
-  position: relative;
-}
-
 /* 📌 FAQ Section */
 
 .faq-container {
@@ -518,12 +529,6 @@ button:hover {
 
 .blog-card h3 {
   font-size: 0.9rem;
-}
-
-.blog-slider .slick-slide {
-  display: flex !important;
-  justify-content: center;
-  padding: 10px 10px;
 }
 
 .blog-card:hover {
@@ -660,10 +665,6 @@ button:hover {
 
 @media (max-width: 1109px) {
 
-  .slick-slider {
-    max-width: 85%; /* Tablette */
-  }
-
   .iframe-wrapper {
     height: 1000px;
   }
@@ -761,24 +762,11 @@ button:hover {
     width: 95%; /* ✅ Prend toute la largeur disponible */
     height: 300px; /* ✅ S'ajuste automatiquement */
   }
-  .slick-prev,
-  .slick-next {
-    display: none !important;
-  }
 
-  .gallery-section .slick-slide {
-    margin: 0 100px;
-  }
 
   .gallery-image-wrapper {
     padding-bottom: 20px;
     width: 100%;
-  }
-
-  .blog-slider .slick-slide {
-    width: 100%;
-    padding: 0 5px;
-    justify-content: center;
   }
 
   .footer-container {
