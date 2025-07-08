@@ -34,11 +34,11 @@ export async function generateMetadata({
 export const dynamic = "force-dynamic";
 
 interface BlogPageProps {
-  params: { [key: string]: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function BlogPage({ params, searchParams }: BlogPageProps) {
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const resolvedSearchParams = await searchParams;
   const articles = await getAllArticles();
   if (!articles || articles.length === 0)
     return <p>Aucun article pour le moment.</p>;
@@ -50,7 +50,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   const latestArticle = sortedArticles[0];
   const otherArticles = sortedArticles.slice(1);
 
-  const pageParam = searchParams?.page;
+  const pageParam = resolvedSearchParams?.page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam ?? "1", 10);
   const visibleCount = page * 7;
 
