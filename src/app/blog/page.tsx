@@ -6,6 +6,30 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
 import { FaClock } from "react-icons/fa";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}): Promise<Metadata> {
+  const page = searchParams.page ?? "1";
+
+  const title =
+    page === "1"
+      ? "Blog - La Bonne Plaque : conseils et actus plaques d'immatriculation"
+      : `Page ${page} - Blog La Bonne Plaque : conseils plaques d'immatriculation`;
+
+  const description =
+    page === "1"
+      ? "Découvrez nos conseils, actus et guides sur les plaques d'immatriculation personnalisées et homologuées."
+      : `Découvrez page ${page} de notre blog sur les plaques d'immatriculation personnalisées et homologuées, conseils et actualités.`;
+
+  return {
+    title,
+    description,
+  };
+}
 
 export const dynamic = "force-dynamic";
 

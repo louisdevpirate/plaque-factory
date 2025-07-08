@@ -18,7 +18,7 @@ export default function VideoSection() {
         </p>
         <div className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 mx-auto">
           <video
-            src="/videos/ugc.mp4"
+            src="/videos/ugc.webm"
             autoPlay
             muted
             loop
