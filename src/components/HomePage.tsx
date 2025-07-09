@@ -4,16 +4,17 @@ import { Suspense } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
 import Navbar from "../components/Navbar";
 import HeaderSection from "../components/HeaderSection";
-import PersonalizationSection from "../components/PersonalizationSectionOptimized";
-import Footer from "../components/Footer";
+import PersonalizationSection from "../components/PersonalizationSection";
+import Footer from "../components/FooterWithLazyBg";
 
 // Lazy load heavy components
 const FeedbackSection = dynamic(() => import("../components/FeedbackSection"), {
   loading: () => <SectionSkeleton />,
 });
 
-const CategoriesSection = dynamic(() => import("../components/CategoriesSectionOptimized"), {
+const CategoriesSection = dynamic(() => import("../components/CategoriesSection"), {
   loading: () => <SectionSkeleton />,
+  ssr: true,
 });
 
 const AboutSection = dynamic(() => import("../components/AboutSectionOptimized"), {
@@ -24,7 +25,7 @@ const FaqSection = dynamic(() => import("../components/FaqSection"), {
   loading: () => <SectionSkeleton />,
 });
 
-const VideoSection = dynamic(() => import("../components/VideoSection"), {
+const VideoSection = dynamic(() => import("../components/VideoSectionOptimized"), {
   loading: () => <SectionSkeleton />,
 });
 

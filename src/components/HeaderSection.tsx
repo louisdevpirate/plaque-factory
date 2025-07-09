@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { useThrottle } from "@/hooks/useThrottle";
+import { MedalIcon, ArrowRightIcon } from "@/components/Icons";
 
 export default function HeaderSection() {
   const [, setIsHovered] = useState(false);
@@ -30,10 +31,6 @@ export default function HeaderSection() {
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      ></link>
 
       <header className="relative pt-20 pb-10 md:py-40 flex-col items-center bg-white bg-cover bg-center">
         <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
@@ -64,7 +61,7 @@ export default function HeaderSection() {
                 </span>
               </p>
               <p className="mt-4 text-xs mb-6">
-                <i className="fa fa-medal"></i> Partenaire officiel de{" "}
+                <MedalIcon className="inline w-4 h-4 mr-1" /> Partenaire officiel de{" "}
                 <a
                   href="https://plaqueimmat.fr/?aff=9c7pyekcpurn"
                   target="_blank"
@@ -118,7 +115,7 @@ export default function HeaderSection() {
                 title="Créer ma plaque personnalisée maintenant"
               >
                 Je crée ma plaque{" "}
-                <i className="fas fa-arrow-right cta-arrow"></i>
+                <ArrowRightIcon className="inline ml-2 w-4 h-4 cta-arrow" />
               </a>
               <a
                 href="https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6"
@@ -130,7 +127,7 @@ export default function HeaderSection() {
                 title="Accéder au module complet de création de plaque"
               >
                 Accéder au module complet{" "}
-                <i className="fas fa-arrow-right cta-arrow-2"></i>
+                <ArrowRightIcon className="inline ml-2 w-4 h-4 cta-arrow-2" />
               </a>
             </div>
           </div>

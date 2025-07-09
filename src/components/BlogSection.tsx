@@ -96,6 +96,7 @@ export default function BlogSection() {
             <button 
               onClick={scrollPrev}
               className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center rounded-[100%] hover:bg-neutral-800 transition mx-2"
+              aria-label="Article précédent"
             >
               <i className="fa fa-arrow-left"></i>
             </button>
@@ -113,6 +114,7 @@ export default function BlogSection() {
             <button 
               onClick={scrollNext}
               className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center mx-2 rounded-[100%] hover:bg-neutral-800 transition"
+              aria-label="Article suivant"
             >
               <i className="fa fa-arrow-right"></i>
             </button>
@@ -125,6 +127,7 @@ export default function BlogSection() {
                   index === selectedIndex ? "bg-black" : "bg-neutral-400"
                 }`}
                 onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                aria-label={`Aller à l'article ${index + 1}`}
               />
             ))}
           </div>

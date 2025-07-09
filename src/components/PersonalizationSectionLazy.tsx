@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import React from "react";
+import LazyBackgroundSection from "./LazyBackgroundSection";
 
 const IFRAME_LOAD_TIMEOUT = 5000;
 const PROGRESS_UPDATE_INTERVAL = 100;
 
-function PersonalizationSection() {
+function PersonalizationSectionLazy() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -70,9 +71,12 @@ function PersonalizationSection() {
   }, [iframeLoaded, retryKey, retryIframeLoad]);
 
   return (
-    <section
+    <LazyBackgroundSection
       id="personnalisation"
-      className="section-personnalisation bg-[url('/images/bg/bg.webp')] bg-cover py-10 md:pt-14 text-center border-t border-b"
+      backgroundImage="/images/bg/bg.webp"
+      className="section-personnalisation bg-cover py-10 md:pt-14 text-center border-t border-b"
+      threshold={0.1}
+      rootMargin="50px"
     >
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl text-left lg:text-center mx-auto">
@@ -114,13 +118,13 @@ function PersonalizationSection() {
           />
         </div>
       </div>
-    </section>
+    </LazyBackgroundSection>
   );
 }
 
 // Memoized loading overlay component
-const LoadingOverlay = memo(({ progress, progressStyle }: { 
-  progress: number; 
+const LoadingOverlay = memo(({ progress, progressStyle }: {
+  progress: number;
   progressStyle: React.CSSProperties;
 }) => (
   <div className="iframe-loader flex flex-col justify-center items-center gap-4 absolute inset-0 z-10 bg-white/80">
@@ -140,4 +144,4 @@ const LoadingOverlay = memo(({ progress, progressStyle }: {
 
 LoadingOverlay.displayName = "LoadingOverlay";
 
-export default memo(PersonalizationSection);
+export default memo(PersonalizationSectionLazy);
