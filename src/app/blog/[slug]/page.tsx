@@ -1,4 +1,4 @@
-import { getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { getCachedAllArticles, getCachedArticleBySlug, type Article } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // Revalidate every hour
 
 // ✅ Nouveau typage compatible Next.js 15
 export async function generateMetadata({
@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article: Article | null = await getArticleBySlug(slug);
+  const article = await getCachedArticleBySlug(slug);
   if (!article) return {};
   return {
     title: article.title,
@@ -53,9 +53,9 @@ export default async function BlogPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article: Article | null = await getArticleBySlug(slug);
+  const article = await getCachedArticleBySlug(slug);
   if (!article) return notFound();
-  const allArticles: Article[] = await getAllArticles();
+  const allArticles = await getCachedAllArticles();
   const otherArticles = allArticles.filter((a) => a.slug !== slug).slice(0, 3);
 
   return (
@@ -145,18 +145,3 @@ export default async function BlogPage({
   );
 }
 
-// ✅ Définir à la fin pour ne pas polluer le typage
-interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  content: string;
-  image: string;
-  createdAt: string;
-  author?: {
-    name: string;
-    avatar: string;
-    bio: string;
-  };
-}

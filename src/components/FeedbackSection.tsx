@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 
 export default function FeedbackSection() {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
+  );
+  
   const reviews = [
     {
       text: "Super service, jai commandé ma plaque d’immatriculation personnalisée directement en ligne, la qualité en plexiglass est top et l’expédition a été rapide. Je recommande à tout ceux qui veulent une plaque homologué et esthétique pour leur voiture.",
@@ -40,50 +44,41 @@ export default function FeedbackSection() {
         </p>
       </div>
 
-      <Swiper
-        modules={[Autoplay]}
-        autoplay={{ delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false }}
-        loop={true}
-        spaceBetween={16}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-        className="max-w-5xl mx-auto"
-      >
-        {reviews.map((review, index) => (
-          <SwiperSlide key={index}>
-            <div className="flex flex-col bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition ease-in-out min-h-[250px]">
-              <div className="flex items-center mb-4">
-                <div className="avatar">
-                  <div className="w-12 h-12 relative rounded-full ring ring-gray-200 ring-offset-2 overflow-hidden">
-                    <Image
-                      src={review.imgSrc}
-                      alt={review.author}
-                      fill
-                      sizes="48px"
-                      loading="lazy"
-                      className="object-cover rounded-full"
-                    />
+      <div className="max-w-5xl mx-auto overflow-hidden" ref={emblaRef}>
+        <div className="flex gap-4">
+          {reviews.map((review, index) => (
+            <div key={index} className="flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0">
+              <div className="flex flex-col bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition ease-in-out min-h-[250px]">
+                <div className="flex items-center mb-4">
+                  <div className="avatar">
+                    <div className="w-12 h-12 relative rounded-full ring ring-gray-200 ring-offset-2 overflow-hidden">
+                      <Image
+                        src={review.imgSrc}
+                        alt={review.author}
+                        fill
+                        sizes="48px"
+                        loading="lazy"
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-left ml-3">
+                    <p className="text-sm text-gray-700 font-semibold">{review.author}</p>
+                    <div className="flex items-center text-yellow-400">
+                      {[...Array(5)].map((_, i) => (
+                        <i key={i} className="fas fa-star text-sm"></i>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="text-left ml-3">
-                  <p className="text-sm text-gray-700 font-semibold">{review.author}</p>
-                  <div className="flex items-center text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <i key={i} className="fas fa-star text-sm"></i>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-gray-600 text-sm line-clamp-5">
+                  {review.text}
+                </p>
               </div>
-              <p className="text-gray-600 text-sm line-clamp-5">
-                {review.text}
-              </p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

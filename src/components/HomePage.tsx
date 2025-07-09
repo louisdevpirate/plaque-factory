@@ -1,21 +1,53 @@
 // components/HomePage.tsx
-"use client";
-
-import { useTheme } from "@/hooks/useTheme";
-import HeaderSection from "../components/HeaderSection";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { defaultTheme } from "@/config/themes/default.theme";
 import Navbar from "../components/Navbar";
-import PersonalizationSection from "../components/PersonalizationSection";
-import CategoriesSection from "../components/CategoriesSection";
-import FaqSection from "../components/FaqSection";
+import HeaderSection from "../components/HeaderSection";
+import PersonalizationSection from "../components/PersonalizationSectionOptimized";
 import Footer from "../components/Footer";
-import BlogSection from "@/components/BlogSection";
-import Head from "next/head";
-import FeedbackSection from "../components/FeedbackSection";
-import AboutSection from "../components/AboutSection";
-import VideoSection from "../components/VideoSection";
+
+// Lazy load heavy components
+const FeedbackSection = dynamic(() => import("../components/FeedbackSection"), {
+  loading: () => <SectionSkeleton />,
+});
+
+const CategoriesSection = dynamic(() => import("../components/CategoriesSectionOptimized"), {
+  loading: () => <SectionSkeleton />,
+});
+
+const AboutSection = dynamic(() => import("../components/AboutSectionOptimized"), {
+  loading: () => <SectionSkeleton />,
+});
+
+const FaqSection = dynamic(() => import("../components/FaqSection"), {
+  loading: () => <SectionSkeleton />,
+});
+
+const VideoSection = dynamic(() => import("../components/VideoSection"), {
+  loading: () => <SectionSkeleton />,
+});
+
+const BlogSection = dynamic(() => import("@/components/BlogSectionServer"), {
+  loading: () => <SectionSkeleton />,
+});
+
+// Simple loading skeleton
+function SectionSkeleton() {
+  return (
+    <div className="animate-pulse bg-gray-100 h-96 w-full">
+      <div className="h-full flex items-center justify-center">
+        <div className="space-y-4">
+          <div className="h-4 bg-gray-300 rounded w-48"></div>
+          <div className="h-4 bg-gray-300 rounded w-64"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
-  const theme = useTheme();
+  const theme = defaultTheme;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -27,12 +59,10 @@ export default function HomePage() {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <main
         className="min-h-screen"
@@ -41,12 +71,31 @@ export default function HomePage() {
         <Navbar />
         <HeaderSection />
         <PersonalizationSection />
-        <FeedbackSection />
-        <CategoriesSection />
-        <AboutSection />
-        <FaqSection />
-        <VideoSection />
-        <BlogSection />
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <FeedbackSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <CategoriesSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <AboutSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <FaqSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <VideoSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionSkeleton />}>
+          <BlogSection />
+        </Suspense>
+        
         <Footer />
       </main>
     </>

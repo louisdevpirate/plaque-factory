@@ -1,29 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import { useThrottle } from "@/hooks/useThrottle";
 
 export default function HeaderSection() {
   const [, setIsHovered] = useState(false);
 
   const parallaxRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const layers = parallaxRef.current?.querySelectorAll("[data-depth]");
-      layers?.forEach((layer) => {
-        const depth = parseFloat(layer.getAttribute("data-depth") || "0");
-        const translateY = scrollY * depth * 0.2;
-        (
-          layer as HTMLElement
-        ).style.transform = `translateY(${translateY}px) scale(1.1)`;
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  const handleScroll = useCallback(() => {
+    const scrollY = window.scrollY;
+    const layers = parallaxRef.current?.querySelectorAll("[data-depth]");
+    layers?.forEach((layer) => {
+      const depth = parseFloat(layer.getAttribute("data-depth") || "0");
+      const translateY = scrollY * depth * 0.2;
+      (
+        layer as HTMLElement
+      ).style.transform = `translateY(${translateY}px) scale(1.1)`;
+    });
   }, []);
+
+  const throttledHandleScroll = useThrottle(handleScroll, 16); // 60fps
+
+  useEffect(() => {
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
+  }, [throttledHandleScroll]);
 
   return (
     <>

@@ -1,7 +1,36 @@
+/* Montserrat Regular */
 @font-face {
   font-family: 'Montserrat';
   src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 100 900;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat Medium */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat SemiBold */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat Bold */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -593,38 +622,6 @@ button:hover {
   text-align: left;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 1rem !important; /* Taille de la flèche */
-  color: black !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  width: 40px;
-  height: 28px;
-  border-radius: 100%;
-}
-
-.swiper-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Change la couleur de tous les dots */
-.swiper-pagination-bullet {
-  background: var(--text-color) !important;
-  opacity: 1; /* nécessaire car Swiper réduit parfois l'opacité */
-  width: 4px !important;
-  height: 4px !important;
-}
-
-.swiper-pagination-bullet-active {
-  width: 6px !important;
-  height: 6px !important;
-}
 
 /* 📌 Footer */
 .footer {
