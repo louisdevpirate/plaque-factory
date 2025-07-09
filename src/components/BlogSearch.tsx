@@ -1,5 +1,5 @@
 "use client";
-import { FaSearch } from "react-icons/fa";
+import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type Props = {
@@ -17,7 +17,7 @@ export default function BlogSearch({ onSearch }: Props) {
 
   return (
     <div className="relative w-full max-w-md mx-auto mb-8">
-      <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
       <input
         type="text"
         placeholder="Rechercher un article..."

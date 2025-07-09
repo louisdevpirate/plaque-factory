@@ -2,6 +2,10 @@
 import { NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+// Use Edge Runtime for better performance
+export const runtime = 'edge';
+
+// Add caching headers
 export async function GET() {
   const { data: articles, error } = await supabase
     .from('article')
@@ -14,5 +18,9 @@ export async function GET() {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
-  return NextResponse.json(articles)
+  return NextResponse.json(articles, {
+    headers: {
+      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+    },
+  })
 }

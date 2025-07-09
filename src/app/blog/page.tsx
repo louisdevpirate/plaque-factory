@@ -1,13 +1,14 @@
 // app/blog/page.tsx
-import { getAllArticles } from "@/lib/articles";
+import { getCachedAllArticles } from "@/lib/supabase";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
-import { FaClock } from "react-icons/fa";
+import { Clock } from "lucide-react";
 
-export const dynamic = "force-dynamic";
+// Remove force-dynamic to enable caching
+export const revalidate = 3600; // Revalidate every hour
 
 interface BlogPageProps {
   params: Promise<{ [key: string]: string }>;
@@ -18,7 +19,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
-  const articles = await getAllArticles();
+  const articles = await getCachedAllArticles();
   if (!articles || articles.length === 0)
     return <p>Aucun article pour le moment.</p>;
 
@@ -58,7 +59,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
               />
               <div className="absolute bottom-0 left-0 w-full text-white p-6">
                 <div className="badge badge-sm mb-4 rounded-2xl border border-white/30">
-                  <FaClock /> À la une
+                  <Clock size={16} /> À la une
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-left max-w-5xl bg-black/50">
                   {latestArticle.title}

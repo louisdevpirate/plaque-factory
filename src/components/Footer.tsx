@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
-import { FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
+import { Instagram, Facebook } from "lucide-react";
+import { TikTok } from "./icons/TikTok";
 
 export default function Footer() {
   const theme = useTheme();
@@ -32,7 +33,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Instagram"
               >
-                <FaInstagram className="h-6 w-6 text-white hover:text-pink-500 transition" />
+                <Instagram className="h-6 w-6 text-white hover:text-pink-500 transition" />
               </a>
               <a
                 href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
@@ -40,7 +41,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Facebook"
               >
-                <FaFacebook className="h-6 w-6 text-white hover:text-blue-600 transition" />
+                <Facebook className="h-6 w-6 text-white hover:text-blue-600 transition" />
               </a>
               <a
                 href="https://www.tiktok.com/@plaqueimmat.fr"
@@ -48,7 +49,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur TikTok"
               >
-                <FaTiktok className="h-6 w-6 text-white hover:text-cyan-400 transition" />
+                <TikTok className="h-6 w-6 text-white hover:text-cyan-400 transition" />
               </a>
             </div>
           </div>

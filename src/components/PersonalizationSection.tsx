@@ -88,6 +88,7 @@ export default function PersonalizationSection() {
               iframeLoaded ? " loaded bg-white shadow-md" : ""
             } w-full border-none`}
             allowFullScreen
+            title="Module de personnalisation de plaque d'immatriculation"
           />
         </div>
       </div>

@@ -5,12 +5,9 @@ import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import BlogCard from "@/components/BlogCard";
 
-// 🪐 Swiper imports
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+// 🪐 Embla Carousel imports
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 type Article = {
   id: string;
@@ -30,6 +27,11 @@ const supabase = createClient(
 
 export default function BlogSection() {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
+  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -52,6 +54,24 @@ export default function BlogSection() {
     fetchArticles();
   }, []);
 
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+    onSelect();
+
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+
   return (
     <section id="blog" className="blog-section md:text-center bg-white py-10 md:pb-20 md:pt-14">
       <div className="badge badge-sm mb-4 rounded-2xl">
@@ -73,39 +93,43 @@ export default function BlogSection() {
 
         <div className="mx-auto">
           <div className="flex justify-between items-center max-w-6xl lg:max-w-7xl mx-auto mb-4 px-2 md:px-8 lg:px-6">
-            <button className="swiper-button-prev-custom text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center rounded-[100%] hover:bg-neutral-800 transition mx-2">
+            <button 
+              onClick={scrollPrev}
+              className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center rounded-[100%] hover:bg-neutral-800 transition mx-2"
+              aria-label="Article précédent"
+            >
               <i className="fa fa-arrow-left"></i>
             </button>
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={20}
-              slidesPerView={3}
-              navigation={{
-                prevEl: ".swiper-button-prev-custom",
-                nextEl: ".swiper-button-next-custom",
-              }}
-              loop
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              breakpoints={{
-                320: { slidesPerView: 1 },
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-              className="w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6"
+            <div className="overflow-hidden w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6" ref={emblaRef}>
+              <div className="flex gap-5">
+                {articles.map((article) => (
+                  <div key={article.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0">
+                    <BlogCard
+                      article={{ ...article, category: article.category?.[0] }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button 
+              onClick={scrollNext}
+              className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center mx-2 rounded-[100%] hover:bg-neutral-800 transition"
+              aria-label="Article suivant"
             >
-              {articles.map((article) => (
-                <SwiperSlide key={article.id} className="mb-8">
-                  <BlogCard
-                    article={{ ...article, category: article.category?.[0] }}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <button className="swiper-button-next-custom text-black p-2 border border-black  w-6 h-6  md:w-10 md:h-10 flex justify-center items-center mx-2 rounded-[100%] hover:bg-neutral-800 transition">
               <i className="fa fa-arrow-right"></i>
             </button>
+          </div>
+          <div className="flex justify-center gap-2 mt-4">
+            {articles.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === selectedIndex ? "bg-black" : "bg-neutral-400"
+                }`}
+                onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                aria-label={`Aller à l'article ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -113,15 +137,3 @@ export default function BlogSection() {
   );
 }
 
-/*
-For custom dot styling, add the following to your global CSS file:
-
-.swiper-pagination-bullet {
-  @apply bg-neutral-400 !important;
-  opacity: 1 !important;
-}
-.swiper-pagination-bullet-active {
-  @apply bg-black !important;
-}
-
-*/
