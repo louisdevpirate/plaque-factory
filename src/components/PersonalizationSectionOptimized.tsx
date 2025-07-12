@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import React from "react";
+import { MagicIcon } from "./Icons";
+import Image from "next/image";
 
 const IFRAME_LOAD_TIMEOUT = 5000;
 const PROGRESS_UPDATE_INTERVAL = 100;
@@ -77,7 +79,7 @@ function PersonalizationSection() {
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl text-left lg:text-center mx-auto">
           <div className="badge badge-sm mb-4 rounded-2xl">
-            <i className="fa fa-magic"></i>Personnalisation
+            <MagicIcon className="w-3 h-3" /> <span className="pt-1">Personnalisation</span>
           </div>
           <h2 className="text-left lg:text-center">
             Personnalisez votre plaque{" "}
@@ -114,6 +116,33 @@ function PersonalizationSection() {
           />
         </div>
       </div>
+
+      <div className="flex flex-col items-center gap-6 mt-8 max-w-3xl mx-auto">
+          <div>
+            <Image
+              src="/images/marianne.png"
+              alt="Plaque Homologuées"
+              className="hover:scale-105"
+              loading="lazy"
+              width={100}
+              height={100}
+            />
+          </div>
+          <div className="flex flex-col gap-4 italic">
+            <p className="text-xs">
+              Agréé et Habilité par le Ministère de l'Intérieur et le Trésor
+              public
+            </p>
+            <div className="flex flex-col text-xs">
+              <p>
+                Agrément Trésor Public <span  className="font-bold">n°59157</span>
+              </p>
+              <p>
+                Habilitation Préfectorale <span className="font-bold">n°245306</span>
+              </p>
+            </div>
+          </div>
+        </div>
     </section>
   );
 }

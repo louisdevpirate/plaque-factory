@@ -4,6 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
 import React from "react";
 import LazyBackgroundSection from "./LazyBackgroundSection";
+import { QuestionIcon } from "./Icons";
 
 export default function FaqSectionOptimized() {
   const theme = useTheme();
@@ -43,7 +44,7 @@ export default function FaqSectionOptimized() {
         </div>
         <div className="w-full md:w-1/2 h-fit z-40 text-left">
           <div className="badge badge-sm mb-4 rounded-2xl">
-            <i className="fa fa-question-circle"></i>FAQ
+            <QuestionIcon className="w-3 h-3"/><span className="pt-1">FAQ</span>
           </div>
           <h2 className="text-left mb-8">
             <span className="text-[#FFD713]">Questions</span> fréquemment posées

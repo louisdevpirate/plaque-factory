@@ -22,7 +22,7 @@ export default function VideoSectionOptimized() {
     <section className="py-10 md:py-16 text-left bg-white w-full">
       <div className="max-w-3xl mx-auto lg:flex flex-col justify-center">
         <div className="badge badge-sm mb-4 rounded-2xl mx-auto">
-          <PlayIcon className="inline w-3 h-3 mr-1" />Vidéo
+          <PlayIcon className="w-3 h-3" /><span className="pt-1">Vidéo</span>
         </div>
         <h2 className="text-left lg:text-center lg:max-w-lg mx-auto">
           Découvrez notre

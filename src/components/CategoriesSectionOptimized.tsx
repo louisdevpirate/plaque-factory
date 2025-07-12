@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CategoryItem } from "@/types/theme";
 import { useState, useEffect, memo } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
+import { CategoryIcon } from "./Icons";
 
 // Lazy load framer-motion
 const MotionDiv = dynamic(
@@ -37,7 +38,7 @@ function Categories() {
     >
       <div className="max-w-3xl lg:flex flex-col justify-center">
         <div className="badge badge-sm mb-4 rounded-2xl mx-auto">
-          <i className="fa fa-layer-group"></i> Catégories
+          <CategoryIcon className="w-3 h-3"/><span className="pt-1">Catégories</span>
         </div>
         <h2 className="text-left lg:text-center">
           On a la plaque <br />
