@@ -24,12 +24,13 @@ export default function FooterOptimized() {
           {/* Logo Section */}
           <div className="max-w-xs">
             <Image
-              src={theme.global.branding.logo.path}
-              alt={theme.global.branding.logo.alt}
+              src="/images/logo/plaque-factory.svg"
+              alt="La Bonne Plaque Logo"
               width={200}
-              height={300}
-              className="mb-10"
+              height={40}
               loading="lazy"
+              priority={false} 
+              className="transition-transform duration-300 hover:scale-105 mb-8"
             />
             <p style={{ color: theme.footer.styling.text.secondary }}>
               {theme.footer.sections.description}

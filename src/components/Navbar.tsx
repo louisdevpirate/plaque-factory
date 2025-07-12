@@ -24,6 +24,7 @@ export default function Navbar() {
                 width={150}
                 height={100}
                 loading="lazy"
+                priority={false}
                 className="transition-transform duration-300 hover:scale-105"
               />
             </Link>
