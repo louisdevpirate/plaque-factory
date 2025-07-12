@@ -85,7 +85,7 @@ export default function FeedbackSection() {
           <StarIcon className="w-4 h-4"/><span>Avis</span>
         </div>
         <h2 className="text-left lg:text-center">
-          Ce que <span className="text-[#FFD713] ">nos clients</span> en disent
+          Ce que <span className="text-yellow-500">nos clients</span> en disent
         </h2>
         <p className="mb-8 md:mb-12">
           Ils ont testé <span className="italic">La Bonne Plaque</span> et ils en parlent mieux que nous. <br />Qualité, rapidité...Découvrez leurs avis sans filtre !
@@ -130,6 +130,7 @@ export default function FeedbackSection() {
       <div className="embla-dots mt-6 flex justify-center items-center gap-4">
         {reviews.map((_, index) => (
           <button
+          title="Boutons de slider"
             key={index}
             type="button"
             onClick={() => emblaApi?.scrollTo(index)}

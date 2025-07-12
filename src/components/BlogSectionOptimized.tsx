@@ -131,7 +131,7 @@ export default function BlogSectionOptimized() {
         <span>Blog</span>
       </div>
       <h2 className="text-left md:text-center">
-        Le coin des <span className="text-[#FFD713]">passionnés</span>
+        Le coin des <span className="text-yellow-500">passionnés</span>
       </h2>
       <p className="max-w-2xl mx-auto mb-12">
         Découvrez nos astuces, histoires insolites et conseils pratiques autour
@@ -185,6 +185,7 @@ export default function BlogSectionOptimized() {
           <div className="embla-dots mt-6 flex justify-center items-center gap-4">
             {articles.map((_, index) => (
               <button
+              title="Boutons de slider"
                 key={index}
                 type="button"
                 onClick={() => emblaApi?.scrollTo(index)}
