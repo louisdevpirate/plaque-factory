@@ -131,7 +131,7 @@ export default function BlogSectionOptimized() {
         <span>Blog</span>
       </div>
       <h2 className="text-left md:text-center">
-        Le coin des <span className="text-yellow-500">passionnés</span>
+        Le coin des <span className="italic">passionnés</span>
       </h2>
       <p className="max-w-2xl mx-auto mb-12">
         Découvrez nos astuces, histoires insolites et conseils pratiques autour

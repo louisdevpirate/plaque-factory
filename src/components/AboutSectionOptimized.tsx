@@ -61,7 +61,7 @@ function AboutSection() {
           </div>
           <h2 className="text-left">
             La Bonne Plaque,
-            <span className="block"> votre <span className="text-yellow-500">expert</span> en plaques qui roulent.</span>
+            <span className="block"> votre <span className="italic">expert</span> en plaques qui roulent.</span>
           </h2>
           <div className="flex flex-col">
             <p className="italic">

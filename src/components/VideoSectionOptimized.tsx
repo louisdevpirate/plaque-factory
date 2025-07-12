@@ -26,7 +26,7 @@ export default function VideoSectionOptimized() {
         </div>
         <h2 className="text-left lg:text-center lg:max-w-lg mx-auto">
           Découvrez notre
-          <span className="text-yellow-500"> savoir-faire</span> en action
+          <span className="italic"> savoir-faire</span> en action
         </h2>
         <p className="text-gray-600 mx-auto mb-10 text-left lg:text-center">
           Chaque commande est préparée avec précision et passion pour vous
