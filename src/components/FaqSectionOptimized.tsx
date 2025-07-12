@@ -44,7 +44,7 @@ export default function FaqSectionOptimized() {
         </div>
         <div className="w-full md:w-1/2 h-fit z-40 text-left">
           <div className="badge badge-sm mb-4 rounded-2xl">
-            <QuestionIcon className="w-3 h-3"/><span className="pt-1">FAQ</span>
+            <QuestionIcon className="w-3 h-3"/><span>FAQ</span>
           </div>
           <h2 className="text-left mb-8">
             <span className="text-[#FFD713]">Questions</span> fréquemment posées
@@ -61,7 +61,7 @@ export default function FaqSectionOptimized() {
                 {/* Question */}
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="faq-question px-4 gap-5"
+                  className="faq-question px-4 py-2 gap-5"
                 >
                   <span>{item?.question || ""}</span>
                   <span className="faq-toggle">

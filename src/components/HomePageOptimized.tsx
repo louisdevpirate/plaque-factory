@@ -12,6 +12,7 @@ import VideoSectionOptimized from "../components/VideoSectionOptimized";
 import BlogSectionOptimized from "./BlogSectionOptimized";
 import FooterOptimized from "./FooterOptimized";
 import { DeliverySection } from "./DeliverySection";
+import PersonalizationSectionOptimized from "../components/PersonalizationSectionOptimized";
 
 // Critical CSS for above-the-fold content
 const criticalStyles = `
@@ -133,7 +134,7 @@ export default function HomePage() {
       >
         <Navbar />
         <HeaderSection />
-        <PersonalizationSection />
+        <PersonalizationSectionOptimized />
 
         <div data-preload="ReassuranceSection">
           <Suspense fallback={<SectionSkeleton />}>

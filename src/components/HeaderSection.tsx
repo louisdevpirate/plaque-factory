@@ -32,8 +32,8 @@ export default function HeaderSection() {
   return (
     <>
 
-      <header className="relative pt-20 pb-10 md:py-40 flex-col items-center bg-white bg-cover bg-center">
-        <div className="relative z-10 flex flex-col-reverse sm:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
+      <header className="relative pt-20 pb-10 md:py-40 items-center bg-white bg-cover bg-center">
+        <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
           <div className="text-left lg:w-1/2 space-y-4 pt-6">
             <div className="inline-flex items-center border border-black rounded-full px-2 py-0.5 text-[10px] text-sm bg-white w-fit bg-white/80 backdrop-blur-sm ml-1">
               <Image

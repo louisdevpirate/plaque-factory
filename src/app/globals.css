@@ -101,6 +101,7 @@ a:hover {
   color: theme("colors.blue.900");
 }
 
+
 @keyframes float {
   0%,
   100% {
@@ -315,6 +316,30 @@ button:hover {
   padding-bottom: 2rem;
 }
 
+.steps .step:before {
+  background-color: rgb(235, 235, 235);
+  border: none;
+  height: 4px;
+}
+
+@layer components {
+  .step.step-primary::after {
+    background-color: #facc15 !important; /* Jaune */
+    border-color: #facc15 !important;
+    color: #000 !important;
+  }
+}
+
+.step-primary::after {
+  background-color: #facc15; /* Jaune par exemple */
+}
+
+.steps .step > .step-icon, .steps .step:not(:has(.step-icon)):after {
+  background-color: rgb(235, 235, 235);
+  border: none;
+}
+
+
 /* 📌 iFrame */
 .iframe-wrapper {
   position: relative;
@@ -337,13 +362,6 @@ button:hover {
 
 .iframe-content.loaded {
   opacity: 1;
-}
-
-.dots-swiper {
-  width: 5px;
-  height: 5px;
-  background-color: black;
-  
 }
 
 /* 📌 Categories */
@@ -647,7 +665,7 @@ button:hover {
 
   h2 {
     font-size: theme("fontSize.3xl");
-    font-weight: 700;
+    font-weight: 500;
     line-height: 2.2rem;
     margin-bottom: 0.8rem;
   }

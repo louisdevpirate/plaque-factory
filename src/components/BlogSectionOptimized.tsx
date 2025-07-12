@@ -128,7 +128,7 @@ export default function BlogSectionOptimized() {
     >
       <div className="badge badge-sm mb-4 rounded-2xl">
         <BlogIcon className="w-3 h-3" />
-        <span className="pt-1">Blog</span>
+        <span>Blog</span>
       </div>
       <h2 className="text-left md:text-center">
         Le coin des <span className="text-[#FFD713]">passionnés</span>

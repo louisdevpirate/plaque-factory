@@ -42,7 +42,7 @@ export default function PersonalizationSection() {
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl text-left lg:text-center mx-auto">
             <div className="badge badge-sm mb-4 rounded-2xl">
-              <i className="fa fa-magic"></i>Personnalisationgjkern
+              <i className="fa fa-magic"></i>Personnalisation
             </div>
           <h2 className="text-left lg:text-center">
             Personnalisez votre plaque{" "}

@@ -57,7 +57,7 @@ function AboutSection() {
         {/* Texte gauche */}
         <div className="max-w-lg">
           <div className="badge badge-sm mb-4 rounded-2xl">
-            <HouseIcon className="w-3 h-3" /><span className="pt-1">À propos</span>
+            <HouseIcon className="w-3 h-3" /><span>À propos</span>
           </div>
           <h2 className="text-left">
             La Bonne Plaque,
