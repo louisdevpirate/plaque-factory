@@ -42,7 +42,7 @@ function Categories() {
         </div>
         <h2 className="text-left lg:text-center">
           On a la plaque <br />
-          <span className="text-[#FFD713]">qu'il vous faut</span>
+          <span className="text-yellow-500">qu'il vous faut</span>
         </h2>
         <p className="lg:text-center mb-4 md:mb-8 max-w-2xl">
           Si ça roule, on a la plaque d'immatriculation qui va avec. Parcourez

@@ -47,7 +47,7 @@ export default function FaqSectionOptimized() {
             <QuestionIcon className="w-3 h-3"/><span>FAQ</span>
           </div>
           <h2 className="text-left mb-8">
-            <span className="text-[#FFD713]">Questions</span> fréquemment posées
+            <span className="text-yellow-500">Questions</span> fréquemment posées
           </h2>
           <div className="faq-list h-fit">
             {theme.faq?.items?.map((item, index) => (
