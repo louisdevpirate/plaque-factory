@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
+import { ArrowRightIcon } from "./Icons";
 
 export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -66,6 +67,14 @@ export default function VideoSection() {
             Votre navigateur ne prend pas en charge cette vidéo...
           </video>
         </div>
+         <a
+              href="#personnalisation"
+              className="group bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black mt-4 md:mt-6 w-full md:w-fit gap-2 cta-faq"
+              title="Créer ma plaque personnalisée maintenant"
+            >
+              Je crée ma plaque
+              <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-90" />
+            </a>
       </div>
     </section>
   );

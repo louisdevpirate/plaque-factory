@@ -133,7 +133,7 @@ export default function BlogSectionOptimized() {
       <h2 className="text-left md:text-center">
         Le coin des <span className="italic">passionnés</span>
       </h2>
-      <p className="max-w-2xl mx-auto mb-12">
+      <p className="max-w-2xl mx-auto mb-8">
         Découvrez nos astuces, histoires insolites et conseils pratiques autour
         des plaques d'immatriculation et du monde automobile. <br />
         Bonne lecture et bonne route !

@@ -29,6 +29,21 @@ export default function HeaderSection() {
     return () => window.removeEventListener("scroll", throttledHandleScroll);
   }, [throttledHandleScroll]);
 
+  const handleAffiliationClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    // Envoi de l'événement GA4
+    window.gtag?.('event', 'click_affiliation', {
+      event_category: 'Affiliation',
+      event_label: 'Lien vers module complet',
+    });
+
+    // Redirection après un léger délai
+    setTimeout(() => {
+      window.location.href = 'https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6';
+    }, 300);
+  };
+
   return (
     <>
 
@@ -119,8 +134,7 @@ export default function HeaderSection() {
               </a>
               <a
                 href="https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={handleAffiliationClick}
                 className="header-cta-2 font-normal px-8 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center "
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}

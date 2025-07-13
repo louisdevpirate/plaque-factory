@@ -1,19 +1,23 @@
 /* Montserrat Regular - Critical */
 @font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("ttf");
   font-weight: 100 900;
   font-style: normal;
   font-display: optional;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-VariableFont_wght.ttf') format('ttf');
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-VariableFont_wght.ttf") format("ttf");
   font-weight: 100 900;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 
 @tailwind base;
@@ -48,7 +52,8 @@ body {
 body {
   color: var(--text-color);
   background-attachment: fixed;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
   font-size: theme("fontSize.base");
   line-height: theme("lineHeight.relaxed");
 }
@@ -100,7 +105,6 @@ section {
 a:hover {
   color: theme("colors.blue.900");
 }
-
 
 @keyframes float {
   0%,
@@ -268,6 +272,14 @@ button:hover {
   transition: transform 0.2s ease;
 }
 
+cta-faq:hover .cta-arrow-faq {
+    transform: rotate(-50deg);
+}
+
+.cta-arrow-faq {
+  transition: transform 0.2s ease;
+}
+
 .header-cta-2:hover .cta-arrow-2 {
   transform: rotate(-50deg);
 }
@@ -320,6 +332,7 @@ button:hover {
   background-color: rgb(235, 235, 235);
   border: none;
   height: 4px;
+  color: white;
 }
 
 @layer components {
@@ -334,11 +347,12 @@ button:hover {
   background-color: #facc15; /* Jaune par exemple */
 }
 
-.steps .step > .step-icon, .steps .step:not(:has(.step-icon)):after {
+.steps .step > .step-icon,
+.steps .step:not(:has(.step-icon)):after {
   background-color: rgb(235, 235, 235);
   border: none;
+  color: black;
 }
-
 
 /* 📌 iFrame */
 .iframe-wrapper {
@@ -502,7 +516,7 @@ button:hover {
   white-space: pre-line;
   padding: 1rem 2rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: light;
   color: black;
 }
 
@@ -611,7 +625,6 @@ button:hover {
   text-align: left;
 }
 
-
 /* 📌 Footer */
 .footer {
   background: theme("colors.gray.900");
@@ -650,7 +663,6 @@ button:hover {
 }
 
 @media (max-width: 1109px) {
-
   .iframe-wrapper {
     height: 1000px;
   }
@@ -670,7 +682,7 @@ button:hover {
     margin-bottom: 0.8rem;
   }
 
-    h3 {
+  h3 {
     font-size: theme("fontSize.2xl");
     font-weight: 600;
     line-height: 2.2rem;
@@ -762,7 +774,6 @@ button:hover {
     width: 95%; /* ✅ Prend toute la largeur disponible */
     height: 300px; /* ✅ S'ajuste automatiquement */
   }
-
 
   .gallery-image-wrapper {
     padding-bottom: 20px;

@@ -23,7 +23,7 @@ export default function FaqSectionOptimized() {
     <LazyBackgroundSection
       id="faq"
       backgroundImage="/images/bg/bg.webp"
-      className="faq-section relative bg-cover py-10 md:py-14 border-t"
+      className="faq-section relative bg-cover py-10 md:py-14 border"
       threshold={0.1}
       rootMargin="100px"
     >
@@ -61,7 +61,7 @@ export default function FaqSectionOptimized() {
                 {/* Question */}
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="faq-question px-4 py-2 gap-5"
+                  className="faq-question px-4 py-3 gap-5"
                 >
                   <span>{item?.question || ""}</span>
                   <span className="faq-toggle">
@@ -79,7 +79,6 @@ export default function FaqSectionOptimized() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent via-white/70 to-white pointer-events-none z-0" />
     </LazyBackgroundSection>
   );
 }

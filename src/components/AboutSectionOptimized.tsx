@@ -5,7 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
 import { HouseIcon } from "@/components/Icons";
-
+import { ArrowRightIcon } from "@/components/Icons";
 
 // Lazy load CountUp component
 const CountUp = dynamic(() => import("react-countup"), {
@@ -14,32 +14,40 @@ const CountUp = dynamic(() => import("react-countup"), {
 });
 
 // Memoized stat component
-const StatItem = memo(({ end, suffix, label, inView, separator }: {
-  end: number;
-  suffix: string;
-  label: string;
-  inView: boolean;
-  separator?: string;
-}) => (
-  <div className="flex flex-col">
-    <span className="text-3xl md:text-4xl font-bold">
-      <CountUp 
-        end={inView ? end : 0} 
-        duration={2} 
-        suffix={suffix} 
-        separator={separator}
-        enableScrollSpy
-        scrollSpyOnce
-      />
-    </span>
-    <span className="mt-1">{label}</span>
-  </div>
-));
+const StatItem = memo(
+  ({
+    end,
+    suffix,
+    label,
+    inView,
+    separator,
+  }: {
+    end: number;
+    suffix: string;
+    label: string;
+    inView: boolean;
+    separator?: string;
+  }) => (
+    <div className="flex flex-col">
+      <span className="text-3xl md:text-4xl font-bold">
+        <CountUp
+          end={inView ? end : 0}
+          duration={2}
+          suffix={suffix}
+          separator={separator}
+          enableScrollSpy
+          scrollSpyOnce
+        />
+      </span>
+      <span className="mt-1">{label}</span>
+    </div>
+  )
+);
 
 StatItem.displayName = "StatItem";
 
 function AboutSection() {
-  const { ref, inView } = useInView({ 
+  const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   });
@@ -57,18 +65,24 @@ function AboutSection() {
         {/* Texte gauche */}
         <div className="max-w-lg">
           <div className="badge badge-sm mb-4 rounded-2xl">
-            <HouseIcon className="w-3 h-3" /><span>À propos</span>
+            <HouseIcon className="w-3 h-3" />
+            <span>À propos</span>
           </div>
           <h2 className="text-left">
             La Bonne Plaque,
-            <span className="block"> votre <span className="italic">expert</span> en plaques qui roulent.</span>
+            <span className="block">
+              {" "}
+              votre <span className="italic">expert</span> en plaques qui
+              roulent.
+            </span>
           </h2>
           <div className="flex flex-col">
             <p className="italic">
-              Depuis plus de 8 ans, nous créons des plaques d&apos;immatriculation de
-              qualité, homologuées et personnalisées pour tous les passionnés
-              d&apos;automobile. Votre véhicule mérite ce qu&apos;il y a de mieux, livré
-              rapidement, avec le souci du détail.
+              Depuis plus de 8 ans, nous créons des plaques
+              d&apos;immatriculation de qualité, homologuées et personnalisées
+              pour tous les passionnés d&apos;automobile. Votre véhicule mérite
+              ce qu&apos;il y a de mieux, livré rapidement, avec le souci du
+              détail.
             </p>
             <Image
               src="/images/authors/signature.webp"
@@ -81,7 +95,7 @@ function AboutSection() {
           </div>
           <div className="grid grid-cols-2 gap-6 py-10">
             {stats.map((stat, index) => (
-              <StatItem 
+              <StatItem
                 key={index}
                 end={stat.end}
                 suffix={stat.suffix}
@@ -91,6 +105,14 @@ function AboutSection() {
               />
             ))}
           </div>
+          <a
+            href="#personnalisation"
+            className="group bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black w-full md:w-fit gap-2 cta-faq mx-auto mb-10"
+            title="Créer ma plaque personnalisée maintenant"
+          >
+            Commander ma plaque
+            <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-90" />
+          </a>
         </div>
 
         {/* Photo droite */}

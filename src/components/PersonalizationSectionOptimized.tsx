@@ -121,7 +121,7 @@ function PersonalizationSection() {
             height={100}
           />
         </div>
-        <div className="flex flex-col gap-4 italic">
+        <div className="flex flex-col gap-2 italic">
           <p className="text-xs">
             Agréé et Habilité par le Ministère de l'Intérieur et le Trésor
             public

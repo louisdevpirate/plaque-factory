@@ -5,7 +5,7 @@ export const DeliverySection = () => {
     <section className="w-full px-4">
       <div className="max-w-6xl mx-auto">
         <div className="mx-auto flex flex-col md:flex-col-rev lg:flex-row justify-center items-center gap-4 py-10">
-          <div className="flex justify-center items-center border border-black/10 rounded-2xl p-6 gap-6 w-full shadow-sm max-w-xl md:h-24">
+          <div className="flex justify-center items-center border  rounded-2xl p-6 gap-6 w-full lg:w-fit shadow-md max-w-xl md:h-24">
             <p className="text-5xl font-extrabold italic w-32 text-center">
               24H
             </p>
@@ -14,7 +14,7 @@ export const DeliverySection = () => {
               d’immatriculation en 24 heures
             </p> 
           </div>
-          <div className="flex justify-center items-center border border-black/10 rounded-2xl p-6 gap-6 w-full shadow-sm max-w-xl md:h-24">
+          <div className="flex justify-center items-center border  rounded-2xl p-6 gap-6 w-full lg:w-fit shadow-md max-w-xl md:h-24">
             <p className="text-5xl font-extrabold italic w-32 text-center">
               48H
             </p>
