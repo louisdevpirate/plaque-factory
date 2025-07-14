@@ -1,5 +1,8 @@
-// src/components/DeliveryPartners.tsx
+"use client";
+
 import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import { useEffect, useState } from "react";
 
 const partners = [
   { src: "/images/logo/amazon.png", alt: "Amazon" },
@@ -10,15 +13,50 @@ const partners = [
 ];
 
 export default function DeliveryPartners() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [emblaRef] = useEmblaCarousel({ loop: false, dragFree: true });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="overflow-hidden px-4" ref={emblaRef}>
+        <div className="flex flex-wrap justify-center">
+          {partners.map((partner) => (
+            <div key={partner.alt} className="w-1/5 flex justify-center">
+              <Image
+                src={partner.src}
+                alt={partner.alt}
+                loading="lazy"
+                width={110}
+                height={20}
+                className="grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition duration-300 ease-in-out hover:scale-110 w-auto h-auto"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-wrap justify-center items-center gap-6 px-4">
+    <div className="flex flex-row flex-wrap justify-center items-center md:justify-evenly md:items-center md:gap-4 px-4 py-2">
       {partners.map((partner) => (
         <Image
           key={partner.alt}
           src={partner.src}
           alt={partner.alt}
+          loading="lazy"
           width={110}
-          height={50}
+          height={20}
           className="grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition duration-300 ease-in-out hover:scale-110"
         />
       ))}

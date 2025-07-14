@@ -1,9 +1,8 @@
-import Image from "next/image";
 import DeliveryPartners from "./DeliveryPartners";
 
 export const DeliverySection = () => {
   return (
-    <section className="w-full px-4 pt-10 pb-8">
+    <section className="w-full px-4 pt-10 md:pb-8">
       <div className="max-w-6xl mx-auto">
         <div className="mx-auto flex flex-col md:flex-col-rev lg:flex-row justify-center items-center gap-4">
           <div className="flex justify-center items-center border  rounded-2xl p-6 gap-6 w-full lg:w-fit shadow-md max-w-xl md:h-24">
@@ -26,7 +25,7 @@ export const DeliverySection = () => {
             </p>
           </div>
         </div>
-        <DeliveryPartners /> 
+        <DeliveryPartners />
       </div>
     </section>
   );

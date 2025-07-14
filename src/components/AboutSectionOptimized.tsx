@@ -92,7 +92,7 @@ function AboutSection() {
               alt="Signature de Fabien"
               width={200}
               height={20}
-              className="self-start mt-8"
+              className="self-start mt-8 w-auto h-auto"
               loading="lazy"
             />
           </div>

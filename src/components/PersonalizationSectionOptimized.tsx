@@ -115,7 +115,7 @@ function PersonalizationSection() {
           <Image
             src="/images/marianne.avif"
             alt="Plaque Homologuées"
-            className="hover:scale-105"
+            className="hover:scale-105 w-auto h-auto"
             loading="lazy"
             width={100}
             height={100}
