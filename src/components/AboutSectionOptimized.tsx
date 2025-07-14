@@ -17,12 +17,14 @@ const CountUp = dynamic(() => import("react-countup"), {
 const StatItem = memo(
   ({
     end,
+    prefix,
     suffix,
     label,
     inView,
     separator,
   }: {
     end: number;
+    prefix?: string;
     suffix: string;
     label: string;
     inView: boolean;
@@ -30,6 +32,7 @@ const StatItem = memo(
   }) => (
     <div className="flex flex-col">
       <span className="text-3xl md:text-4xl font-bold">
+        {prefix}
         <CountUp
           end={inView ? end : 0}
           duration={2}
@@ -53,10 +56,10 @@ function AboutSection() {
   });
 
   const stats = [
-    { end: 8, suffix: "+", label: "Années d'expérience" },
-    { end: 100000, suffix: "+", label: "Plaques vendues", separator: "," },
+    { end: 8, prefix: "+", suffix: "", label: "Années d'expérience" },
+    { end: 100000, prefix: "+", suffix: "", label: "Plaques vendues", separator: "," },
     { end: 99, suffix: "%", label: "Avis positifs" },
-    { end: 75000, suffix: "+", label: "Clients satisfaits", separator: "," },
+    { end: 75000, prefix: "+", suffix: "", label: "Clients satisfaits", separator: "," },
   ];
 
   return (
@@ -98,6 +101,7 @@ function AboutSection() {
               <StatItem
                 key={index}
                 end={stat.end}
+                prefix={stat.prefix}
                 suffix={stat.suffix}
                 label={stat.label}
                 inView={inView}

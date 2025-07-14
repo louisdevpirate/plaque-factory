@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
 import Navbar from "../components/Navbar";
 import HeaderSection from "../components/HeaderSection";
-import PersonalizationSection from "../components/PersonalizationSectionOptimized";
 import CategoriesSectionOptimized from "../components/CategoriesSectionOptimized";
 import AboutSectionOptimized from "../components/AboutSectionOptimized";
 import FaqSectionOptimized from "./FaqSectionOptimized";
@@ -13,6 +12,7 @@ import BlogSectionOptimized from "./BlogSectionOptimized";
 import FooterOptimized from "./FooterOptimized";
 import { DeliverySection } from "./DeliverySection";
 import PersonalizationSectionOptimized from "../components/PersonalizationSectionOptimized";
+import PaymentSection from "./PaymentSection";
 
 // Critical CSS for above-the-fold content
 const criticalStyles = `
@@ -175,6 +175,12 @@ export default function HomePage() {
         <div data-preload="BlogSection">
           <Suspense fallback={<SectionSkeleton />}>
             <BlogSectionOptimized />
+          </Suspense>
+        </div>
+
+        <div data-preload="PaymentSection">
+          <Suspense fallback={<SectionSkeleton />}>
+            <PaymentSection />
           </Suspense>
         </div>
         

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
 import { Clock } from "lucide-react";
+import { ArrowRightIcon } from "@/components/Icons";
 
 // Remove force-dynamic to enable caching
 export const revalidate = 3600; // Revalidate every hour
@@ -15,7 +16,10 @@ interface BlogPageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function BlogPage({ params, searchParams }: BlogPageProps) {
+export default async function BlogPage({
+  params,
+  searchParams,
+}: BlogPageProps) {
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
 
@@ -31,7 +35,10 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
   const otherArticles = sortedArticles.slice(1);
 
   const pageParam = resolvedSearchParams?.page;
-  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam ?? "1", 10);
+  const page = parseInt(
+    Array.isArray(pageParam) ? pageParam[0] : pageParam ?? "1",
+    10
+  );
   const visibleCount = page * 7;
 
   return (
@@ -43,9 +50,9 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           {/* HERO */}
           <Link
             href={`/blog/${latestArticle.slug}`}
-            className="featured-article relative w-full rounded-lg shadow-lg overflow-hidden"
+            className="featured-article relative w-full h-[280px] md:h-[360px] rounded-lg shadow-lg overflow-hidden"
           >
-            <div className="featured-article relative w-full rounded-lg shadow-lg overflow-hidden">
+            <div className="featured-article relative w-full h-[280px] md:h-[360px] rounded-lg shadow-lg overflow-hidden">
               <Image
                 src={latestArticle.image}
                 alt={latestArticle.title}
@@ -61,37 +68,48 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
                 <div className="badge badge-sm mb-4 rounded-2xl border border-white/30">
                   <Clock size={16} /> À la une
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-left max-w-5xl bg-black/50">
+                <h2 className="text-xl md:text-2xl font-bold text-left max-w-3xl bg-black/50">
                   {latestArticle.title}
                 </h2>
-                <p className="mt-3 text-lg max-w-4xl bg-black/50">
+                <p className="mt-2 text-sm md:text-base max-w-3xl bg-black/50">
                   {latestArticle.description}
                 </p>
+                <div className="mt-auto">
+                  <span className="group/button inline-block w-full text-center py-2 text-sm font-medium text-white">
+                    <span className="flex items-center gap-1 text-white transition-all duration-300 hover:text-gray-500 bg-black py-4 px-4 rounded-md w-fit mt-4">
+                      En Savoir Plus <ArrowRightIcon />
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
           </Link>
 
           <div>
             <div className="mt-8">
-              <h1 className="text-4xl font-bold mb-2 text-left">Blog</h1>
-              <p className="mb-10 text-left max-w-5xl text-gray-500">
-                Roulez curieux : ici, on explore l’univers des{" "}
-                <strong>plaques d’immatriculation</strong>, sous toutes ses
-                coutures. <strong>Conseils de pose</strong>,{" "}
-                <strong>législation</strong> à connaître, idées de{" "}
-                <strong>personnalisation</strong> stylées, erreurs fréquentes,
-                ou encore astuces pour choisir la bonne matière (
-                <strong>plexi</strong>, <strong>alu</strong>)… Ce blog est votre
-                copilote pour rouler <strong>en toute légalité</strong>, avec{" "}
-                <strong>style</strong> et <strong>originalité</strong>. Que vous
-                soyez <strong>amateur de voitures anciennes</strong>,{" "}
-                <strong>passionné de tuning</strong> ou simplement soucieux de{" "}
-                <strong>bien faire</strong>, vous êtes au bon endroit.
+              <h1 className="mb-2 text-left font-medium">
+                Ne roulez plus à côté de la plaque !
+              </h1>
+              <p className="mb-10 text-left max-w-4xl">
+                Bienvenue sur le blog de labonneplaque.fr. Ici, on explore tous
+                les sujets liés aux plaques d'immatriculation : conseils
+                pratiques, points de législation, astuces de personnalisation,
+                erreurs à éviter, ou encore comparatifs entre les matériaux
+                comme le plexiglas et l’aluminium.
+                <br />
+                Que vous cherchiez à personnaliser votre véhicule, à comprendre
+                les obligations légales ou simplement à faire le bon choix pour
+                une plaque durable et conforme, ce blog est fait pour vous. Nos
+                articles sont pensés pour répondre à vos questions, vous guider
+                pas à pas et vous inspirer des idées qui vous ressemblent.{" "}
+                <br />
+                Notre objectif : vous aider à rouler en toute simplicité, avec
+                style, conformité… et un brin d’originalité.
               </p>
             </div>
 
             {/* ARTICLES */}
-            <section className="flex flex-col max-w-6xl w-full">
+            <section className="flex flex-col max-w-6xl w-full lg:p-0">
               {Array.from({ length: Math.ceil(visibleCount / 7) }).map(
                 (_, index) => {
                   const startIndex = index * 7;

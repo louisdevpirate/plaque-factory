@@ -113,7 +113,7 @@ function PersonalizationSection() {
       <div className="flex flex-col items-center gap-6 mt-8 max-w-3xl mx-auto">
         <div>
           <Image
-            src="/images/marianne.png"
+            src="/images/marianne.avif"
             alt="Plaque Homologuées"
             className="hover:scale-105"
             loading="lazy"
