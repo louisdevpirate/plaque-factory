@@ -60,7 +60,7 @@ export default function Footer() {
               className="text-lg font-bold mb-4 text-left"
               style={{ color: theme.footer.styling.text.primary }}
             >
-              Navigation
+              Navigationvhejkvbjklbskv
             </h3>
             <ul className="space-y-4">
               {theme.footer.sections.navigation.map((item) => (

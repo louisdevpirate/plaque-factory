@@ -31,7 +31,7 @@ export default function DeliveryPartners() {
       <div className="overflow-hidden px-4" ref={emblaRef}>
         <div className="flex flex-wrap justify-center">
           {partners.map((partner) => (
-            <div key={partner.alt} className="w-1/5 flex justify-center">
+            <div key={partner.alt} className="w-1/3 flex justify-center">
               <Image
                 src={partner.src}
                 alt={partner.alt}

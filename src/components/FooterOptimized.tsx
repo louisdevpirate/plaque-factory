@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
-import { Instagram, Facebook } from "lucide-react";
-import { TikTok } from "./icons/TikTok";
+import { FacebookFIcon, InstagramIcon, TikTokIcon } from "./Icons";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 
 export default function FooterOptimized() {
@@ -42,7 +41,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Instagram"
               >
-                <Instagram className="h-6 w-6 text-white hover:text-pink-500 transition" />
+                <InstagramIcon className="h-6 w-6 text-white hover:text-pink-500 transition" />
               </a>
               <a
                 href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
@@ -50,7 +49,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Facebook"
               >
-                <Facebook className="h-6 w-6 text-white hover:text-blue-600 transition" />
+                <FacebookFIcon className="h-6 w-6 text-white hover:text-blue-600 transition" />
               </a>
               <a
                 href="https://www.tiktok.com/@plaqueimmat.fr"
@@ -58,7 +57,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur TikTok"
               >
-                <TikTok className="h-6 w-6 text-white hover:text-cyan-400 transition" />
+                <TikTokIcon className="h-6 w-6 text-white hover:text-cyan-400 transition" />
               </a>
             </div>
           </div>

@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/hooks/useTheme";
 import { useState } from "react";
-import { Instagram, Facebook } from "lucide-react";
-import { TikTok } from "./icons/TikTok";
+import { FacebookFIcon, InstagramIcon, TikTokIcon } from "./Icons";
 
 export default function Navbar() {
   const theme = useTheme();
@@ -44,14 +43,14 @@ export default function Navbar() {
             </Link>
           </nav>
           <div className="flex items-center gap-4 w-1/4">
-            <div className="flex justify-start gap-4">
+            <div className="flex justify-start items-center gap-4">
               <a
                 href="https://www.instagram.com/plaqueimmat.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Suivez-nous sur Instagram"
               >
-                <Instagram className="h-5 w-5 text-black hover:text-pink-500 transition" />
+                <InstagramIcon className="h-5 w-5 text-black hover:text-pink-500 transition" />
               </a>
               <a
                 href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
@@ -59,7 +58,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 title="Suivez-nous sur Facebook"
               >
-                <Facebook className="h-5 w-5 text-black hover:text-blue-600 transition" />
+                <FacebookFIcon className="h-4 w-4 text-black hover:text-blue-600 transition" />
               </a>
               <a
                 href="https://www.tiktok.com/@plaqueimmat.fr"
@@ -67,7 +66,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 title="Suivez-nous sur TikTok"
               >
-                <TikTok className="h-5 w-5 text-black hover:text-cyan-400 transition" />
+                <TikTokIcon className="h-4 w-4 text-black hover:text-cyan-400 transition" />
               </a>
             </div>
             <a
@@ -188,7 +187,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             title="Suivez-nous sur Instagram"
           >
-            <Instagram className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
+            <InstagramIcon className="h-6 w-6 text-gray-800 hover:text-pink-500 transition" />
           </a>
           <a
             href="https://www.facebook.com"
@@ -196,7 +195,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             title="Suivez-nous sur Facebook"
           >
-            <Facebook className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
+            <FacebookFIcon className="h-6 w-6 text-gray-800 hover:text-blue-600 transition" />
           </a>
           <a
             href="https://www.facebook.com"
@@ -204,7 +203,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             title="Suivez-nous sur TikTok"
           >
-            <TikTok className="h-6 w-6 text-gray-800 hover:text-cyan-400 transition" />
+            <TikTokIcon className="h-6 w-6 text-gray-800 hover:text-cyan-400 transition" />
           </a>
         </div>
       </div>
