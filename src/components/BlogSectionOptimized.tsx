@@ -143,10 +143,10 @@ export default function BlogSectionOptimized() {
           <Link
             href="/blog"
             role="button"
-            className="bg-white border border-black text-black hover:bg-black hover:text-white transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
+            className="group bg-white border border-black text-black hover:bg-black hover:text-white transition-colors duration-200 px-6 py-2 rounded-lg flex items-center gap-2"
           >
             Voir tous les articles{" "}
-            <ArrowRightIcon className="w-4 h-4"/>
+            <ArrowRightIcon className="w-4 h-4 transition duration-300 ease-in-out group-hover:-rotate-45"/>
           </Link>
         </div>
 

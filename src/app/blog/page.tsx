@@ -7,6 +7,7 @@ import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
 import { Clock } from "lucide-react";
 import { ArrowRightIcon } from "@/components/Icons";
+import BlogClientPage from "@/components/BlogClientPage";
 
 // Remove force-dynamic to enable caching
 export const revalidate = 3600; // Revalidate every hour
@@ -107,46 +108,8 @@ export default async function BlogPage({
                 style, conformité… et un brin d’originalité.
               </p>
             </div>
-
-            {/* ARTICLES */}
-            <section className="flex flex-col max-w-6xl w-full lg:p-0">
-              {Array.from({ length: Math.ceil(visibleCount / 7) }).map(
-                (_, index) => {
-                  const startIndex = index * 7;
-                  const slice = otherArticles.slice(startIndex, startIndex + 7);
-                  return (
-                    <div key={index} className="flex flex-col">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {slice.slice(0, 2).map((article) => (
-                          <BlogCard key={article.id} article={article} />
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        {slice.slice(2, 5).map((article) => (
-                          <BlogCard key={article.id} article={article} />
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {slice.slice(5, 7).map((article) => (
-                          <BlogCard key={article.id} article={article} />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-              )}
-            </section>
-
-            {visibleCount < otherArticles.length && (
-              <div className="flex justify-center mt-8">
-                <Link
-                  href={`/blog?page=${page + 1}`}
-                  className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition"
-                >
-                  Voir plus
-                </Link>
-              </div>
-            )}
+            {/* ARTICLES */}{" "}
+              <BlogClientPage articles={otherArticles} />
           </div>
         </div>
       </main>
