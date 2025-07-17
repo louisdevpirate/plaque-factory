@@ -42,11 +42,8 @@ export default function RootLayout({
         />
         
         {/* DNS Prefetch and Preconnect */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://supabase.co" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://supabase.co" />
         
         {/* ✅ Ajout du meta viewport pour le responsive */}

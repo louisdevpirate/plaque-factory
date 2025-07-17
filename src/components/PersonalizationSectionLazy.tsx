@@ -2,6 +2,7 @@
 import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import React from "react";
 import LazyBackgroundSection from "./LazyBackgroundSection";
+import Image from "next/image";
 
 const IFRAME_LOAD_TIMEOUT = 5000;
 const PROGRESS_UPDATE_INTERVAL = 100;
@@ -13,7 +14,8 @@ function PersonalizationSectionLazy() {
 
   // Memoize iframe URL
   const iframeUrl = useMemo(
-    () => "https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1",
+    () =>
+      "https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1",
     []
   );
 
@@ -25,7 +27,10 @@ function PersonalizationSectionLazy() {
 
   // Memoize iframe class
   const iframeClassName = useMemo(
-    () => `iframe-content${iframeLoaded ? " loaded bg-white shadow-md" : ""} w-full border-none`,
+    () =>
+      `iframe-content${
+        iframeLoaded ? " loaded bg-white shadow-md" : ""
+      } w-full border-none`,
     [iframeLoaded]
   );
 
@@ -42,7 +47,7 @@ function PersonalizationSectionLazy() {
   // Progress effect
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    
+
     if (!iframeLoaded) {
       const start = Date.now();
       interval = setInterval(() => {
@@ -83,23 +88,20 @@ function PersonalizationSectionLazy() {
           <div className="badge badge-sm mb-4 rounded-2xl">
             <i className="fa fa-magic text-white"></i>Personnalisation
           </div>
-          <h2 className="text-left lg:text-center">
-            Personnalisez votre plaque{" "}
-            <span className="block">
-              en toute <span className="text-[#FFD713]">simplicité</span>
-            </span>
-          </h2>
-          <div className="max-w-xl mx-auto leading-relaxed mt-4 lg:text-center">
-            <p>
-              Votre plaque d'immatriculation en 3 clics : entrez votre numéro, votre département
-              et ajoutez au panier, c&apos;est parti !
-              <span className="block">
-                Envie de plus d'options de personnalisations ? Cliquez sur
-                &ldquo;Plus d'options&rdquo; pour tout personnaliser selon vos
-                envies.
-              </span>
-            </p>
-          </div>
+          <ul className="steps mt-6 w-full max-w-5xl mx-auto">
+            <li className="step step-primary text-xs md:text-sm text-left md:text-center">
+              Personnalisez grâce à un <br />
+              large choix d'options
+            </li>
+            <li className="step text-xs md:text-sm md:text-center">
+              Sélectionnez des finitions <br />
+              de haute qualité
+            </li>
+            <li className="step text-xs md:text-sm md:text-center">
+              Validez et recevez vos plaques <br />
+              en un temps record !
+            </li>
+          </ul>
         </div>
 
         {!iframeLoaded && (
@@ -118,29 +120,60 @@ function PersonalizationSectionLazy() {
           />
         </div>
       </div>
+
+      <div className="flex flex-col items-center gap-6 mt-8 max-w-3xl mx-auto">
+        <div>
+          <Image
+            src="/images/marianne.avif"
+            alt="Plaque Homologuées"
+            className="hover:scale-105 w-auto h-auto"
+            loading="lazy"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div className="flex flex-col gap-2 italic">
+          <p className="text-xs">
+            Agréé et Habilité par le Ministère de l'Intérieur et le Trésor
+            public
+          </p>
+          <div className="flex flex-col text-xs">
+            <p>
+              Agrément Trésor Public <span className="font-bold">n°59157</span>
+            </p>
+            <p>
+              Habilitation Préfectorale{" "}
+              <span className="font-bold">n°245306</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </LazyBackgroundSection>
   );
 }
 
 // Memoized loading overlay component
-const LoadingOverlay = memo(({ progress, progressStyle }: {
-  progress: number;
-  progressStyle: React.CSSProperties;
-}) => (
-  <div className="iframe-loader flex flex-col justify-center items-center gap-4 absolute inset-0 z-10 bg-white/80">
-    <div
-      className="radial-progress text-black"
-      style={progressStyle}
-      aria-valuenow={progress}
-      role="progressbar"
-    >
-      {progress}%
+const LoadingOverlay = memo(
+  ({
+    progress,
+    progressStyle,
+  }: {
+    progress: number;
+    progressStyle: React.CSSProperties;
+  }) => (
+    <div className="iframe-loader flex flex-col justify-center items-center gap-4 absolute inset-0 z-10 bg-white/80">
+      <div
+        className="radial-progress text-black"
+        style={progressStyle}
+        aria-valuenow={progress}
+        role="progressbar"
+      >
+        {progress}%
+      </div>
+      <span className="text-sm text-gray-500">Chargement du module...</span>
     </div>
-    <span className="text-sm text-gray-500">
-      Chargement du module...
-    </span>
-  </div>
-));
+  )
+);
 
 LoadingOverlay.displayName = "LoadingOverlay";
 

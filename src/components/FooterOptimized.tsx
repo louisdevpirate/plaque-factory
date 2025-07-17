@@ -28,7 +28,7 @@ export default function FooterOptimized() {
               width={200}
               height={40}
               loading="lazy"
-              priority={false} 
+              priority={false}
               className="transition-transform duration-300 hover:scale-105 mb-8"
             />
             <p style={{ color: theme.footer.styling.text.secondary }}>

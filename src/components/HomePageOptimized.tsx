@@ -4,15 +4,8 @@ import { Suspense } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
 import Navbar from "../components/Navbar";
 import HeaderSection from "../components/HeaderSection";
-import CategoriesSectionOptimized from "../components/CategoriesSectionOptimized";
-import AboutSectionOptimized from "../components/AboutSectionOptimized";
-import FaqSectionOptimized from "./FaqSectionOptimized";
-import VideoSectionOptimized from "../components/VideoSectionOptimized";
-import BlogSectionOptimized from "./BlogSectionOptimized";
-import FooterOptimized from "./FooterOptimized";
+import PersonalizationSectionLazy from "@/components/PersonalizationSectionLazy";
 import { DeliverySection } from "./DeliverySection";
-import PersonalizationSectionOptimized from "../components/PersonalizationSectionOptimized";
-import PaymentSection from "./PaymentSection";
 
 // Critical CSS for above-the-fold content
 const criticalStyles = `
@@ -85,29 +78,39 @@ const FeedbackSection = lazyLoadWithPreload(
   "FeedbackSection"
 );
 
-const CategoriesSection = lazyLoadWithPreload(
+const CategoriesSectionOptimized = lazyLoadWithPreload(
   () => import("../components/CategoriesSectionOptimized"),
-  "CategoriesSection"
+  "CategoriesSectionOptimized"
 );
 
-const AboutSection = lazyLoadWithPreload(
+const AboutSectionOptimized = lazyLoadWithPreload(
   () => import("../components/AboutSectionOptimized"),
-  "AboutSection"
+  "AboutSectionOptimized"
 );
 
-const FaqSection = lazyLoadWithPreload(
-  () => import("../components/FaqSection"),
-  "FaqSection"
+const FaqSectionOptimized = lazyLoadWithPreload(
+  () => import("../components/FaqSectionOptimized"),
+  "FaqSectionOptimized"
 );
 
-const VideoSection = lazyLoadWithPreload(
+const VideoSectionOptimized = lazyLoadWithPreload(
   () => import("../components/VideoSectionOptimized"),
-  "VideoSection"
+  "VideoSectionOptimized"
 );
 
-const BlogSection = lazyLoadWithPreload(
-  () => import("@/components/BlogSectionServer"),
-  "BlogSection"
+const BlogSectionOptimized = lazyLoadWithPreload(
+  () => import("@/components/BlogSectionOptimized"),
+  "BlogSectionOptimized"
+);
+
+const PaymentSection = lazyLoadWithPreload(
+  () => import("../components/PaymentSection"),
+  "PaymentSection"
+);
+
+const FooterOptimized = lazyLoadWithPreload(
+  () => import("@/components/FooterOptimized"),
+  "FooterOptimized"
 );
 
 export default function HomePage() {
@@ -134,7 +137,7 @@ export default function HomePage() {
       >
         <Navbar />
         <HeaderSection />
-        <PersonalizationSectionOptimized />
+        <PersonalizationSectionLazy />
 
         <div data-preload="ReassuranceSection">
           <Suspense fallback={<SectionSkeleton />}>
@@ -148,13 +151,13 @@ export default function HomePage() {
           </Suspense>
         </div>
         
-        <div data-preload="CategoriesSection">
+        <div data-preload="CategoriesSectionOptimized">
           <Suspense fallback={<SectionSkeleton />}>
             <CategoriesSectionOptimized />
           </Suspense>
         </div>
         
-        <div data-preload="AboutSection">
+        <div data-preload="AboutSectionOptimized">
           <Suspense fallback={<SectionSkeleton />}>
             <AboutSectionOptimized />
           </Suspense>

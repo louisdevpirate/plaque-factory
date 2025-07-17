@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import React from "react";
-import { MagicIcon, StarIcon, TruckIcon, CustomIcon } from "./Icons";
+import { MagicIcon } from "./Icons";
 import Image from "next/image";
 
 const IFRAME_LOAD_TIMEOUT = 5000;

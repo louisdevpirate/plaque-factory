@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.labonneplaque.fr/sitemap.xml 
+User-agent: CCBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://www.labonneplaque.fr/sitemap.xml
