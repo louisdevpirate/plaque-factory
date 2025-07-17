@@ -2,7 +2,7 @@ import { getCachedAllArticles, getCachedArticleBySlug, type Article } from "@/li
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import FooterOptimized from "@/components/FooterOptimized";
 import BlogCard from "@/components/BlogCard";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -230,7 +230,7 @@ export default async function BlogPage({
           </div>
         </section>
       </main>
-      <Footer />
+      <FooterOptimized />
     </div>
   );
 }

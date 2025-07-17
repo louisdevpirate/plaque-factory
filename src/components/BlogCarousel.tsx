@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import BlogCard from "@/components/BlogCard";
 import type { Article } from "@/lib/supabase";
+import { ChevronLeftIcon, ChevronRightIcon } from "./Icons";
 
 type BlogCarouselProps = {
   articles: Article[];
@@ -43,9 +44,12 @@ export default function BlogCarousel({ articles }: BlogCarouselProps) {
           className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center rounded-[100%] hover:bg-neutral-800 transition mx-2"
           aria-label="Article précédent"
         >
-          <i className="fa fa-arrow-left"></i>
+          <ChevronLeftIcon />
         </button>
-        <div className="overflow-hidden w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6" ref={emblaRef}>
+        <div
+          className="overflow-hidden w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6"
+          ref={emblaRef}
+        >
           <div className="flex gap-5">
             {articles.map((article) => (
               <div
@@ -62,19 +66,20 @@ export default function BlogCarousel({ articles }: BlogCarouselProps) {
           className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center mx-2 rounded-[100%] hover:bg-neutral-800 transition"
           aria-label="Article suivant"
         >
-          <i className="fa fa-arrow-right"></i>
+          <ChevronRightIcon />
         </button>
       </div>
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="embla-dots mt-6 flex justify-center items-center gap-4">
         {articles.map((_, index) => (
           <button
+            title="Boutons de slider"
             key={index}
-            className={`w-2 h-2 rounded-full transition-colors ${
-              index === selectedIndex ? "bg-black" : "bg-neutral-400"
+            type="button"
+            onClick={() => emblaApi?.scrollTo(index)}
+            className={`w-1 h-1 rounded-full transition-colors ${
+              selectedIndex === index ? "bg-black/10 w-4 h-2" : "bg-gray-100"
             }`}
-            onClick={() => emblaApi && emblaApi.scrollTo(index)}
-            aria-label={`Aller à l'article ${index + 1}`}
-          />
+          ></button>
         ))}
       </div>
     </div>

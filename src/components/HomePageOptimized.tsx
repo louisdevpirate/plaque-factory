@@ -98,8 +98,8 @@ const VideoSectionOptimized = lazyLoadWithPreload(
   "VideoSectionOptimized"
 );
 
-const BlogSectionOptimized = lazyLoadWithPreload(
-  () => import("@/components/BlogSectionOptimized"),
+const BlogSectionServer = lazyLoadWithPreload(
+  () => import("@/components/BlogSectionServer"),
   "BlogSectionOptimized"
 );
 
@@ -177,7 +177,7 @@ export default function HomePage() {
         
         <div data-preload="BlogSection">
           <Suspense fallback={<SectionSkeleton />}>
-            <BlogSectionOptimized />
+            <BlogSectionServer />
           </Suspense>
         </div>
 

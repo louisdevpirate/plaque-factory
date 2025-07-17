@@ -2,8 +2,7 @@
 import { getCachedAllArticles } from "@/lib/supabase";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import BlogCard from "@/components/BlogCard";
+import FooterOptimized from "@/components/FooterOptimized";
 import Link from "next/link";
 import { Clock } from "lucide-react";
 import { ArrowRightIcon } from "@/components/Icons";
@@ -114,7 +113,7 @@ export default async function BlogPage({
         </div>
       </main>
 
-      <Footer />
+      <FooterOptimized />
     </div>
   );
 }
