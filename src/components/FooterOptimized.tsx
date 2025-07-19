@@ -13,7 +13,7 @@ export default function FooterOptimized() {
     <LazyBackgroundSection
       as="footer"
       backgroundImage="/images/bg/bg2.webp"
-      className="relative bg-gray-900 bg-cover bg-fixed bg-no-repeat"
+      className="relative bg-gray-900 bg-cover bg-fixed bg-no-repeat grayscale"
       threshold={0.1}
       rootMargin="100px"
     >

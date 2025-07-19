@@ -47,9 +47,9 @@ const lazyLoadWithPreload = (
     loading: () => <SectionSkeleton />,
     ssr: true,
   });
-  
+
   // Preload on visibility
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -59,16 +59,16 @@ const lazyLoadWithPreload = (
           }
         });
       },
-      { rootMargin: '50px' }
+      { rootMargin: "50px" }
     );
-    
+
     // Start observing when component mounts
     setTimeout(() => {
       const element = document.querySelector(`[data-preload="${displayName}"]`);
       if (element) observer.observe(element);
     }, 1000);
   }
-  
+
   return Component;
 };
 
@@ -137,44 +137,43 @@ export default function HomePage() {
       >
         <Navbar />
         <HeaderSection />
-        <PersonalizationSectionLazy />
-
         <div data-preload="ReassuranceSection">
           <Suspense fallback={<SectionSkeleton />}>
             <DeliverySection />
           </Suspense>
         </div>
-        
+        <PersonalizationSectionLazy />
+
         <div data-preload="FeedbackSection">
           <Suspense fallback={<SectionSkeleton />}>
             <FeedbackSection />
           </Suspense>
         </div>
-        
+
         <div data-preload="CategoriesSectionOptimized">
           <Suspense fallback={<SectionSkeleton />}>
             <CategoriesSectionOptimized />
           </Suspense>
         </div>
-        
+
         <div data-preload="AboutSectionOptimized">
           <Suspense fallback={<SectionSkeleton />}>
             <AboutSectionOptimized />
           </Suspense>
         </div>
-        
-        <div data-preload="FaqSection">
-          <Suspense fallback={<SectionSkeleton />}>
-            <FaqSectionOptimized />
-          </Suspense>
-        </div>
-        
+
         <div data-preload="VideoSection">
           <Suspense fallback={<SectionSkeleton />}>
             <VideoSectionOptimized />
           </Suspense>
         </div>
-        
+
+        <div data-preload="FaqSection">
+          <Suspense fallback={<SectionSkeleton />}>
+            <FaqSectionOptimized />
+          </Suspense>
+        </div>
+
         <div data-preload="BlogSection">
           <Suspense fallback={<SectionSkeleton />}>
             <BlogSectionServer />
@@ -186,7 +185,7 @@ export default function HomePage() {
             <PaymentSection />
           </Suspense>
         </div>
-        
+
         <FooterOptimized />
       </main>
     </>

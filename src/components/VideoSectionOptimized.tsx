@@ -20,7 +20,7 @@ export default function VideoSectionOptimized() {
   };
 
   return (
-    <section className="py-10 md:py-16 text-left bg-white w-full">
+    <section className="py-10 md:py-16 text-left bg-white w-full border md:pb-12">
       <div className="max-w-3xl mx-auto md:flex flex-col justify-center">
         <div className="badge badge-sm mb-4 rounded-2xl mx-auto">
           <PlayIcon className="w-3 h-3" />
@@ -35,14 +35,6 @@ export default function VideoSectionOptimized() {
           fabriquer une plaque d'immatriculation conforme, stylée et prête à
           poser sans prise de tête.
         </p>{" "}
-        <a
-          href="#personnalisation"
-          className="group bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black w-full md:w-fit gap-2 cta-faq mx-auto mb-10"
-          title="Créer ma plaque personnalisée maintenant"
-        >
-          Créer ma plaque dés maintenant
-          <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-90" />
-        </a>
       </div>
 
       <div

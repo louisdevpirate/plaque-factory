@@ -1,7 +1,6 @@
 "use client";
 import { useTheme } from "@/hooks/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { CategoryItem } from "@/types/theme";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 

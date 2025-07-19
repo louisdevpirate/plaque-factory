@@ -79,12 +79,11 @@ function PersonalizationSectionLazy() {
   return (
     <LazyBackgroundSection
       id="personnalisation"
-      backgroundImage="/images/bg/bg.webp"
-      className="section-personnalisation bg-cover py-10 md:pt-14 text-center border-t border-b text-white relative"
+      backgroundImage="/images/bg/bg3.webp"
+      className="section-personnalisation bg-cover py-10 md:pt-14 text-center border-b relative"
       threshold={0.1}
       rootMargin="50px"
     >
-      <div className="absolute inset-0 bg-black/40 -z-10 pointer-events-none" />
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl text-left md:text-center mx-auto">
           <div className="badge badge-sm border-white/30 mb-4 rounded-2xl">

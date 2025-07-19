@@ -5,11 +5,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 
 const partners = [
+  { src: "/images/logo/colissimo.png", alt: "Colissimo" },
   { src: "/images/logo/amazon.png", alt: "Amazon" },
   { src: "/images/logo/chronopost.png", alt: "Chronopost" },
-  { src: "/images/logo/ups.png", alt: "UPS" },
-  { src: "/images/logo/colissimo.png", alt: "Colissimo" },
-  { src: "/images/logo/laposte.png", alt: "La Poste" },
 ];
 
 export default function DeliveryPartners() {
@@ -38,7 +36,7 @@ export default function DeliveryPartners() {
                 loading="lazy"
                 width={110}
                 height={20}
-                className="grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition duration-300 ease-in-out hover:scale-110 w-auto h-auto"
+                className="transition duration-300 ease-in-out hover:scale-110 w-auto h-auto"
               />
             </div>
           ))}
@@ -57,7 +55,7 @@ export default function DeliveryPartners() {
           loading="lazy"
           width={110}
           height={20}
-          className="grayscale opacity-20 hover:opacity-100 hover:grayscale-0 transition duration-300 ease-in-out hover:scale-110"
+          className="filter brightness-0 invert transition duration-300 ease-in-out hover:scale-110"
         />
       ))}
     </div>

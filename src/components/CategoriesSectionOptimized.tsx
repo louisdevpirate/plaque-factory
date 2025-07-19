@@ -5,8 +5,9 @@ import { CategoryItem } from "@/types/theme";
 import { useState, useEffect, memo } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
 import { CategoryIcon } from "./Icons";
+import Link from "next/link";
 
-// Lazy load framer-motion
+// Lazy load framer-motion Motion.div
 const MotionDiv = dynamic(
   () => import("framer-motion").then((mod) => mod.motion.div),
   {
@@ -15,18 +16,11 @@ const MotionDiv = dynamic(
   }
 );
 
-const AnimatePresence = dynamic(
-  () => import("framer-motion").then((mod) => mod.AnimatePresence),
-  { ssr: false }
-);
-
 function Categories() {
-  // Use default theme directly to avoid context issues
   const categories: CategoryItem[] = defaultTheme.categories.items;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Delay animation loading
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
@@ -55,63 +49,30 @@ function Categories() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto z-10 mt-4">
-        {isVisible ? (
-          <AnimatePresence>
-            {categories.map((category, index) => {
-              // Pattern spécifique sur lg :
-              // ligne 1: 0->span-2, 1->span-1, 2->span-1
-              // ligne 2: 3->span-1, 4->span-1, 5->span-2
-              // ligne 3: 6->span-2, 7->span-1, 8->span-1
-              let colSpan = "col-span-1";
-              if (index === 0 || index === 5 || index === 6) {
-                colSpan = "lg:col-span-2";
-              }
+        {categories.map((category, index) => {
+          let colSpan = "col-span-1";
+          if (index === 0 || index === 5 || index === 6) {
+            colSpan = "lg:col-span-2";
+          }
 
-              return (
-                <MotionDiv
-                  key={category.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className={`relative rounded-xl overflow-hidden group shadow-md ${colSpan}`}
-                >
-                  <Image
-                    src={`/images/categories/${category.image}`}
-                    alt={category.title}
-                    width={400}
-                    height={240}
-                    quality={60}
-                    loading="lazy"
-                    className="object-cover w-full h-60 transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-opacity-20 bg-black/20 group-hover:bg-white/10 group-hover:bg-opacity-6 transition cursor-pointer"></div>
-                  <div className="absolute bottom-3 left-3 text-white drop-shadow z-20">
-                    <h3 className="text-xl text-left font-bold uppercase">
-                      {category.title}
-                    </h3>
-                    <p className="text-sm">{category.sizes}cm</p>
-                  </div>
-                </MotionDiv>
-              );
-            })}
-          </AnimatePresence>
-        ) : (
-          // Static fallback while framer-motion loads
-          categories.map((category, index) => {
-            // Pattern spécifique sur lg :
-            // ligne 1: 0->span-2, 1->span-1, 2->span-1
-            // ligne 2: 3->span-1, 4->span-1, 5->span-2
-            // ligne 3: 6->span-2, 7->span-1, 8->span-1
-            let colSpan = "col-span-1";
-            if (index === 0 || index === 5 || index === 6) {
-              colSpan = "lg:col-span-2";
-            }
+          const Wrapper = isVisible ? MotionDiv : "div";
 
-            return (
-              <div
-                key={category.id}
-                className={`relative rounded-xl overflow-hidden group shadow-md ${colSpan}`}
+          return (
+            <Link
+              key={category.id}
+              href={`/categories/${category.slug}`}
+              className={colSpan}
+            >
+              <Wrapper
+                className="relative rounded-xl overflow-hidden group shadow-md"
+                {...(isVisible
+                  ? {
+                      initial: { opacity: 0, y: 20 },
+                      animate: { opacity: 1, y: 0 },
+                      exit: { opacity: 0, y: 20 },
+                      transition: { duration: 0.4, ease: "easeInOut" },
+                    }
+                  : {})}
               >
                 <Image
                   src={`/images/categories/${category.image}`}
@@ -122,17 +83,17 @@ function Categories() {
                   loading="lazy"
                   className="object-cover w-full h-60 transform group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-opacity-20 bg-black/20 group-hover:bg-yellow-50/10 group-hover:bg-opacity-40 transition cursor-pointer"></div>
+                <div className="absolute inset-0 bg-opacity-20 bg-black/20 group-hover:bg-white/10 group-hover:bg-opacity-60 transition pointer-events-none"></div>
                 <div className="absolute bottom-3 left-3 text-white drop-shadow z-20">
                   <h3 className="text-xl text-left font-bold uppercase">
                     {category.title}
                   </h3>
                   <p className="text-sm">{category.sizes}cm</p>
                 </div>
-              </div>
-            );
-          })
-        )}
+              </Wrapper>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
