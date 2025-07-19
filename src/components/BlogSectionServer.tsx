@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getCachedArticles } from "@/lib/supabase";
 import BlogCarousel from "./BlogCarousel";
-import { ArrowRightIcon } from "./Icons";
+import { ArrowRightIcon, RssIcon } from "./Icons";
 
 export default async function BlogSectionServer() {
   const articles = await getCachedArticles(5);
@@ -12,7 +12,7 @@ export default async function BlogSectionServer() {
       className="blog-section md:text-center bg-white py-10 md:pb-10 md:pt-14"
     >
       <div className="badge badge-sm mb-4 rounded-2xl">
-        <i className="fa fa-rss"></i>Blog
+        <RssIcon className="w-3 h-3 text-white"/>Blog
       </div>
       <h2 className="text-left md:text-center">
         Le coin des <span className="italic">passionnés</span>

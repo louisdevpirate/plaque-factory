@@ -34,7 +34,6 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
   scroll-behavior: smooth;
   font-family: "Montserrat", sans-serif;
 }
@@ -133,10 +132,6 @@ button {
   font-size: theme("fontSize.base");
   border-radius: theme("borderRadius.lg");
   transition: all 0.3s ease;
-}
-
-button:hover {
-  opacity: 0.8;
 }
 
 /* 🌍 Navbar Desktop */
@@ -273,7 +268,7 @@ button:hover {
 }
 
 cta-faq:hover .cta-arrow-faq {
-    transform: rotate(-50deg);
+  transform: rotate(-50deg);
 }
 
 .cta-arrow-faq {
@@ -331,7 +326,7 @@ cta-faq:hover .cta-arrow-faq {
 .steps .step:before {
   background-color: rgb(235, 235, 235);
   border: none;
-  height: 4px;
+  height: 1px;
   color: white;
 }
 
@@ -466,12 +461,10 @@ cta-faq:hover .cta-arrow-faq {
 }
 
 .faq-item {
-  background: rgba(255, 255, 255, 0.1);
   transition: 100ms ease-in-out;
-  margin-bottom: 5px;
-  color: var(--text-color);
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.177);
+  margin-bottom: 0.5rem;
+  background: rgb(7, 7, 7);
+  border: 1px solid rgb(100, 100, 100);
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.079);
@@ -492,13 +485,13 @@ cta-faq:hover .cta-arrow-faq {
 
 .faq-question span,
 .faq-item span {
-  color: black;
+  color: white;
   font-weight: 200;
 }
 
 .faq-toggle {
   font-size: 1.5rem;
-  color: black;
+  color: white;
 }
 
 .faq-item.open .faq-toggle {
@@ -515,9 +508,9 @@ cta-faq:hover .cta-arrow-faq {
 .faq-answer p {
   white-space: pre-line;
   padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: light;
-  color: black;
+  font-size: 0.9rem;
+  font-weight: thin;
+  color: white;
 }
 
 .faq-item.open .faq-answer {

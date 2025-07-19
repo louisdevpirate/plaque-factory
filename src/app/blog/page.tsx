@@ -4,8 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FooterOptimized from "@/components/FooterOptimized";
 import Link from "next/link";
-import { Clock } from "lucide-react";
-import { ArrowRightIcon } from "@/components/Icons";
+import { ArrowRightIcon, ClockIcon } from "@/components/Icons";
 import BlogClientPage from "@/components/BlogClientPage";
 
 // Remove force-dynamic to enable caching
@@ -66,7 +65,7 @@ export default async function BlogPage({
               />
               <div className="absolute bottom-0 left-0 w-full text-white p-6">
                 <div className="badge badge-sm mb-4 rounded-2xl border border-white/30">
-                  <Clock size={16} /> À la une
+                  <ClockIcon className="w-3 h-3" /> À la une
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-left max-w-3xl bg-black/50">
                   {latestArticle.title}

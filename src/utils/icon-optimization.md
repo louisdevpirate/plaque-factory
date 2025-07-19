@@ -1,7 +1,7 @@
 # Icon Library Optimization Guide
 
 ## Current Issues:
-- Using 3 icon libraries: react-icons (83MB), lucide-react (36MB), @heroicons/react (21MB)
+- Using 3 icon libraries: react-icons (83MB), @heroicons/react (21MB)
 - Total icon libraries size: ~140MB in node_modules
 - This affects bundle size even with tree-shaking
 

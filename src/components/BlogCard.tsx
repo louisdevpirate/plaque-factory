@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FC, memo } from "react"
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon } from './Icons';
 
 
 type Article = {
@@ -59,7 +59,7 @@ const BlogCard: FC<Props> = memo(({ article }) => {
           className="group/button inline-block w-full text-center px-4 py-2 text-sm font-medium text-white"
         >
           <span className="flex items-center gap-1 text-black transition-all duration-300 hover:text-gray-500">
-            En Savoir Plus   <ArrowRight size={16} />
+            En Savoir Plus   <ArrowRightIcon className="ml-1 w-3 h-3" />
           </span>
         </Link>
       </div>

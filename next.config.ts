@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
   
   // Optimize package imports
   experimental: {
-    optimizePackageImports: ['react-icons', 'framer-motion', 'lucide-react'],
+    optimizePackageImports: ['react-icons', 'framer-motion'],
   },
   
   // Remove console logs in production

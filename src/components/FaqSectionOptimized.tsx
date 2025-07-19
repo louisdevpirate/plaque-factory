@@ -23,59 +23,57 @@ export default function FaqSectionOptimized() {
     <LazyBackgroundSection
       id="faq"
       backgroundImage="/images/bg/bg.webp"
-      className="faq-section relative bg-cover py-10 md:py-14 border"
+      className="faq-section relative bg-cover py-10 md:py-14 text-white"
       threshold={0.1}
       rootMargin="100px"
     >
-      <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-center">
-        <div className="w-full md:w-1/2 h-full">
-          <div className="relative h-full z-40 flex justify-center">
-            <Image
-              src="/images/illustration.webp"
-              alt="Illustration FAQ"
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL="/images/placeholder.png"
-              width={600}
-              height={600}
-              className="object-cover rounded-3xl"
-            />
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 h-fit z-40 text-left">
-          <div className="badge badge-sm mb-4 rounded-2xl">
-            <QuestionIcon className="w-3 h-3"/><span>FAQ</span>
+      <div className="absolute inset-0 bg-black/50 -z-0 pointer-events-none" />
+      <div className="md:max-w-2xl lg:max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-center">
+        <div className="w-full max-w-3xl h-fit z-40 text-left mx-auto">
+          <div className="badge badge-sm mb-4 rounded-2xl border-white/30 ">
+            <QuestionIcon className="w-3 h-3" />
+            <span>FAQ</span>
           </div>
           <h2 className="text-left mb-8">
             <span className="italic">Questions</span> fréquemment posées
           </h2>
-          <div className="faq-list h-fit">
-            {theme.faq?.items?.map((item, index) => (
-              item && (
-              <div
-                key={index}
-                className={`faq-item ${
-                  openIndexes.includes(index) ? "open" : ""
-                }`}
-              >
-                {/* Question */}
-                <button
-                  onClick={() => toggleQuestion(index)}
-                  className="faq-question px-4 py-3 gap-5"
-                >
-                  <span>{item?.question || ""}</span>
-                  <span className="faq-toggle">
-                    {openIndexes.includes(index) ? "−" : "+"}
-                  </span>
-                </button>
-
-                {/* Réponse */}
-                <div className="faq-answer">
-                  <p>{item?.answer || ""}</p>
-                </div>
-              </div>
-              )
-            ))}
+          <div
+            className="faq-list h-fit border-white/30"
+            itemScope
+            itemType="https://schema.org/FAQPage"
+          >
+            {theme.faq?.items?.map(
+              (item, index) =>
+                item && (
+                  <div
+                    key={index}
+                    className={`faq-item ${
+                      openIndexes.includes(index) ? "open" : ""
+                    }`}
+                    itemProp="mainEntity"
+                    itemScope
+                    itemType="https://schema.org/Question"
+                  >
+                    <button
+                      onClick={() => toggleQuestion(index)}
+                      className="faq-question px-4 py-3 gap-5"
+                    >
+                      <span itemProp="name">{item?.question || ""}</span>
+                      <span className="faq-toggle">
+                        {openIndexes.includes(index) ? "−" : "+"}
+                      </span>
+                    </button>
+                    <div
+                      className="faq-answer"
+                      itemProp="acceptedAnswer"
+                      itemScope
+                      itemType="https://schema.org/Answer"
+                    >
+                      <p itemProp="text">{item?.answer}</p>
+                    </div>
+                  </div>
+                )
+            )}
           </div>
         </div>
       </div>

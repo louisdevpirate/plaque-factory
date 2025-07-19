@@ -1,5 +1,4 @@
 "use client";
-import { X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/hooks/useTheme";
@@ -127,7 +126,6 @@ export default function Navbar() {
           className="absolute top-5 right-5 p-2 rounded-md hover:bg-gray-100 transition"
           aria-label="Fermer le menu"
         >
-          <X className="h-8 w-8 text-gray-800" />
         </button>
         <div className="flex flex-col items-center gap-6 py-6">
           <Link

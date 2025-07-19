@@ -3,6 +3,7 @@ import { useState, useEffect, memo, useCallback, useMemo } from "react";
 import React from "react";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 import Image from "next/image";
+import { MagicIcon } from "./Icons";
 
 const IFRAME_LOAD_TIMEOUT = 5000;
 const PROGRESS_UPDATE_INTERVAL = 100;
@@ -79,14 +80,16 @@ function PersonalizationSectionLazy() {
     <LazyBackgroundSection
       id="personnalisation"
       backgroundImage="/images/bg/bg.webp"
-      className="section-personnalisation bg-cover py-10 md:pt-14 text-center border-t border-b"
+      className="section-personnalisation bg-cover py-10 md:pt-14 text-center border-t border-b text-white relative"
       threshold={0.1}
       rootMargin="50px"
     >
+      <div className="absolute inset-0 bg-black/40 -z-10 pointer-events-none" />
       <div className="personnalisation-container max-w-7xl m-auto">
-        <div className="max-w-2xl text-left lg:text-center mx-auto">
-          <div className="badge badge-sm mb-4 rounded-2xl">
-            <i className="fa fa-magic text-white"></i>Personnalisation
+        <div className="max-w-2xl text-left md:text-center mx-auto">
+          <div className="badge badge-sm border-white/30 mb-4 rounded-2xl">
+            <MagicIcon className="w-3 h-3" />
+            Personnalisation
           </div>
           <ul className="steps mt-6 w-full max-w-5xl mx-auto">
             <li className="step step-primary text-xs md:text-sm text-left md:text-center">
@@ -121,23 +124,23 @@ function PersonalizationSectionLazy() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-6 mt-8 max-w-3xl mx-auto">
+      <div className="flex justify-center items-center gap-6 mt-8 max-w-3xl mx-auto">
         <div>
           <Image
             src="/images/marianne.avif"
             alt="Plaque Homologuées"
-            className="hover:scale-105 w-auto h-auto"
+            className="hover:scale-105"
             loading="lazy"
-            width={100}
-            height={100}
+            width={80}
+            height={80}
           />
         </div>
-        <div className="flex flex-col gap-2 italic">
-          <p className="text-xs">
+        <div className="flex flex-col gap-2 italic text-left">
+          <p className="text-[0.6rem]">
             Agréé et Habilité par le Ministère de l'Intérieur et le Trésor
             public
           </p>
-          <div className="flex flex-col text-xs">
+          <div className="flex flex-col text-[0.6rem]">
             <p>
               Agrément Trésor Public <span className="font-bold">n°59157</span>
             </p>

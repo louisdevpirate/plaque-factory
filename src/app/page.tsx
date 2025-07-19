@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Plaques d’immatriculation personnalisées et homologuées",
     description: "Créez votre plaque d'immatriculation personnalisée et homologuée en quelques clics. Livraison rapide, qualité pro, large choix de styles pour votre véhicule.",
     alternates: {
-      canonical: "https://www.labonneplaque.fr/",
+      canonical: "https://labonneplaque.fr/",
     },
     openGraph: {
       title: "Plaques personnalisées et homologuées | LABONNEPLAQUE.fr",
