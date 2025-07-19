@@ -1,6 +1,5 @@
 'use client'
 import { defaultTheme } from '@/config/themes/default.theme';
-import { motoTheme } from '@/config/themes/moto.theme';
 
 export const useThemeSelector = () => {
   if (typeof window !== 'undefined') {
@@ -8,8 +7,6 @@ export const useThemeSelector = () => {
     const theme = searchParams.get('theme');
 
     switch (theme) {
-      case 'moto':
-        return motoTheme;
       default:
         return defaultTheme;
     }

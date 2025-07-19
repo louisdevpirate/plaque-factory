@@ -111,17 +111,6 @@ export const defaultTheme: ThemeConfig = {
   categories: {
     items: [
       {
-        id: 1,
-        title: "AUTO",
-        description:
-          "Homologué pour voitures particulières et véhicules légers",
-        sizes: "52x11",
-        slug: "auto",
-        link: "#",
-        image: "car.webp",
-      },
-
-      {
         id: 3,
         title: "U.S.",
         description:
@@ -137,7 +126,7 @@ export const defaultTheme: ThemeConfig = {
         title: "4X4",
         description: "Adapté aux SUV, pick-up et véhicules de loisirs",
         sizes: "27,5x20",
-        slug: "4x4",
+        slug: "suv",
         link: "#",
         image: "suv.webp",
       },
@@ -146,7 +135,7 @@ export const defaultTheme: ThemeConfig = {
         title: "PETITE MOTO",
         description: "Parfait pour les motos légères et scooters",
         sizes: "17x13",
-        slug: "petite-moto",
+        slug: "little-moto",
         link: "#",
         image: "little-bike.webp",
       },

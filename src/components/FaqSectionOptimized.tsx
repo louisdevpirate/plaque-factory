@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
-import Image from "next/image";
 import React from "react";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 import { QuestionIcon } from "./Icons";
@@ -22,8 +21,8 @@ export default function FaqSectionOptimized() {
   return (
     <LazyBackgroundSection
       id="faq"
-      backgroundImage="/images/bg/bg.webp"
-      className="faq-section relative bg-cover py-10 md:py-14 text-white"
+      backgroundImage="/images/bg/bg-dark.webp"
+      className="faq-section relative bg-cover py-10 md:py-14 text-white min-h-[50px]"
       threshold={0.1}
       rootMargin="100px"
     >

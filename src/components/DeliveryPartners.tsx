@@ -8,6 +8,7 @@ const partners = [
   { src: "/images/logo/colissimo.png", alt: "Colissimo" },
   { src: "/images/logo/amazon.png", alt: "Amazon" },
   { src: "/images/logo/chronopost.png", alt: "Chronopost" },
+  
 ];
 
 export default function DeliveryPartners() {
@@ -26,21 +27,19 @@ export default function DeliveryPartners() {
 
   if (isMobile) {
     return (
-      <div className="overflow-hidden px-4" ref={emblaRef}>
-        <div className="flex flex-wrap justify-center">
-          {partners.map((partner) => (
-            <div key={partner.alt} className="w-1/3 flex justify-center">
-              <Image
-                src={partner.src}
-                alt={partner.alt}
-                loading="lazy"
-                width={110}
-                height={20}
-                className="transition duration-300 ease-in-out hover:scale-110 w-auto h-auto"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col items-center gap-10 px-4">
+        {partners.map((partner) => (
+          <div key={partner.alt} className="flex justify-center">
+            <Image
+              src={partner.src}
+              alt={partner.alt}
+              loading="lazy"
+              width={110}
+              height={20}
+              className="filter brightness-0 invert transition duration-300 ease-in-out hover:scale-110 w-auto h-auto"
+            />
+          </div>
+        ))}
       </div>
     );
   }

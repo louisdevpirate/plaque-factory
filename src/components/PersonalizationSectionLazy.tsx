@@ -85,7 +85,7 @@ function PersonalizationSectionLazy() {
       rootMargin="50px"
     >
       <div className="personnalisation-container max-w-7xl m-auto">
-        <div className="max-w-2xl text-left md:text-center mx-auto">
+        <div className="max-w-2xl md:text-center mx-auto">
           <div className="badge badge-sm border-white/30 mb-4 rounded-2xl">
             <MagicIcon className="w-3 h-3" />
             Personnalisation

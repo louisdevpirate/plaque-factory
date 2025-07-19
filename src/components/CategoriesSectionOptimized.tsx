@@ -28,10 +28,9 @@ function Categories() {
   return (
     <section
       id="catégories"
-      className="relative py-10 md:py-14 flex flex-col items-start md:items-center bg-[url('/images/bg/bg.webp')] bg-cover border-t border-b text-white"
+      className="relative py-10 md:py-14 flex flex-col items-start md:items-center bg-[url('/images/bg/bg-dark.webp')] bg-cover border-t border-b text-white" 
     >
-      <div className="absolute inset-0 bg-black/50 pointer-events-none" />
-
+      <div className="absolute inset-0 bg-black/50 pointer-events-none z-0" />
       <div className="md:flex flex-col justify-center z-10">
         <div className="badge badge-sm mb-4 rounded-2xl mx-auto border-white/30">
           <CategoryIcon className="w-3 h-3" />
@@ -50,10 +49,7 @@ function Categories() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto z-10 mt-4">
         {categories.map((category, index) => {
-          let colSpan = "col-span-1";
-          if (index === 0 || index === 5 || index === 6) {
-            colSpan = "lg:col-span-2";
-          }
+          let colSpan = "col-span-1 lg:col-span-2";
 
           const Wrapper = isVisible ? MotionDiv : "div";
 

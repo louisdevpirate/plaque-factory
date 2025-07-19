@@ -3,5 +3,6 @@ export interface Category {
   title: string
   description: string
   image: string
+  imagePlaque: string
   iframeUrl: string
 }
