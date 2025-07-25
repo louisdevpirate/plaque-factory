@@ -31,7 +31,9 @@ export const getCachedArticles = unstable_cache(
   async (limit: number = 5) => {
     const { data, error } = await supabase
       .from("Article")
-      .select("id, slug, title, description, image, createdAt, category:categoryId(name)")
+      .select(
+        "id, slug, title, description, image, createdAt, category:categoryId(name)"
+      )
       .order("createdAt", { ascending: false })
       .limit(limit);
 
@@ -40,9 +42,9 @@ export const getCachedArticles = unstable_cache(
       return [];
     }
 
-    return (data || []).map(article => ({
+    return (data || []).map((article) => ({
       ...article,
-      category: article.category?.[0] || undefined
+      category: article.category?.[0] || undefined,
     })) as Article[];
   },
   ["articles"], // cache key
@@ -57,7 +59,9 @@ export const getCachedArticleBySlug = unstable_cache(
   async (slug: string) => {
     const { data, error } = await supabase
       .from("Article")
-      .select("*, category:categoryId(name)")
+      .select(
+        "*, category:categoryId(name), author:authorId(name, avatar, bio)"
+      )
       .eq("slug", slug)
       .single();
 
@@ -80,7 +84,9 @@ export const getCachedAllArticles = unstable_cache(
   async () => {
     const { data, error } = await supabase
       .from("Article")
-      .select("id, slug, title, description, image, createdAt, category:categoryId(name)")
+      .select(
+        "id, slug, title, description, image, createdAt, category:categoryId(name)"
+      )
       .order("createdAt", { ascending: false });
 
     if (error) {
@@ -88,9 +94,9 @@ export const getCachedAllArticles = unstable_cache(
       return [];
     }
 
-    return (data || []).map(article => ({
+    return (data || []).map((article) => ({
       ...article,
-      category: article.category?.[0] || undefined
+      category: article.category?.[0] || undefined,
     })) as Article[];
   },
   ["all-articles"],

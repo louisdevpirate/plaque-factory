@@ -1,7 +1,4 @@
-import {
-  getCachedAllArticles,
-  getCachedArticleBySlug,
-} from "@/lib/supabase";
+import { getCachedAllArticles, getCachedArticleBySlug } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -97,32 +94,7 @@ export default async function BlogPage({
                 </nav>
               </div>
               <h1 className="text-4xl font-bold text-left">{article.title}</h1>
-              <div className="flex items-center space-x-4 mb-6">
-                {article.author && (
-                  <>
-                    <Image
-                      src={article.author.avatar}
-                      alt={article.author.name}
-                      width={70}
-                      height={70}
-                      className="rounded-full"
-                      quality={70}
-                      loading="lazy"
-                      placeholder="blur"
-                      blurDataURL="/images/placeholder.png"
-                    />
-                    <div>
-                      <p className="text-sm font-medium">
-                        Publié par {article.author.name}
-                      </p>
-                      <p className="text-sm font-light">{article.author.bio}</p>
-                      <p className="text-sm font-light">
-                        {formatDate(article.createdAt)}
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
+
               <div className="flex items-center space-x-4 mt-4 mb-6">
                 <span className="text-sm text-gray-600 font-medium">
                   Partager :
@@ -194,10 +166,36 @@ export default async function BlogPage({
                 placeholder="blur"
                 blurDataURL="/images/placeholder.png"
               />
+              <div className="flex items-center space-x-4 mt-6 mb-10">
+                {article.author && (
+                  <>
+                    <Image
+                      src={article.author.avatar}
+                      alt={article.author.name}
+                      width={70}
+                      height={70}
+                      className="rounded-full"
+                      quality={70}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="/images/placeholder.png"
+                    />
+                    <div>
+                      <p className="text-sm font-medium">
+                        Publié par {article.author.name}
+                      </p>
+                      <p className="text-sm font-light">{article.author.bio}</p>
+                      <p className="text-sm font-light">
+                        {formatDate(article.createdAt)}
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
               <p className="text-lg text-gray-700 mb-6">
                 {article.description}
               </p>
-              <div className="prose prose-lg text-left leading-relaxed [&_h3]:text-left [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-snug">
+              <div className="prose prose-lg text-left leading-relaxed [&_h3]:text-left [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-snug [&_p]:mb-6">
                 <ReactMarkdown>{article.content}</ReactMarkdown>
               </div>
             </section>

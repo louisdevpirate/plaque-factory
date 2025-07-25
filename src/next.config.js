@@ -4,4 +4,13 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/categories/4x4',
+        destination: '/categories/suv',
+        permanent: true, // 301
+      },
+    ];
+  },
 };
