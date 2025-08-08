@@ -31,9 +31,32 @@ export default function Navbar() {
             <Link href="/" title="Retour à l'accueil" className="nav-link flex items-center">
               Accueil
             </Link>
-            <Link href="/#catégories" title="Voir les catégories de plaques" className="nav-link flex items-center">
-              Catégories
-            </Link>
+            <div className="relative group">
+              <div className="nav-link flex items-center gap-1 cursor-pointer">
+                Catégories
+                <svg
+                  className="w-3 h-3 mt-0.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0l-4.25-4.25a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div
+                className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50 text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+              >
+                <Link href="/categories/moto" className="block px-4 py-2 hover:bg-gray-100">Moto</Link>
+                <Link href="/categories/us" className="block px-4 py-2 hover:bg-gray-100">U.S.</Link>
+                <Link href="/categories/suv" className="block px-4 py-2 hover:bg-gray-100">SUV</Link>
+                <Link href="/categories/cyclo" className="block px-4 py-2 hover:bg-gray-100">Cyclo</Link>
+                <Link href="/categories/collection" className="block px-4 py-2 hover:bg-gray-100">Collection</Link>
+              </div>
+            </div>
             <Link href="/#faq" title="Questions fréquentes" className="nav-link flex items-center">
               FAQ
             </Link>
@@ -117,7 +140,7 @@ export default function Navbar() {
 
       {/* 🌍 Mobile Slide Menu */}
       <div
-        className={`fixed inset-0 z-50 bg-white/80 backdrop-blur-md flex flex-col items-center px-8 justify-center space-y-8 text-2xl font-semibold transform transition-transform duration-300 ${
+        className={`lg:hidden fixed inset-0 z-50 bg-white/80 backdrop-blur-md flex flex-col items-center px-8 justify-center space-y-8 text-2xl font-semibold transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -137,7 +160,7 @@ export default function Navbar() {
             Accueil
           </Link>
           <Link
-            href="#catégories"
+            href="/#catégories"
             title="Voir les catégories de plaques"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
@@ -145,7 +168,7 @@ export default function Navbar() {
             Catégories
           </Link>
           <Link
-            href="#about"
+            href="/about"
             title="En savoir plus sur nous"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
@@ -153,7 +176,7 @@ export default function Navbar() {
             À propos
           </Link>
           <Link
-            href="#faq"
+            href="/#faq"
             title="Questions fréquentes"
             onClick={() => setIsMenuOpen(false)}
             className="text-3xl font-light"
