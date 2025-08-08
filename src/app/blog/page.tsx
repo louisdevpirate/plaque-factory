@@ -67,10 +67,10 @@ export default async function BlogPage({
                 <div className="badge badge-sm mb-4 rounded-2xl border border-white/30">
                   <ClockIcon className="w-3 h-3" /> À la une
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-left max-w-3xl bg-black/50">
+                <h2 className="text-xl md:text-2xl font-bold text-left max-w-3xl bg-black/50 p-1">
                   {latestArticle.title}
                 </h2>
-                <p className="mt-2 text-sm md:text-base max-w-3xl bg-black/50">
+                <p className="mt-2 text-sm md:text-base max-w-3xl bg-black/50 p-1">
                   {latestArticle.description}
                 </p>
                 <div className="mt-auto">
@@ -90,7 +90,7 @@ export default async function BlogPage({
                 Ne roulez plus à côté de la plaque !
               </h1>
               <p className="mb-10 text-left max-w-4xl">
-                Bienvenue sur le blog de labonneplaque.fr. Ici, on explore tous
+                Bienvenue sur le blog. Ici, on explore tous
                 les sujets liés aux plaques d'immatriculation : conseils
                 pratiques, points de législation, astuces de personnalisation,
                 erreurs à éviter, ou encore comparatifs entre les matériaux

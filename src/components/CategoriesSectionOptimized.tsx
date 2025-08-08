@@ -32,7 +32,7 @@ function Categories() {
     >
       <div className="absolute inset-0 bg-black/50 pointer-events-none z-0" />
       <div className="md:flex flex-col justify-center z-10">
-        <div className="badge badge-sm mb-4 rounded-2xl mx-auto border-white/30">
+        <div className="badge badge-sm mb-4 rounded-2xl mx-auto border-white/30 text-white">
           <CategoryIcon className="w-3 h-3" />
           <span>Catégories</span>
         </div>

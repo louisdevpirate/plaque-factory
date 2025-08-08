@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
 import { FacebookFIcon, InstagramIcon, TikTokIcon } from "./Icons";
@@ -7,7 +7,6 @@ import LazyBackgroundSection from "./LazyBackgroundSection";
 
 export default function FooterOptimized() {
   const theme = useTheme();
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   return (
     <LazyBackgroundSection
@@ -31,8 +30,8 @@ export default function FooterOptimized() {
               priority={false}
               className="transition-transform duration-300 hover:scale-105 mb-8"
             />
-            <p style={{ color: theme.footer.styling.text.secondary }}>
-              {theme.footer.sections.description}
+            <p className="text-white/60">
+              Personnalisation de plaques d'immatriculation homologuées et accessoires décoratifs.
             </p>
             <div className="flex justify-start gap-4 pt-6">
               <a
@@ -64,58 +63,83 @@ export default function FooterOptimized() {
 
           {/* Navigation Links */}
           <div>
-            <h3
-              className="text-lg font-bold mb-4 text-left"
-              style={{ color: theme.footer.styling.text.primary }}
-            >
+            <h3 className="text-lg font-bold mb-4 text-white">
               Navigation
             </h3>
             <ul className="space-y-4">
-              {theme.footer.sections.navigation.map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    className="transition-colors"
-                    style={{
-                      color:
-                        hoveredLink === item
-                          ? theme.footer.styling.text.hover
-                          : theme.footer.styling.text.secondary,
-                    }}
-                    onMouseEnter={() => setHoveredLink(item)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    title={`Aller à la section ${item}`}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#personnaliser"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Aller à la section Personnaliser"
+                >
+                  Personnaliser
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#galerie"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Aller à la section Galerie"
+                >
+                  Galerie
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#catégories"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Aller à la section Catégories"
+                >
+                  Catégories
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Aller à la section FAQ"
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#blog"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Aller à la section Blog"
+                >
+                  Blog
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Legal Links */}
           <div>
             <h3
-              className="text-lg font-bold mb-4 text-left"
-              style={{ color: theme.footer.styling.text.primary }}
+              className="text-lg font-bold mb-4 text-white"
             >
               Informations
             </h3>
             <ul className="space-y-4">
               <li>
                 <a
+                  href="/about"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Ouvrir la page À propos"
+                >
+                  À propos
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://plaqueimmat.fr/pages/mentions-legales"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{
-                    color:
-                      hoveredLink === "Mentions légales"
-                        ? theme.footer.styling.text.hover
-                        : theme.footer.styling.text.secondary,
-                  }}
-                  onMouseEnter={() => setHoveredLink("Mentions légales")}
-                  onMouseLeave={() => setHoveredLink(null)}
+                  className="text-white/60 hover:text-white transition-colors"
                   title="Lire les mentions légales"
                 >
                   Mentions légales
@@ -126,15 +150,7 @@ export default function FooterOptimized() {
                   href="https://plaqueimmat.fr/pages/conditions-generales-de-vente"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{
-                    color:
-                      hoveredLink === "CGV"
-                        ? theme.footer.styling.text.hover
-                        : theme.footer.styling.text.secondary,
-                  }}
-                  onMouseEnter={() => setHoveredLink("CGV")}
-                  onMouseLeave={() => setHoveredLink(null)}
+                  className="text-white/60 hover:text-white transition-colors"
                   title="Lire les conditions générales de vente"
                 >
                   CGV
@@ -145,17 +161,7 @@ export default function FooterOptimized() {
                   href="https://plaqueimmat.fr/pages/politique-de-remboursement"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{
-                    color:
-                      hoveredLink === "Politique de remboursement"
-                        ? theme.footer.styling.text.hover
-                        : theme.footer.styling.text.secondary,
-                  }}
-                  onMouseEnter={() =>
-                    setHoveredLink("Politique de remboursement")
-                  }
-                  onMouseLeave={() => setHoveredLink(null)}
+                  className="text-white/60 hover:text-white transition-colors"
                   title="Lire la politique de remboursement"
                 >
                   Politique de remboursement
@@ -166,15 +172,7 @@ export default function FooterOptimized() {
                   href="https://plaqueimmat.fr/contact.php"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors"
-                  style={{
-                    color:
-                      hoveredLink === "Contact"
-                        ? theme.footer.styling.text.hover
-                        : theme.footer.styling.text.secondary,
-                  }}
-                  onMouseEnter={() => setHoveredLink("Contact")}
-                  onMouseLeave={() => setHoveredLink(null)}
+                  className="text-white/60 hover:text-white transition-colors"
                   title="Nous contacter"
                 >
                   Contact
@@ -186,8 +184,8 @@ export default function FooterOptimized() {
 
         {/* Copyright */}
         <div className="border-t border-white/50 mt-12 pt-8 pb-20 text-center">
-          <p style={{ color: theme.footer.styling.text.secondary }}>
-            {theme.footer.sections.copyright}
+          <p className="text-white/90">
+            © 2025 La Bonne Plaque – Tous droits réservés.
           </p>
         </div>
       </div>

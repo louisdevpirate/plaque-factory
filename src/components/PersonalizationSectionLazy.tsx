@@ -5,20 +5,23 @@ import LazyBackgroundSection from "./LazyBackgroundSection";
 import Image from "next/image";
 import { MagicIcon } from "./Icons";
 
+type Props = {
+  code?: string;
+};
+
 const IFRAME_LOAD_TIMEOUT = 5000;
 const PROGRESS_UPDATE_INTERVAL = 100;
 
-function PersonalizationSectionLazy() {
+function PersonalizationSectionLazy({ code }: Props) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
   const [progress, setProgress] = useState(0);
 
   // Memoize iframe URL
-  const iframeUrl = useMemo(
-    () =>
-      "https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1",
-    []
-  );
+  const iframeUrl = useMemo(() => {
+    const productCode = code ?? '361';
+    return `https://deploy-preview-384--module-plaqueimmat.netlify.app/${productCode}?iframe=1`;
+  }, [code]);
 
   // Memoize progress style
   const progressStyle = useMemo(
@@ -86,8 +89,8 @@ function PersonalizationSectionLazy() {
     >
       <div className="personnalisation-container max-w-7xl m-auto">
         <div className="max-w-2xl md:text-center mx-auto">
-          <div className="badge badge-sm border-white/30 mb-4 rounded-2xl">
-            <MagicIcon className="w-3 h-3" />
+          <div className="badge badge-sm border-white/30 mb-4 rounded-2xl text-white">
+            <MagicIcon className="w-3 h-3"/>
             Personnalisation
           </div>
           <ul className="steps mt-6 w-full max-w-5xl mx-auto">

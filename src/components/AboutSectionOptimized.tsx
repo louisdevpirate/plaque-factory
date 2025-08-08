@@ -57,9 +57,21 @@ function AboutSection() {
 
   const stats = [
     { end: 8, prefix: "+", suffix: "", label: "Années d'expérience" },
-    { end: 100000, prefix: "+", suffix: "", label: "Plaques vendues", separator: "," },
+    {
+      end: 100000,
+      prefix: "+",
+      suffix: "",
+      label: "Plaques vendues",
+      separator: ",",
+    },
     { end: 99, suffix: "%", label: "Avis positifs" },
-    { end: 75000, prefix: "+", suffix: "", label: "Clients satisfaits", separator: "," },
+    {
+      end: 75000,
+      prefix: "+",
+      suffix: "",
+      label: "Clients satisfaits",
+      separator: ",",
+    },
   ];
 
   return (
@@ -67,7 +79,7 @@ function AboutSection() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-10">
         {/* Texte gauche */}
         <div className="max-w-lg">
-          <div className="badge badge-sm mb-4 rounded-2xl">
+          <div className="badge badge-sm mb-4 rounded-2xl text-white">
             <HouseIcon className="w-3 h-3" />
             <span>À propos</span>
           </div>
@@ -109,14 +121,24 @@ function AboutSection() {
               />
             ))}
           </div>
-          <a
-            href="#personnalisation"
-            className="group bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black w-full md:w-fit gap-2 cta-faq mx-auto mb-10"
-            title="Créer ma plaque personnalisée maintenant"
-          >
-            Commander ma plaque
-            <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-90" />
-          </a>
+          <div className="flex flex-col justify-start align-self-start">
+            <a
+              href="/about"
+              className="group text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black w-full md:w-fit gap-2 cta-faq mb-4"
+              title="Créer ma plaque personnalisée maintenant"
+            >
+              En savoir Plus
+              <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-45" />
+            </a>
+            <a
+              href="#personnalisation"
+              className="group bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex justify-center items-center px-6 border-2 border-black hover:text-black w-full md:w-fit gap-2 cta-faq mb-10"
+              title="Créer ma plaque personnalisée maintenant"
+            >
+              Commander ma plaque
+              <ArrowRightIcon className="inline w-4 h-4 ml-2 cta-arrow-faq transform transition-transform duration-300 group-hover:-rotate-90" />
+            </a>
+          </div>
         </div>
 
         {/* Photo droite */}

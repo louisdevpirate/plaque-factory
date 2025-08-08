@@ -29,7 +29,7 @@ export default function FaqSectionOptimized() {
       <div className="absolute inset-0 bg-black/50 -z-0 pointer-events-none" />
       <div className="md:max-w-2xl lg:max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-10 items-center">
         <div className="w-full max-w-3xl h-fit z-40 text-left mx-auto">
-          <div className="badge badge-sm mb-4 rounded-2xl border-white/30 ">
+          <div className="badge badge-sm mb-4 rounded-2xl border-white/30 text-white">
             <QuestionIcon className="w-3 h-3" />
             <span>FAQ</span>
           </div>

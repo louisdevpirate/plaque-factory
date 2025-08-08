@@ -7,7 +7,7 @@ export const categories: Category[] = [
     description: 'Commandez votre plaque moto homologuée en quelques clics.',
     image: '/images/templates/moto.webp',
     imagePlaque: '/images/templates/header/moto.png',
-    iframeUrl: 'https://labonneplaque.fr/module-moto',
+    code: '764'
   },
   {
     slug: 'us',
@@ -15,7 +15,7 @@ export const categories: Category[] = [
     description: 'Des plaques à l’américaine, au format 30x15 ou 30x10 cm.',
     image: '/images/templates/us.webp',
     imagePlaque: '/images/templates/header/us.png',
-    iframeUrl: 'https://labonneplaque.fr/module-us',
+    code: '1275',
   },
   {
     slug: 'suv',
@@ -23,7 +23,7 @@ export const categories: Category[] = [
     description: 'Des plaques robustes pour SUV, 4x4 et véhicules tout-terrain.',
     image: '/images/templates/suv.webp',
     imagePlaque: '/images/templates/header/suv.png',
-    iframeUrl: 'https://labonneplaque.fr/module-suv',
+    code: '1602',
   },
   {
     slug: 'cyclo',
@@ -31,7 +31,7 @@ export const categories: Category[] = [
     description: 'Le bon format pour les mobylettes et cyclomoteurs anciens ou récents.',
     image: '/images/templates/cyclo.webp',
     imagePlaque: '/images/templates/header/14x12.png',
-    iframeUrl: 'https://labonneplaque.fr/module-cyclo',
+    code: '1406',
   },
   {
     slug: 'little-moto',
@@ -39,7 +39,7 @@ export const categories: Category[] = [
     description: 'Des plaques compactes pour pit bikes, dirt bikes ou pocket bikes.',
     image: '/images/templates/little-moto.webp',
     imagePlaque: '/images/templates/header/17x13.png',
-    iframeUrl: 'https://labonneplaque.fr/module-little-moto',
+    code: '1404',
   },
   {
     slug: 'enduro',
@@ -47,7 +47,7 @@ export const categories: Category[] = [
     description: 'Des plaques stylées pour vos motos tout-terrain, cross ou enduro.',
     image: '/images/templates/motocross.webp',
     imagePlaque: '/images/templates/header/10x10.png',
-    iframeUrl: 'https://labonneplaque.fr/module-enduro',
+    code: '1533',
   },
   {
     slug: 'collection',
@@ -55,7 +55,7 @@ export const categories: Category[] = [
     description: 'Donnez du cachet à vos véhicules de collection avec des plaques rétro.',
     image: '/images/templates/collection.webp',
     imagePlaque: '/images/templates/header/collection.png',
-    iframeUrl: 'https://labonneplaque.fr/module-collection',
+    code: '1182',
   },
   {
     slug: 'collection-compact',
@@ -63,6 +63,6 @@ export const categories: Category[] = [
     description: 'Le style vintage en version compacte pour les petites voitures anciennes.',
     image: '/images/templates/moto-collection2.webp',
     imagePlaque: '/images/templates/header/moto-collection.png',
-    iframeUrl: 'https://labonneplaque.fr/module-collection-compact',
+    code: '1539',
   }
 ]

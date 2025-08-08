@@ -4,5 +4,5 @@ export interface Category {
   description: string
   image: string
   imagePlaque: string
-  iframeUrl: string
+  code: string
 }

@@ -14,6 +14,7 @@ import {
   LinkedInSquareIcon,
   MailSquareIcon,
   PinterestSquareIcon,
+  ArrowRightIcon,
 } from "@/components/Icons";
 
 export const revalidate = 3600; // Revalidate every hour
@@ -192,10 +193,18 @@ export default async function BlogPage({
                   </>
                 )}
               </div>
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-2xl text-gray-700 mb-6">
                 {article.description}
               </p>
-              <div className="prose prose-lg text-left leading-relaxed [&_h3]:text-left [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-snug [&_p]:mb-6">
+              <div
+                className="prose prose-lg text-left leading-relaxed
+  [&_h2]:text-[2rem] [&_h2]:mt-4 [&_h2]:mb-4
+  [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-gray-800
+  [&_p]:mb-5 [&_p]:text-gray-700
+  [&_ul]:pl-6 [&_ul]:list-disc [&_li]:mb-2
+  [&_a]:text-blue-600 hover:[&_a]:underline [&_p]:mt-2
+"
+              >
                 <ReactMarkdown>{article.content}</ReactMarkdown>
               </div>
             </section>
@@ -239,6 +248,23 @@ export default async function BlogPage({
             </div>
           </aside>
         </div>
+        <section className="max-w-4xl mx-auto my-12 text-center px-4 py-10 border-t">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+            Envie de personnaliser votre plaque ?
+          </h2>
+          <p className="text-gray-600 mb-6 text-lg">
+            Faites comme des milliers de passionnés : créez votre plaque stylée
+            en quelques clics.
+          </p>
+          <a
+            href="/#personnalisation"
+            className="header-cta bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center px-6 mx-auto"
+            title="Créer ma plaque personnalisée maintenant"
+          >
+            Je crée ma plaque{" "}
+            <ArrowRightIcon className="inline w-4 h-4 cta-arrow ml-2" />
+          </a>
+        </section>
         <section className="mb-10 max-w-6xl flex flex-col justify-center mx-auto border-t border-gray-200 pt-8">
           <h2 className="text-2xl font-semibold mb-6 pl-2">Articles récents</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

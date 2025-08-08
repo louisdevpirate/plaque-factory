@@ -81,7 +81,7 @@ export default function FeedbackSection() {
   return (
     <section className="w-full bg-white py-10 md:pb-20 px-6 lg:px-8">
       <div className="max-w-5xl mx-auto md:text-center">
-        <div className="badge badge-sm mb-4 rounded-2xl border-white/10">
+        <div className="badge badge-sm mb-4 rounded-2xl border-white/10 text-white">
           <StarIcon className="w-4 h-4"/><span>Avis</span>
         </div>
         <h2 className="text-left md:text-center">

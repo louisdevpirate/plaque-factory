@@ -17,9 +17,7 @@ export default function Template({ category }: Props) {
   return (
     <>
       <Navbar />
-
       <div className="h-20 bg-white"></div>
-
       <header className="relative w-full h-[70vh] overflow-hidden">
         <img
           src={category.image}
@@ -61,13 +59,10 @@ export default function Template({ category }: Props) {
           </div>
         </div>
       </header>
-
       <DeliverySection />
-      <PersonalizationSectionLazy />
-      <FeedbackSection />
+      <PersonalizationSectionLazy code={category.code} /> <FeedbackSection />
       <FaqSectionOptimized />
       <BlogSectionServer />
-
       <FooterOptimized />
     </>
   );

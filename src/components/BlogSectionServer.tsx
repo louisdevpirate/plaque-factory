@@ -11,7 +11,7 @@ export default async function BlogSectionServer() {
       id="blog"
       className="blog-section md:text-center bg-white py-10 md:pb-10 md:pt-14"
     >
-      <div className="badge badge-sm mb-4 rounded-2xl">
+      <div className="badge badge-sm mb-4 rounded-2xl text-white">
         <RssIcon className="w-3 h-3 text-white"/>Blog
       </div>
       <h2 className="text-left md:text-center">
