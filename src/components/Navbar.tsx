@@ -27,7 +27,7 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <nav className="flex-1 flex justify-center gap-14 w-2/4">
+          <nav className="flex-1 flex justify-center gap-8 w-2/4">
             <Link href="/" title="Retour à l'accueil" className="nav-link flex items-center">
               Accueil
             </Link>
@@ -59,6 +59,9 @@ export default function Navbar() {
             </div>
             <Link href="/#faq" title="Questions fréquentes" className="nav-link flex items-center">
               FAQ
+            </Link>
+            <Link href="/about" title="À propos de labonneplaque" className="nav-link flex items-center">
+              À propos
             </Link>
             <Link href="/blog" title="Lire le blog La Bonne Plaque" className="nav-link flex items-center">
               Blog

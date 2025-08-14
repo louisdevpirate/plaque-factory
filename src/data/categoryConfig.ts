@@ -47,7 +47,7 @@ export const categories: Category[] = [
     description: 'Des plaques stylées pour vos motos tout-terrain, cross ou enduro.',
     image: '/images/templates/motocross.webp',
     imagePlaque: '/images/templates/header/10x10.png',
-    code: '1533',
+    code: '1534',
   },
   {
     slug: 'collection',

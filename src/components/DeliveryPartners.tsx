@@ -27,7 +27,7 @@ export default function DeliveryPartners() {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col items-center gap-10 px-4">
+      <div className="flex items-center gap-10 px-4">
         {partners.map((partner) => (
           <div key={partner.alt} className="flex justify-center">
             <Image
