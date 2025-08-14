@@ -85,8 +85,8 @@ export default async function BlogPage({
           </Link>
 
           <div>
-            <div className="mt-8">
-              <h1 className="mb-2 text-left font-medium">
+            <div className="mt-8 px-4">
+              <h1 className="mb-2 text-left font-medium text-3xl">
                 Ne roulez plus à côté de la plaque !
               </h1>
               <p className="mb-10 text-left max-w-4xl">

@@ -600,7 +600,7 @@ cta-faq:hover .cta-arrow-faq {
 /* Page Blog */
 .featured-article {
   grid-column: span 2;
-  height: 800px; /* Ajuste la hauteur ici pour correspondre au design souhaité */
+  height: 400px; /* Ajuste la hauteur ici pour correspondre au design souhaité */
   position: relative;
   border-radius: 10px;
   overflow: hidden;
