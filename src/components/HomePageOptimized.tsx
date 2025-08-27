@@ -121,7 +121,7 @@ export default function HomePage() {
     "@type": "Organization",
     name: "LABONNEPLAQUE.fr",
     url: "https://www.labonneplaque.fr",
-    logo: "https://www.labonneplaque.fr/logo.png",
+    logo: "https://www.labonneplaque.fr/images/logo/1.svg",
   };
 
   return (

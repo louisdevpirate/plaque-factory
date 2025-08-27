@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { useInView } from "react-intersection-observer";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { PlayIcon } from "@/components/Icons";
 import { ArrowRightIcon } from "@/components/Icons";
@@ -9,10 +8,28 @@ import { ArrowRightIcon } from "@/components/Icons";
 export default function VideoSectionOptimized() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const [isInView, setIsInView] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // triggerOnce manuel
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handlePlayClick = () => {
     setIsVideoLoaded(true);
@@ -38,7 +55,7 @@ export default function VideoSectionOptimized() {
       </div>
 
       <div
-        ref={ref}
+        ref={videoRef}
         className="overflow-hidden rounded-2xl shadow-md border border-gray-200 p-1 mx-auto relative aspect-video w-full max-w-4xl"
       >
         {!isVideoLoaded ? (

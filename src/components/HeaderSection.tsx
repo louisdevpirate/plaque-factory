@@ -156,6 +156,7 @@ export default function HeaderSection() {
                 src="/images/header.webp"
                 alt="Illustration FAQ"
                 priority
+                fetchPriority="high"
                 quality={60}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"

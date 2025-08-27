@@ -22,7 +22,7 @@ export default function FooterOptimized() {
           {/* Logo Section */}
           <div className="max-w-xs">
             <Image
-              src="/images/logo/plaque-factory.svg"
+              src="/images/logo/2.svg"
               alt="La Bonne Plaque Logo"
               width={200}
               height={40}
@@ -40,7 +40,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Instagram"
               >
-                <InstagramIcon className="h-6 w-6 text-white hover:text-pink-500 transition" />
+                <InstagramIcon className="h-5 w-5 mt-[2px] text-white hover:text-pink-500 transition" />
               </a>
               <a
                 href="https://www.facebook.com/PlaqueimmatByPlaqueDigital?locale=fr_FR"
@@ -48,7 +48,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur Facebook"
               >
-                <FacebookFIcon className="h-6 w-6 text-white hover:text-blue-600 transition" />
+                <FacebookFIcon className="h-5 w-5 pt-1 text-white hover:text-blue-600 transition" />
               </a>
               <a
                 href="https://www.tiktok.com/@plaqueimmat.fr"
@@ -56,7 +56,7 @@ export default function FooterOptimized() {
                 rel="noopener noreferrer"
                 title="Suivez La Bonne Plaque sur TikTok"
               >
-                <TikTokIcon className="h-6 w-6 text-white hover:text-cyan-400 transition" />
+                <TikTokIcon className="h-5 w-5 pt-1 text-white hover:text-cyan-400 transition" />
               </a>
             </div>
           </div>

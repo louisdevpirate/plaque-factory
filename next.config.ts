@@ -1,74 +1,76 @@
 import type { NextConfig } from "next";
 
-// Bundle analyzer setup
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-const ANALYZE = process.env.ANALYZE === 'true';
-
 const nextConfig: NextConfig = {
-  // Enable compression
-  compress: true,
-  
-  // Remove X-Powered-By header for security
-  poweredByHeader: false,
-  
-  // Enable React strict mode for better error detection
-  reactStrictMode: true,
-  
-  // Optimize package imports
-  experimental: {
-    optimizePackageImports: ['react-icons', 'framer-motion'],
+  // 🚫 Désactiver ESLint temporairement pour l'analyse
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  
-  // Remove console logs in production
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
-  },
-  
-  // Image optimization settings
+
+  // 🖼️ Optimisation des images
   images: {
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 an
+    
+    // 🌐 Domaines autorisés pour les images
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "**",
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'supabase.co',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        port: '',
+        pathname: '/**',
       },
     ],
-    minimumCacheTTL: 31536000, // 1 year cache for optimized images
   },
-  
-  // Headers for caching and performance
+
+  // 📱 Headers HTTP optimisés
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/(.*)',
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on',
+            value: 'on'
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            key: 'Keep-Alive',
+            value: 'timeout=5, max=1000'
+          },
+        ],
+      },
+      {
+        source: '/globals.css',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/css; charset=utf-8'
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
           },
+        ],
+      },
+      {
+        source: '/favicon/:path*',
+        headers: [
           {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
           },
         ],
       },
@@ -77,11 +79,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400'
           },
         ],
       },
@@ -90,15 +88,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Accept-CH',
-            value: 'DPR, Viewport-Width, Width',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400'
           },
         ],
       },
@@ -107,11 +97,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'public, max-age=31536000, stale-while-revalidate=86400'
           },
         ],
       },
@@ -120,25 +106,16 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/api/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
+            value: 'public, max-age=31536000, immutable'
           },
         ],
       },
     ];
   },
-  
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+
+  // 🔒 Sécurité
+  poweredByHeader: false,
+  compress: true,
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;

@@ -1,17 +1,72 @@
 "use client";
 
-import React, { memo } from "react";
+import React, { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useInView } from "react-intersection-observer";
 import { HouseIcon } from "@/components/Icons";
 import { ArrowRightIcon } from "@/components/Icons";
 
-// Lazy load CountUp component
-const CountUp = dynamic(() => import("react-countup"), {
-  ssr: false,
-  loading: () => <span>0</span>,
-});
+// Hook personnalisé avec Intersection Observer natif
+const useInView = (options = {}) => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsInView(entry.isIntersecting);
+    }, { threshold: 0.3, ...options });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [options]);
+
+  return { ref, inView: isInView };
+};
+
+// Composant de compteur CSS pur
+const CountUp = ({ end, prefix = "", suffix = "", separator = "", inView }: {
+  end: number;
+  prefix?: string;
+  suffix?: string;
+  separator?: string;
+  inView: boolean;
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (inView && count < end) {
+      const increment = Math.ceil(end / 50); // 50 étapes pour l'animation
+      const timer = setInterval(() => {
+        setCount(prev => {
+          if (prev + increment >= end) {
+            clearInterval(timer);
+            return end;
+          }
+          return prev + increment;
+        });
+      }, 40); // 40ms entre chaque étape = 2 secondes total
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, end, count]);
+
+  const formatNumber = (num: number) => {
+    if (separator) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+    }
+    return num.toString();
+  };
+
+  return (
+    <span className="inline-block">
+      {prefix}
+      <span className="animate-count-up">{formatNumber(count)}</span>
+      {suffix}
+    </span>
+  );
+};
 
 // Memoized stat component
 const StatItem = memo(
@@ -32,14 +87,12 @@ const StatItem = memo(
   }) => (
     <div className="flex flex-col">
       <span className="text-3xl md:text-4xl font-bold">
-        {prefix}
         <CountUp
           end={inView ? end : 0}
-          duration={2}
+          prefix={prefix}
           suffix={suffix}
           separator={separator}
-          enableScrollSpy
-          scrollSpyOnce
+          inView={inView}
         />
       </span>
       <span className="mt-1">{label}</span>

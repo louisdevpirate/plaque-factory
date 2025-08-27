@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useState, useRef } from "react";
 
 export function useLazyBackground(
   backgroundImage: string,
@@ -19,28 +18,39 @@ export function useLazyBackground(
 
   const [bgImage, setBgImage] = useState(placeholder);
   const [isLoaded, setIsLoaded] = useState(false);
+  const ref = useRef<HTMLElement>(null);
   
-  const { ref, inView } = useInView({
-    threshold,
-    rootMargin,
-    triggerOnce: true,
-  });
-
   useEffect(() => {
-    if (inView && !isLoaded) {
-      const img = new Image();
-      img.src = backgroundImage;
-      
-      img.onload = () => {
-        setBgImage(backgroundImage);
-        setIsLoaded(true);
-      };
-      
-      img.onerror = () => {
-        console.error(`Failed to load background image: ${backgroundImage}`);
-      };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isLoaded) {
+          const img = new Image();
+          img.src = backgroundImage;
+          
+          img.onload = () => {
+            setBgImage(backgroundImage);
+            setIsLoaded(true);
+          };
+          
+          img.onerror = () => {
+            console.error(`Failed to load background image: ${backgroundImage}`);
+          };
+          
+          observer.disconnect(); // triggerOnce manuel
+        }
+      },
+      {
+        threshold,
+        rootMargin,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-  }, [inView, backgroundImage, isLoaded]);
+
+    return () => observer.disconnect();
+  }, [backgroundImage, isLoaded, threshold, rootMargin]);
 
   return {
     ref,

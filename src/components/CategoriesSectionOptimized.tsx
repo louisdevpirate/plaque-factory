@@ -1,20 +1,10 @@
 "use client";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CategoryItem } from "@/types/theme";
 import { useState, useEffect, memo } from "react";
 import { defaultTheme } from "@/config/themes/default.theme";
 import { CategoryIcon } from "./Icons";
 import Link from "next/link";
-
-// Lazy load framer-motion Motion.div
-const MotionDiv = dynamic(
-  () => import("framer-motion").then((mod) => mod.motion.div),
-  {
-    ssr: false,
-    loading: () => <div className="opacity-0" />,
-  }
-);
 
 function Categories() {
   const categories: CategoryItem[] = defaultTheme.categories.items;
@@ -51,24 +41,17 @@ function Categories() {
         {categories.map((category, index) => {
           let colSpan = "col-span-1 lg:col-span-2";
 
-          const Wrapper = isVisible ? MotionDiv : "div";
-
           return (
             <Link
               key={category.id}
               href={`/categories/${category.slug}`}
               className={colSpan}
             >
-              <Wrapper
-                className="relative rounded-xl overflow-hidden group shadow-md"
-                {...(isVisible
-                  ? {
-                      initial: { opacity: 0, y: 20 },
-                      animate: { opacity: 1, y: 0 },
-                      exit: { opacity: 0, y: 20 },
-                      transition: { duration: 0.4, ease: "easeInOut" },
-                    }
-                  : {})}
+              <div
+                className={`relative rounded-xl overflow-hidden group shadow-md animate-fade-in-up ${
+                  isVisible ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <Image
                   src={`/images/categories/${category.image}`}
@@ -86,7 +69,7 @@ function Categories() {
                   </h3>
                   <p className="text-sm">{category.sizes}cm</p>
                 </div>
-              </Wrapper>
+              </div>
             </Link>
           );
         })}

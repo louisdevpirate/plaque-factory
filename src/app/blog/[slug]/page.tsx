@@ -197,7 +197,7 @@ export default async function BlogPage({
                 {article.description}
               </p>
               <div
-                className="prose prose-lg text-left leading-relaxed
+                className="prose prose-lg text-left leading-relaxed [&_h1]:text-2xl
   [&_h2]:text-[2rem] [&_h2]:mt-4 [&_h2]:mb-4
   [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-gray-800
   [&_p]:mb-5 [&_p]:text-gray-700
@@ -258,7 +258,7 @@ export default async function BlogPage({
           </p>
           <a
             href="/#personnalisation"
-            className="header-cta bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center px-6 mx-auto"
+            className="header-cta bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-block items-center mx-auto"
             title="Créer ma plaque personnalisée maintenant"
           >
             Je crée ma plaque{" "}

@@ -19,7 +19,7 @@ export default function Navbar() {
               <Image
                 src={theme.global.branding.logo.path}
                 alt={theme.global.branding.logo.alt}
-                width={150}
+                width={120}
                 height={100}
                 loading="lazy"
                 priority={false}
@@ -149,9 +149,23 @@ export default function Navbar() {
       >
         <button
           onClick={() => setIsMenuOpen(false)}
-          className="absolute top-5 right-5 p-2 rounded-md hover:bg-gray-100 transition"
+          className="absolute top-5 right-5 p-2 rounded-md hover:bg-gray-100 transition text-black"
           aria-label="Fermer le menu"
         >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
         <div className="flex flex-col items-center gap-6 py-6">
           <Link

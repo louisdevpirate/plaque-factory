@@ -5,104 +5,32 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FooterOptimized from "@/components/FooterOptimized";
 import { ArrowRightIcon } from "@/components/Icons";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useMemo } from "react";
-import * as THREE from "three";
 
+// Composant simple avec image globe.webp
 function GlobeGrid() {
-  const groupRef = useRef<THREE.Group | null>(null);
-
-  // Rotation douce
-  useFrame(() => {
-    if (groupRef.current) groupRef.current.rotation.y += 0.002;
-  });
-
-  const R = 3.2; // rayon plus grand
-  const segments = 256; // lissage des cercles
-  const lineColor = new THREE.Color(0xfacc16); // jaune foncé #EAB308 (yellow-600)
-  const lineOpacity = 0.9;
-
-  // Latitudes : -80 -> 80 tous les 10° (hors pôles extrêmes)
-  const latitudes = useMemo(
-    () => Array.from({ length: 17 }, (_, i) => -80 + i * 10),
-    []
-  );
-  // Longitudes : 0 -> 350 tous les 10°
-  const longitudes = useMemo(
-    () => Array.from({ length: 36 }, (_, i) => i * 10),
-    []
-  );
-
-  // Points d'un cercle dans le plan XZ (équateur)
-  const circlePointsXZ = useMemo(() => {
-    const pts: THREE.Vector3[] = [];
-    for (let i = 0; i <= segments; i++) {
-      const t = (i / segments) * Math.PI * 2;
-      pts.push(new THREE.Vector3(Math.cos(t), 0, Math.sin(t)));
-    }
-    return pts;
-  }, [segments]);
-
-  // Points d'un cercle dans le plan YZ (méridien de Greenwich)
-  const circlePointsYZ = useMemo(() => {
-    const pts: THREE.Vector3[] = [];
-    for (let i = 0; i <= segments; i++) {
-      const t = (i / segments) * Math.PI * 2;
-      pts.push(new THREE.Vector3(0, Math.cos(t), Math.sin(t)));
-    }
-    return pts;
-  }, [segments]);
-
   return (
-    <group ref={groupRef} position={[0, 0, 0]}>
-      {" "}
-      {/* sphère translucide subtile */}
-      <mesh>
-        <sphereGeometry args={[R, 48, 48]} />
-        <meshPhongMaterial color={0xffffff} transparent opacity={0} />
-      </mesh>
-      {/* Parallèles (cercles XZ réduits et décalés en Y) */}
-      {latitudes.map((lat) => {
-        const phi = (Math.PI / 180) * lat;
-        const y = Math.sin(phi) * R;
-        const r = Math.cos(phi) * R;
-        const scaled = circlePointsXZ.map(
-          (p) => new THREE.Vector3(p.x * r, p.y + y, p.z * r)
-        );
-        const geom = new THREE.BufferGeometry().setFromPoints(scaled);
-        return (
-          <line key={`lat-${lat}`}>
-            <bufferGeometry attach="geometry" {...geom} />
-            <lineBasicMaterial
-              attach="material"
-              color={lineColor}
-              transparent
-              opacity={lineOpacity}
-            />
-          </line>
-        );
-      })}
-      {/* Méridiens (cercles YZ pivotés autour de Y) */}
-      {longitudes.map((lon) => {
-        const theta = (Math.PI / 180) * lon;
-        const rot = new THREE.Matrix4().makeRotationY(theta);
-        const rotated = circlePointsYZ.map((p) =>
-          p.clone().applyMatrix4(rot).multiplyScalar(R)
-        );
-        const geom = new THREE.BufferGeometry().setFromPoints(rotated);
-        return (
-          <line key={`lon-${lon}`}>
-            <bufferGeometry attach="geometry" {...geom} />
-            <lineBasicMaterial
-              attach="material"
-              color={lineColor}
-              transparent
-              opacity={lineOpacity}
-            />
-          </line>
-        );
-      })}
-    </group>
+    <div className="relative w-full h-[300px] md:h-[400px] mb-2 flex items-center justify-center">
+      {/* Image du globe en arrière-plan */}
+      <Image
+        src="/images/globe.webp"
+        alt="Globe terrestre"
+        width={400}
+        height={400}
+        className="object-contain w-64 h-64"
+        priority
+      />
+      
+      {/* Image de la plaque superposée en position absolue */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <Image
+          src="/images/logo/1.svg"
+          alt="Plaque d'immatriculation"
+          width={300}
+          height={100}
+          className="object-contain z-10"
+        />
+      </div>
+    </div>
   );
 }
 
@@ -194,25 +122,7 @@ export default function AProposPage() {
                 La référence pour tout savoir sur les plaques d’immatriculation
               </h2>
 
-              <div className="relative w-full h-[400px] mb-6 flex items-center justify-center">
-                <Canvas
-                  className="relative"
-                  dpr={[1, 2]}
-                  camera={{ position: [0, 0, 10], fov: 50 }} // plus loin = moins de crop
-                >
-                  <ambientLight intensity={0.5} />
-                  <pointLight position={[5, 5, 5]} />
-                  <GlobeGrid />
-                </Canvas>
-                <Image
-                  src="/images/plaque.webp"
-                  alt="Plaque"
-                  width={400}
-                  height={200}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 object-contain pointer-events-none"
-                  loading="lazy"
-                />
-              </div>
+              <GlobeGrid />
             </div>
 
             {/* Right column: keep first two parts, remove the rest */}

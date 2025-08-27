@@ -34,5 +34,20 @@ export default {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui")
+  ],
+  daisyui: {
+    // 🎯 Charger uniquement les composants utilisés
+    components: [
+      "badge", // Seul composant DaisyUI qu'on utilise
+    ],
+    // 🚫 Désactiver les composants inutilisés
+    base: false,
+    styled: true,
+    utils: false,
+    prefix: "",
+    logs: false,
+    themeRoot: ":root",
+  },
 } satisfies Config;

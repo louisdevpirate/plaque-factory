@@ -1,48 +1,31 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { StarIcon } from "./Icons";
 
 export default function FeedbackSection() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
-    [Autoplay({ delay: 5000, stopOnInteraction: false })]
-  );
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
-  
   const reviews = [
     {
-      text: "Super service, jai commandé ma plaque d’immatriculation personnalisée directement en ligne, la qualité en plexiglass est top et l’expédition a été rapide. Je recommande à tout ceux qui veulent une plaque homologué et esthétique pour leur voiture.",
+      text: "Super service, jai commandé ma plaque d'immatriculation personnalisée directement en ligne, la qualité en plexiglass est top et l'expédition a été rapide. Je recommande à tout ceux qui veulent une plaque homologué et esthétique pour leur voiture.",
       author: "Yassine B",
       imgSrc: "/images/authors/yassine.avif"
     },
     {
-      text: "Le configurateur est très simple et j’ai pu personnaliser ma plaque auto en quelques clics. Résultat impeccable, merci !",
+      text: "Le configurateur est très simple et j'ai pu personnaliser ma plaque auto en quelques clics. Résultat impeccable, merci !",
       author: "Max VH",
       imgSrc: "/images/authors/max.avif"
     },
     {
-      text: "Très satisfaite de mon achat sur labonneplaque.fr, j’avais besoin d’une plaque moto homologuée et personnalisée...le site est clair, les plaques conformes, et la livraison ultra rapide. Un site au top pour créer ses plaques d’immatriculation en ligne.",
+      text: "Très satisfaite de mon achat sur labonneplaque.fr, j'avais besoin d'une plaque moto homologuée et personnalisée...le site est clair, les plaques conformes, et la livraison ultra rapide. Un site au top pour créer ses plaques d'immatriculation en ligne.",
       author: "Sabine Joliveau",
       imgSrc: "/images/authors/sabine.avif"
     },
     {
-      text: "Site très intuitif ! J’ai pu créer ma plaque en quelques minutes, avec exactement le design que je voulais. Livraison rapide et produit conforme. Bravo !",
+      text: "Site très intuitif ! J'ai pu créer ma plaque en quelques minutes, avec exactement le design que je voulais. Livraison rapide et produit conforme. Bravo !",
       author: "Julie Robert",
       imgSrc: "/images/authors/julie.avif"
     },
@@ -57,7 +40,7 @@ export default function FeedbackSection() {
       imgSrc: "/images/authors/camille.avif"
     },
     {
-      text: "Très bon service client. J’avais fait une erreur de personnalisation, ils ont été réactifs et ont corrigé avant l’envoi. Résultat impeccable.",
+      text: "Très bon service client. J'avais fait une erreur de personnalisation, ils ont été réactifs et ont corrigé avant l'envoi. Résultat impeccable.",
       author: "Laurent TRZ",
       imgSrc: "/images/authors/laurent.avif"
     },
@@ -67,7 +50,7 @@ export default function FeedbackSection() {
       imgSrc: "/images/authors/chloe.avif"
     },
     {
-      text: "J’ai commandé pour mon van aménagé, et je suis ravi. La plaque donne un look unique. Tout était nickel.",
+      text: "J'ai commandé pour mon van aménagé, et je suis ravi. La plaque donne un look unique. Tout était nickel.",
       author: "Axel T.",
       imgSrc: "/images/authors/axel.avif"
     },
@@ -77,6 +60,34 @@ export default function FeedbackSection() {
       imgSrc: "/images/authors/sophie.avif"
     }
   ];
+
+  // Calculer le nombre de groupes de 3 reviews
+  const totalGroups = Math.ceil(reviews.length / 3);
+  
+  const scrollToIndex = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const cardWidth = container.offsetWidth;
+    const scrollPosition = index * cardWidth;
+    
+    container.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    
+    setCurrentIndex(index);
+  };
+
+  const scrollPrev = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : totalGroups - 1;
+    scrollToIndex(newIndex);
+  };
+
+  const scrollNext = () => {
+    const newIndex = currentIndex < totalGroups - 1 ? currentIndex + 1 : 0;
+    scrollToIndex(newIndex);
+  };
 
   return (
     <section className="w-full bg-white py-10 md:pb-20 px-6 lg:px-8">
@@ -92,53 +103,61 @@ export default function FeedbackSection() {
         </p>
       </div>
 
-      <div className="max-w-5xl mx-auto overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-4">
-          {reviews.map((review, index) => (
-            <div key={index} className="flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0">
-              <div className="flex flex-col bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition ease-in-out min-h-[300px]">
-                <div className="flex items-center mb-4">
-                  <div className="avatar">
-                    <div className="w-10 h-10 relative rounded-full ring ring-gray-200 ring-offset-2 overflow-hidden">
-                      <Image
-                        src={review.imgSrc}
-                        alt={review.author}
-                        fill
-                        sizes="48px"
-                        loading="lazy"
-                        className="object-cover rounded-full"
-                      />
+      <div className="max-w-5xl mx-auto">
+        <div className="flex justify-between items-center mb-6">
+          <button
+            onClick={scrollPrev}
+            className="text-black p-2 border border-black w-10 h-10 flex justify-center items-center rounded-full hover:bg-neutral-800 transition"
+            aria-label="Avis précédent"
+          >
+            ←
+          </button>
+          
+          <div className="text-sm text-gray-600">
+            {currentIndex + 1} / {totalGroups}
+          </div>
+          
+          <button
+            onClick={scrollNext}
+            className="text-black p-2 border border-black w-10 h-10 flex justify-center items-center rounded-full hover:bg-neutral-800 transition"
+            aria-label="Avis suivant"
+          >
+            →
+          </button>
+        </div>
+
+        <div className="overflow-hidden">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {reviews.map((review, index) => (
+              <div key={index} className="flex-[0_0_100%] sm:flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 snap-start">
+                <div className="flex flex-col bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-md transition ease-in-out h-[320px]">
+                  <div className="flex items-center mb-4">
+                    <Image
+                      src={review.imgSrc}
+                      alt={review.author}
+                      width={48}
+                      height={48}
+                      className="rounded-full mr-3 w-12 h-12 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-800">{review.author}</p>
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <StarIcon key={i} className="w-4 h-4 text-yellow-400" />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <div className="text-left ml-3">
-                    <p className=" text-gray-700 font-semibold">{review.author}</p>
-                  </div>
+                  <p className="text-gray-600 flex-grow overflow-hidden">{review.text}</p>
                 </div>
-                <div className="flex items-center text-yellow-400 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} className="fas fa-star text-sm w-4 h-4"/>
-                  ))}
-                </div>
-                <p className="text-gray-600 text-sm line-clamp-6">
-                  {review.text}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="embla-dots mt-6 flex justify-center items-center gap-4">
-        {reviews.map((_, index) => (
-          <button
-          title="Boutons de slider"
-            key={index}
-            type="button"
-            onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-1 h-1 rounded-full transition-colors ${
-              selectedIndex === index ? "bg-black/10 w-4 h-2" : "bg-gray-100"
-            }`}
-          ></button>
-        ))}
       </div>
     </section>
   );

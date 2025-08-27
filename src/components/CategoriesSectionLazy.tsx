@@ -1,6 +1,5 @@
 "use client";
 import { useTheme } from "@/hooks/useTheme";
-import { motion, AnimatePresence } from "framer-motion";
 import { CategoryItem } from "@/types/theme";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 
@@ -32,50 +31,45 @@ export default function CategoriesSectionLazy() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto z-10 mt-4">
-        <AnimatePresence>
-          {categories.map((category, index) => {
-            // Pattern spécifique sur lg :
-            // ligne 1: 0->span-2, 1->span-1, 2->span-1
-            // ligne 2: 3->span-1, 4->span-1, 5->span-2
-            // ligne 3: 6->span-2, 7->span-1, 8->span-1
-            let colSpan = "col-span-1";
-            if (index === 0 || index === 5 || index === 6) {
-              colSpan = "lg:col-span-2";
-            }
+        {categories.map((category, index) => {
+          // Pattern spécifique sur lg :
+          // ligne 1: 0->span-2, 1->span-1, 2->span-1
+          // ligne 2: 3->span-1, 4->span-1, 5->span-2
+          // ligne 3: 6->span-2, 7->span-1, 8->span-1
+          let colSpan = "col-span-1";
+          if (index === 0 || index === 5 || index === 6) {
+            colSpan = "lg:col-span-2";
+          }
 
-            return (
-              <motion.div
-                key={category.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className={`relative rounded-xl overflow-hidden group shadow-md ${colSpan}`}
+          return (
+            <div
+              key={category.id}
+              className={`relative rounded-xl overflow-hidden group shadow-md ${colSpan} animate-fade-in-up`}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <a
+                href={category.link}
+                className="block h-full"
+                title={`Découvrir les plaques ${category.title}`}
               >
-                <a
-                  href={category.link}
-                  className="block h-full"
-                  title={`Découvrir les plaques ${category.title}`}
+                <div
+                  className="relative h-52 lg:h-64 overflow-hidden"
+                  style={{
+                    background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(/images/categories/${category.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
                 >
-                  <div
-                    className="relative h-52 lg:h-64 overflow-hidden"
-                    style={{
-                      background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(/images/categories/${category.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-xl font-bold">{category.title}</h3>
-                      <p className="text-sm">{category.description}</p>
-                    </div>
+                  <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="text-xl font-bold">{category.title}</h3>
+                    <p className="text-sm">{category.description}</p>
                   </div>
-                </a>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+                </div>
+              </a>
+            </div>
+          );
+        })}
       </div>
     </LazyBackgroundSection>
   );

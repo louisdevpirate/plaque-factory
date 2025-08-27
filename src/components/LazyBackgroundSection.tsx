@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useInView } from "react-intersection-observer";
 
 interface LazyBackgroundSectionProps {
   backgroundImage: string;
@@ -29,38 +28,46 @@ export default function LazyBackgroundSection({
   const [bgImage, setBgImage] = useState(placeholder);
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   
-  const { ref, inView } = useInView({
-    threshold,
-    rootMargin,
-    triggerOnce: true,
-  });
-
   useEffect(() => {
-    if (inView && !isLoaded) {
-      // Preload the image
-      const img = new Image();
-      img.src = backgroundImage;
-      imgRef.current = img;
-      
-      img.onload = () => {
-        setBgImage(backgroundImage);
-        setIsLoaded(true);
-      };
-      
-      img.onerror = () => {
-        console.error(`Failed to load background image: ${backgroundImage}`);
-      };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isLoaded) {
+          // Preload the image
+          const img = new Image();
+          img.src = backgroundImage;
+          imgRef.current = img;
+          
+          img.onload = () => {
+            setBgImage(backgroundImage);
+            setIsLoaded(true);
+          };
+          
+          img.onerror = () => {
+            console.error(`Failed to load background image: ${backgroundImage}`);
+          };
+        }
+      },
+      {
+        threshold,
+        rootMargin,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-    
+
     return () => {
+      observer.disconnect();
       // Cleanup
       if (imgRef.current) {
         imgRef.current.onload = null;
         imgRef.current.onerror = null;
       }
     };
-  }, [inView, backgroundImage, isLoaded]);
+  }, [backgroundImage, isLoaded, threshold, rootMargin]);
 
   const style = {
     backgroundImage: `url('${bgImage}')`,
@@ -68,15 +75,18 @@ export default function LazyBackgroundSection({
     opacity: isLoaded ? 1 : 0.9,
   };
 
+  // Cast Component to any to avoid TypeScript children type checking issues
+  const DynamicComponent = Component as any;
+
   return (
-    <Component
-      ref={ref}
+    <DynamicComponent
+      ref={sectionRef}
       className={className}
       style={style}
       id={id}
       {...otherProps}
     >
       {children}
-    </Component>
+    </DynamicComponent>
   );
 }

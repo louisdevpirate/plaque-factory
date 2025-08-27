@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import { useState, useRef } from "react";
 import BlogCard from "@/components/BlogCard";
 import type { Article } from "@/lib/supabase";
 import { ChevronLeftIcon, ChevronRightIcon } from "./Icons";
@@ -12,29 +10,36 @@ type BlogCarouselProps = {
 };
 
 export default function BlogCarousel({ articles }: BlogCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
-    [Autoplay({ delay: 5000, stopOnInteraction: false })]
-  );
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!emblaApi) return;
+  // Calculer le nombre de groupes (3 articles par groupe)
+  const totalGroups = Math.ceil(articles.length / 3);
 
-    const onSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-    };
+  const scrollToIndex = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const cardWidth = container.offsetWidth;
+    const scrollPosition = index * cardWidth;
+    
+    container.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    
+    setCurrentIndex(index);
+  };
 
-    emblaApi.on("select", onSelect);
-    onSelect();
+  const scrollPrev = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : totalGroups - 1;
+    scrollToIndex(newIndex);
+  };
 
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
-
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+  const scrollNext = () => {
+    const newIndex = currentIndex < totalGroups - 1 ? currentIndex + 1 : 0;
+    scrollToIndex(newIndex);
+  };
 
   return (
     <div className="mx-auto">
@@ -46,21 +51,24 @@ export default function BlogCarousel({ articles }: BlogCarouselProps) {
         >
           <ChevronLeftIcon />
         </button>
-        <div
-          className="overflow-hidden w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6"
-          ref={emblaRef}
-        >
-          <div className="flex gap-5">
+        
+        <div className="overflow-hidden w-full max-w-5xl md:max-w-2xl lg:max-w-5xl px-6">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0"
+                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 snap-start"
               >
                 <BlogCard article={article} />
               </div>
             ))}
           </div>
         </div>
+        
         <button
           onClick={scrollNext}
           className="text-black p-2 border border-black w-6 h-6 md:w-10 md:h-10 flex justify-center items-center mx-2 rounded-[100%] hover:bg-neutral-800 transition"
@@ -69,15 +77,16 @@ export default function BlogCarousel({ articles }: BlogCarouselProps) {
           <ChevronRightIcon />
         </button>
       </div>
-      <div className="embla-dots mt-6 flex justify-center items-center gap-4">
-        {articles.map((_, index) => (
+      
+      <div className="flex justify-center items-center gap-4 mt-6">
+        {Array.from({ length: totalGroups }, (_, index) => (
           <button
             title="Boutons de slider"
             key={index}
             type="button"
-            onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-1 h-1 rounded-full transition-colors ${
-              selectedIndex === index ? "bg-black/10 w-4 h-2" : "bg-gray-100"
+            onClick={() => scrollToIndex(index)}
+            className={`w-1 h-1 rounded-full transition-all duration-300 ${
+              currentIndex === index ? "bg-black w-4 h-2" : "bg-gray-100"
             }`}
           ></button>
         ))}

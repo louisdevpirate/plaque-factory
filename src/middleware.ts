@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
   response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
   
-  // Cache static assets at edge
+  // Simple cache for static assets
   const pathname = request.nextUrl.pathname;
   
   if (pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|ico|woff2|woff|ttf|otf)$/)) {

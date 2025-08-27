@@ -1,19 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 
 const partners = [
   { src: "/images/logo/colissimo.png", alt: "Colissimo" },
   { src: "/images/logo/amazon.png", alt: "Amazon" },
   { src: "/images/logo/chronopost.png", alt: "Chronopost" },
-  
 ];
 
 export default function DeliveryPartners() {
   const [isMobile, setIsMobile] = useState(false);
-  const [emblaRef] = useEmblaCarousel({ loop: false, dragFree: true });
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,7 +24,7 @@ export default function DeliveryPartners() {
 
   if (isMobile) {
     return (
-      <div className="flex items-center gap-10 px-4">
+      <div className="flex items-center gap-10 px-4 overflow-x-auto scrollbar-hide">
         {partners.map((partner) => (
           <div key={partner.alt} className="flex justify-center">
             <Image
