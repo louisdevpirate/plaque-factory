@@ -1,11 +1,10 @@
 // Service Worker for plaque-factory PWA
-const CACHE_NAME = 'plaque-factory-v1';
-const RUNTIME_CACHE = 'runtime-cache-v1';
+const CACHE_NAME = 'plaque-factory-v2';
+const RUNTIME_CACHE = 'runtime-cache-v2';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
   '/',
-  '/manifest.json',
   '/offline.html',
   '/fonts/Montserrat-Regular.woff2',
   '/fonts/Montserrat-Bold.woff2',
@@ -17,7 +16,17 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Service Worker: Caching static assets');
-      return cache.addAll(STATIC_ASSETS);
+      return cache.addAll(STATIC_ASSETS).catch((error) => {
+        console.warn('Service Worker: Some assets failed to cache:', error);
+        // Cache individual assets that work
+        return Promise.allSettled(
+          STATIC_ASSETS.map(asset => 
+            cache.add(asset).catch(err => 
+              console.warn(`Failed to cache ${asset}:`, err)
+            )
+          )
+        );
+      });
     })
   );
   self.skipWaiting();
