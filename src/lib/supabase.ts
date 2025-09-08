@@ -65,13 +65,21 @@ export const getCachedArticles = unstable_cache(
 export const getCachedArticleBySlug = async (slug: string) => {
   console.log("🔍 Fetching article with slug:", slug);
   
-  // First, let's see all available slugs
+  // First, let's see all available slugs (no limit to see all)
   const { data: allSlugs, error: slugsError } = await supabase
     .from("Article")
-    .select("slug, title, id")
-    .limit(10);
+    .select("slug, title, id");
   
   console.log("📋 Available articles:", allSlugs?.map(a => ({ id: a.id, slug: a.slug, title: a.title })));
+  
+  // Check if the specific article exists by ID (046)
+  const { data: articleById, error: idError } = await supabase
+    .from("Article")
+    .select("*")
+    .eq("id", "046")
+    .single();
+    
+  console.log("🔍 Article by ID 046:", articleById ? { id: articleById.id, slug: articleById.slug, title: articleById.title } : "NOT FOUND");
   
   // Now try to fetch the specific article
   const { data, error } = await supabase
