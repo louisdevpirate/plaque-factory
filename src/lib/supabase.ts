@@ -5,13 +5,6 @@ import { unstable_cache } from "next/cache";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error("❌ Supabase environment variables missing:", {
-    url: !!supabaseUrl,
-    key: !!supabaseAnonKey
-  });
-}
-
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Types
@@ -61,63 +54,30 @@ export const getCachedArticles = unstable_cache(
   }
 );
 
-// Get single article by slug (temporarily without cache for debugging)
-export const getCachedArticleBySlug = async (slug: string) => {
-  console.log("🔍 Fetching article with slug:", slug);
-  
-  // First, let's see all available slugs (no limit to see all)
-  const { data: allSlugs, error: slugsError } = await supabase
-    .from("Article")
-    .select("slug, title, id");
-  
-  console.log("📋 Available articles:", allSlugs?.map(a => ({ id: a.id, slug: a.slug, title: a.title })));
-  
-  // Check if the specific article exists by ID (046)
-  const { data: articleById, error: idError } = await supabase
-    .from("Article")
-    .select("*")
-    .eq("id", "046")
-    .single();
-    
-  console.log("🔍 Article by ID 046:", articleById ? { id: articleById.id, slug: articleById.slug, title: articleById.title } : "NOT FOUND");
-  
-  // Now try to fetch the specific article
-  const { data, error } = await supabase
-    .from("Article")
-    .select(
-      "*, category:categoryId(name), author:authorId(name, avatar, bio)"
-    )
-    .eq("slug", slug)
-    .single();
-
-  if (error) {
-    console.error("❌ Error fetching article:", {
-      slug,
-      error: error.message || error,
-      code: error.code,
-      details: error.details,
-      hint: error.hint
-    });
-    
-    // Try without relations to see if it's a relation issue
-    const { data: simpleData, error: simpleError } = await supabase
+// Get single article by slug
+export const getCachedArticleBySlug = unstable_cache(
+  async (slug: string) => {
+    const { data, error } = await supabase
       .from("Article")
-      .select("*")
+      .select(
+        "*, category:categoryId(name), author:authorId(name, avatar, bio)"
+      )
       .eq("slug", slug)
       .single();
-      
-    if (simpleError) {
-      console.error("❌ Even simple query failed:", simpleError);
-    } else {
-      console.log("✅ Simple query worked:", simpleData?.title);
-    }
-    
-    return null;
-  }
 
-  console.log("✅ Article found:", data?.title);
-  return data as Article;
-};
+    if (error) {
+      console.error("Error fetching article:", error);
+      return null;
+    }
+
+    return data as Article;
+  },
+  ["article-by-slug"],
+  {
+    revalidate: 3600,
+    tags: ["articles"],
+  }
+);
 
 // Get all articles (for pagination)
 export const getCachedAllArticles = unstable_cache(
