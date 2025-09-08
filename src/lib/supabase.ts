@@ -65,6 +65,15 @@ export const getCachedArticles = unstable_cache(
 export const getCachedArticleBySlug = async (slug: string) => {
   console.log("🔍 Fetching article with slug:", slug);
   
+  // First, let's see all available slugs
+  const { data: allSlugs, error: slugsError } = await supabase
+    .from("Article")
+    .select("slug, title, id")
+    .limit(10);
+  
+  console.log("📋 Available articles:", allSlugs?.map(a => ({ id: a.id, slug: a.slug, title: a.title })));
+  
+  // Now try to fetch the specific article
   const { data, error } = await supabase
     .from("Article")
     .select(
@@ -81,6 +90,20 @@ export const getCachedArticleBySlug = async (slug: string) => {
       details: error.details,
       hint: error.hint
     });
+    
+    // Try without relations to see if it's a relation issue
+    const { data: simpleData, error: simpleError } = await supabase
+      .from("Article")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+      
+    if (simpleError) {
+      console.error("❌ Even simple query failed:", simpleError);
+    } else {
+      console.log("✅ Simple query worked:", simpleData?.title);
+    }
+    
     return null;
   }
 
