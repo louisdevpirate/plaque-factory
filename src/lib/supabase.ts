@@ -5,6 +5,13 @@ import { unstable_cache } from "next/cache";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error("❌ Supabase environment variables missing:", {
+    url: !!supabaseUrl,
+    key: !!supabaseAnonKey
+  });
+}
+
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Types
@@ -54,30 +61,32 @@ export const getCachedArticles = unstable_cache(
   }
 );
 
-// Get single article by slug
-export const getCachedArticleBySlug = unstable_cache(
-  async (slug: string) => {
-    const { data, error } = await supabase
-      .from("Article")
-      .select(
-        "*, category:categoryId(name), author:authorId(name, avatar, bio)"
-      )
-      .eq("slug", slug)
-      .single();
+// Get single article by slug (temporarily without cache for debugging)
+export const getCachedArticleBySlug = async (slug: string) => {
+  console.log("🔍 Fetching article with slug:", slug);
+  
+  const { data, error } = await supabase
+    .from("Article")
+    .select(
+      "*, category:categoryId(name), author:authorId(name, avatar, bio)"
+    )
+    .eq("slug", slug)
+    .single();
 
-    if (error) {
-      console.error("Error fetching article:", error);
-      return null;
-    }
-
-    return data as Article;
-  },
-  ["article-by-slug"],
-  {
-    revalidate: 3600,
-    tags: ["articles"],
+  if (error) {
+    console.error("❌ Error fetching article:", {
+      slug,
+      error: error.message || error,
+      code: error.code,
+      details: error.details,
+      hint: error.hint
+    });
+    return null;
   }
-);
+
+  console.log("✅ Article found:", data?.title);
+  return data as Article;
+};
 
 // Get all articles (for pagination)
 export const getCachedAllArticles = unstable_cache(
