@@ -109,6 +109,9 @@ function AboutSection() {
   });
 
   const stats = [
+
+
+    
     { end: 8, prefix: "+", suffix: "", label: "Années d'expérience" },
     {
       end: 100000,

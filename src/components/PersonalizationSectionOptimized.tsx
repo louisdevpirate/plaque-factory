@@ -15,7 +15,7 @@ function PersonalizationSection() {
   // Memoize iframe URL
   const iframeUrl = useMemo(
     () =>
-      "https://deploy-preview-384--module-plaqueimmat.netlify.app/361?iframe=1",
+      "https://module.plaqueimmat.fr/361?iframe=1",
     []
   );
 

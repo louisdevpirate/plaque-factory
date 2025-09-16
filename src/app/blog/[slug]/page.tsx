@@ -4,9 +4,11 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FooterOptimized from "@/components/FooterOptimized";
 import BlogCard from "@/components/BlogCard";
+import ArticleContentWithLinks from "@/components/ArticleContentWithLinks";
+import ArticleCTA from "@/components/ArticleCTA";
+import RelatedArticles from "@/components/RelatedArticles";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import ReactMarkdown from "react-markdown";
 import React from "react";
 import {
   FacebookSquareIcon,
@@ -14,7 +16,6 @@ import {
   LinkedInSquareIcon,
   MailSquareIcon,
   PinterestSquareIcon,
-  ArrowRightIcon,
 } from "@/components/Icons";
 
 export const revalidate = 3600; // Revalidate every hour
@@ -80,7 +81,7 @@ export default async function BlogPage({
       <main className="bg-gray-50 pb-10 pt-24 md:py-32">
         <div className="mx-auto max-w-7xl px-2 md:py-10 md:flex md:gap-6">
           <div className="md:w-3/4">
-            <section className="mb-20">
+            <section>
               <div className="max-w-7xl mb-8">
                 <nav className="text-sm text-gray-500">
                   <Link href="/" className="hover:underline text-blue-700">
@@ -196,17 +197,10 @@ export default async function BlogPage({
               <p className="text-2xl text-gray-700 mb-6">
                 {article.description}
               </p>
-              <div
-                className="prose prose-lg text-left leading-relaxed [&_h1]:text-2xl
-  [&_h2]:text-[2rem] [&_h2]:mt-4 [&_h2]:mb-4
-  [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:text-gray-800
-  [&_p]:mb-5 [&_p]:text-gray-700
-  [&_ul]:pl-6 [&_ul]:list-disc [&_li]:mb-2
-  [&_a]:text-blue-600 hover:[&_a]:underline [&_p]:mt-2
-"
-              >
-                <ReactMarkdown>{article.content}</ReactMarkdown>
-              </div>
+              <ArticleContentWithLinks 
+                content={article.content || ''} 
+                articleTitle={article.title}
+              />
             </section>
           </div>
           <aside className="hidden md:block md:w-1/3">
@@ -248,39 +242,11 @@ export default async function BlogPage({
             </div>
           </aside>
         </div>
-        <section className="max-w-4xl mx-auto my-12 text-center px-4 py-10 border-t">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-            Envie de personnaliser votre plaque ?
-          </h2>
-          <p className="text-gray-600 mb-6 text-lg">
-            Faites comme des milliers de passionnés : créez votre plaque stylée
-            en quelques clics.
-          </p>
-          <a
-            href="/#personnalisation"
-            className="header-cta bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-block items-center mx-auto"
-            title="Créer ma plaque personnalisée maintenant"
-          >
-            Je crée ma plaque{" "}
-            <ArrowRightIcon className="inline w-4 h-4 cta-arrow ml-2" />
-          </a>
-        </section>
-        <section className="mb-10 max-w-6xl flex flex-col justify-center mx-auto border-t border-gray-200 pt-8">
-          <h2 className="text-2xl font-semibold mb-6 pl-2">Articles récents</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {otherArticles.slice(0, 3).map((article) => (
-              <BlogCard key={article.id} article={article} />
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/blog"
-              className="inline-block bg-black text-white py-2 px-4 rounded hover:bg-white hover:text-black border border-black transition"
-            >
-              Retour à la page Blog
-            </Link>
-          </div>
-        </section>
+        <ArticleCTA articleTitle={article.title} />
+        <RelatedArticles 
+          currentArticle={article} 
+          allArticles={allArticles}
+        />
       </main>
       <FooterOptimized />
     </div>

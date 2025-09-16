@@ -3,14 +3,14 @@ import HomePageOptimized from '@/components/HomePageOptimized'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Plaques d’immatriculation personnalisées et homologuées",
-    description: "Créez votre plaque d'immatriculation personnalisée et homologuée en quelques clics. Livraison rapide, qualité pro, large choix de styles pour votre véhicule.",
+        title: "LABONNEPLAQUE.fr",
+    description: "Commandez votre plaque d'immatriculation personnalisée dès 15€. Livraison rapide 24h, qualité professionnelle garantie. Création en ligne simple et sécurisée.",
     alternates: {
       canonical: "https://labonneplaque.fr/",
     },
     openGraph: {
-      title: "Plaques personnalisées et homologuées | LABONNEPLAQUE.fr",
-      description: "Personnalisez votre plaque d'immatriculation facilement. Livraison rapide, qualité premium et création en ligne.",
+      title: "LABONNEPLAQUE.fr",
+      description: "Plaques d'immatriculation personnalisées et homologuées dès 15€. Livraison rapide 24h, création simple en ligne.",
       url: "https://www.labonneplaque.fr/",
       siteName: "La Bonne Plaque",
       locale: "fr_FR",
@@ -20,14 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "https://www.labonneplaque.fr/favicon.png",
           width: 1200,
           height: 630,
-          alt: "Plaque d'immatriculation personnalisée",
+          alt: "Plaque d'immatriculation personnalisée dès 15€",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Plaques personnalisées et homologuées | LABONNEPLAQUE.fr",
-      description: "Commandez votre plaque d'immatriculation personnalisée et homologuée. Livraison rapide, création simple en ligne.",
+      title: "LABONNEPLAQUE.fr",
+      description: "Commandez votre plaque d'immatriculation personnalisée dès 15€. Livraison rapide 24h, création simple en ligne.",
       images: ["https://www.labonneplaque.fr/favicon.png"],
     },
   }

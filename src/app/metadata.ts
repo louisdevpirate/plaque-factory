@@ -2,16 +2,16 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "La Bonne Plaque - Plaques d'immatriculation personnalisées",
-  description: "Créez vos plaques homologuées et personnalisées en quelques clics. Livraison rapide, conformité garantie.",
+  title: "LABONNEPLAQUE.fr",
+  description: "Commandez votre plaque d'immatriculation personnalisée dès 15€. Livraison rapide 24h, qualité professionnelle garantie. Création en ligne simple et sécurisée.",
   openGraph: {
-    title: "La Bonne Plaque",
-    description: "Plaques personnalisées et homologuées",
+    title: "LABONNEPLAQUE.fr",
+    description: "Plaques d'immatriculation personnalisées et homologuées dès 15€. Livraison rapide 24h, création simple en ligne.",
     url: "https://www.labonneplaque.fr",
     images: [
       {
-        url: "https://www.labonneplaque.fr/og-image.jpg",
-        alt: "Exemple de plaque personnalisée"
+        url: "https://www.labonneplaque.fr/favicon.png",
+        alt: "Plaque d'immatriculation personnalisée dès 15€"
       }
     ],
   },

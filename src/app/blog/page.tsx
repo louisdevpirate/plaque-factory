@@ -6,6 +6,8 @@ import FooterOptimized from "@/components/FooterOptimized";
 import Link from "next/link";
 import { ArrowRightIcon, ClockIcon } from "@/components/Icons";
 import BlogClientPage from "@/components/BlogClientPage";
+import CTAButton from "@/components/CTAButton";
+import CategoriesSectionWrapper from "@/components/CategoriesSectionWrapper";
 
 // Remove force-dynamic to enable caching
 export const revalidate = 3600; // Revalidate every hour
@@ -44,7 +46,7 @@ export default async function BlogPage({
     <div>
       <Navbar />
 
-      <main className="bg-white pb-20 flex flex-col items-center">
+      <main className="bg-white flex flex-col items-center">
         <div className="blog-grid flex flex-col items-center px-2 py-2 max-w-6xl pt-20">
           {/* HERO */}
           <Link
@@ -94,7 +96,7 @@ export default async function BlogPage({
                 les sujets liés aux plaques d'immatriculation : conseils
                 pratiques, points de législation, astuces de personnalisation,
                 erreurs à éviter, ou encore comparatifs entre les matériaux
-                comme le plexiglas et l’aluminium.
+                comme le plexiglas et l'aluminium.
                 <br />
                 Que vous cherchiez à personnaliser votre véhicule, à comprendre
                 les obligations légales ou simplement à faire le bon choix pour
@@ -103,14 +105,70 @@ export default async function BlogPage({
                 pas à pas et vous inspirer des idées qui vous ressemblent.{" "}
                 <br />
                 Notre objectif : vous aider à rouler en toute simplicité, avec
-                style, conformité… et un brin d’originalité.
+                style, conformité… et un brin d'originalité.
               </p>
+              
+              {/* Liens vers les catégories populaires */}
+              <div className="mb-8">
+                <h3 className="text-lg font-medium mb-4 text-left">Découvrez nos catégories populaires :</h3>
+                <div className="flex flex-wrap gap-3">
+                  <Link 
+                    href="/categories/moto" 
+                    className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-500 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    🏍️ Plaques Moto
+                  </Link>
+                  <Link 
+                    href="/categories/us" 
+                    className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-500 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    🇺🇸 Plaques US
+                  </Link>
+                  <Link 
+                    href="/categories/suv" 
+                    className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-500 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    🚙 Plaques SUV
+                  </Link>
+                  <Link 
+                    href="/categories/collection" 
+                    className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-500 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    🏆 Collection
+                  </Link>
+                  <Link 
+                    href="/plaques-personnalisees" 
+                    className="inline-flex items-center px-4 py-2 bg-white border border-black text-black rounded-lg hover:bg-gray-100 hover:text-black transition-colors text-sm font-medium"
+                  >
+                    ✨ Personnalisées
+                  </Link>
+                </div>
+              </div>
+              
+              {/* CTA vers le configurateur */}
+              <div className="mb-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg p-6 text-center">
+                <h3 className=" text-black mb-2">Besoin d'une nouvelle plaque ?</h3>
+                <p className="text-black/80 mb-4">Personnalisez votre plaque d'immatriculation en quelques clics</p>
+                <CTAButton
+                  href="https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"
+                  variant="primary"
+                  size="lg"
+                  external
+                  className="font-medium"
+                >
+                  Créer ma plaque maintenant
+                </CTAButton>
+              </div>
             </div>
-            {/* ARTICLES */}{" "}
-              <BlogClientPage articles={otherArticles} />
+            
+            {/* ARTICLES AVEC BANNIÈRE CTA INTÉGRÉE */}
+            <BlogClientPage articles={otherArticles} />
           </div>
         </div>
       </main>
+
+      {/* Section Catégories */}
+      <CategoriesSectionWrapper />
 
       <FooterOptimized />
     </div>

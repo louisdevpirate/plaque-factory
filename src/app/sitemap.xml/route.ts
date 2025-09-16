@@ -5,6 +5,7 @@ const BASE_URL = 'https://www.labonneplaque.fr'
 export async function GET() {
   const staticUrls = [
     { loc: '/', priority: 1.0, lastmod: new Date().toISOString() },
+    { loc: '/plaques-personnalisees', priority: 0.9, lastmod: new Date().toISOString() },
     { loc: '/about', priority: 0.8, lastmod: new Date().toISOString() },
     { loc: '/blog', priority: 0.8, lastmod: new Date().toISOString() },
     { loc: '/#catégories', priority: 0.7, lastmod: new Date().toISOString() },

@@ -3,7 +3,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { useThrottle } from "@/hooks/useThrottle";
-import { MedalIcon, ArrowRightIcon } from "@/components/Icons";
+import { MedalIcon } from "@/components/Icons";
+import CTAButton from "@/components/CTAButton";
+import CTAContainer from "@/components/CTAContainer";
 
 export default function HeaderSection() {
   const [, setIsHovered] = useState(false);
@@ -40,14 +42,14 @@ export default function HeaderSection() {
 
     // Redirection après un léger délai
     setTimeout(() => {
-      window.location.href = 'https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6';
+      window.location.href = 'https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn';
     }, 300);
   };
 
   return (
     <>
 
-      <header className="relative pt-20 pb-10 md:py-40 items-center bg-white bg-cover bg-center">
+      <header className="relative pt-20 pb-10 md:py-28 items-center bg-white bg-cover bg-center">
         <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto min-w-80">
           <div className="text-left lg:w-1/2 space-y-4 pt-6">
             <div className="inline-flex items-center border border-black rounded-full px-2 py-0.5 text-[10px] text-sm bg-white w-fit bg-white/80 backdrop-blur-sm ml-1">
@@ -61,7 +63,8 @@ export default function HeaderSection() {
               <span>Fabrication française</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-medium text-left">
-              Créez votre plaque d’immatriculation personnalisée
+              Créez votre plaque d'immatriculation personnalisée
+              <span className="text-2xl text-green-600 block mt-2 font-bold p-2">À partir de 15€</span>
             </h1>
 
             <div className="w-5/6 mb-2 ml-2">
@@ -121,29 +124,17 @@ export default function HeaderSection() {
               </a>
             </div>
 
-            <div className="flex flex-row gap-[10px] items-center cta-container">
-              <a
-                href="#personnalisation"
-                className="header-cta bg-yellow-400 text-black font-normal py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+            <CTAContainer direction="row" gap="sm" className="cta-container flex flex-col md:flex-row items-left justify-left p-0" center={false}>
+              <CTAButton
+                href="https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"
+                variant="primary"
+                size="lg"
                 title="Créer ma plaque personnalisée maintenant"
+                className="header-cta"
               >
-                Je crée ma plaque{" "}
-                <ArrowRightIcon className="inline w-4 h-4 cta-arrow" />
-              </a>
-              <a
-                href="https://module.plaqueimmat.fr/?aff=cc58d6de-e03b-45b5-b678-0f6103f8d0e6"
-                onClick={handleAffiliationClick}
-                className="header-cta-2 font-normal px-8 py-4 rounded-lg shadow-lg transition duration-300 inline-flex items-center "
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                title="Accéder au module complet de création de plaque"
-              >
-                Accéder au module complet{" "}
-                <ArrowRightIcon className="inline w-4 h-4 cta-arrow-2" />
-              </a>
-            </div>
+                Commander ma plaque
+              </CTAButton>
+            </CTAContainer>
           </div>
 
           <div
