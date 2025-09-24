@@ -68,11 +68,24 @@ const CustomLink = ({ href, children, ...props }: any) => {
   const categoryLink = categoryKeywords[text || ''];
   
   if (categoryLink) {
+    // Générer des titres optimisés selon la catégorie
+    const getOptimizedTitle = (category: string, text: string) => {
+      const titles: { [key: string]: string } = {
+        '/categories/moto': `Commander une plaque moto personnalisée dès 15€`,
+        '/categories/us': `Plaques US personnalisées pour véhicules américains`,
+        '/categories/suv': `Plaques SUV et 4x4 personnalisées`,
+        '/categories/collection': `Plaques collection vintage et anciennes`,
+        '/categories/cyclo': `Plaques cyclomoteur personnalisées`,
+        '/plaques-personnalisees': `Personnaliser votre plaque d'immatriculation`
+      }
+      return titles[category] || `Découvrir nos plaques ${text}`
+    }
+
     return (
       <Link 
         href={categoryLink} 
         className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors"
-        title={`Découvrir nos plaques ${text}`}
+        title={getOptimizedTitle(categoryLink, text)}
       >
         {children}
       </Link>

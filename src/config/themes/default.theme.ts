@@ -374,7 +374,7 @@ export const defaultTheme: ThemeConfig = {
     branding: {
       logo: {
         path: "/images/logo/1.svg",
-        alt: "La Bonne Plaque Logo",
+        alt: "LABONNEPLAQUE",
       },
     },
   },

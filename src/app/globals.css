@@ -197,7 +197,7 @@ button {
   text-decoration: none;
   display: flex;
   justify-content: center;
-  color: white;
+  color: black; /* ✅ Visible par défaut sur fond blanc */
   transition: all 300ms ease;
 }
 

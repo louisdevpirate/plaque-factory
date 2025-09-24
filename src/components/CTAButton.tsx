@@ -6,12 +6,13 @@ import { useState } from "react";
 interface CTAButtonProps {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "blog";
+  variant?: "primary" | "secondary" | "blog" | "command";
   size?: "sm" | "md" | "lg";
   className?: string;
   title?: string;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   external?: boolean;
+  optimizedText?: boolean;
 }
 
 export default function CTAButton({
@@ -23,6 +24,7 @@ export default function CTAButton({
   title,
   onClick,
   external = false,
+  optimizedText = true,
 }: CTAButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -32,6 +34,7 @@ export default function CTAButton({
     primary: "bg-yellow-400 text-black hover:bg-yellow-500 hover:text-black border border-2 border-black gap-2",
     secondary: "bg-white border border-2 border-black text-black hover:bg-gray-100 hover:text-black gap-2",
     blog: "bg-yellow-400 text-black hover:bg-yellow-500 hover:text-black border border-2 border-black gap-2",
+    command: "bg-green-600 text-white hover:bg-green-700 hover:text-white border border-2 border-green-700 gap-2",
   };
 
   const sizeClasses = {
@@ -44,6 +47,21 @@ export default function CTAButton({
     primary: "cta-arrow",
     secondary: "cta-arrow",
     blog: "cta-arrow",
+    command: "cta-arrow",
+  };
+
+  // Générer des titres optimisés selon le contexte
+  const getOptimizedTitle = () => {
+    if (title) return title;
+    
+    const optimizedTitles: { [key: string]: string } = {
+      primary: "Commander ma plaque personnalisée dès 15€",
+      secondary: "Découvrir nos plaques d'immatriculation",
+      blog: "Créer ma plaque personnalisée maintenant",
+      command: "Commander ma plaque immatriculation personnalisée"
+    };
+    
+    return optimizedTitles[variant] || "En savoir plus";
   };
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
@@ -66,7 +84,7 @@ export default function CTAButton({
       className={combinedClasses}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      title={title}
+      title={optimizedText ? getOptimizedTitle() : title}
       onClick={handleClick}
     >
       {children}{" "}

@@ -7,6 +7,8 @@ import BlogCard from "@/components/BlogCard";
 import ArticleContentWithLinks from "@/components/ArticleContentWithLinks";
 import ArticleCTA from "@/components/ArticleCTA";
 import RelatedArticles from "@/components/RelatedArticles";
+import RelatedPosts from "@/components/RelatedPosts";
+import BlogAdBanner from "@/components/BlogAdBanner";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import React from "react";
@@ -17,6 +19,9 @@ import {
   MailSquareIcon,
   PinterestSquareIcon,
 } from "@/components/Icons";
+import { generateCanonicalMetadata } from "@/lib/seo";
+import StructuredData from "@/components/StructuredData";
+import MiniFAQ from "@/components/MiniFAQ";
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -29,21 +34,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getCachedArticleBySlug(slug);
   if (!article) return {};
-  return {
+  
+  return generateCanonicalMetadata({
+    url: `/blog/${slug}`,
     title: article.title,
     description: article.description,
-    openGraph: {
-      title: article.title,
-      description: article.description,
-      images: [article.image],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.description,
-      images: [article.image],
-    },
-  };
+    image: article.image,
+    type: 'article'
+  });
 }
 
 // Ajouter avant l'export default
@@ -77,11 +75,15 @@ export default async function BlogPage({
 
   return (
     <div>
+      <StructuredData type="BlogPosting" data={article} />
       <Navbar />
-      <main className="bg-gray-50 pb-10 pt-24 md:py-32">
+      <main className="bg-gray-50 pb-10 pt-18 md:py-20">
         <div className="mx-auto max-w-7xl px-2 md:py-10 md:flex md:gap-6">
           <div className="md:w-3/4">
             <section>
+              {/* Encart publicitaire */}
+              <BlogAdBanner />
+              
               <div className="max-w-7xl mb-8">
                 <nav className="text-sm text-gray-500">
                   <Link href="/" className="hover:underline text-blue-700">
@@ -96,6 +98,14 @@ export default async function BlogPage({
                 </nav>
               </div>
               <h1 className="text-4xl font-bold text-left">{article.title}</h1>
+
+              {/* Résumé Express optimisé SEO - seulement si pas déjà dans le contenu */}
+              {article.content && !article.content.includes(article.description) && (
+                <section className="bg-neutral-100 p-4 rounded-md my-6">
+                  <h2 className="text-sm font-bold uppercase mb-2">Résumé express</h2>
+                  <p className="text-gray-700">{article.description}</p>
+                </section>
+              )}
 
               <div className="flex items-center space-x-4 mt-4 mb-6">
                 <span className="text-sm text-gray-600 font-medium">
@@ -194,12 +204,26 @@ export default async function BlogPage({
                   </>
                 )}
               </div>
-              <p className="text-2xl text-gray-700 mb-6">
-                {article.description}
-              </p>
+    
               <ArticleContentWithLinks 
                 content={article.content || ''} 
                 articleTitle={article.title}
+              />
+              
+              {/* Mini FAQ */}
+              <MiniFAQ articleTitle={article.title} />
+              
+              {/* Articles liés - sous la FAQ */}
+              <RelatedPosts 
+                currentSlug={slug}
+                posts={allArticles.map(a => ({
+                  slug: a.slug,
+                  title: a.title,
+                  description: a.description,
+                  image: a.image,
+                  createdAt: a.createdAt
+                }))}
+                maxPosts={3}
               />
             </section>
           </div>
@@ -246,6 +270,11 @@ export default async function BlogPage({
         <RelatedArticles 
           currentArticle={article} 
           allArticles={allArticles}
+          excludeSlugs={allArticles
+            .filter(a => a.slug !== slug)
+            .slice(0, 3)
+            .map(a => a.slug)
+          }
         />
       </main>
       <FooterOptimized />

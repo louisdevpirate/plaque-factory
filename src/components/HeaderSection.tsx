@@ -64,7 +64,7 @@ export default function HeaderSection() {
             </div>
             <h1 className="text-4xl lg:text-6xl font-medium text-left">
               Créez votre plaque d'immatriculation personnalisée
-              <span className="text-2xl text-green-600 block mt-2 font-bold p-2">À partir de 15€</span>
+              <span className="text-2xl text-green-600 block mt-2 font-medium p-2">À partir de 15,00€</span>
             </h1>
 
             <div className="w-5/6 mb-2 ml-2">

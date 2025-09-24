@@ -2,6 +2,7 @@
 
 import BlogCard from "./BlogCard";
 import Link from "next/link";
+import { useMemo } from "react";
 
 interface Article {
   id: string;
@@ -19,25 +20,55 @@ interface RelatedArticlesProps {
   currentArticle: Article;
   allArticles: Article[];
   maxArticles?: number;
+  excludeSlugs?: string[]; // Articles à exclure (pour éviter les doublons)
 }
 
 export default function RelatedArticles({ 
   currentArticle, 
   allArticles, 
-  maxArticles = 3 
+  maxArticles = 3,
+  excludeSlugs = []
 }: RelatedArticlesProps) {
+  
+  // Fonction pour créer une graine déterministe basée sur le slug
+  const createSeed = (str: string) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash);
+  };
+
+  // Fonction pour mélanger un tableau de manière déterministe
+  const shuffleArrayDeterministic = (array: Article[], seed: number) => {
+    const shuffled = [...array];
+    let currentSeed = seed;
+    
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      // Générer un nombre pseudo-aléatoire basé sur la graine
+      currentSeed = (currentSeed * 9301 + 49297) % 233280;
+      const j = Math.floor((currentSeed / 233280) * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
   
   // Fonction pour trouver des articles similaires
   const findRelatedArticles = () => {
+    // Articles à exclure (article actuel + articles déjà affichés)
+    const slugsToExclude = [currentArticle.slug, ...excludeSlugs];
+    
     // 1. Articles de la même catégorie (priorité haute)
     const sameCategoryArticles = allArticles.filter(article => 
-      article.slug !== currentArticle.slug && 
+      !slugsToExclude.includes(article.slug) && 
       article.category?.name === currentArticle.category?.name
     );
     
     // 2. Articles récents si pas assez d'articles de la même catégorie
     const recentArticles = allArticles
-      .filter(article => article.slug !== currentArticle.slug)
+      .filter(article => !slugsToExclude.includes(article.slug))
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     
     // Combiner les deux listes en évitant les doublons
@@ -48,10 +79,18 @@ export default function RelatedArticles({
       }
     });
     
-    return relatedArticles.slice(0, maxArticles);
+    // Mélanger de manière déterministe et prendre le nombre demandé
+    const seed = createSeed(currentArticle.slug + excludeSlugs.join(''));
+    return shuffleArrayDeterministic(relatedArticles, seed).slice(0, maxArticles);
   };
 
-  const relatedArticles = findRelatedArticles();
+  const relatedArticles = useMemo(() => findRelatedArticles(), [
+    currentArticle.slug, 
+    currentArticle.category?.name, 
+    allArticles, 
+    excludeSlugs, 
+    maxArticles
+  ]);
 
   if (relatedArticles.length === 0) {
     return null;
@@ -62,7 +101,7 @@ export default function RelatedArticles({
       <div className="flex items-center justify-between mb-6 px-2">
         <h2 className="text-2xl font-semibold">
           {currentArticle.category ? 
-            `Autres articles sur les ${currentArticle.category.name.toLowerCase()}` : 
+            `Autres articles sur ${currentArticle.category.name.toLowerCase()}` : 
             'Articles similaires'
           }
         </h2>

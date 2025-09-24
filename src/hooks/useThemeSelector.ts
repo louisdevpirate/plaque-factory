@@ -1,16 +1,20 @@
 'use client'
 import { defaultTheme } from '@/config/themes/default.theme';
+import { useState, useEffect } from 'react';
 
 export const useThemeSelector = () => {
-  if (typeof window !== 'undefined') {
+  const [theme, setTheme] = useState(defaultTheme);
+
+  useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
-    const theme = searchParams.get('theme');
+    const themeParam = searchParams.get('theme');
 
-    switch (theme) {
+    switch (themeParam) {
       default:
-        return defaultTheme;
+        setTheme(defaultTheme);
+        break;
     }
-  }
+  }, []);
 
-  return defaultTheme; // Valeur par défaut côté serveur
+  return theme;
 };

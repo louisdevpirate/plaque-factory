@@ -6,11 +6,11 @@ export async function GET() {
   const staticUrls = [
     { loc: '/', priority: 1.0, lastmod: new Date().toISOString() },
     { loc: '/plaques-personnalisees', priority: 0.9, lastmod: new Date().toISOString() },
-    { loc: '/about', priority: 0.8, lastmod: new Date().toISOString() },
+    { loc: '/a-propos', priority: 0.8, lastmod: new Date().toISOString() },
     { loc: '/blog', priority: 0.8, lastmod: new Date().toISOString() },
-    { loc: '/#catégories', priority: 0.7, lastmod: new Date().toISOString() },
-    { loc: '/#faq', priority: 0.6, lastmod: new Date().toISOString() },
-    { loc: '/#personnalisation', priority: 0.9, lastmod: new Date().toISOString() }
+    { loc: '/moto', priority: 0.8, lastmod: new Date().toISOString() },
+    { loc: '/mentions-legales', priority: 0.3, lastmod: new Date().toISOString() },
+    { loc: '/cgv', priority: 0.3, lastmod: new Date().toISOString() }
   ]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -2,6 +2,7 @@
 import React from "react";
 import { useTheme } from "@/hooks/useTheme";
 import Image from "next/image";
+import Link from "next/link";
 import { FacebookFIcon, InstagramIcon, TikTokIcon } from "./Icons";
 import LazyBackgroundSection from "./LazyBackgroundSection";
 
@@ -23,7 +24,7 @@ export default function FooterOptimized() {
           <div className="max-w-xs">
             <Image
               src="/images/logo/2.svg"
-              alt="La Bonne Plaque Logo"
+              alt="LABONNEPLAQUE"
               width={200}
               height={40}
               loading="lazy"
@@ -115,24 +116,83 @@ export default function FooterOptimized() {
             </ul>
           </div>
 
+          {/* Catégories */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-white">
+              Nos Catégories
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/categories/moto"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Plaques moto personnalisées"
+                >
+                  🏍️ Plaques Moto
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/categories/us"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Plaques US pour véhicules américains"
+                >
+                  🇺🇸 Plaques US
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/categories/suv"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Plaques SUV et 4x4"
+                >
+                  🚙 Plaques SUV
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/categories/collection"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Plaques collection vintage"
+                >
+                  🏆 Plaques Collection
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/plaques-personnalisees"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Personnaliser votre plaque"
+                >
+                  ✨ Personnalisées
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Legal Links */}
           <div>
-            <h3
-              className="text-lg font-bold mb-4 text-white"
-            >
+            <h3 className="text-lg font-bold mb-4 text-white">
               Informations
             </h3>
             <ul className="space-y-4">
               <li>
-                <a
+                <Link
                   href="/about"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="text-white/60 hover:text-white transition-colors"
-                  title="Ouvrir la page À propos"
+                  title="En savoir plus sur LABONNEPLAQUE.fr"
                 >
                   À propos
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-white/60 hover:text-white transition-colors"
+                  title="Lire notre blog"
+                >
+                  Blog
+                </Link>
               </li>
               <li>
                 <a
@@ -154,17 +214,6 @@ export default function FooterOptimized() {
                   title="Lire les conditions générales de vente"
                 >
                   CGV
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://plaqueimmat.fr/pages/politique-de-remboursement"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
-                  title="Lire la politique de remboursement"
-                >
-                  Politique de remboursement
                 </a>
               </li>
               <li>

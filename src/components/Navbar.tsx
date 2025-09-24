@@ -2,17 +2,27 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/hooks/useTheme";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FacebookFIcon, InstagramIcon, TikTokIcon } from "./Icons";
 
 export default function Navbar() {
   const theme = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       {/* 🌍 Navbar Desktop */}
-      <div className="hidden lg:block fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop scrolled w-full bg-white/70 backdrop-blur">
+      <div className={`hidden lg:block fixed left-1/2 -translate-x-1/2 z-50 navbar-desktop w-full bg-white/70 backdrop-blur ${isScrolled ? 'scrolled' : ''}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 pt-4 pb-4 transition-all duration-300">
           <div className="w-1/4">
             <Link href="/" title="Retour à l'accueil" className="z-50">
@@ -64,7 +74,7 @@ export default function Navbar() {
             <Link href="/about" title="À propos de labonneplaque" className="nav-link flex items-center">
               À propos
             </Link>
-            <Link href="/blog" title="Lire le blog La Bonne Plaque" className="nav-link flex items-center">
+            <Link href="/blog" title="Lire le blog La Bonne Plaque" className="nav-link flex items-center font-extrabold">
               Blog
             </Link>
           </nav>
