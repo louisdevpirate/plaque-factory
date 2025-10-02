@@ -160,7 +160,7 @@ export default function FooterOptimized() {
               </li>
               <li>
                 <Link
-                  href="/plaques-personnalisees"
+                  href="/categories/plaques-personnalisees"
                   className="text-white/60 hover:text-white transition-colors"
                   title="Personnaliser votre plaque"
                 >

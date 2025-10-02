@@ -5,4 +5,8 @@ export interface Category {
   image: string
   imagePlaque: string
   code: string
+  features: string[]
+  vehicleTypes: string[]
+  dimensions: string
+  icon: string
 }

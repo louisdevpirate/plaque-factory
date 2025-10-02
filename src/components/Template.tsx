@@ -2,9 +2,8 @@ import { Category } from "@/types/category";
 import Navbar from "@/components/Navbar";
 import FooterOptimized from "./FooterOptimized";
 import FaqSectionOptimized from "./FaqSectionOptimized";
-import PersonalizationSectionLazy from "./PersonalizationSectionLazy";
 import BlogSectionServer from "./BlogSectionServer";
-import HeroHeader from "./HeroHeader";
+import CategoryHero from "./CategoryHero";
 import FeedbackSection from "./FeedbackSection";
 import { DeliverySection } from "./DeliverySection";
 
@@ -16,17 +15,8 @@ export default function Template({ category }: Props) {
   return (
     <>
       <Navbar />
-      <HeroHeader
-        title={category.title}
-        description={category.description}
-        backgroundImage={category.image}
-        plaqueImage={category.imagePlaque}
-        ctaText="Je crée ma plaque"
-        ctaHref="#personnalisation"
-        showBackButton={true}
-      />
+      <CategoryHero category={category} />
       <DeliverySection />
-      <PersonalizationSectionLazy code={category.code} />
       <FeedbackSection />
       <FaqSectionOptimized />
       <BlogSectionServer />

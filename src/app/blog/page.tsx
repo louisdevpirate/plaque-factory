@@ -137,7 +137,7 @@ export default async function BlogPage({
                     🏆 Collection
                   </Link>
                   <Link 
-                    href="/plaques-personnalisees" 
+                    href="/categories/plaques-personnalisees" 
                     className="inline-flex items-center px-4 py-2 bg-white border border-black text-black rounded-lg hover:bg-gray-100 hover:text-black transition-colors text-sm font-medium"
                   >
                     ✨ Personnalisées
