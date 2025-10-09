@@ -3,6 +3,7 @@ import LazyBackgroundSection from "./LazyBackgroundSection";
 import Image from "next/image";
 import { MagicIcon, CheckIcon } from "./Icons";
 import CTAButton from "./CTAButton";
+import { getPersonnalizationUrl } from "@/lib/personnalizationUrls";
 
 type Props = {
   code?: string;
@@ -118,7 +119,7 @@ function PersonalizationSectionLazy({ code }: Props) {
                   </div>
 
                   <CTAButton
-                    href="https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"
+                    href={code ? getPersonnalizationUrl(code) : "https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"}
                     variant="primary"
                     size="lg"
                     external

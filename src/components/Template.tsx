@@ -19,7 +19,7 @@ export default function Template({ category }: Props) {
       <DeliverySection />
       <FeedbackSection />
       <FaqSectionOptimized />
-      <BlogSectionServer />
+      <BlogSectionServer categoryCode={category.code} />
       <FooterOptimized />
     </>
   );

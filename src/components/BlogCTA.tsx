@@ -2,8 +2,13 @@
 
 import CTAButton from "./CTAButton";
 import CTAContainer from "./CTAContainer";
+import { getPersonnalizationUrl } from "@/lib/personnalizationUrls";
 
-export default function BlogCTA() {
+interface BlogCTAProps {
+  categoryCode?: string;
+}
+
+export default function BlogCTA({ categoryCode }: BlogCTAProps) {
   return (
     <CTAContainer direction="col" gap="md" className="mb-12 text-center">
       <CTAButton
@@ -14,7 +19,7 @@ export default function BlogCTA() {
         Voir tous les articles
       </CTAButton>
       <CTAButton
-        href="https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"
+        href={categoryCode ? getPersonnalizationUrl(categoryCode) : "https://module.plaqueimmat.fr/361?aff=9c7pyekcpurn"}
         variant="blog"
         size="md"
         external

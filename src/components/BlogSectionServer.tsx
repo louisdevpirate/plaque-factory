@@ -3,7 +3,11 @@ import BlogCarousel from "./BlogCarousel";
 import { RssIcon } from "./Icons";
 import BlogCTA from "./BlogCTA";
 
-export default async function BlogSectionServer() {
+interface BlogSectionServerProps {
+  categoryCode?: string;
+}
+
+export default async function BlogSectionServer({ categoryCode }: BlogSectionServerProps) {
   const articles = await getCachedArticles(5);
 
   return (
@@ -26,7 +30,7 @@ export default async function BlogSectionServer() {
         </strong>
       </p>
       <div className="mx-auto">
-        <BlogCTA />
+        <BlogCTA categoryCode={categoryCode} />
 
         {articles.length > 0 ? (
           <BlogCarousel articles={articles} />
