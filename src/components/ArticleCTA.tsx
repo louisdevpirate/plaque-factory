@@ -13,8 +13,8 @@ export default function ArticleCTA({
   variant = "primary" 
 }: ArticleCTAProps) {
   
-  const ctaText = variant === "primary" 
-    ? "Créer ma plaque maintenant" 
+  const ctaText = variant === "primary"
+    ? "Créer ma plaque maintenant →"
     : "Découvrir nos plaques";
 
   const ctaDescription = variant === "primary"

@@ -9,6 +9,7 @@ import ArticleCTA from "@/components/ArticleCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import RelatedPosts from "@/components/RelatedPosts";
 import BlogAdBanner from "@/components/BlogAdBanner";
+import BlogCTABanner from "@/components/BlogCTABanner";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import React from "react";
@@ -44,7 +45,14 @@ export async function generateMetadata({
   });
 }
 
-// Ajouter avant l'export default
+function splitAtMidpoint(content: string): [string, string] {
+  if (!content || content.length < 200) return [content, ''];
+  const mid = Math.floor(content.length / 2);
+  const splitIndex = content.indexOf('\n\n', mid);
+  if (splitIndex === -1) return [content, ''];
+  return [content.slice(0, splitIndex), content.slice(splitIndex + 2)];
+}
+
 function formatDate(dateString: string) {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat("fr-FR", {
@@ -72,6 +80,37 @@ export default async function BlogPage({
     );
   const featuredArticle = recentArticles[0];
   const otherArticles = recentArticles.slice(1, 11);
+
+  const allCategoryLinks = [
+    { href: '/categories/moto', label: 'Plaques moto', icon: '🏍️' },
+    { href: '/categories/us', label: 'Plaques US', icon: '🇺🇸' },
+    { href: '/categories/suv', label: 'Plaques SUV', icon: '🚙' },
+    { href: '/categories/collection', label: 'Collection', icon: '🕰️' },
+    { href: '/categories/enduro', label: 'Enduro / Cross', icon: '🏔️' },
+    { href: '/categories/cyclo', label: 'Cyclomoteur', icon: '🛵' },
+    { href: '/categories/little-moto', label: 'Mini moto', icon: '🏍️' },
+    { href: '/categories/plaques-personnalisees', label: 'Personnalisées', icon: '🎨' },
+  ];
+
+  const articleText = ((article.title || '') + ' ' + (article.content || '') + ' ' + (article.description || '')).toLowerCase();
+
+  const categoryKeywordMap: { href: string; label: string; icon: string; keywords: string[] }[] = [
+    { href: '/categories/moto', label: 'Plaques moto', icon: '🏍️', keywords: ['moto', 'scooter', 'deux-roues', 'motocyclette'] },
+    { href: '/categories/us', label: 'Plaques US', icon: '🇺🇸', keywords: ['américain', 'usa', 'us ', ' us,', 'mustang', 'muscle car', 'pick-up'] },
+    { href: '/categories/suv', label: 'Plaques SUV', icon: '🚙', keywords: ['suv', '4x4', 'tout-terrain', 'quatre-quatre'] },
+    { href: '/categories/collection', label: 'Collection', icon: '🕰️', keywords: ['collection', 'vintage', 'ancien', 'rétro', 'classique'] },
+    { href: '/categories/enduro', label: 'Enduro / Cross', icon: '🏔️', keywords: ['enduro', 'cross', 'trial', 'motocross', 'off-road'] },
+    { href: '/categories/cyclo', label: 'Cyclomoteur', icon: '🛵', keywords: ['cyclo', 'cyclomoteur', 'mobylette', 'vélomoteur'] },
+    { href: '/categories/little-moto', label: 'Mini moto', icon: '🏍️', keywords: ['pit bike', 'pocket bike', 'dirt bike', 'mini moto', 'miniature'] },
+  ];
+
+  const matchedLinks = categoryKeywordMap
+    .filter((cat) => cat.keywords.some((kw) => articleText.includes(kw)))
+    .map(({ href, label, icon }) => ({ href, label, icon }));
+
+  const categoryLinks = matchedLinks.length >= 2
+    ? matchedLinks.slice(0, 5)
+    : allCategoryLinks.slice(0, 5);
 
   return (
     <div>
@@ -205,16 +244,32 @@ export default async function BlogPage({
                 )}
               </div>
     
-              <ArticleContentWithLinks 
-                content={article.content || ''} 
-                articleTitle={article.title}
-              />
+              {(() => {
+                const [firstHalf, secondHalf] = splitAtMidpoint(article.content || '');
+                return (
+                  <>
+                    <ArticleContentWithLinks
+                      content={firstHalf}
+                      articleTitle={article.title}
+                    />
+                    {secondHalf && (
+                      <>
+                        <BlogCTABanner />
+                        <ArticleContentWithLinks
+                          content={secondHalf}
+                          articleTitle={article.title}
+                        />
+                      </>
+                    )}
+                  </>
+                );
+              })()}
               
               {/* Mini FAQ */}
               <MiniFAQ articleTitle={article.title} />
               
               {/* Articles liés - sous la FAQ */}
-              <RelatedPosts 
+              <RelatedPosts
                 currentSlug={slug}
                 posts={allArticles.map(a => ({
                   slug: a.slug,
@@ -224,6 +279,7 @@ export default async function BlogPage({
                   createdAt: a.createdAt
                 }))}
                 maxPosts={3}
+                categoryLinks={categoryLinks}
               />
             </section>
           </div>
