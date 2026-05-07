@@ -2,9 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // 🚫 Désactiver ESLint temporairement pour l'analyse
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 
   // 🖼️ Optimisation des images
   images: {
