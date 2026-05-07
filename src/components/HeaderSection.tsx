@@ -63,20 +63,13 @@ export default function HeaderSection() {
               <span>Fabrication française</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-medium text-left">
-              Créez votre plaque d'immatriculation personnalisée
+              La plaque qu'il vous faut, livrée en 48h — homologuée, personnalisée, fabriquée en France
               <span className="text-2xl text-green-600 block mt-2 font-medium p-2">À partir de 15,00€</span>
             </h1>
 
             <div className="w-5/6 mb-2 ml-2">
               <p className="text-sm lg:text-base font-light">
-                Choisissez facilement votre style, votre format et vos options
-                pour créer une plaque homologuée et personnalisée adaptée à
-                votre véhicule.
-                Livraison rapide, qualité professionnelle <br />
-                <span className="font-bold">
-                  {" "}
-                  — le tout en quelques clics.
-                </span>
+                Choisissez votre format, personnalisez votre plaque en quelques clics et recevez-la chez vous en 48h. Homologuée CE, fabrication française, qualité plexiglass premium.
               </p>
               <p className="mt-4 text-xs mb-6">
                 <MedalIcon className="inline w-4 h-4 mr-1" /> Partenaire officiel de{" "}

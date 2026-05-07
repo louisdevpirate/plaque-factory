@@ -14,12 +14,14 @@ interface RelatedPostsProps {
   currentSlug: string
   posts: RelatedPost[]
   maxPosts?: number
+  categoryLinks?: { href: string; label: string; icon: string }[]
 }
 
-export default function RelatedPosts({ 
-  currentSlug, 
-  posts, 
-  maxPosts = 3
+export default function RelatedPosts({
+  currentSlug,
+  posts,
+  maxPosts = 3,
+  categoryLinks,
 }: RelatedPostsProps) {
   // Fonction pour créer une graine déterministe basée sur le slug
   const createSeed = (str: string) => {
@@ -88,6 +90,27 @@ export default function RelatedPosts({
           </Link>
         ))}
       </div>
+
+      {categoryLinks && categoryLinks.length > 0 && (
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          <p className="text-sm font-semibold text-gray-700 mb-3">
+            Découvrez nos gammes de plaques :
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {categoryLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-100 hover:bg-yellow-100 hover:border-yellow-400 border border-gray-200 rounded-full text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                title={`Voir les ${link.label}`}
+              >
+                <span>{link.icon}</span>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }
