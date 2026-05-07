@@ -109,5 +109,5 @@ export const getCachedAllArticles = unstable_cache(
 // Function to invalidate cache when needed
 export async function revalidateArticles() {
   const { revalidateTag } = await import("next/cache");
-  revalidateTag("articles");
+  revalidateTag("articles", {});
 }
