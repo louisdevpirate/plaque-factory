@@ -3,16 +3,16 @@ import HomePageOptimized from '@/components/HomePageOptimized'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "labonneplaque.fr | Plaques personnalisées et homologuées",
+    title: "Plaque d'immatriculation personnalisée | Homologuée CE, livrée en 48h",
     description:
-      "Commandez vos plaques d'immatriculation personnalisées en ligne. Livraison 24h. Conseils, infos et qualité pro sur un seul site.",
+      "Créez votre plaque d'immatriculation personnalisée en quelques clics. Homologuée CE, fabrication française, livraison express 48h. À partir de 15€.",
     alternates: {
       canonical: "https://labonneplaque.fr/",
     },
     openGraph: {
-      title: "labonneplaque.fr | Plaques personnalisées et homologuées",
+      title: "Plaque d'immatriculation personnalisée | Homologuée CE, livrée en 48h",
       description:
-        "Commandez vos plaques d'immatriculation personnalisées en ligne. Livraison 24h. Conseils, infos et qualité pro sur un seul site.",
+        "Créez votre plaque d'immatriculation personnalisée en quelques clics. Homologuée CE, fabrication française, livraison express 48h. À partir de 15€.",
       url: "https://labonneplaque.fr/",
       siteName: "La Bonne Plaque",
       locale: "fr_FR",
@@ -28,9 +28,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "labonneplaque.fr | Plaques personnalisées et homologuées",
+      title: "Plaque d'immatriculation personnalisée | Homologuée CE, livrée en 48h",
       description:
-        "Commandez vos plaques d'immatriculation personnalisées en ligne. Livraison 24h. Conseils, infos et qualité pro sur un seul site.",
+        "Créez votre plaque d'immatriculation personnalisée en quelques clics. Homologuée CE, fabrication française, livraison express 48h. À partir de 15€.",
       images: [
         "https://opengraph.b-cdn.net/production/images/3b60bbfa-6653-438a-8369-4e172db1a962.png?token=if9gmIgfPC8EVKPC8g-q6i5UKErGZFT1KXRPOgyYsq0&height=628&width=1200&expires=33294641719",
       ],
