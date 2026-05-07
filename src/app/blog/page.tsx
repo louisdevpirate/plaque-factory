@@ -1,5 +1,15 @@
 // app/blog/page.tsx
+import type { Metadata } from "next";
 import { getCachedAllArticles } from "@/lib/supabase";
+
+export const metadata: Metadata = {
+  title: "Blog Plaque Immatriculation | Conseils, Loi & Personnalisation",
+  description:
+    "Tout savoir sur les plaques d'immatriculation : réglementation, amendes, personnalisation et tendances. Conseils d'experts mis à jour en 2025.",
+  alternates: {
+    canonical: "https://labonneplaque.fr/blog",
+  },
+};
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FooterOptimized from "@/components/FooterOptimized";

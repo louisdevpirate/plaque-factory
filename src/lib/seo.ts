@@ -18,14 +18,19 @@ export function generateCanonicalMetadata({
   const baseUrl = 'https://www.labonneplaque.fr'
   const canonicalUrl = `${baseUrl}${url}`
   
+  const truncatedTitle = title && title.length > 60 ? title.slice(0, 57) + '...' : title
+  const metaTitle = type === 'article'
+    ? (truncatedTitle || 'La Bonne Plaque')
+    : (truncatedTitle ? `${truncatedTitle} | La Bonne Plaque` : 'La Bonne Plaque')
+
   return {
-    title: title ? `${title} | LABONNEPLAQUE.fr` : 'LABONNEPLAQUE.fr',
+    title: metaTitle,
     description: description || 'Commandez votre plaque d\'immatriculation personnalisée dès 15€. Livraison rapide 24h, qualité professionnelle garantie.',
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: title || 'LABONNEPLAQUE.fr',
+      title: metaTitle,
       description: description || 'Plaques d\'immatriculation personnalisées et homologuées dès 15€. Livraison rapide 24h, création simple en ligne.',
       url: canonicalUrl,
       siteName: 'La Bonne Plaque',
@@ -49,7 +54,7 @@ export function generateCanonicalMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: title || 'LABONNEPLAQUE.fr',
+      title: metaTitle,
       description: description || 'Commandez votre plaque d\'immatriculation personnalisée dès 15€. Livraison rapide 24h, création simple en ligne.',
       images: image ? [`${baseUrl}${image}`] : [`${baseUrl}/favicon.png`],
     },

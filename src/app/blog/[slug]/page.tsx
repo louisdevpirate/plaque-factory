@@ -26,6 +26,21 @@ import MiniFAQ from "@/components/MiniFAQ";
 
 export const revalidate = 3600; // Revalidate every hour
 
+const ARTICLE_SEO_OVERRIDES: Record<string, { title: string; description: string }> = {
+  'amende-plaque-noire': {
+    title: "Amende Plaque Noire 2025 : Montant, Risques et Comment l'Éviter",
+    description: "Rouler avec une plaque noire non homologuée peut coûter jusqu'à 750€ d'amende. Découvrez les règles, les risques et comment avoir une plaque noire légale en France.",
+  },
+  'plaque-noire-amende': {
+    title: "Amende Plaque Noire 2025 : Montant, Risques et Comment l'Éviter",
+    description: "Rouler avec une plaque noire non homologuée peut coûter jusqu'à 750€ d'amende. Découvrez les règles, les risques et comment avoir une plaque noire légale en France.",
+  },
+  'amende-plaque-immatriculation-noire': {
+    title: "Amende Plaque Noire 2025 : Montant, Risques et Comment l'Éviter",
+    description: "Rouler avec une plaque noire non homologuée peut coûter jusqu'à 750€ d'amende. Découvrez les règles, les risques et comment avoir une plaque noire légale en France.",
+  },
+}
+
 // ✅ Nouveau typage compatible Next.js 15
 export async function generateMetadata({
   params,
@@ -35,11 +50,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getCachedArticleBySlug(slug);
   if (!article) return {};
-  
+
+  const override = ARTICLE_SEO_OVERRIDES[slug]
+
   return generateCanonicalMetadata({
     url: `/blog/${slug}`,
-    title: article.title,
-    description: article.description,
+    title: override?.title ?? article.title,
+    description: override?.description ?? article.description,
     image: article.image,
     type: 'article'
   });
