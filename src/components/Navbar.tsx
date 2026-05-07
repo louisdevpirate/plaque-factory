@@ -58,11 +58,32 @@ export default function Navbar() {
                 </svg>
               </div>
               <div
-                className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50 text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+                className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-lg z-50 text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
               >
                 <Link href="/categories/plaques-personnalisees" className="block px-4 py-2 hover:bg-gray-100">Plaques personnalisées</Link>
                 <Link href="/categories/moto" className="block px-4 py-2 hover:bg-gray-100">Plaques moto</Link>
-                <Link href="/categories/us" className="block px-4 py-2 hover:bg-gray-100">Plaques US</Link>
+                
+                {/* Sous-menu spécial pour les plaques US */}
+                <div className="relative group/sub">
+                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100">
+                    <Link href="/categories/us" className="flex-1">Plaques US</Link>
+                    <svg className="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200">
+                    <Link href="/categories/us" className="block px-3 py-2 text-xs hover:bg-gray-100 border-b border-gray-100 font-semibold">🇺🇸 Tous les états</Link>
+                    <Link href="/categories/us#california" className="block px-3 py-1 text-xs hover:bg-gray-100">🌴 Californie</Link>
+                    <Link href="/categories/us#texas" className="block px-3 py-1 text-xs hover:bg-gray-100">🤠 Texas</Link>
+                    <Link href="/categories/us#florida" className="block px-3 py-1 text-xs hover:bg-gray-100">☀️ Floride</Link>
+                    <Link href="/categories/us#new-york" className="block px-3 py-1 text-xs hover:bg-gray-100">🗽 New York</Link>
+                    <Link href="/categories/us#nevada" className="block px-3 py-1 text-xs hover:bg-gray-100">🎰 Nevada</Link>
+                    <Link href="/categories/us#arizona" className="block px-3 py-1 text-xs hover:bg-gray-100">🏜️ Arizona</Link>
+                    <Link href="/categories/us#colorado" className="block px-3 py-1 text-xs hover:bg-gray-100">🏔️ Colorado</Link>
+                    <Link href="/categories/us#washington-dc" className="block px-3 py-1 text-xs hover:bg-gray-100">🏛️ Washington DC</Link>
+                  </div>
+                </div>
+                
                 <Link href="/categories/suv" className="block px-4 py-2 hover:bg-gray-100">Plaques SUV</Link>
                 <Link href="/categories/cyclo" className="block px-4 py-2 hover:bg-gray-100">Cyclo</Link>
                 <Link href="/categories/collection" className="block px-4 py-2 hover:bg-gray-100">Collection</Link>
